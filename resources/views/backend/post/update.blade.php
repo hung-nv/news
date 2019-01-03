@@ -5,7 +5,7 @@
 
 @section('title', 'Update Post')
 
-@section('pageId', 'post')
+@section('pageId', 'create-edit-post')
 
 @section('style')
     <link href="{{ asset('/admin/assets/global/plugins/select2/css/select2.min.css') }}" rel="stylesheet"

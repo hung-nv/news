@@ -2,5 +2,5 @@
     <div class="dd-handle dd3-handle"></div>
     <div class="dd3-content">
         {{ $item->name }}
-        <i class="fa fa-times pull-right" onclick="mainComponent.deleteMenu({{ $item->id }})"></i>
+        <i class="fa fa-times pull-right" onclick="deleteMenu({{ $item->id }})"></i>
     </div>

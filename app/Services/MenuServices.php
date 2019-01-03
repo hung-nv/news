@@ -62,8 +62,9 @@ class MenuServices extends Services
 
     /**
      * Get template menu nestable to reload.
-     * @param int $idGroup
+     * @param $idGroup
      * @return string
+     * @throws \Throwable
      */
     public function getTemplateMenu($idGroup)
     {

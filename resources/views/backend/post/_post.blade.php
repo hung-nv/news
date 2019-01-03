@@ -30,14 +30,14 @@
                                 <i class="fa fa-check"></i>
                                 {{ $j->value }}
                             </a>
-                            <button class="btn btn-xs red" onclick="mainComponent.removeGroup(this)"
+                            <button class="btn btn-xs red" onclick="removeGroup(this)"
                                     data-post-id="{{ $i->id }}"
                                     data-group-name="{{ $j->value }}"
                                     data-group-id="{{ $j->id }}">
                                 <i class="fa fa-times"></i>
                             </button>
                         @else
-                            <button class="btn btn-xs grey-cascade" onclick="mainComponent.addGroup(this)"
+                            <button class="btn btn-xs grey-cascade" onclick="addGroup(this)"
                                     data-post-id="{{ $i->id }}"
                                     data-group-name="{{ $j->value }}"
                                     data-group-id="{{ $j->id }}"> Set to "{{ $j->value }}"

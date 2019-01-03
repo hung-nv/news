@@ -12,13 +12,13 @@
     <div class="form-group">
         <label>Description</label>
         <textarea name="description" class="form-control"
-                  rows="4">{{ $post['description'] or old('description') }}</textarea>
+                  rows="4">{{ isset($post) ? $post['description'] : old('description') }}</textarea>
     </div>
 
     <div class="form-group last">
         <label>Content</label>
         <textarea class="ckeditor form-control" name="content" rows="6"
-                  data-error-container="#editor2_error">{{ $post['content'] or old('content') }}</textarea>
+                  data-error-container="#editor2_error">{{ isset($post) ? $post['content'] : old('content') }}</textarea>
         <div id="editor2_error"></div>
     </div>
 </div>
@@ -56,25 +56,27 @@
 
     <div class="form-group">
         <label>Keywords</label>
-        <input type="text" name="meta_keywords" class="form-control" value="{{ $post['meta_keywords'] or  old('meta_keywords') }}"/>
+        <input type="text" name="meta_keywords" class="form-control"
+               value="{{ isset($post) ? $post['meta_keywords'] : old('meta_keywords') }}"/>
     </div>
 
     <div class="form-group">
         <label>Meta title</label>
         <input type="text" name="meta_title" class="form-control"
-               value="{{ $post['meta_title'] or old('meta_title') }}"/>
+               value="{{ isset($post) ? $post['meta_title'] : old('meta_title') }}"/>
     </div>
 
     <div class="form-group">
         <label>Meta description</label>
         <input type="text" name="meta_description" class="form-control"
-               value="{{ $post['meta_description'] or old('meta_description') }}"/>
+               value="{{ isset($post) ? $post['meta_description'] : old('meta_description') }}"/>
     </div>
 
     <div class="form-group">
         <label>Image</label>
         @if(isset($post) && $post['image'])
-            <input type="hidden" name="old_image" id="old-image" data-id="{{ $post['id'] }}" value="{{ $post['image'] or '' }}">
+            <input type="hidden" name="old_image" id="old-image" data-id="{{ $post['id'] }}"
+                   value="{{ $post['image'] or '' }}">
         @endif
         <input id="image" name="image" type="file" data-show-upload="false">
     </div>

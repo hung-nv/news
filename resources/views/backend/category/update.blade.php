@@ -5,7 +5,7 @@
 
 @section('title', 'Update Category')
 
-@section('pageId', 'category')
+@section('pageId', 'create-edit-category')
 
 @section('style')
     <link href="{{ asset('/admin/assets/global/plugins/select2/css/select2.min.css') }}" rel="stylesheet"
