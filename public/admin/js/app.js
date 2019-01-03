@@ -11713,19 +11713,44 @@ __webpack_require__(/*! ./pages/setting/menu */ "./resources/js/pages/setting/me
 /*!*****************************************!*\
   !*** ./resources/js/helpers/helpers.js ***!
   \*****************************************/
-/*! exports provided: slugify, getParameterByName, doException */
+/*! exports provided: confirmBeforeDelete, slugify, getParameterByName, doException */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "confirmBeforeDelete", function() { return confirmBeforeDelete; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slugify", function() { return slugify; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getParameterByName", function() { return getParameterByName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "doException", function() { return doException; });
+/**
+ * Alert before delete
+ * @param el
+ * @param message
+ */
+function confirmBeforeDelete(el, message) {
+  if (message === undefined || message === null) {
+    message = '';
+  }
+
+  swal({
+    title: 'Are you sure?',
+    text: message,
+    type: 'warning',
+    showCancelButton: true,
+    customClass: 'nvh-dialog',
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then(function () {
+    $(el).parent().submit();
+  });
+}
 /**
  * Convert string to slug.
  * @param string
  * @returns {any}
  */
+
 function slugify(string) {
   string = string.toLowerCase();
   string = string.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a').replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e').replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i').replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o').replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u').replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y').replace(/đ/gi, 'd');
@@ -11805,23 +11830,6 @@ var ui = {
 };
 
 if ($(ui.pageId).length) {
-  /**
-   * Set input image preview.
-   */
-  var setInputImage = function setInputImage() {
-    if ($(ui.inputImage).length) {
-      if ($(ui.inputOldImage).length) {
-        initInputImage(ui.inputOldImage, ui.inputImage, ui.urlDeleteImage);
-      } else {
-        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_1__["newInputImage"])(ui.inputImage);
-      }
-    }
-
-    $(ui.inputImage).on('fileclear', function (event) {
-      $(ui.inputRemoveInitPreview).trigger("click");
-    });
-  };
-
   new Vue({
     el: ui.pageId,
     data: {
@@ -11836,6 +11844,23 @@ if ($(ui.pageId).length) {
   });
   $(function () {
     setInputImage();
+    /**
+     * Set input image preview.
+     */
+
+    function setInputImage() {
+      if ($(ui.inputImage).length) {
+        if ($(ui.inputOldImage).length) {
+          Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_1__["initInputImage"])(ui.inputOldImage, ui.inputImage, ui.urlDeleteImage);
+        } else {
+          Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_1__["newInputImage"])(ui.inputImage);
+        }
+      }
+
+      $(ui.inputImage).on('fileclear', function (event) {
+        $(ui.inputRemoveInitPreview).trigger("click");
+      });
+    }
   });
 }
 
@@ -11845,88 +11870,110 @@ if ($(ui.pageId).length) {
 /*!*****************************************************!*\
   !*** ./resources/js/pages/article/index_article.js ***!
   \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-$(function () {
-  function addGroup(element) {
-    var groupId, groupName, postId;
-    groupId = $(element).data('group-id');
-    groupName = $(element).data('group-name');
-    postId = $(element).data('post-id');
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/helpers */ "./resources/js/helpers/helpers.js");
 
-    if (groupId === undefined || groupName === undefined || postId === undefined) {
-      return;
-    }
+var ui = {
+  pageId: '#post'
+};
 
-    $.ajax({
-      type: "post",
-      dataType: 'json',
-      url: '/api/post/add-group',
-      headers: {
-        Accept: 'application/json'
+if ($(ui.pageId).length) {
+  new Vue({
+    el: ui.pageId,
+    methods: {
+      addGroup: function addGroup(event) {
+        var _this = this;
+
+        var groupId, groupName, postId;
+        var element = event.target;
+        groupId = $(element).data('group-id');
+        groupName = $(element).data('group-name');
+        postId = $(element).data('post-id');
+
+        if (groupId === undefined || groupName === undefined || postId === undefined) {
+          alert(2);
+          return;
+        }
+
+        $.ajax({
+          type: "post",
+          dataType: 'json',
+          url: '/api/post/add-group',
+          headers: {
+            Accept: 'application/json'
+          },
+          data: {
+            post_id: postId,
+            group_id: groupId,
+            group_name: groupName
+          }
+        }).done(function (respon) {
+          toastr.info(respon.message);
+
+          _this.createContainerChecked($(element));
+        }).fail(function (xhr) {
+          Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
+        });
       },
-      data: {
-        post_id: postId,
-        group_id: groupId,
-        group_name: groupName
+      removeGroup: function removeGroup(event) {
+        var _this2 = this;
+
+        var groupId, groupName, postId;
+        var element = event.target;
+        groupId = $(element).data('group-id');
+        groupName = $(element).data('group-name');
+        postId = $(element).data('post-id');
+
+        if (groupId === undefined || groupName === undefined || postId === undefined) {
+          return;
+        }
+
+        $.ajax({
+          type: "post",
+          dataType: 'json',
+          url: '/api/post/remove-group',
+          data: {
+            post_id: postId,
+            group_id: groupId,
+            group_name: groupName
+          }
+        }).done(function (respon) {
+          toastr.warning(respon.message);
+
+          _this2.createContainerSet($(element));
+        }).fail(function (xhr) {
+          Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
+        });
+      },
+      createContainerChecked: function createContainerChecked(container) {
+        var iconCheck, buttonCheck, buttonRemove, iconRemove, wrapContainer;
+        iconCheck = $('<i>').addClass('fa fa-check');
+        buttonCheck = $('<a>').addClass('btn btn-xs blue');
+        buttonRemove = $('<a>').addClass('btn btn-xs red').attr('data-group-id', container.data('group-id')).attr('data-group-name', container.data('group-name')).attr('data-post-id', container.data('post-id')).attr('onclick', 'mainComponent.removeGroup(this)');
+        iconRemove = $('<i>').addClass('fa fa-times');
+        buttonCheck.append(iconCheck).append(' ' + container.data('group-name'));
+        buttonRemove.append(iconRemove);
+        wrapContainer = container.parent();
+        wrapContainer.html('');
+        wrapContainer.append(buttonCheck).append(buttonRemove);
+      },
+      createContainerSet: function createContainerSet(container) {
+        var wrapContainer, buttonSetGroup;
+        wrapContainer = container.parent();
+        buttonSetGroup = $('<button>').addClass('btn btn-xs grey-cascade').attr('data-group-id', container.data('group-id')).attr('data-group-name', container.data('group-name')).attr('data-post-id', container.data('post-id')).attr('onclick', 'mainComponent.addGroup(this)').text('Set to "' + container.data('group-name') + '"');
+        wrapContainer.html('');
+        wrapContainer.append(buttonSetGroup);
+      },
+      confirmBeforeDelete: function confirmBeforeDelete(event) {
+        Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["confirmBeforeDelete"])(event.target, 'Do you want to delete this?');
       }
-    }).done(function (respon) {
-      toastr.info(respon.message);
-      createContainerChecked($(element));
-    }).fail(function (xhr) {
-      doException(xhr);
-    });
-  }
-
-  function removeGroup(element) {
-    var groupId, groupName, postId;
-    groupId = $(element).data('group-id');
-    groupName = $(element).data('group-name');
-    postId = $(element).data('post-id');
-
-    if (groupId === undefined || groupName === undefined || postId === undefined) {
-      return;
     }
-
-    $.ajax({
-      type: "post",
-      dataType: 'json',
-      url: '/api/post/remove-group',
-      data: {
-        post_id: postId,
-        group_id: groupId,
-        group_name: groupName
-      }
-    }).done(function (respon) {
-      toastr.warning(respon.message);
-      createContainerSet($(element));
-    }).fail(function (xhr) {
-      doException(xhr);
-    });
-  }
-
-  function createContainerChecked(container) {
-    var iconCheck, buttonCheck, buttonRemove, iconRemove, wrapContainer;
-    iconCheck = $('<i>').addClass('fa fa-check');
-    buttonCheck = $('<a>').addClass('btn btn-xs blue');
-    buttonRemove = $('<a>').addClass('btn btn-xs red').attr('data-group-id', container.data('group-id')).attr('data-group-name', container.data('group-name')).attr('data-post-id', container.data('post-id')).attr('onclick', 'mainComponent.removeGroup(this)');
-    iconRemove = $('<i>').addClass('fa fa-times');
-    buttonCheck.append(iconCheck).append(' ' + container.data('group-name'));
-    buttonRemove.append(iconRemove);
-    wrapContainer = container.parent();
-    wrapContainer.html('');
-    wrapContainer.append(buttonCheck).append(buttonRemove);
-  }
-
-  function createContainerSet(container) {
-    var wrapContainer, buttonSetGroup;
-    wrapContainer = container.parent();
-    buttonSetGroup = $('<button>').addClass('btn btn-xs grey-cascade').attr('data-group-id', container.data('group-id')).attr('data-group-name', container.data('group-name')).attr('data-post-id', container.data('post-id')).attr('onclick', 'mainComponent.addGroup(this)').text('Set to "' + container.data('group-name') + '"');
-    wrapContainer.html('');
-    wrapContainer.append(buttonSetGroup);
-  }
-});
+  });
+}
 
 /***/ }),
 
@@ -11952,25 +11999,8 @@ var ui = {
 };
 
 if ($(ui.pageId).length) {
-  /**
-   * Set input image preview.
-   */
-  var setInputImage = function setInputImage() {
-    if ($(ui.inputImage).length) {
-      if ($(ui.inputOldImage).length) {
-        initInputImage(ui.inputOldImage, ui.inputImage, ui.urlDeleteImage);
-      } else {
-        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_1__["newInputImage"])(ui.inputImage);
-      }
-    }
-
-    $(ui.inputImage).on('fileclear', function (event) {
-      $(ui.inputRemoveInitPreview).trigger("click");
-    });
-  };
-
   new Vue({
-    el: '#post',
+    el: ui.pageId,
     data: {
       categoryName: viewData.oldName,
       categorySlug: viewData.oldSlug
@@ -11983,6 +12013,23 @@ if ($(ui.pageId).length) {
   });
   $(function () {
     setInputImage();
+    /**
+     * Set input image preview.
+     */
+
+    function setInputImage() {
+      if ($(ui.inputImage).length) {
+        if ($(ui.inputOldImage).length) {
+          initInputImage(ui.inputOldImage, ui.inputImage, ui.urlDeleteImage);
+        } else {
+          Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_1__["newInputImage"])(ui.inputImage);
+        }
+      }
+
+      $(ui.inputImage).on('fileclear', function (event) {
+        $(ui.inputRemoveInitPreview).trigger("click");
+      });
+    }
   });
 }
 
@@ -11992,11 +12039,17 @@ if ($(ui.pageId).length) {
 /*!*******************************************************!*\
   !*** ./resources/js/pages/category/index_category.js ***!
   \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/helpers */ "./resources/js/helpers/helpers.js");
 
 var ui = {
-  tableCategory: '#datatable-category'
+  pageId: '#category',
+  tableCategory: '#datatable-category',
+  btnDelete: '#btn-delete'
 };
 $(function () {
   if ($(ui.tableCategory).length) {
@@ -12007,6 +12060,10 @@ $(function () {
       bFilter: true
     });
   }
+
+  $(ui.tableCategory).on('click', ui.btnDelete, function () {
+    Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["confirmBeforeDelete"])(this, 'Do you want to delete this?');
+  });
 });
 
 /***/ }),

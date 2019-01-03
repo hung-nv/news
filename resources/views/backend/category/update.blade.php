@@ -7,15 +7,6 @@
 
 @section('pageId', 'create-edit-category')
 
-@section('style')
-    <link href="{{ asset('/admin/assets/global/plugins/select2/css/select2.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{ asset('/admin/assets/global/plugins/select2/css/select2-bootstrap.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{ asset('/admin/assets/css/fileinput.min.css') }}"
-          rel="stylesheet" type="text/css"/>
-@endsection
-
 @section('breadcrumbs')
     <a href="{{ route('category.index') }}">Category</a>
     <i class="fa fa-circle"></i>
@@ -61,11 +52,17 @@
     </div>
 @endsection
 
+@section('style')
+    <link href="{{ asset('/libs/select2/css/select2.min.css') }}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{ asset('/libs/select2/css/select2-bootstrap.min.css') }}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{ asset('/admin/css/fileinput.min.css') }}"
+          rel="stylesheet" type="text/css"/>
+@endsection
+
 @push('script')
-    <script src="{{ asset('/admin/assets/global/plugins/select2/js/select2.full.min.js') }}"
-            type="text/javascript"></script>
-    <script src="{{ asset('/admin/assets/global/plugins/fileinput.min.js') }}"
-            type="text/javascript"></script>
-    <script src="{{ asset('/admin/assets/global/plugins/piexif.min.js') }}"
-            type="text/javascript"></script>
+    <script src="{{ asset('/libs/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/libs/fileinput.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/libs/piexif.min.js') }}" type="text/javascript"></script>
 @endpush

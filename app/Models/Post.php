@@ -17,6 +17,7 @@ class Post extends \Eloquent
         'name',
         'slug',
         'image',
+        'url_video',
         'description',
         'content',
         'user_id',

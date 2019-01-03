@@ -26,9 +26,9 @@ class PostStore extends FormRequest
         return [
             'name' => 'required|unique:articles,name|max:255',
             'slug' => 'required|unique:articles,slug|max:255',
-            'description' => 'required',
+//            'description' => 'required',
             'image' => 'required|image|max:10240',
-            'content' => 'required',
+//            'content' => 'required',
             'parent' => 'required'
         ];
     }

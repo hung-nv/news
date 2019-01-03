@@ -1,5 +1,5 @@
 import {slugify} from "../../helpers/helpers";
-import {newInputImage} from "../../utilities/images/image";
+import {newInputImage, initInputImage} from "../../utilities/images/image";
 
 const ui = {
     pageId: '#create-edit-post',
@@ -25,26 +25,26 @@ if ($(ui.pageId).length) {
 
     $(function () {
         setInputImage();
-    });
 
-    /**
-     * Set input image preview.
-     */
-    function setInputImage() {
-        if ($(ui.inputImage).length) {
-            if ($(ui.inputOldImage).length) {
-                initInputImage(
-                    ui.inputOldImage,
-                    ui.inputImage,
-                    ui.urlDeleteImage
-                );
-            } else {
-                newInputImage(ui.inputImage);
+        /**
+         * Set input image preview.
+         */
+        function setInputImage() {
+            if ($(ui.inputImage).length) {
+                if ($(ui.inputOldImage).length) {
+                    initInputImage(
+                        ui.inputOldImage,
+                        ui.inputImage,
+                        ui.urlDeleteImage
+                    );
+                } else {
+                    newInputImage(ui.inputImage);
+                }
             }
-        }
 
-        $(ui.inputImage).on('fileclear', function (event) {
-            $(ui.inputRemoveInitPreview).trigger("click");
-        });
-    }
+            $(ui.inputImage).on('fileclear', function (event) {
+                $(ui.inputRemoveInitPreview).trigger("click");
+            });
+        }
+    });
 }

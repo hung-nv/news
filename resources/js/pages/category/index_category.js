@@ -1,5 +1,9 @@
+import {confirmBeforeDelete} from "../../helpers/helpers";
+
 const ui = {
-    tableCategory: '#datatable-category'
+    pageId: '#category',
+    tableCategory: '#datatable-category',
+    btnDelete: '#btn-delete'
 };
 
 $(function () {
@@ -11,4 +15,8 @@ $(function () {
             bFilter: true
         });
     }
+
+    $(ui.tableCategory).on('click', ui.btnDelete, function () {
+        confirmBeforeDelete(this, 'Do you want to delete this?');
+    });
 });

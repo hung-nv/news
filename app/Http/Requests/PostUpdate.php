@@ -27,8 +27,8 @@ class PostUpdate extends FormRequest
             'name' => 'required|unique:articles,name, ' . $this->segment(3) . '|max:255',
             'slug' => 'required|unique:articles,slug, ' . $this->segment(3) . '|max:255',
             'image' => 'image|max:10240',
-            'description' => 'required',
-            'content' => 'required',
+//            'description' => 'required',
+//            'content' => 'required',
             'parent' => 'required'
         ];
     }
