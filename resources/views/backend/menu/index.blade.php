@@ -148,11 +148,11 @@
 @endsection
 
 @section('style')
-    <link href="{{ asset('/admin/assets/global/plugins/jquery-nestable/jquery.nestable.css') }}" rel="stylesheet"
+    <link href="{{ asset('/libs/jquery-nestable/jquery.nestable.css') }}" rel="stylesheet"
           type="text/css"/>
 @endsection
 
 @push('script')
-    <script src="{{ asset('/admin/assets/global/plugins/jquery-nestable/jquery.nestable.js') }}"
+    <script src="{{ asset('/libs/jquery-nestable/jquery.nestable.js') }}"
             type="text/javascript"></script>
 @endpush

@@ -47,17 +47,15 @@
 @endsection
 
 @section('style')
-    <link href="{{ asset('/admin/assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet"
+    <link href="{{ asset('/libs/datatables/datatables.min.css') }}" rel="stylesheet"
           type="text/css"/>
-    <link href="{{ asset('/admin/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}"
-          rel="stylesheet"
+    <link href="{{ asset('/libs/datatables/plugins/bootstrap/datatables.bootstrap.css') }}" rel="stylesheet"
           type="text/css"/>
 @endsection
 
 @push('script')
-    <script src="{{ asset('/admin/assets/global/scripts/datatable.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/admin/assets/global/plugins/datatables/datatables.min.js') }}"
-            type="text/javascript"></script>
-    <script src="{{ asset('/admin/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}"
+    <script src="{{ asset('/libs/custom/datatable.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/libs/datatables/datatables.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/libs/datatables/plugins/bootstrap/datatables.bootstrap.js') }}"
             type="text/javascript"></script>
 @endpush

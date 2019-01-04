@@ -1,3 +1,5 @@
+import {getParameterByName, doException} from "../../helpers/helpers";
+
 const ui = {
     pageId: '#menu',
     urlCreateMenu: '/api/create-menu',
@@ -15,13 +17,15 @@ const ui = {
 if ($(ui.pageId).length) {
     const vmMenu = new Vue({
         el: ui.pageId,
-        data: {
-            nameMenu: '',
-            idMenuGroup: this.getIdMenuGroup(),
-            customLabel: '',
-            customDirect: ''
+        data: function () {
+            return {
+                nameMenu: '',
+                idMenuGroup: this.getIdMenuGroup(),
+                customLabel: '',
+                customDirect: ''
+            }
         },
-        method: {
+        methods: {
             getIdMenuGroup: function () {
                 let idGroup = 0;
                 if (getParameterByName('menu_group') != null) {

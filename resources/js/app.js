@@ -5,6 +5,8 @@ require('./pages/article/index_article');
 require('./pages/category/create_edit_category');
 require('./pages/category/index_category');
 require('./pages/setting/menu');
+require('./pages/setting/setting_site');
+require('./pages/user/index_user');
 
 /**
  * The following block of code may be used to automatically register your

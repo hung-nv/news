@@ -11696,6 +11696,10 @@ __webpack_require__(/*! ./pages/category/create_edit_category */ "./resources/js
 __webpack_require__(/*! ./pages/category/index_category */ "./resources/js/pages/category/index_category.js");
 
 __webpack_require__(/*! ./pages/setting/menu */ "./resources/js/pages/setting/menu.js");
+
+__webpack_require__(/*! ./pages/setting/setting_site */ "./resources/js/pages/setting/setting_site.js");
+
+__webpack_require__(/*! ./pages/user/index_user */ "./resources/js/pages/user/index_user.js");
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -12072,8 +12076,12 @@ $(function () {
 /*!********************************************!*\
   !*** ./resources/js/pages/setting/menu.js ***!
   \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/helpers */ "./resources/js/helpers/helpers.js");
 
 var ui = {
   pageId: '#menu',
@@ -12092,18 +12100,20 @@ var ui = {
 if ($(ui.pageId).length) {
   var vmMenu = new Vue({
     el: ui.pageId,
-    data: {
-      nameMenu: '',
-      idMenuGroup: this.getIdMenuGroup(),
-      customLabel: '',
-      customDirect: ''
+    data: function data() {
+      return {
+        nameMenu: '',
+        idMenuGroup: this.getIdMenuGroup(),
+        customLabel: '',
+        customDirect: ''
+      };
     },
-    method: {
+    methods: {
       getIdMenuGroup: function getIdMenuGroup() {
         var idGroup = 0;
 
-        if (getParameterByName('menu_group') != null) {
-          idGroup = Number(getParameterByName('menu_group'));
+        if (Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["getParameterByName"])('menu_group') != null) {
+          idGroup = Number(Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["getParameterByName"])('menu_group'));
         }
 
         return idGroup;
@@ -12133,7 +12143,7 @@ if ($(ui.pageId).length) {
 
           $('#modalAddMenu').modal('toggle');
         }).fail(function (xhr) {
-          doException(xhr, {
+          Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr, {
             elementShowError: '.show-error'
           });
         });
@@ -12166,7 +12176,7 @@ if ($(ui.pageId).length) {
             // reload menu after change.
             $(ui.elementNestable).load(ui.urlGetMenuNestable + _this.idMenuGroup);
           }).fail(function (xhr) {
-            doException(xhr);
+            Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
           });
         }
       },
@@ -12197,7 +12207,7 @@ if ($(ui.pageId).length) {
             // reload menu after change.
             $(ui.elementNestable).load(ui.urlGetMenuNestable + _this2.idMenuGroup);
           }).fail(function (xhr) {
-            doException(xhr);
+            Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
           });
         }
       },
@@ -12225,7 +12235,7 @@ if ($(ui.pageId).length) {
             // reload menu after change.
             $(ui.elementNestable).load(ui.urlGetMenuNestable + _this3.idMenuGroup);
           }).fail(function (xhr) {
-            doException(xhr);
+            Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
           });
         }
       },
@@ -12256,7 +12266,7 @@ if ($(ui.pageId).length) {
 
             $(ui.elementNestable).load(ui.urlGetMenuNestable + _this4.idMenuGroup);
           }).fail(function (xhr) {
-            doException(xhr);
+            Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
           });
         });
       }
@@ -12282,12 +12292,61 @@ if ($(ui.pageId).length) {
             menu_group: vmMenu.idMenuGroup
           }
         }).done(function (respon) {}).fail(function (xhr) {
-          doException(xhr);
+          Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
         });
       });
     }
   });
 }
+
+/***/ }),
+
+/***/ "./resources/js/pages/setting/setting_site.js":
+/*!****************************************************!*\
+  !*** ./resources/js/pages/setting/setting_site.js ***!
+  \****************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _utilities_images_image__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utilities/images/image */ "./resources/js/utilities/images/image.js");
+
+var ui = {
+  inputFavico: '#favico',
+  inputOldFavico: '#old_favico',
+  inputLogo: '#company_logo',
+  inputOldLogo: '#old_company_logo',
+  urlDeleteFileSetting: '/api/delete-file-setting',
+  inputRemoveInitPreview: '.kv-file-remove'
+};
+$(function () {
+  // init favico.
+  if ($(ui.inputFavico).length) {
+    if ($(ui.inputOldFavico).length) {
+      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldFavico, ui.inputFavico, ui.urlDeleteFileSetting, {
+        extractName: 'favico'
+      });
+    } else {
+      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputFavico);
+    }
+  } // init logo.
+
+
+  if ($(ui.inputLogo).length) {
+    if ($(ui.inputOldLogo).length) {
+      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldLogo, ui.inputLogo, ui.urlDeleteFileSetting, {
+        extractName: 'company_logo'
+      });
+    } else {
+      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputLogo);
+    }
+  }
+
+  $(ui.inputFavico).on('fileclear', function (event) {
+    $(ui.inputRemoveInitPreview).trigger("click");
+  });
+});
 
 /***/ }),
 
@@ -12308,6 +12367,34 @@ $(function () {
     $(".alert-info, .alert-danger, .alert-warning").hide();
   }, 3000);
 });
+
+/***/ }),
+
+/***/ "./resources/js/pages/user/index_user.js":
+/*!***********************************************!*\
+  !*** ./resources/js/pages/user/index_user.js ***!
+  \***********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/helpers */ "./resources/js/helpers/helpers.js");
+
+var ui = {
+  pageId: '#user'
+};
+
+if ($(ui.pageId).length) {
+  new Vue({
+    el: ui.pageId,
+    methods: {
+      confirmBeforeDelete: function confirmBeforeDelete(event) {
+        Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["confirmBeforeDelete"])(event.target, 'Do you want to delete this?');
+      }
+    }
+  });
+}
 
 /***/ }),
 

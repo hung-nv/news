@@ -3,7 +3,7 @@
         <label class="col-md-2 control-label">Site Heading</label>
         <div class="col-md-5">
             <input name="site_heading" class="form-control"
-                   value="{{ $option['site_heading'] or old('site_heading') }}"/>
+                   value="{{ isset($option) ? $option['site_heading'] : old('site_heading') }}"/>
         </div>
     </div>
 
@@ -53,25 +53,11 @@
     </div>
 
     <div class="form-group">
-        <label class="col-md-2 control-label">Top Selected Catalog on Index</label>
-        <div class="col-md-5">
-            <div class="form-control height-auto">
-                <div class="scroller" style="height:275px;"
-                     data-always-visible="1">
-                    <div class="mt-checkbox-list"
-                         data-error-container="#form_2_services_error">
-                        {!! $templateSubCatalog !!}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
         <label class="col-md-2 control-label">Favico</label>
         <div class="col-md-5">
             @if(isset($option['favico']) && $option['favico'])
-                <input type="hidden" name="old_favico" id="old_favico" data-id="" value="{{ $option['favico'] or '' }}">
+                <input type="hidden" name="old_favico" id="old_favico" data-id=""
+                       value="{{ isset($option) ? $option['favico'] : '' }}">
             @endif
             <input id="favico" name="favico" type="file" data-show-upload="false">
         </div>
