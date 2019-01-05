@@ -8,7 +8,7 @@ use App\Services\PostServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PostController extends Controller
+class ArticleController extends Controller
 {
     private $postServices;
 

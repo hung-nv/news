@@ -12593,9 +12593,20 @@ function initInputMultiImage(oldImage, newInputImage, urlDelete) {
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
+/***/ "./resources/sass/app-mobile.sass":
+/*!****************************************!*\
+  !*** ./resources/sass/app-mobile.sass ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/app.sass":
 /*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
+  !*** ./resources/sass/app.sass ***!
   \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -12605,14 +12616,15 @@ function initInputMultiImage(oldImage, newInputImage, urlDelete) {
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!**********************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.sass ./resources/sass/app-mobile.sass ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! D:\www\news\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\www\news\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\www\news\resources\sass\app.sass */"./resources/sass/app.sass");
+module.exports = __webpack_require__(/*! D:\www\news\resources\sass\app-mobile.sass */"./resources/sass/app-mobile.sass");
 
 
 /***/ })

@@ -66,19 +66,20 @@ class SettingController extends Controller
     {
         $dataSetting = $this->optionServices->getDataSetting($this->landingType);
 
-        $checkedCatalog = isset($dataSetting['options']['mainCatalog']) ?
-            explode(',', $dataSetting['options']['mainCatalog']) : $request->old('mainCatalog');
+        $checkedCategory = isset($dataSetting['options']['mainCategory']) ?
+            explode(',', $dataSetting['options']['mainCategory']) : $request->old('mainCategory');
 
-        $templateCatalog = $this->postServices->getCheckboxCategory(
+        $templateCategory = $this->postServices->getCheckboxCategory(
             $this->categoryType,
-            $checkedCatalog
+            $checkedCategory,
+            'mainCategory'
         );
 
         return view('backend.theme.setting', [
             'option' => $dataSetting['options'],
             'pages' => $dataSetting['pages'],
             'menus' => $dataSetting['menus'],
-            'templateCatalog' => $templateCatalog
+            'templateCategory' => $templateCategory
         ]);
     }
 

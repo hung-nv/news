@@ -17,11 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['namespace' => 'Backend', 'middleware' => 'auth'], function () {
-
-    Route::post('add-product-event', 'ProductController@addProductEvent');
-});
-
 Route::group(['namespace' => 'Api', 'middleware' => 'auth:api'], function () {
     // delete category image.
     Route::post('category/delete-image', 'ApiCategoryController@deleteImage');
@@ -33,14 +28,6 @@ Route::group(['namespace' => 'Api', 'middleware' => 'auth:api'], function () {
     Route::post('post/remove-group', 'ApiPostController@removeGroup');
     // delete landing page data image.
     Route::post('landing/delete-image', 'ApiPostController@deleteImageLanding');
-    // add attribute.
-    Route::post('add-attribute', 'ApiAttributeController@addAttribute');
-    // get attribute.
-    Route::get('get-attribute/{type}','ApiAttributeController@getAttribute');
-    // delete product image.
-    Route::post('product/delete-image', 'ApiProductController@deleteImage');
-    // set product cover image.
-    Route::post('set-cover-product', 'ApiProductController@setCoverImage');
     // create menu.
     Route::post('create-menu', 'ApiMenuController@createMenuGroup');
     // add category to menu.

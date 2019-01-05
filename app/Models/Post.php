@@ -87,4 +87,35 @@ class Post extends \Eloquent
     {
         return self::whereIn('system_link_type_id', $type)->orderByDesc('created_at')->get();
     }
+
+    /**
+     * @param $idsCategory
+     * @param $limit
+     * @return Post[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public static function getArticlesByIdsCategory($idsCategory, $limit)
+    {
+        return self::from('articles')
+            ->select([
+                'articles.id',
+                'articles.name',
+                'articles.slug',
+                'articles.image',
+                'articles.description',
+                'articles.created_at'
+            ])
+            ->join('article_category', function ($join) {
+                $join->on('articles.id', '=', 'article_category.article_id');
+            })
+            ->whereIn('article_category.category_id', $idsCategory)
+            ->where(function ($query) use ($idsCategory) {
+                foreach ($idsCategory as $id) {
+                    $query->orWhere('article_category.category_id', '=', $id);
+                }
+            })
+            ->orderByDesc('articles.updated_at')
+            ->groupBy('articles.id')
+            ->limit($limit)
+            ->get();
+    }
 }

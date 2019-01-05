@@ -584,56 +584,76 @@ class PostServices
         }
     }
 
-    public function getAllPostsByParentCategory($category_id, $allCategory, $columns = [], $post_type = 1)
+    /**
+     * Get catalog with products.
+     * @param $idsCategory
+     * @param int $limit
+     * @return array|null
+     */
+    public function getWidgetCategoryWithArticles($idsCategory, $limit = 5)
     {
-        $ids_category = [];
+        $return = [];
 
-        $this->getIdsCategoryByParent($allCategory, $category_id, null, $ids_category);
+        $dataCategory = Category::all();
 
-        $posts = DB::table('posts')->select('posts.name', 'posts.slug', 'posts.description', 'posts.image', 'posts.created_at', 'posts.type')
-            ->where('posts.status', 1)
-            ->where('posts.type', $post_type)
-            ->join('post_category', 'posts.id', '=', 'post_category.post_id');
+        $idsCategory = explode(',', $idsCategory);
 
-        $posts->where(function ($query) use ($ids_category) {
-            foreach ($ids_category as $id) {
-                $query->orWhere('post_category.category_id', '=', $id);
+        if (count($idsCategory) > 0) {
+
+            foreach ($idsCategory as $idCategory) {
+                $idsResult = [];
+
+                // get all children id catalog.
+                $this->getIdsCategoryByParent($dataCategory, $idsResult, $idCategory);
+
+                array_push($idsResult, $idCategory);
+
+                $articles = Post::getArticlesByIdsCategory($idsResult, $limit);
+
+                $category = $dataCategory->where('id', $idCategory)->first();
+
+                if (count($articles) > 0) {
+                    $return[] = ['category' => $category, 'articles' => $articles];
+                }
             }
-        });
 
-        $posts->orderByDesc('posts.created_at')->groupBy('posts.id');
-        return $posts;
+            return $return;
+        }
+
+        return null;
     }
 
-    public function getIdsCategoryByParent($data, $category_id = null, $parent_id = null, &$result)
+    /**
+     * Get all children id category by id parent.
+     * @param $dataCategory : all category.
+     * @param null $idParent
+     * @param array $result
+     */
+    public function getIdsCategoryByParent($dataCategory, &$result, $idParent = null)
     {
-        $cate_child = [];
-        if (count($data) > 0) {
-            foreach ($data as $key => $item) {
-                // Nếu không phải danh mục được chỉ định thì bỏ qua phần tử này
-                if (empty($parent_id) && isset($category_id) && $category_id) {
-                    if ($item->id !== $category_id) {
-                        continue;
-                    }
-                }
+        $children = [];
 
-                if (empty($parent_id)) {
-                    # Nếu lấy danh mục cha theo 1 danh mục cụ thể
-                    $cate_child[] = $item;
-                    unset($data[$key]);
-                    continue;
-                } else if ($item->parent_id == $parent_id) {
-                    $cate_child[] = $item;
-                    unset($data[$key]);
+        if (count($dataCategory) > 0) {
+
+            foreach ($dataCategory as $key => $item) {
+
+                if ($item->parent_id == $idParent) {
+
+                    $children[] = $item;
+
+                    unset($dataCategory[$key]);
                 }
             }
         }
 
-        // Lấy danh sách chuyên mục con để xử lý tiếp
-        if (isset($cate_child) && $cate_child) {
-            foreach ($cate_child as $item) {
+        // get children and execute.
+        if (isset($children) && $children) {
+
+            foreach ($children as $item) {
+
                 $result[] = $item->id;
-                $this->getIdsCategoryByParent($data, null, $item->id, $result);
+
+                $this->getIdsCategoryByParent($dataCategory, $result, $item->id);
             }
         }
     }

@@ -45,7 +45,7 @@
                      data-always-visible="1">
                     <div class="mt-checkbox-list"
                          data-error-container="#form_2_services_error">
-                        {!! $templateCatalog !!}
+                        {!! $templateCategory !!}
                     </div>
                 </div>
             </div>

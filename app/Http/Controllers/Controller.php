@@ -60,6 +60,8 @@ class Controller extends BaseController
     public function getSettingSite()
     {
         $this->option = Option::all()->pluck('value', 'key');
+
+        View::share('option', $this->option);
     }
 
     /**

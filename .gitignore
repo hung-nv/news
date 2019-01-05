@@ -4,10 +4,10 @@
 /storage/*.key
 /vendor
 /.idea
-/*.xml
 .env
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+*.xml
