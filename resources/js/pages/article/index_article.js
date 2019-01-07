@@ -26,7 +26,9 @@ if ($(ui.pageId).length) {
                     dataType: 'json',
                     url: '/api/post/add-group',
                     headers: {
-                        Accept: 'application/json'
+                        'Content-Type' : 'application/json',
+                        'Accept' : 'application/json',
+                        // 'Authorization' : 'Bearer ...PERSONAL ACCESS TOKEN HERE...'
                     },
                     data: {
                         post_id: postId,

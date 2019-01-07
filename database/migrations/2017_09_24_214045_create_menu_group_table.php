@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasswordResetsTable extends Migration
+class CreateMenuGroupTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreatePasswordResetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('username', 191)->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create('menu_group', function(Blueprint $table)
+        {
+            $table->engine = 'MyISAM';
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
+            $table->boolean('status')->default(true);
         });
     }
 
@@ -27,6 +30,6 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        Schema::drop('menu_group');
     }
 }

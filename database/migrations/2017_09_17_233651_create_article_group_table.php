@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateArticleGroupTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('article_group', function(Blueprint $table)
+        {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name')->nullable();
-            $table->string('username', 191)->unique();
-            $table->string('password');
-            $table->boolean('role')->comment('1.administrator 2.support');
-            $table->rememberToken();
+
+            $table->integer('article_id')->unsigned();
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+
+            $table->integer('group_id')->unsigned();
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -32,6 +35,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::drop('article_group');
     }
 }

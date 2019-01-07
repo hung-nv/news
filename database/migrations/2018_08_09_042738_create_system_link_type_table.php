@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateSystemLinkTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('system_link_type', function(Blueprint $table)
+        {
+            $table->engine = 'MyISAM';
             $table->increments('id');
-            $table->string('name')->nullable();
-            $table->string('username', 191)->unique();
-            $table->string('password');
-            $table->boolean('role')->comment('1.administrator 2.support');
-            $table->rememberToken();
+            $table->string('name');
+            $table->string('prefix', '50')->nullable()->unique();
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::drop('system_link_type');
     }
 }
