@@ -25,7 +25,7 @@
                             @include('backend.menu.partial._menu_select')
                         </div>
                         <div class="col-md-3">
-                            <button class="btn btn-sm blue" type="button" v-on:click="selectMenuGroup">Select</button>
+                            <button class="btn btn-sm blue" type="button" id="theme-select-menu">Select</button>
                             <button class="btn btn-sm yellow" type="button" data-toggle="modal" href="#modalAddMenu">
                                 Add Menu
                             </button>
@@ -69,7 +69,7 @@
                                          data-error-container="#form_2_services_error">
                                         {!! $templateCategory !!}
                                     </div>
-                                    <button class="btn btn-sm blue" v-on:click="addCategoryToMenu">Add to menu</button>
+                                    <button class="btn btn-sm blue" id="add-category">Add to menu</button>
                                 </div>
                             </div>
                         </div>
@@ -85,13 +85,13 @@
                                     <form id="frmCustom">
                                         <div class="form-group">
                                             <label>Direct Url</label>
-                                            <input class="form-control" type="url" v-model="customDirect" required>
+                                            <input class="form-control custom-label" type="url" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Label</label>
-                                            <input class="form-control" type="text" v-model="customLabel" required>
+                                            <input class="form-control custom-url" type="text" required>
                                         </div>
-                                        <button class="btn btn-sm blue" type="button" v-on:click="addCustomToMenu">
+                                        <button class="btn btn-sm blue" type="button" id="add-custom">
                                             Add to menu
                                         </button>
                                     </form>
@@ -119,7 +119,7 @@
                                             @endforeach
                                         @endif
                                     </div>
-                                    <button class="btn btn-sm blue" v-on:click="addPageToMenu">Add to menu</button>
+                                    <button class="btn btn-sm blue" id="add-page">Add to menu</button>
                                 </div>
                             </div>
                         </div>

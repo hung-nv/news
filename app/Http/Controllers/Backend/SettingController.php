@@ -52,7 +52,8 @@ class SettingController extends Controller
             'templateCategory' => $templateCategory,
             'pages' => $data['pages'],
             'templateMenu' => $data['templateMenu'],
-            'menuGroups' => $data['menuGroups']
+            'menuGroups' => $data['menuGroups'],
+            'idGroup' => $idGroup
         ]);
     }
 

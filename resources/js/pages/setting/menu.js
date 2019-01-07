@@ -1,7 +1,8 @@
-import {getParameterByName, doException} from "../../helpers/helpers";
+import {doException} from "../../helpers/helpers";
+
+"use strict";
 
 const ui = {
-    pageId: '#menu',
     urlCreateMenu: '/api/create-menu',
     urlGetAllMenu: '/api/get-list-menu',
     urlAddCategory: '/api/add-category',
@@ -14,203 +15,181 @@ const ui = {
     divNestable: '#nestable_list_2'
 };
 
-if ($(ui.pageId).length) {
-    const vmMenu = new Vue({
-        el: ui.pageId,
-        data: function () {
-            return {
-                nameMenu: '',
-                idMenuGroup: this.getIdMenuGroup(),
-                customLabel: '',
-                customDirect: ''
-            }
-        },
-        methods: {
-            getIdMenuGroup: function () {
-                let idGroup = 0;
-                if (getParameterByName('menu_group') != null) {
-                    idGroup = Number(getParameterByName('menu_group'));
-                }
+$(function () {
+    let wrapCategory, wrapCustom, wrapPages, url, domain, menuGroup;
+    url = window.location;
+    wrapCategory = $('.wrap-menu-category');
+    wrapPages = $('.wrap-menu-pages');
+    wrapCustom = $('.wrap-menu-custom');
+    menuGroup = $('#list-menu-item').val();
 
-                return idGroup;
-            },
-            selectMenuGroup: function (event) {
-                if (this.idMenuGroup == null) {
-                    return;
-                }
+    if(url.port) {
+        domain = url.protocol + '//' + url.hostname + ':' + url.port
+    } else {
+        domain = url.protocol + '//' + url.hostname;
+    }
 
-                window.location.href = '/administrator/menu?menu_group=' + this.idMenuGroup;
-            },
-            createMenu: function (event) {
-                if (this.nameMenu === '') {
-                    return;
-                }
-
-                $.ajax({
-                    url: ui.urlCreateMenu,
-                    type: 'post',
-                    data: {
-                        name: this.nameMenu
-                    }
-                }).done(respon => {
-                    toastr.info(respon.message);
-
-                    // reload list menu group.
-                    $('#selected-menu').load(ui.urlGetAllMenu);
-
-                    // close modal.
-                    $('#modalAddMenu').modal('toggle');
-                }).fail(xhr => {
-                    doException(xhr, {elementShowError: '.show-error'});
-                });
-            },
-            addCategoryToMenu: function (event) {
-                let idsCategory;
-
-                if (!this.idMenuGroup) {
-                    this.beforeExecuteMenu();
-                    return;
-                }
-
-                // get all checked category.
-                idsCategory = $('input[name="parent[]"]:checkbox:checked').map(function () {
-                    return $(this).val();
-                }).get();
-
-                // if have category checked.
-                if (idsCategory.length) {
-                    $.ajax({
-                        type: "post",
-                        dataType: 'json',
-                        url: ui.urlAddCategory,
-                        data: {
-                            ids: idsCategory,
-                            idMenuGroup: this.idMenuGroup
-                        }
-                    }).done(respon => {
-                        // reload menu after change.
-                        $(ui.elementNestable).load(ui.urlGetMenuNestable + this.idMenuGroup);
-                    }).fail(xhr => {
-                        doException(xhr);
-                    });
-                }
-            },
-            addPageToMenu: function (event) {
-                let idsPages;
-
-                if (!this.idMenuGroup) {
-                    this.beforeExecuteMenu();
-                    return;
-                }
-
-                // get all checked page.
-                idsPages = $('input[name="page[]"]:checkbox:checked').map(function () {
-                    return $(this).val();
-                }).get();
-
-                // if have page checked.
-                if (idsPages.length) {
-                    $.ajax({
-                        type: "post",
-                        url: ui.urlAddPage,
-                        data: {
-                            ids: idsPages,
-                            idMenuGroup: this.idMenuGroup
-                        }
-                    }).done(respon => {
-                        // reload menu after change.
-                        $(ui.elementNestable).load(ui.urlGetMenuNestable + this.idMenuGroup);
-                    }).fail(xhr => {
-                        doException(xhr);
-                    });
-                }
-            },
-            addCustomToMenu: function (event) {
-                if (!this.idMenuGroup) {
-                    this.beforeExecuteMenu();
-                    return;
-                }
-
-                let formCustom = $('#frmCustom');
-
-                formCustom.validate();
-
-                if (formCustom.valid()) {
-                    $.ajax({
-                        type: "post",
-                        url: ui.urlAddCustom,
-                        data: {
-                            label: this.customLabel,
-                            url: this.customDirect,
-                            idMenuGroup: this.idMenuGroup
-                        }
-                    }).done(respon => {
-                        // reload menu after change.
-                        $(ui.elementNestable).load(ui.urlGetMenuNestable + this.idMenuGroup);
-                    }).fail(xhr => {
-                        doException(xhr);
-                    });
-                }
-            },
-            beforeExecuteMenu: function () {
-                swal(
-                    'Invalid',
-                    'Please create menu before to do this action!',
-                    'error'
-                );
-            },
-            deleteMenu: function (idMenu) {
-                swal({
-                    title: 'Are you sure?',
-                    type: 'warning',
-                    showCancelButton: true,
-                    customClass: 'nvh-dialog',
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then(() => {
-                    $.ajax({
-                        type: "post",
-                        url: ui.urlDeleteMenu,
-                        data: {
-                            id: idMenu
-                        }
-                    }).done(respon => {
-                        // alert message.
-                        toastr.info(respon.message);
-
-                        // reload menu after change.
-                        $(ui.elementNestable).load(ui.urlGetMenuNestable + this.idMenuGroup);
-                    }).fail(xhr => {
-                        doException(xhr);
-                    });
-                });
-            }
+    $('#theme-select-menu').on('click', function () {
+        menuGroup = $('#list-menu-item').val();
+        if(menuGroup !== null && menuGroup !== '') {
+            location.href = domain + '/administrator/menu?menu_group=' + menuGroup;
         }
     });
 
-    $(function () {
-        // sort menu.
-        nestableSort();
+    if($('#add-menu').length) {
+        let urlPost, message;
+        urlPost = '/api/add-menu';
 
-        /**
-         * Sort menu.
-         */
-        function nestableSort() {
-            $(ui.divNestable).nestable({
-                group: 1
-            }).on("change", () => {
+        $('#ajax-add-menu').on('click', function () {
+            $.ajax({
+                url: urlPost,
+                type: 'post',
+                dataType: 'json',
+                data: {name: $('#menu-name').val()},
+                success: function (data) {
+                    toastr.info(data.message);
+                }, error: function (xhr) {
+                    if(xhr.status === 402) {
+                        message = xhr.responseJSON.message;
+                    } else {
+                        message = xhr.statusText;
+                    }
+                    toastr.warning(message);
+                }, complete: function () {
+                    $('#selected-menu').load(domain + '/api/get_list_menu');
+                    $('#add-menu').modal('toggle');
+                }
+            });
+        })
+    }
+
+    if(wrapCategory.length) {
+        wrapCategory.on('click', '#add-category', function () {
+            let idsCategory;
+            if(menuGroup === null || menuGroup === '') {
+                callBeforeAddMenu();
+                return false;
+            }
+            idsCategory = $('input[name="parent[]"]:checkbox:checked').map(function() {
+                return $(this).val();
+            }).get();
+
+            if(idsCategory.length) {
                 $.ajax({
                     type: "post",
                     dataType: 'json',
-                    url: ui.urlUpdateSort,
-                    data: {data: $(ui.divNestable).nestable("serialize"), menu_group: vmMenu.idMenuGroup}
+                    url: ui.urlAddCategory,
+                    data: {
+                        ids: idsCategory,
+                        idMenuGroup: menuGroup
+                    }
                 }).done(respon => {
-
+                    // reload menu after change.
+                    $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
                 }).fail(xhr => {
                     doException(xhr);
                 });
+            }
+        });
+    }
+
+    if(wrapPages.length) {
+        wrapPages.on('click', '#add-page', function () {
+            let idsPages;
+            if(menuGroup === null || menuGroup === '') {
+                callBeforeAddMenu();
+                return false;
+            }
+            idsPages = $('input[name="page[]"]:checkbox:checked').map(function() {
+                return $(this).val();
+            }).get();
+
+            if(idsPages.length) {
+                $.ajax({
+                    type: "post",
+                    dataType: 'json',
+                    url: ui.urlAddPage,
+                    data: {ids: idsPages, idMenuGroup: menuGroup},
+                    success: function(result) {
+                        // reload menu after change.
+                        $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
+                    },
+                    error: function() {
+                        doException(xhr);
+                    }
+                });
+            }
+        });
+    }
+
+    if(wrapCustom.length) {
+        wrapCustom.on('click', '#add-custom', function () {
+            let label, direct, formCustom;
+            if(menuGroup === null || menuGroup === '') {
+                callBeforeAddMenu();
+                return false;
+            }
+            label = wrapCustom.find('.custom-label');
+            direct = wrapCustom.find('.custom-url');
+
+            formCustom = $('#frmCustom');
+
+            formCustom.validate();
+
+            if(formCustom.valid()) {
+                $.ajax({
+                    type: "post",
+                    dataType: 'json',
+                    url: ui.urlAddCustom,
+                    data: {
+                        label: label.val(),
+                        url: direct.val(),
+                        idMenuGroup: menuGroup
+                    },
+                    success: function(result) {
+                        // reload menu after change.
+                        $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
+                    },
+                    error: function() {
+                        doException(xhr);
+                    }
+                });
+            }
+        });
+    }
+
+    $('#nestable_list_2').on('click', '.delete-item', function () {
+        let id = $(this).data('id');
+        swal({
+            title: 'Are you sure?',
+            type: 'warning',
+            showCancelButton: true,
+            customClass: 'nvh-dialog',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(function () {
+            $.ajax({
+                type: "post",
+                dataType: 'json',
+                url: ui.urlDeleteMenu,
+                data: {id: id},
+                success: function(result) {
+                    toastr.info(result.message);
+                    $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
+                },
+                error: function() {
+                    doException(xhr);
+                }
             });
-        }
+        });
     });
-}
+
+    function callBeforeAddMenu() {
+        swal(
+            'Invalid',
+            'Please create menu before to do this action!',
+            'error'
+        );
+    }
+});

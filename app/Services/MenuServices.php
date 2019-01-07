@@ -154,8 +154,8 @@ class MenuServices extends Services
     public function addCustomToMenu($dataRequest)
     {
         Menu::create([
-            'name' => $dataRequest['name'],
-            'slug' => str_slug($dataRequest['name']),
+            'name' => $dataRequest['label'],
+            'slug' => str_slug($dataRequest['label']),
             'direct' => $dataRequest['url'],
             'menu_group_id' => $dataRequest['idMenuGroup']
         ]);

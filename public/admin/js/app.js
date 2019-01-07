@@ -11885,101 +11885,101 @@ var ui = {
   pageId: '#post'
 };
 
-if ($(ui.pageId).length) {
-  new Vue({
-    el: ui.pageId,
-    methods: {
-      addGroup: function addGroup(event) {
-        var _this = this;
+(function ($, Vue) {
+  if ($(ui.pageId).length) {
+    var vmIndexArticle = new Vue({
+      el: ui.pageId,
+      methods: {
+        addGroup: function addGroup(element) {
+          var _this = this;
 
-        var groupId, groupName, postId;
-        var element = event.target;
-        groupId = $(element).data('group-id');
-        groupName = $(element).data('group-name');
-        postId = $(element).data('post-id');
+          var groupId, groupName, postId;
+          groupId = $(element).data('group-id');
+          groupName = $(element).data('group-name');
+          postId = $(element).data('post-id');
 
-        if (groupId === undefined || groupName === undefined || postId === undefined) {
-          alert(2);
-          return;
-        }
-
-        $.ajax({
-          type: "post",
-          dataType: 'json',
-          url: '/api/post/add-group',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json' // 'Authorization' : 'Bearer ...PERSONAL ACCESS TOKEN HERE...'
-
-          },
-          data: {
-            post_id: postId,
-            group_id: groupId,
-            group_name: groupName
+          if (groupId === undefined || groupName === undefined || postId === undefined) {
+            return;
           }
-        }).done(function (respon) {
-          toastr.info(respon.message);
 
-          _this.createContainerChecked($(element));
-        }).fail(function (xhr) {
-          Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
-        });
-      },
-      removeGroup: function removeGroup(event) {
-        var _this2 = this;
+          $.ajax({
+            type: "post",
+            dataType: 'json',
+            url: '/api/post/add-group',
+            data: {
+              post_id: postId,
+              group_id: groupId,
+              group_name: groupName
+            }
+          }).done(function (respon) {
+            toastr.info(respon.message);
 
-        var groupId, groupName, postId;
-        var element = event.target;
-        groupId = $(element).data('group-id');
-        groupName = $(element).data('group-name');
-        postId = $(element).data('post-id');
+            _this.createContainerChecked($(element));
+          }).fail(function (xhr) {
+            Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
+          });
+        },
+        removeGroup: function removeGroup(element) {
+          var _this2 = this;
 
-        if (groupId === undefined || groupName === undefined || postId === undefined) {
-          return;
-        }
+          var groupId, groupName, postId;
+          groupId = $(element).data('group-id');
+          groupName = $(element).data('group-name');
+          postId = $(element).data('post-id');
 
-        $.ajax({
-          type: "post",
-          dataType: 'json',
-          url: '/api/post/remove-group',
-          data: {
-            post_id: postId,
-            group_id: groupId,
-            group_name: groupName
+          if (groupId === undefined || groupName === undefined || postId === undefined) {
+            return;
           }
-        }).done(function (respon) {
-          toastr.warning(respon.message);
 
-          _this2.createContainerSet($(element));
-        }).fail(function (xhr) {
-          Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
-        });
-      },
-      createContainerChecked: function createContainerChecked(container) {
-        var iconCheck, buttonCheck, buttonRemove, iconRemove, wrapContainer;
-        iconCheck = $('<i>').addClass('fa fa-check');
-        buttonCheck = $('<a>').addClass('btn btn-xs blue');
-        buttonRemove = $('<a>').addClass('btn btn-xs red').attr('data-group-id', container.data('group-id')).attr('data-group-name', container.data('group-name')).attr('data-post-id', container.data('post-id')).attr('onclick', 'mainComponent.removeGroup(this)');
-        iconRemove = $('<i>').addClass('fa fa-times');
-        buttonCheck.append(iconCheck).append(' ' + container.data('group-name'));
-        buttonRemove.append(iconRemove);
-        wrapContainer = container.parent();
-        wrapContainer.html('');
-        wrapContainer.append(buttonCheck).append(buttonRemove);
-      },
-      createContainerSet: function createContainerSet(container) {
-        var wrapContainer, buttonSetGroup;
-        wrapContainer = container.parent();
-        buttonSetGroup = $('<button>').addClass('btn btn-xs grey-cascade').attr('data-group-id', container.data('group-id')).attr('data-group-name', container.data('group-name')).attr('data-post-id', container.data('post-id')).attr('onclick', 'mainComponent.addGroup(this)').text('Set to "' + container.data('group-name') + '"');
-        wrapContainer.html('');
-        wrapContainer.append(buttonSetGroup);
-      },
-      confirmBeforeDelete: function confirmBeforeDelete(event) {
-        Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["confirmBeforeDelete"])(event.target, 'Do you want to delete this?');
+          $.ajax({
+            type: "post",
+            dataType: 'json',
+            url: '/api/post/remove-group',
+            data: {
+              post_id: postId,
+              group_id: groupId,
+              group_name: groupName
+            }
+          }).done(function (respon) {
+            toastr.warning(respon.message);
+
+            _this2.createContainerSet($(element));
+          }).fail(function (xhr) {
+            Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
+          });
+        },
+        createContainerChecked: function createContainerChecked(container) {
+          var iconCheck, buttonCheck, buttonRemove, iconRemove, wrapContainer;
+          iconCheck = $('<i>').addClass('fa fa-check');
+          buttonCheck = $('<a>').addClass('btn btn-xs blue');
+          buttonRemove = $('<a>').addClass('btn btn-xs red').attr('data-group-id', container.data('group-id')).attr('data-group-name', container.data('group-name')).attr('data-post-id', container.data('post-id')).attr('id', 'btnRemoveGroup');
+          iconRemove = $('<i>').addClass('fa fa-times');
+          buttonCheck.append(iconCheck).append(' ' + container.data('group-name'));
+          buttonRemove.append(iconRemove);
+          wrapContainer = container.parent();
+          wrapContainer.html('');
+          wrapContainer.append(buttonCheck).append(buttonRemove);
+        },
+        createContainerSet: function createContainerSet(container) {
+          var wrapContainer, buttonSetGroup;
+          wrapContainer = container.parent();
+          buttonSetGroup = $('<button>').addClass('btn btn-xs grey-cascade').attr('data-group-id', container.data('group-id')).attr('data-group-name', container.data('group-name')).attr('data-post-id', container.data('post-id')).attr('id', 'btnAddGroup').text('Set to "' + container.data('group-name') + '"');
+          wrapContainer.html('');
+          wrapContainer.append(buttonSetGroup);
+        },
+        confirmBeforeDelete: function confirmBeforeDelete(event) {
+          Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["confirmBeforeDelete"])(event.target, 'Do you want to delete this?');
+        }
       }
-    }
-  });
-}
+    });
+    $(ui.pageId).on('click', '#btnAddGroup', function () {
+      vmIndexArticle.addGroup(this);
+    });
+    $(ui.pageId).on('click', '#btnRemoveGroup', function () {
+      vmIndexArticle.removeGroup(this);
+    });
+  }
+})(jQuery, Vue);
 
 /***/ }),
 
@@ -12085,8 +12085,9 @@ $(function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/helpers */ "./resources/js/helpers/helpers.js");
 
+"use strict";
+
 var ui = {
-  pageId: '#menu',
   urlCreateMenu: '/api/create-menu',
   urlGetAllMenu: '/api/get-list-menu',
   urlAddCategory: '/api/add-category',
@@ -12098,208 +12099,194 @@ var ui = {
   elementNestable: '.dd-list',
   divNestable: '#nestable_list_2'
 };
+$(function () {
+  var wrapCategory, wrapCustom, wrapPages, url, domain, menuGroup;
+  url = window.location;
+  wrapCategory = $('.wrap-menu-category');
+  wrapPages = $('.wrap-menu-pages');
+  wrapCustom = $('.wrap-menu-custom');
+  menuGroup = $('#list-menu-item').val();
 
-if ($(ui.pageId).length) {
-  var vmMenu = new Vue({
-    el: ui.pageId,
-    data: function data() {
-      return {
-        nameMenu: '',
-        idMenuGroup: this.getIdMenuGroup(),
-        customLabel: '',
-        customDirect: ''
-      };
-    },
-    methods: {
-      getIdMenuGroup: function getIdMenuGroup() {
-        var idGroup = 0;
+  if (url.port) {
+    domain = url.protocol + '//' + url.hostname + ':' + url.port;
+  } else {
+    domain = url.protocol + '//' + url.hostname;
+  }
 
-        if (Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["getParameterByName"])('menu_group') != null) {
-          idGroup = Number(Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["getParameterByName"])('menu_group'));
-        }
+  $('#theme-select-menu').on('click', function () {
+    menuGroup = $('#list-menu-item').val();
 
-        return idGroup;
-      },
-      selectMenuGroup: function selectMenuGroup(event) {
-        if (this.idMenuGroup == null) {
-          return;
-        }
-
-        window.location.href = '/administrator/menu?menu_group=' + this.idMenuGroup;
-      },
-      createMenu: function createMenu(event) {
-        if (this.nameMenu === '') {
-          return;
-        }
-
-        $.ajax({
-          url: ui.urlCreateMenu,
-          type: 'post',
-          data: {
-            name: this.nameMenu
-          }
-        }).done(function (respon) {
-          toastr.info(respon.message); // reload list menu group.
-
-          $('#selected-menu').load(ui.urlGetAllMenu); // close modal.
-
-          $('#modalAddMenu').modal('toggle');
-        }).fail(function (xhr) {
-          Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr, {
-            elementShowError: '.show-error'
-          });
-        });
-      },
-      addCategoryToMenu: function addCategoryToMenu(event) {
-        var _this = this;
-
-        var idsCategory;
-
-        if (!this.idMenuGroup) {
-          this.beforeExecuteMenu();
-          return;
-        } // get all checked category.
-
-
-        idsCategory = $('input[name="parent[]"]:checkbox:checked').map(function () {
-          return $(this).val();
-        }).get(); // if have category checked.
-
-        if (idsCategory.length) {
-          $.ajax({
-            type: "post",
-            dataType: 'json',
-            url: ui.urlAddCategory,
-            data: {
-              ids: idsCategory,
-              idMenuGroup: this.idMenuGroup
-            }
-          }).done(function (respon) {
-            // reload menu after change.
-            $(ui.elementNestable).load(ui.urlGetMenuNestable + _this.idMenuGroup);
-          }).fail(function (xhr) {
-            Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
-          });
-        }
-      },
-      addPageToMenu: function addPageToMenu(event) {
-        var _this2 = this;
-
-        var idsPages;
-
-        if (!this.idMenuGroup) {
-          this.beforeExecuteMenu();
-          return;
-        } // get all checked page.
-
-
-        idsPages = $('input[name="page[]"]:checkbox:checked').map(function () {
-          return $(this).val();
-        }).get(); // if have page checked.
-
-        if (idsPages.length) {
-          $.ajax({
-            type: "post",
-            url: ui.urlAddPage,
-            data: {
-              ids: idsPages,
-              idMenuGroup: this.idMenuGroup
-            }
-          }).done(function (respon) {
-            // reload menu after change.
-            $(ui.elementNestable).load(ui.urlGetMenuNestable + _this2.idMenuGroup);
-          }).fail(function (xhr) {
-            Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
-          });
-        }
-      },
-      addCustomToMenu: function addCustomToMenu(event) {
-        var _this3 = this;
-
-        if (!this.idMenuGroup) {
-          this.beforeExecuteMenu();
-          return;
-        }
-
-        var formCustom = $('#frmCustom');
-        formCustom.validate();
-
-        if (formCustom.valid()) {
-          $.ajax({
-            type: "post",
-            url: ui.urlAddCustom,
-            data: {
-              label: this.customLabel,
-              url: this.customDirect,
-              idMenuGroup: this.idMenuGroup
-            }
-          }).done(function (respon) {
-            // reload menu after change.
-            $(ui.elementNestable).load(ui.urlGetMenuNestable + _this3.idMenuGroup);
-          }).fail(function (xhr) {
-            Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
-          });
-        }
-      },
-      beforeExecuteMenu: function beforeExecuteMenu() {
-        swal('Invalid', 'Please create menu before to do this action!', 'error');
-      },
-      deleteMenu: function deleteMenu(idMenu) {
-        var _this4 = this;
-
-        swal({
-          title: 'Are you sure?',
-          type: 'warning',
-          showCancelButton: true,
-          customClass: 'nvh-dialog',
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
-        }).then(function () {
-          $.ajax({
-            type: "post",
-            url: ui.urlDeleteMenu,
-            data: {
-              id: idMenu
-            }
-          }).done(function (respon) {
-            // alert message.
-            toastr.info(respon.message); // reload menu after change.
-
-            $(ui.elementNestable).load(ui.urlGetMenuNestable + _this4.idMenuGroup);
-          }).fail(function (xhr) {
-            Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
-          });
-        });
-      }
+    if (menuGroup !== null && menuGroup !== '') {
+      location.href = domain + '/administrator/menu?menu_group=' + menuGroup;
     }
   });
-  $(function () {
-    // sort menu.
-    nestableSort();
-    /**
-     * Sort menu.
-     */
 
-    function nestableSort() {
-      $(ui.divNestable).nestable({
-        group: 1
-      }).on("change", function () {
+  if ($('#add-menu').length) {
+    var urlPost, message;
+    urlPost = '/api/add-menu';
+    $('#ajax-add-menu').on('click', function () {
+      $.ajax({
+        url: urlPost,
+        type: 'post',
+        dataType: 'json',
+        data: {
+          name: $('#menu-name').val()
+        },
+        success: function success(data) {
+          toastr.info(data.message);
+        },
+        error: function error(xhr) {
+          if (xhr.status === 402) {
+            message = xhr.responseJSON.message;
+          } else {
+            message = xhr.statusText;
+          }
+
+          toastr.warning(message);
+        },
+        complete: function complete() {
+          $('#selected-menu').load(domain + '/api/get_list_menu');
+          $('#add-menu').modal('toggle');
+        }
+      });
+    });
+  }
+
+  if (wrapCategory.length) {
+    wrapCategory.on('click', '#add-category', function () {
+      var idsCategory;
+
+      if (menuGroup === null || menuGroup === '') {
+        callBeforeAddMenu();
+        return false;
+      }
+
+      idsCategory = $('input[name="parent[]"]:checkbox:checked').map(function () {
+        return $(this).val();
+      }).get();
+
+      if (idsCategory.length) {
         $.ajax({
           type: "post",
           dataType: 'json',
-          url: ui.urlUpdateSort,
+          url: ui.urlAddCategory,
           data: {
-            data: $(ui.divNestable).nestable("serialize"),
-            menu_group: vmMenu.idMenuGroup
+            ids: idsCategory,
+            idMenuGroup: menuGroup
           }
-        }).done(function (respon) {}).fail(function (xhr) {
+        }).done(function (respon) {
+          // reload menu after change.
+          $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
+        }).fail(function (xhr) {
           Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
         });
+      }
+    });
+  }
+
+  if (wrapPages.length) {
+    wrapPages.on('click', '#add-page', function () {
+      var idsPages;
+
+      if (menuGroup === null || menuGroup === '') {
+        callBeforeAddMenu();
+        return false;
+      }
+
+      idsPages = $('input[name="page[]"]:checkbox:checked').map(function () {
+        return $(this).val();
+      }).get();
+
+      if (idsPages.length) {
+        $.ajax({
+          type: "post",
+          dataType: 'json',
+          url: ui.urlAddPage,
+          data: {
+            ids: idsPages,
+            idMenuGroup: menuGroup
+          },
+          success: function success(result) {
+            // reload menu after change.
+            $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
+          },
+          error: function error() {
+            Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
+          }
+        });
+      }
+    });
+  }
+
+  if (wrapCustom.length) {
+    wrapCustom.on('click', '#add-custom', function () {
+      var label, direct, formCustom;
+
+      if (menuGroup === null || menuGroup === '') {
+        callBeforeAddMenu();
+        return false;
+      }
+
+      label = wrapCustom.find('.custom-label');
+      direct = wrapCustom.find('.custom-url');
+      formCustom = $('#frmCustom');
+      formCustom.validate();
+
+      if (formCustom.valid()) {
+        $.ajax({
+          type: "post",
+          dataType: 'json',
+          url: ui.urlAddCustom,
+          data: {
+            label: label.val(),
+            url: direct.val(),
+            idMenuGroup: menuGroup
+          },
+          success: function success(result) {
+            // reload menu after change.
+            $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
+          },
+          error: function error() {
+            Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
+          }
+        });
+      }
+    });
+  }
+
+  $('#nestable_list_2').on('click', '.delete-item', function () {
+    var id = $(this).data('id');
+    swal({
+      title: 'Are you sure?',
+      type: 'warning',
+      showCancelButton: true,
+      customClass: 'nvh-dialog',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(function () {
+      $.ajax({
+        type: "post",
+        dataType: 'json',
+        url: ui.urlDeleteMenu,
+        data: {
+          id: id
+        },
+        success: function success(result) {
+          toastr.info(result.message);
+          $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
+        },
+        error: function error() {
+          Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
+        }
       });
-    }
+    });
   });
-}
+
+  function callBeforeAddMenu() {
+    swal('Invalid', 'Please create menu before to do this action!', 'error');
+  }
+});
 
 /***/ }),
 

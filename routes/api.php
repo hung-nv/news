@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['namespace' => 'Api', 'middleware' => 'auth:api'], function () {
+Route::group(['namespace' => 'Api'], function () {
     // delete category image.
     Route::post('category/delete-image', 'ApiCategoryController@deleteImage');
     // delete post image.
