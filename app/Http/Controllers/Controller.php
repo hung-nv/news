@@ -18,8 +18,8 @@ class Controller extends BaseController
      * Define type.
      * @var
      */
-    protected $articleType = 'category',
-        $categoryType = 'article',
+    protected $articleType = 'article',
+        $categoryType = 'category',
         $pageType = 'page';
 
     /**

@@ -146,11 +146,8 @@ class Article extends \Eloquent
             ->where('articles.status', 1)
             ->where('articles.type', $articleType)
             ->orderByDesc('articles.updated_at')
-            ->groupBy('articles.id');
-
-        if ($pageSize) {
-            $model->paginate($pageSize);
-        }
+            ->groupBy('articles.id')
+            ->paginate($pageSize);
 
         return $model;
     }
