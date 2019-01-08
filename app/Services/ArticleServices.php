@@ -585,6 +585,27 @@ class ArticleServices
     }
 
     /**
+     * get all posts in category
+     *
+     * @param  int $categoryId
+     * @param  string $articleType
+     * @return object $posts
+     */
+
+    public function getAllPostsByParentCategory($categoryId, $articleType)
+    {
+        $idsCategory = [];
+
+        $allCategory = Category::all();
+
+        $this->getIdsCategoryByParent($allCategory, $idsCategory, $categoryId);
+
+        $articles = Article::paginateArticlesByIdsCategory($idsCategory, $articleType);
+
+        return $articles;
+    }
+
+    /**
      * Get catalog with products.
      * @param $idsCategory
      * @param int $limit

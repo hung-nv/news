@@ -1,9 +1,9 @@
 @section('title')
-    {{ $category->meta_title or $category->name }}
+    {{ isset($category->meta_title) ? $category->meta_title : '' }}
 @endsection
 
 @section('description')
-    {{ $category->meta_description or $category->description }}
+    {{ isset($category->meta_description) ? $category->meta_description : '' }}
 @endsection
 
 @extends('layouts.app')

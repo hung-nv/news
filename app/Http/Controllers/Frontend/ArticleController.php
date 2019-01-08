@@ -3,19 +3,22 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Services\ArticleServices;
+use App\Services\CategoryServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Jenssegers\Agent\Agent;
 
 class ArticleController extends Controller
 {
-    protected $postServices;
+    protected $articleServices;
+    protected $categoryServices;
     protected $agent;
 
-    public function __construct(ArticleServices $postService, Agent $agent)
+    public function __construct(ArticleServices $articleServices, CategoryServices $categoryServices, Agent $agent)
     {
         parent::__construct();
-        $this->postServices = $postService;
+        $this->articleServices = $articleServices;
+        $this->categoryServices = $categoryServices;
         $this->agent = $agent;
     }
 
@@ -56,23 +59,26 @@ class ArticleController extends Controller
 //        ]);
     }
 
+    /**
+     * Category details.
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function category($slug)
     {
-//        $category = Category::where('slug', $slug)->first();
-//        $articles = $this->postServices->getAllPostsByParentCategory($category->id, [], $this->news_details_type);
-//        $articles = $articles->paginate(10);
-//        $mostArticles = Article::select('name', 'slug', 'introduction', 'image', 'created_at')->inWeek()->ofType($this->news_details_type)->active()->orderDesc()->limit(10)->get();
-//
-//        $layout = 'news.category';
-//        if ($this->agent->isMobile()) {
-//            $layout = 'mobile.news.category';
-//        }
-//
-//        return view($layout, [
-//            'category' => $category,
-//            'articles' => $articles,
-//            'mostArticles' => $mostArticles
-//        ]);
+        $category = $this->categoryServices->getCategoryBySlug($slug);
+
+        $articles = $this->articleServices->getAllPostsByParentCategory($category->id, $this->articleType);
+
+        $layout = 'news.category';
+        if ($this->agent->isMobile()) {
+            $layout = 'mobile.news.category';
+        }
+
+        return view($layout, [
+            'category' => $category,
+            'articles' => $articles
+        ]);
     }
 
     public function search(Request $request)

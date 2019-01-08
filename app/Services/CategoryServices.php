@@ -22,6 +22,16 @@ class CategoryServices
     }
 
     /**
+     * Get category by slug
+     * @param $slug
+     * @return Category|\Illuminate\Database\Eloquent\Model|null|object
+     */
+    public function getCategoryBySlug($slug)
+    {
+        return Category::getCategoryBySlug($slug);
+    }
+
+    /**
      * Get all category.
      * @return string
      * @throws \Throwable

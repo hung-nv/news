@@ -93,7 +93,7 @@ class Article extends \Eloquent
      * @param $limit
      * @return Article[]|\Illuminate\Database\Eloquent\Collection
      */
-    public static function getArticlesByIdsCategory($idsCategory, $limit)
+    public static function getArticlesByIdsCategory($idsCategory, $limit = null)
     {
         return self::from('articles')
             ->select([
@@ -107,15 +107,51 @@ class Article extends \Eloquent
             ->join('article_category', function ($join) {
                 $join->on('articles.id', '=', 'article_category.article_id');
             })
-            ->whereIn('article_category.category_id', $idsCategory)
             ->where(function ($query) use ($idsCategory) {
                 foreach ($idsCategory as $id) {
                     $query->orWhere('article_category.category_id', '=', $id);
                 }
             })
             ->orderByDesc('articles.updated_at')
+            ->where('articles.status', 1)
             ->groupBy('articles.id')
             ->limit($limit)
             ->get();
+    }
+
+    /**
+     * @param $idsCategory
+     * @param null $pageSize
+     * @return Article
+     */
+    public static function paginateArticlesByIdsCategory($idsCategory, $articleType, $pageSize = null)
+    {
+        $model = self::from('articles')
+            ->select([
+                'articles.id',
+                'articles.name',
+                'articles.slug',
+                'articles.image',
+                'articles.description',
+                'articles.created_at'
+            ])
+            ->join('article_category', function ($join) {
+                $join->on('articles.id', '=', 'article_category.article_id');
+            })
+            ->where(function ($query) use ($idsCategory) {
+                foreach ($idsCategory as $id) {
+                    $query->orWhere('article_category.category_id', '=', $id);
+                }
+            })
+            ->where('articles.status', 1)
+            ->where('articles.type', $articleType)
+            ->orderByDesc('articles.updated_at')
+            ->groupBy('articles.id');
+
+        if ($pageSize) {
+            $model->paginate($pageSize);
+        }
+
+        return $model;
     }
 }

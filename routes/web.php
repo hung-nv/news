@@ -15,7 +15,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     // route list articles.
     Route::get(config('const.prefix.category') . '/{slug}', [
         'as' => 'article.list',
-        'uses' => 'ArticleController@index'
+        'uses' => 'ArticleController@category'
     ]);
     // route page details.
     Route::get(config('const.prefix.page') . '/{slug}', [
