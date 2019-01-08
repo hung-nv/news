@@ -12138,7 +12138,7 @@ $(function () {
       },
       complete: function complete() {
         // reload list menu group.
-        $('#selected-menu').load(ui.urlGetAllMenu); // close modal.
+        $('#selected-menu').load(ui.urlGetAllMenu + '?menu_group=' + menuGroup); // close modal.
 
         $('#modalAddMenu').modal('toggle');
       }

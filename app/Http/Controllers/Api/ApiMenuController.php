@@ -38,12 +38,14 @@ class ApiMenuController extends Controller
      * Get all menu group to reload after create menu group.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getListMenu()
+    public function getListMenu(Request $request)
     {
+        $idGroup = $request->menu_group;
         $menuGroups = $this->menuServices->getAllMenuGroups();
 
         return view('backend.menu.partial._menu_select', [
-            'menuGroups' => $menuGroups
+            'menuGroups' => $menuGroups,
+            'idGroup' => $idGroup
         ]);
     }
 

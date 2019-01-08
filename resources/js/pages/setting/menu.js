@@ -41,19 +41,21 @@ $(function () {
             url: ui.urlCreateMenu,
             type: 'post',
             dataType: 'json',
-            data: {name: $('#menu-name').val()},
+            data: {
+                name: $('#menu-name').val()
+            },
             success: function (data) {
                 toastr.info(data.message);
             }, error: function (xhr) {
                 doException(xhr, {elementShowError: '.show-error'});
             }, complete: function () {
                 // reload list menu group.
-                $('#selected-menu').load(ui.urlGetAllMenu);
+                $('#selected-menu').load(ui.urlGetAllMenu + '?menu_group=' + menuGroup);
                 // close modal.
                 $('#modalAddMenu').modal('toggle');
             }
         });
-    })
+    });
 
     if (wrapCategory.length) {
         wrapCategory.on('click', '#add-category', function () {
