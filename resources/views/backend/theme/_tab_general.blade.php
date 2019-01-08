@@ -3,7 +3,7 @@
         <label class="col-md-2 control-label">Site Heading</label>
         <div class="col-md-5">
             <input name="site_heading" class="form-control"
-                   value="{{ isset($option) ? $option['site_heading'] : old('site_heading') }}"/>
+                   value="{{ isset($option['site_heading']) ? $option['site_heading'] : old('site_heading') }}"/>
         </div>
     </div>
 

@@ -65,7 +65,7 @@ class SettingController extends Controller
      */
     public function index(Request $request)
     {
-        $dataSetting = $this->optionServices->getDataSetting($this->landingType);
+        $dataSetting = $this->optionServices->getDataSetting($this->pageType);
 
         $checkedCategory = isset($dataSetting['options']['mainCategory']) ?
             explode(',', $dataSetting['options']['mainCategory']) : $request->old('mainCategory');

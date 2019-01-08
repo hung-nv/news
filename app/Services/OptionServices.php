@@ -20,14 +20,14 @@ class OptionServices
 
     /**
      * Get all option to setup site.
-     * @param $landingType
+     * @param $pageType
      * @return array
      */
-    public function getDataSetting($landingType)
+    public function getDataSetting($pageType)
     {
         $options = Option::select(['key', 'value'])->pluck('value', 'key');
 
-        $pages = Article::getAllPages([$landingType]);
+        $pages = Article::getAllPages([$pageType]);
 
         $menus = MenuGroup::all();
 
