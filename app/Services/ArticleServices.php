@@ -585,6 +585,26 @@ class ArticleServices
     }
 
     /**
+     * Get article by slug.
+     * @param $slug
+     * @return Article|\Illuminate\Database\Eloquent\Model|null|object
+     */
+    public function getArticleBySlug($slug)
+    {
+        return Article::getArticleBySlug($slug);
+    }
+
+    /**
+     * Update view article by id.
+     * @param $articleId
+     * @return bool
+     */
+    public function updateViewArticle($articleId)
+    {
+        return Article::find($articleId)->update(['view' => DB::raw('view + 1')]);
+    }
+
+    /**
      * get all posts in category
      *
      * @param  int $categoryId

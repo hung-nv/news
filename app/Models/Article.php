@@ -53,9 +53,39 @@ class Article extends \Eloquent
         );
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany('App\Models\Tag', 'article_tag', 'article_id', 'tag_id');
+    }
+
     public function getCreatedAtAttribute($value)
     {
         return date('d/m/Y H.i', strtotime($value));
+    }
+
+    /**
+     * Get all article in 7 days ago.
+     * @param $query
+     * @return mixed
+     */
+    public function scopeInWeek($query)
+    {
+        return $query->havingRaw('(UNIX_TIMESTAMP(now()) - UNIX_TIMESTAMP(created_at)) < ?', [604800]);
+    }
+
+    /**
+     *
+     * @return Article[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function relatedPostsByTag()
+    {
+        return $this->whereHas('tags', function ($query) {
+            $tagIds = $this->tags()->pluck('tags.id')->all();
+            $query->whereIn('tags.id', $tagIds);
+        })
+            ->where('id', '<>', $this->id)
+            ->limit(5)
+            ->get();
     }
 
     /**
@@ -151,5 +181,12 @@ class Article extends \Eloquent
             ->paginate($pageSize);
 
         return $model;
+    }
+
+    public static function getArticleBySlug($slug)
+    {
+        return self::where('slug', $slug)
+            ->where('status', 1)
+            ->first();
     }
 }

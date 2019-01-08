@@ -1,9 +1,9 @@
 @section('title')
-    {{ $article->meta_title or $article->name }}
+    {{ isset($article->meta_title) ? $article->meta_title : $article->name }}
 @endsection
 
 @section('description')
-    {{ $article->meta_description or $article->description }}
+    {{ isset($article->meta_description) ? $article->meta_description : $article->description }}
 @endsection
 
 @extends('layouts.app')
@@ -90,7 +90,7 @@
             </div>
         </div>
         <div class="column2">
-            @include('homepage._mainRight')
+            {{--@include('homepage._mainRight')--}}
         </div>
     </div>
 

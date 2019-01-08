@@ -39,24 +39,20 @@ class ArticleController extends Controller
 //        ]);
     }
 
-    public function view($slug)
+    public function details($slug)
     {
-//        $article = Article::where('slug', $slug)->first();
-//        Article::where('slug', $slug)->update(['view' => DB::raw('view + 1')]);
-//        $newArticles = Article::ofType($this->news_details_type)->select('name', 'slug', 'introduction', 'image', 'created_at')->active()->orderByDesc('created_at')->limit(10)->get();
-//
-//        $mostArticles = Article::select('name', 'slug', 'introduction', 'image', 'created_at')->inWeek()->ofType($this->news_details_type)->active()->orderDesc()->limit(10)->get();
-//
-//        $layout = 'news.view';
-//        if ($this->agent->isMobile()) {
-//            $layout = 'mobile.news.view';
-//        }
-//
-//        return view($layout, [
-//            'article' => $article,
-//            'newArticles' => $newArticles,
-//            'mostArticles' => $mostArticles
-//        ]);
+        $article = $this->articleServices->getArticleBySlug($slug);
+
+        $this->articleServices->updateViewArticle($article->id);
+
+        $layout = 'news.view';
+        if ($this->agent->isMobile()) {
+            $layout = 'mobile.news.view';
+        }
+
+        return view($layout, [
+            'article' => $article
+        ]);
     }
 
     /**
