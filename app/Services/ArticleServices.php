@@ -585,6 +585,26 @@ class ArticleServices
     }
 
     /**
+     * Get top articles in week
+     * @param $limit
+     * @return mixed
+     */
+    public function getTopArticlesInWeek($limit)
+    {
+        return Article::getTopArticlesInWeek($limit);
+    }
+
+    /**
+     * Get new articles.
+     * @param $limit
+     * @return Article[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function getNewArticles($limit)
+    {
+        return Article::getNewArticle($limit);
+    }
+
+    /**
      * Get article by slug.
      * @param $slug
      * @return Article|\Illuminate\Database\Eloquent\Model|null|object

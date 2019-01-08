@@ -1,11 +1,17 @@
 <?php
 namespace App\Http\ViewComposers;
 
-use App\Models\Article;
+use App\Services\ArticleServices;
 use Illuminate\View\View;
 
 class GeneralPostsComposer
 {
+    protected $articleServices;
+
+    public function __construct(ArticleServices $articleServices)
+    {
+        $this->articleServices = $articleServices;
+    }
 
     /**
      * Bind data to the view.
@@ -16,7 +22,12 @@ class GeneralPostsComposer
 
     public function compose(View $view)
     {
-        $generalPosts = Article::ofType(1)->orderByDesc('created_at')->limit(2)->get();
-        $view->with('generalPosts', $generalPosts);
+        $newArticles = $this->articleServices->getNewArticles(5);
+
+        $topInWeek = $this->articleServices->getTopArticlesInWeek(5);
+
+        $view->with('newArticles', $newArticles);
+
+        $view->with('topInWeek', $topInWeek);
     }
 }

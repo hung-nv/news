@@ -31,7 +31,6 @@ class ViewComposerServiceProvider extends ServiceProvider
 
     private function composeSidebarBackend()
     {
-
         View::composer(
             'backend.layouts.sidebar', 'App\Http\ViewComposers\SidebarComposer'
         );
@@ -44,7 +43,6 @@ class ViewComposerServiceProvider extends ServiceProvider
     }
 
     private function composeSidebarFrontend() {
-        View::composer('layouts.sidebar', 'App\Http\ViewComposers\GeneralProductsComposer');
-        View::composer('layouts.sidebar', 'App\Http\ViewComposers\GeneralPostsComposer');
+        View::composer('partials._sidebar', 'App\Http\ViewComposers\GeneralPostsComposer');
     }
 }

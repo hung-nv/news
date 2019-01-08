@@ -189,4 +189,22 @@ class Article extends \Eloquent
             ->where('status', 1)
             ->first();
     }
+
+    public static function getNewArticle($limit)
+    {
+        return self::where('status', 1)
+            ->where('type', 'article')
+            ->orderByDesc('created_at')
+            ->limit($limit)
+            ->get();
+    }
+
+    public static function getTopArticlesInWeek($limit)
+    {
+        return self::where('status', 1)
+            ->inWeek()
+            ->where('type', 'article')
+            ->limit($limit)
+            ->get();
+    }
 }

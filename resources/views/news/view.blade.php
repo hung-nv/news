@@ -90,7 +90,7 @@
             </div>
         </div>
         <div class="column2">
-            {{--@include('homepage._mainRight')--}}
+            @include('partials._sidebar')
         </div>
     </div>
 
