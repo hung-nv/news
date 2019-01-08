@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends \Eloquent
+class Article extends \Eloquent
 {
     protected $table = 'articles';
 
@@ -25,7 +25,7 @@ class Post extends \Eloquent
         'meta_title',
         'meta_description',
         'meta_keywords',
-        'system_link_type_id'
+        'type'
     ];
 
     public function category()
@@ -62,12 +62,12 @@ class Post extends \Eloquent
      * Get all posts by name.
      * @param string $name
      * @param int $pageSize
-     * @param int $postType
+     * @param string $postType
      * @return $this|\Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public static function getPostsByName(string $name, int $pageSize, int $postType)
+    public static function getPostsByName(string $name, int $pageSize, string $postType)
     {
-        $posts = self::where('system_link_type_id', $postType)->orderByDesc('created_at');
+        $posts = self::where('type', $postType)->orderByDesc('created_at');
 
         if ($name !== '-1') {
             $posts = $posts->where('name', $name);
@@ -85,13 +85,13 @@ class Post extends \Eloquent
      */
     public static function getAllPages(array $type)
     {
-        return self::whereIn('system_link_type_id', $type)->orderByDesc('created_at')->get();
+        return self::whereIn('type', $type)->orderByDesc('created_at')->get();
     }
 
     /**
      * @param $idsCategory
      * @param $limit
-     * @return Post[]|\Illuminate\Database\Eloquent\Collection
+     * @return Article[]|\Illuminate\Database\Eloquent\Collection
      */
     public static function getArticlesByIdsCategory($idsCategory, $limit)
     {

@@ -23,7 +23,7 @@ $(function () {
     wrapCustom = $('.wrap-menu-custom');
     menuGroup = $('#list-menu-item').val();
 
-    if(url.port) {
+    if (url.port) {
         domain = url.protocol + '//' + url.hostname + ':' + url.port
     } else {
         domain = url.protocol + '//' + url.hostname;
@@ -31,50 +31,42 @@ $(function () {
 
     $('#theme-select-menu').on('click', function () {
         menuGroup = $('#list-menu-item').val();
-        if(menuGroup !== null && menuGroup !== '') {
+        if (menuGroup !== null && menuGroup !== '') {
             location.href = domain + '/administrator/menu?menu_group=' + menuGroup;
         }
     });
 
-    if($('#add-menu').length) {
-        let urlPost, message;
-        urlPost = '/api/add-menu';
+    $('#modalAddMenu').on('click', '#ajax-add-menu', function () {
+        $.ajax({
+            url: ui.urlCreateMenu,
+            type: 'post',
+            dataType: 'json',
+            data: {name: $('#menu-name').val()},
+            success: function (data) {
+                toastr.info(data.message);
+            }, error: function (xhr) {
+                doException(xhr, {elementShowError: '.show-error'});
+            }, complete: function () {
+                // reload list menu group.
+                $('#selected-menu').load(ui.urlGetAllMenu);
+                // close modal.
+                $('#modalAddMenu').modal('toggle');
+            }
+        });
+    })
 
-        $('#ajax-add-menu').on('click', function () {
-            $.ajax({
-                url: urlPost,
-                type: 'post',
-                dataType: 'json',
-                data: {name: $('#menu-name').val()},
-                success: function (data) {
-                    toastr.info(data.message);
-                }, error: function (xhr) {
-                    if(xhr.status === 402) {
-                        message = xhr.responseJSON.message;
-                    } else {
-                        message = xhr.statusText;
-                    }
-                    toastr.warning(message);
-                }, complete: function () {
-                    $('#selected-menu').load(domain + '/api/get_list_menu');
-                    $('#add-menu').modal('toggle');
-                }
-            });
-        })
-    }
-
-    if(wrapCategory.length) {
+    if (wrapCategory.length) {
         wrapCategory.on('click', '#add-category', function () {
             let idsCategory;
-            if(menuGroup === null || menuGroup === '') {
+            if (menuGroup === null || menuGroup === '') {
                 callBeforeAddMenu();
                 return false;
             }
-            idsCategory = $('input[name="parent[]"]:checkbox:checked').map(function() {
+            idsCategory = $('input[name="parent[]"]:checkbox:checked').map(function () {
                 return $(this).val();
             }).get();
 
-            if(idsCategory.length) {
+            if (idsCategory.length) {
                 $.ajax({
                     type: "post",
                     dataType: 'json',
@@ -93,28 +85,28 @@ $(function () {
         });
     }
 
-    if(wrapPages.length) {
+    if (wrapPages.length) {
         wrapPages.on('click', '#add-page', function () {
             let idsPages;
-            if(menuGroup === null || menuGroup === '') {
+            if (menuGroup === null || menuGroup === '') {
                 callBeforeAddMenu();
                 return false;
             }
-            idsPages = $('input[name="page[]"]:checkbox:checked').map(function() {
+            idsPages = $('input[name="page[]"]:checkbox:checked').map(function () {
                 return $(this).val();
             }).get();
 
-            if(idsPages.length) {
+            if (idsPages.length) {
                 $.ajax({
                     type: "post",
                     dataType: 'json',
                     url: ui.urlAddPage,
                     data: {ids: idsPages, idMenuGroup: menuGroup},
-                    success: function(result) {
+                    success: function (result) {
                         // reload menu after change.
                         $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
                     },
-                    error: function() {
+                    error: function () {
                         doException(xhr);
                     }
                 });
@@ -122,10 +114,10 @@ $(function () {
         });
     }
 
-    if(wrapCustom.length) {
+    if (wrapCustom.length) {
         wrapCustom.on('click', '#add-custom', function () {
             let label, direct, formCustom;
-            if(menuGroup === null || menuGroup === '') {
+            if (menuGroup === null || menuGroup === '') {
                 callBeforeAddMenu();
                 return false;
             }
@@ -136,7 +128,7 @@ $(function () {
 
             formCustom.validate();
 
-            if(formCustom.valid()) {
+            if (formCustom.valid()) {
                 $.ajax({
                     type: "post",
                     dataType: 'json',
@@ -146,11 +138,11 @@ $(function () {
                         url: direct.val(),
                         idMenuGroup: menuGroup
                     },
-                    success: function(result) {
+                    success: function (result) {
                         // reload menu after change.
                         $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
                     },
-                    error: function() {
+                    error: function () {
                         doException(xhr);
                     }
                 });
@@ -174,11 +166,11 @@ $(function () {
                 dataType: 'json',
                 url: ui.urlDeleteMenu,
                 data: {id: id},
-                success: function(result) {
+                success: function (result) {
                     toastr.info(result.message);
                     $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
                 },
-                error: function() {
+                error: function () {
                     doException(xhr);
                 }
             });

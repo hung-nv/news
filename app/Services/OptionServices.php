@@ -3,20 +3,18 @@
 namespace App\Services;
 
 use App\Http\Requests\SettingRequest;
-use App\Models\Post;
+use App\Models\Article;
 use App\Models\MenuGroup;
 use App\Models\Option;
 use App\Services\Common\ImageServices;
 use Illuminate\Support\Facades\DB;
 
-class OptionServices extends Services
+class OptionServices
 {
     private $imageServices;
 
     public function __construct(ImageServices $imageServices)
     {
-        parent::__construct();
-
         $this->imageServices = $imageServices;
     }
 
@@ -29,7 +27,7 @@ class OptionServices extends Services
     {
         $options = Option::select(['key', 'value'])->pluck('value', 'key');
 
-        $pages = Post::getAllPages([$landingType]);
+        $pages = Article::getAllPages([$landingType]);
 
         $menus = MenuGroup::all();
 

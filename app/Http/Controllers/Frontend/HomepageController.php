@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Services\PostServices;
+use App\Services\ArticleServices;
 use App\Http\Controllers\Controller;
 use Jenssegers\Agent\Agent;
 
@@ -11,7 +11,7 @@ class HomepageController extends Controller
     protected $postServices;
     protected $agent;
 
-    public function __construct(PostServices $postServices, Agent $agent)
+    public function __construct(ArticleServices $postServices, Agent $agent)
     {
         parent::__construct();
 

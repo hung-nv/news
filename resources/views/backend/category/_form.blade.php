@@ -34,7 +34,7 @@
     </div>
 </div>
 
-<input type="hidden" name="system_link_type_id" value="1">
+<input type="hidden" name="type" value="category">
 
 <div class="form-group">
     <label class="control-label col-md-3">Meta title</label>

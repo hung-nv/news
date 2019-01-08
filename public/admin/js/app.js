@@ -12120,37 +12120,30 @@ $(function () {
       location.href = domain + '/administrator/menu?menu_group=' + menuGroup;
     }
   });
+  $('#modalAddMenu').on('click', '#ajax-add-menu', function () {
+    $.ajax({
+      url: ui.urlCreateMenu,
+      type: 'post',
+      dataType: 'json',
+      data: {
+        name: $('#menu-name').val()
+      },
+      success: function success(data) {
+        toastr.info(data.message);
+      },
+      error: function error(xhr) {
+        Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr, {
+          elementShowError: '.show-error'
+        });
+      },
+      complete: function complete() {
+        // reload list menu group.
+        $('#selected-menu').load(ui.urlGetAllMenu); // close modal.
 
-  if ($('#add-menu').length) {
-    var urlPost, message;
-    urlPost = '/api/add-menu';
-    $('#ajax-add-menu').on('click', function () {
-      $.ajax({
-        url: urlPost,
-        type: 'post',
-        dataType: 'json',
-        data: {
-          name: $('#menu-name').val()
-        },
-        success: function success(data) {
-          toastr.info(data.message);
-        },
-        error: function error(xhr) {
-          if (xhr.status === 402) {
-            message = xhr.responseJSON.message;
-          } else {
-            message = xhr.statusText;
-          }
-
-          toastr.warning(message);
-        },
-        complete: function complete() {
-          $('#selected-menu').load(domain + '/api/get_list_menu');
-          $('#add-menu').modal('toggle');
-        }
-      });
+        $('#modalAddMenu').modal('toggle');
+      }
     });
-  }
+  });
 
   if (wrapCategory.length) {
     wrapCategory.on('click', '#add-category', function () {

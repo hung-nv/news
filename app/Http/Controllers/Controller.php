@@ -18,10 +18,9 @@ class Controller extends BaseController
      * Define type.
      * @var
      */
-    protected $postType,
+    protected $articleType,
         $categoryType,
-        $pageType,
-        $landingType;
+        $pageType;
 
     /**
      * Define option setting.
@@ -42,14 +41,11 @@ class Controller extends BaseController
 
     public function setType()
     {
-        $this->categoryType = 1;
-        $this->postType = 2;
-        $this->pageType = 3;
-        $this->landingType = 6;
+        $this->categoryType = 'category';
+        $this->articleType = 'article';
+        $this->pageType = 'page';
 
         View::share('pageType', $this->pageType);
-
-        View::share('landingType', $this->landingType);
 
         View::share('categoryType', $this->categoryType);
     }

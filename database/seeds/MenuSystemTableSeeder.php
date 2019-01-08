@@ -16,8 +16,8 @@ class MenuSystemTableSeeder extends Seeder
             ['label' => 'Create Category', 'icon' => 'icon-plus', 'route' => 'category.create', 'parent_id' => '1', 'sort' => 1, 'show' => '1,2'],
             ['label' => 'All Category', 'icon' => 'icon-list', 'route' => 'category.index', 'parent_id' => '1', 'sort' => 2, 'show' => '1,2'],
 
-            ['label' => 'Post', 'icon' => 'icon-book-open', 'route' => 'post', 'parent_id' => '0', 'sort' => 0, 'show' => '1,2'],
-            ['label' => 'Create Post', 'icon' => 'icon-plus', 'route' => 'post.create', 'parent_id' => '4', 'sort' => 1, 'show' => '1,2'],
+            ['label' => 'Article', 'icon' => 'icon-book-open', 'route' => 'post', 'parent_id' => '0', 'sort' => 0, 'show' => '1,2'],
+            ['label' => 'Create Article', 'icon' => 'icon-plus', 'route' => 'post.create', 'parent_id' => '4', 'sort' => 1, 'show' => '1,2'],
             ['label' => 'All Posts', 'icon' => 'icon-list', 'route' => 'post.index', 'parent_id' => '4', 'sort' => 2, 'show' => '1,2'],
 
             ['label' => 'Page', 'icon' => 'icon-notebook', 'route' => 'page', 'parent_id' => '0', 'sort' => 0, 'show' => '1,2'],

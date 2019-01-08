@@ -22,7 +22,7 @@ class CreateArticlesTable extends Migration
             $table->string('image')->nullable();
             $table->string('description')->nullable();
             $table->string('url_video')->nullable();
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->integer('view')->default(0);
 
             $table->integer('user_id')->unsigned();
@@ -32,7 +32,7 @@ class CreateArticlesTable extends Migration
             $table->string('meta_description')->nullable();
             $table->string('meta_keywords')->nullable();
 
-            $table->tinyInteger('system_link_type_id');
+            $table->string('type', 100);
 
             $table->timestamps();
             $table->boolean('status')->default(true);

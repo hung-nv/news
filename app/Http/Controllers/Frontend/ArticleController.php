@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Services\PostServices;
+use App\Services\ArticleServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Jenssegers\Agent\Agent;
@@ -12,7 +12,7 @@ class ArticleController extends Controller
     protected $postServices;
     protected $agent;
 
-    public function __construct(PostServices $postService, Agent $agent)
+    public function __construct(ArticleServices $postService, Agent $agent)
     {
         parent::__construct();
         $this->postServices = $postService;
@@ -21,9 +21,9 @@ class ArticleController extends Controller
 
     public function page($slug)
     {
-//        $page = Post::where('slug', $slug)->first();
-//        Post::where('slug', $slug)->update(['view' => DB::raw('view + 1')]);
-//        $newArticles = Post::ofType($this->news_details_type)->select('name', 'slug', 'introduction', 'image', 'created_at')->active()->orderByDesc('created_at')->limit(10)->get();
+//        $page = Article::where('slug', $slug)->first();
+//        Article::where('slug', $slug)->update(['view' => DB::raw('view + 1')]);
+//        $newArticles = Article::ofType($this->news_details_type)->select('name', 'slug', 'introduction', 'image', 'created_at')->active()->orderByDesc('created_at')->limit(10)->get();
 //
 //        $layout = 'news.page';
 //        if ($this->agent->isMobile()) {
@@ -38,11 +38,11 @@ class ArticleController extends Controller
 
     public function view($slug)
     {
-//        $article = Post::where('slug', $slug)->first();
-//        Post::where('slug', $slug)->update(['view' => DB::raw('view + 1')]);
-//        $newArticles = Post::ofType($this->news_details_type)->select('name', 'slug', 'introduction', 'image', 'created_at')->active()->orderByDesc('created_at')->limit(10)->get();
+//        $article = Article::where('slug', $slug)->first();
+//        Article::where('slug', $slug)->update(['view' => DB::raw('view + 1')]);
+//        $newArticles = Article::ofType($this->news_details_type)->select('name', 'slug', 'introduction', 'image', 'created_at')->active()->orderByDesc('created_at')->limit(10)->get();
 //
-//        $mostArticles = Post::select('name', 'slug', 'introduction', 'image', 'created_at')->inWeek()->ofType($this->news_details_type)->active()->orderDesc()->limit(10)->get();
+//        $mostArticles = Article::select('name', 'slug', 'introduction', 'image', 'created_at')->inWeek()->ofType($this->news_details_type)->active()->orderDesc()->limit(10)->get();
 //
 //        $layout = 'news.view';
 //        if ($this->agent->isMobile()) {
@@ -61,7 +61,7 @@ class ArticleController extends Controller
 //        $category = Category::where('slug', $slug)->first();
 //        $articles = $this->postServices->getAllPostsByParentCategory($category->id, [], $this->news_details_type);
 //        $articles = $articles->paginate(10);
-//        $mostArticles = Post::select('name', 'slug', 'introduction', 'image', 'created_at')->inWeek()->ofType($this->news_details_type)->active()->orderDesc()->limit(10)->get();
+//        $mostArticles = Article::select('name', 'slug', 'introduction', 'image', 'created_at')->inWeek()->ofType($this->news_details_type)->active()->orderDesc()->limit(10)->get();
 //
 //        $layout = 'news.category';
 //        if ($this->agent->isMobile()) {

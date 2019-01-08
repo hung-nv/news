@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\ViewComposers;
 
-use App\Models\Post;
+use App\Models\Article;
 use Illuminate\View\View;
 
 class GeneralPostsComposer
@@ -16,7 +16,7 @@ class GeneralPostsComposer
 
     public function compose(View $view)
     {
-        $generalPosts = Post::ofType(1)->orderByDesc('created_at')->limit(2)->get();
+        $generalPosts = Article::ofType(1)->orderByDesc('created_at')->limit(2)->get();
         $view->with('generalPosts', $generalPosts);
     }
 }

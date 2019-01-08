@@ -10,6 +10,6 @@ class Group extends \Eloquent
 
 	public function posts()
 	{
-		return $this->belongsToMany('App\Models\Post', 'post_group', 'group_id', 'post_id');
+		return $this->belongsToMany('App\Models\Article', 'post_group', 'group_id', 'post_id');
 	}
 }

@@ -6,7 +6,7 @@ use App\Http\Requests\LandingStore;
 use App\Http\Requests\LandingUpdate;
 use App\Http\Requests\PostStore;
 use App\Http\Requests\PostUpdate;
-use App\Services\PostServices;
+use App\Services\ArticleServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +14,7 @@ class PageController extends Controller
 {
     private $postServices;
 
-    public function __construct(PostServices $postServices)
+    public function __construct(ArticleServices $postServices)
     {
         parent::__construct();
 

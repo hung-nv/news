@@ -31,7 +31,7 @@ class CreateCategoryTable extends Migration
             $table->string('meta_keywords')->nullable();
             $table->tinyInteger('sort')->default(0);
 
-            $table->tinyInteger('system_link_type_id');
+            $table->string('type', 100);
 
             $table->timestamps();
             $table->boolean('status')->default(1);

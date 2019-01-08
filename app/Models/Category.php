@@ -8,11 +8,11 @@ class Category extends \Eloquent
 {
     protected $table = 'category';
 
-    protected $fillable = ['name', 'slug', 'parent_id', 'image', 'icon', 'meta_title', 'meta_description', 'system_link_type_id'];
+    protected $fillable = ['name', 'slug', 'parent_id', 'image', 'icon', 'meta_title', 'meta_description', 'type'];
 
     public function posts()
     {
-        return $this->belongsToMany('App\Models\Post', 'post_category', 'category_id', 'article_id');
+        return $this->belongsToMany('App\Models\Article', 'post_category', 'category_id', 'article_id');
     }
 
     public function products() {
@@ -34,6 +34,6 @@ class Category extends \Eloquent
 
     public static function getCategoryByType($type)
     {
-        return self::where('system_link_type_id', $type)->get();
+        return self::where('type', $type)->get();
     }
 }

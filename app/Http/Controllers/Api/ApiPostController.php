@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\ArticleGroupSave;
-use App\Services\PostServices;
+use App\Services\ArticleServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -12,7 +12,7 @@ class ApiPostController extends Controller
 {
     private $postServices;
 
-    public function __construct(PostServices $postServices)
+    public function __construct(ArticleServices $postServices)
     {
         parent::__construct();
         $this->postServices = $postServices;

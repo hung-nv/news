@@ -14,6 +14,5 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(MenuSystemTableSeeder::class);
         $this->call(GroupsTableSeeder::class);
-        $this->call(SystemLinkTypeTableSeeder::class);
     }
 }

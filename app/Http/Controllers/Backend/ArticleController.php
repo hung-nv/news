@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\PostStore;
 use App\Http\Requests\PostUpdate;
-use App\Services\PostServices;
+use App\Services\ArticleServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,7 +12,7 @@ class ArticleController extends Controller
 {
     private $postServices;
 
-    public function __construct(PostServices $postServices)
+    public function __construct(ArticleServices $postServices)
     {
         parent::__construct();
         $this->postServices = $postServices;
@@ -25,7 +25,7 @@ class ArticleController extends Controller
      */
     public function index(Request $request)
     {
-        $dataPosts = $this->postServices->getIndexPosts($request->all(), $this->postType);
+        $dataPosts = $this->postServices->getIndexPosts($request->all(), $this->articleType);
 
         return view('backend.post.index', [
             'posts' => $dataPosts['posts'],
@@ -65,7 +65,7 @@ class ArticleController extends Controller
      */
     public function store(PostStore $request)
     {
-        $response = $this->postServices->createPost($request, $this->postType);
+        $response = $this->postServices->createPost($request, $this->articleType);
 
         return redirect()->route('post.index')->with([
             'success' => $response

@@ -5,14 +5,14 @@ namespace App\Services;
 use App\Models\Category;
 use App\Models\Group;
 use App\Models\MetaField;
-use App\Models\Post;
+use App\Models\Article;
 use App\Services\Common\ImageServices;
 use App\Utilities\MultiLevel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class PostServices
+class ArticleServices
 {
     use MultiLevel;
 
@@ -34,7 +34,7 @@ class PostServices
     {
         $name = empty($request['name']) ? '-1' : $request['name'];
 
-        $posts = Post::getPostsByName($name, 20, $postType);
+        $posts = Article::getPostsByName($name, 20, $postType);
 
         $groups = Group::all();
 
@@ -48,7 +48,7 @@ class PostServices
      */
     public function getIndexPages(array $type)
     {
-        return Post::getAllPages($type);
+        return Article::getAllPages($type);
     }
 
     /**
@@ -91,7 +91,7 @@ class PostServices
         }
 
         $data['user_id'] = \Auth::user()->id;
-        $data['system_link_type_id'] = $postType;
+        $data['type'] = $postType;
 
         try {
             DB::beginTransaction();
@@ -115,7 +115,7 @@ class PostServices
      */
     public function storePostPackage($data)
     {
-        $post = Post::create($data);
+        $post = Article::create($data);
 
         $post->category()->attach($data['parent']);
 
@@ -132,7 +132,7 @@ class PostServices
      */
     public function getPostInformationById($request, $id)
     {
-        $post = Post::findOrFail($id);
+        $post = Article::findOrFail($id);
 
         $post_category = [];
         foreach ($post->category as $i) {
@@ -160,7 +160,7 @@ class PostServices
      */
     public function getLandingInformationById($request, $id)
     {
-        $page = Post::findOrFail($id);
+        $page = Article::findOrFail($id);
 
         $post_category = [];
         foreach ($page->category as $i) {
@@ -218,7 +218,7 @@ class PostServices
      */
     public function updatePostPackage($request, $id, $updateMenu)
     {
-        $post = Post::findOrFail($id);
+        $post = Article::findOrFail($id);
 
         $data = $request->all();
 
@@ -260,7 +260,7 @@ class PostServices
      */
     public function addPostToGroup($data)
     {
-        $post = Post::findOrFail($data['post_id']);
+        $post = Article::findOrFail($data['post_id']);
 
         $post->groups()->attach([$data['group_id']]);
 
@@ -281,7 +281,7 @@ class PostServices
      */
     public function removePostToGroup($data)
     {
-        $post = Post::findOrFail($data['post_id']);
+        $post = Article::findOrFail($data['post_id']);
 
         $post->groups()->detach([$data['group_id']]);
 
@@ -336,10 +336,10 @@ class PostServices
             'status' => $request->status,
             'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
-            'system_link_type_id' => $landingType
+            'type' => $landingType
         ];
 
-        $landing = Post::create($dataPage);
+        $landing = Article::create($dataPage);
 
         $landing->category()->attach($request->parent);
 
@@ -393,7 +393,7 @@ class PostServices
             'meta_description' => $request->meta_description,
         ];
 
-        $landing = Post::findOrFail($id);
+        $landing = Article::findOrFail($id);
 
         unset(
             $data['_token'],
@@ -453,7 +453,7 @@ class PostServices
      */
     public function deleteImageByPostId($postId)
     {
-        $post = Post::findOrFail($postId);
+        $post = Article::findOrFail($postId);
 
         if (!$post) {
             throw new NotFoundHttpException('Not found post');
@@ -550,7 +550,7 @@ class PostServices
      */
     public function deletePostPackage($postId)
     {
-        $post = Post::findOrFail($postId);
+        $post = Article::findOrFail($postId);
         $post->category()->detach();
 
         if ($post->delete()) {
@@ -566,11 +566,11 @@ class PostServices
      */
     public function deletePagePackage($pageId, $landingType)
     {
-        $page = Post::findOrFail($pageId);
+        $page = Article::findOrFail($pageId);
 
         $page->category()->detach();
 
-        if ($page->system_link_type_id === $landingType) {
+        if ($page->type === $landingType) {
             // delete image of landing page.
             MetaField::where('article_id', $pageId)->get()->each(function ($field) {
                 if (strlen(strstr($field->key_name, 'image')) > 0) {
@@ -608,7 +608,7 @@ class PostServices
 
                 array_push($idsResult, $idCategory);
 
-                $articles = Post::getArticlesByIdsCategory($idsResult, $limit);
+                $articles = Article::getArticlesByIdsCategory($idsResult, $limit);
 
                 $category = $dataCategory->where('id', $idCategory)->first();
 

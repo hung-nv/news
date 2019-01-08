@@ -6,7 +6,7 @@ use App\Http\Requests\SettingRequest;
 use App\Services\Common\ImageServices;
 use App\Services\MenuServices;
 use App\Services\OptionServices;
-use App\Services\PostServices;
+use App\Services\ArticleServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,7 +18,7 @@ class SettingController extends Controller
         ImageServices $imageServices,
         MenuServices $menuServices,
         OptionServices $optionServices,
-        PostServices $postServices
+        ArticleServices $postServices
     )
     {
         parent::__construct();

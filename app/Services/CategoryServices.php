@@ -173,7 +173,7 @@ class CategoryServices
         $category = Category::findOrFail($categoryId);
 
         $oldSlug = $category->slug;
-        $oldType = $category->system_link_type_id;
+        $oldType = $category->type;
 
         $data = $request->all();
 
@@ -240,7 +240,7 @@ class CategoryServices
 
         $this->imageServices->deleteImage($category->image);
 
-        $this->menuServices->deleteCategoryFromMenu($category->slug, $category->system_link_type_id);
+        $this->menuServices->deleteCategoryFromMenu($category->slug, $category->type);
 
         return 'Delete category "' . $category->name . '" successful';
     }

@@ -16,8 +16,7 @@ class Menu extends \Eloquent
         'route',
         'menu_group_id',
         'sort',
-        'prefix',
-        'system_link_type_id'
+        'type'
     ];
 
     public function parent()

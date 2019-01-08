@@ -4,20 +4,14 @@ namespace App\Services;
 
 use App\Models\Category;
 use App\Models\Menu;
-use App\Models\SystemLinkType;
-use App\Models\Post;
+use App\Models\Article;
 use App\Models\MenuGroup;
 use App\Utilities\MultiLevel;
 use Illuminate\Support\Facades\DB;
 
-class MenuServices extends Services
+class MenuServices
 {
     use MultiLevel;
-
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * Update sort menu.
@@ -102,8 +96,7 @@ class MenuServices extends Services
                     'name' => $category->name,
                     'slug' => $category->slug,
                     'menu_group_id' => $dataRequest['idMenuGroup'],
-                    'system_link_type_id' => $category->system_link_type_id,
-                    'prefix' => $this->configLink[$category->system_link_type_id]
+                    'type' => $category->type
                 ];
 
                 Menu::create($data);
@@ -128,14 +121,13 @@ class MenuServices extends Services
             DB::beginTransaction();
 
             foreach ($dataRequest['ids'] as $id) {
-                $page = Post::findOrFail($id);
+                $page = Article::findOrFail($id);
 
                 Menu::create([
                     'name' => $page->name,
                     'slug' => $page->slug,
                     'menu_group_id' => $dataRequest['idMenuGroup'],
-                    'system_link_type_id' => $page->system_link_type_id,
-                    'prefix' => $this->configLink[$page->system_link_type_id]
+                    'type' => $page->type
                 ]);
             }
 
@@ -191,10 +183,11 @@ class MenuServices extends Services
      * @param $pageType
      * @param $idMenuGroup
      * @return array
+     * @throws \Throwable
      */
     public function getDataMenu($pageType, $idMenuGroup)
     {
-        $pages = Post::getAllPages([$pageType]);
+        $pages = Article::getAllPages([$pageType]);
 
         if (empty($idMenuGroup)) {
             $templateMenu = '';
@@ -215,21 +208,16 @@ class MenuServices extends Services
      */
     public function upadteCategoryToMenu($category, $oldSlug, $oldType)
     {
-        $systemLinkType = SystemLinkType::find($category->system_link_type_id);
+        $data = [
+            'slug' => $category->slug,
+            'name' => $category->name,
+            'type' => $category->type
+        ];
 
-        if ($systemLinkType) {
-            $data = [
-                'slug' => $category->slug,
-                'name' => $category->name,
-                'prefix' => $systemLinkType->prefix,
-                'system_link_type_id' => $systemLinkType->id
-            ];
-
-            Menu::where([
-                ['slug', $oldSlug],
-                ['system_link_type_id', $oldType]
-            ])->update($data);
-        }
+        Menu::where([
+            ['slug', $oldSlug],
+            ['type', $oldType]
+        ])->update($data);
     }
 
     /**
@@ -259,7 +247,7 @@ class MenuServices extends Services
         try {
             Menu::where([
                 ['slug', $oldSlug],
-                ['system_link_type_id', $oldType]
+                ['type', $oldType]
             ])->delete();
         } catch (\Exception $exception) {
             throw $exception;
@@ -269,6 +257,7 @@ class MenuServices extends Services
     /**
      * Delete menu.
      * @param $id
+     * @throws \Exception
      */
     public function deleteMenuById($id)
     {

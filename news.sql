@@ -237,8 +237,8 @@ CREATE TABLE `menu_system` (
 INSERT INTO `menu_system` VALUES ('1', 'Category', 'icon-grid', 'category', '0', '0', '1,2', '1');
 INSERT INTO `menu_system` VALUES ('2', 'Create Category', 'icon-plus', 'category.create', '1', '1', '1,2', '1');
 INSERT INTO `menu_system` VALUES ('3', 'All Category', 'icon-list', 'category.index', '1', '2', '1,2', '1');
-INSERT INTO `menu_system` VALUES ('4', 'Post', 'icon-book-open', 'post', '0', '0', '1,2', '1');
-INSERT INTO `menu_system` VALUES ('5', 'Create Post', 'icon-plus', 'post.create', '4', '1', '1,2', '1');
+INSERT INTO `menu_system` VALUES ('4', 'Article', 'icon-book-open', 'post', '0', '0', '1,2', '1');
+INSERT INTO `menu_system` VALUES ('5', 'Create Article', 'icon-plus', 'post.create', '4', '1', '1,2', '1');
 INSERT INTO `menu_system` VALUES ('6', 'All Posts', 'icon-list', 'post.index', '4', '2', '1,2', '1');
 INSERT INTO `menu_system` VALUES ('7', 'Page', 'icon-notebook', 'page', '0', '0', '1,2', '0');
 INSERT INTO `menu_system` VALUES ('8', 'Create Page', 'icon-plus', 'page.create', '7', '1', '1,2', '1');
@@ -489,7 +489,7 @@ CREATE TABLE `system_link_type` (
 -- Records of system_link_type
 -- ----------------------------
 INSERT INTO `system_link_type` VALUES ('1', 'Category Details', 'category', null, null);
-INSERT INTO `system_link_type` VALUES ('2', 'Post Details', 'post', null, null);
+INSERT INTO `system_link_type` VALUES ('2', 'Article Details', 'post', null, null);
 INSERT INTO `system_link_type` VALUES ('3', 'Page Details', 'page', null, null);
 INSERT INTO `system_link_type` VALUES ('4', 'Catalog Details', '', null, null);
 INSERT INTO `system_link_type` VALUES ('5', 'Product Details', 'product', null, null);

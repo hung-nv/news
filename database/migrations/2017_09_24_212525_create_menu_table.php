@@ -25,8 +25,7 @@ class CreateMenuTable extends Migration
             $table->string('route', 100)->nullable();
             $table->integer('menu_group_id');
             $table->tinyInteger('sort')->default(0);
-            $table->string('prefix', 50)->nullable();
-            $table->tinyInteger('system_link_type_id');
+            $table->string('type', 100)->nullable();
             $table->timestamps();
         });
     }

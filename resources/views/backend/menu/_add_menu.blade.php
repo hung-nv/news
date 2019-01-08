@@ -11,14 +11,14 @@
                     <div class="row">
                         <div class="col-sm-3 control-label">Menu Name:</div>
                         <div class="col-sm-8">
-                            <input name="menu_name" v-model="nameMenu" class="form-control" />
+                            <input name="menu_name" id="menu-name" class="form-control" />
                         </div>
                     </div>
                 </div>
                 <div class="form-actions text-center">
                     <div class="row">
                         <button type="button" class="btn dark btn-outline btn-backend" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn green btn-backend" v-on:click="createMenu">Save</button>
+                        <button type="button" class="btn green btn-backend" id="ajax-add-menu">Save</button>
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@
     'oldSlug' => $slug
 ]])
 
-@section('title', 'Update Post')
+@section('title', 'Article')
 
 @section('pageId', 'create-edit-post')
 

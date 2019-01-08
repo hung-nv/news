@@ -14,7 +14,7 @@ class MetaField extends \Eloquent
 
     public function post()
     {
-        return $this->belongsTo('App\Models\Post', 'article_id');
+        return $this->belongsTo('App\Models\Article', 'article_id');
     }
 
     /**
