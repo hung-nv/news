@@ -1,6 +1,7 @@
 window.Vue = require('vue');
 require('./pages/theme');
 require('./pages/article/create_edit_article');
+require('./pages/article/create_edit_page');
 require('./pages/article/index_article');
 require('./pages/category/create_edit_category');
 require('./pages/category/index_category');

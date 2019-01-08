@@ -12,13 +12,13 @@
     <div class="form-group">
         <label>Description</label>
         <textarea name="description" class="form-control"
-                  rows="4">{{ $page['description'] or old('description') }}</textarea>
+                  rows="4">{{ isset($page) ? $page['description'] : old('description') }}</textarea>
     </div>
 
     <div class="form-group last">
         <label>Content</label>
         <textarea class="ckeditor form-control" name="content" rows="6"
-                  data-error-container="#editor2_error">{{ $page['content'] or old('content') }}</textarea>
+                  data-error-container="#editor2_error">{{ isset($page) ? $page['content'] : old('content') }}</textarea>
         <div id="editor2_error"></div>
     </div>
 </div>
@@ -56,20 +56,20 @@
     <div class="form-group">
         <label>Meta title</label>
         <input type="text" name="meta_title" class="form-control"
-               value="{{ $page['meta_title'] or old('meta_title') }}"/>
+               value="{{ isset($page) ? $page['meta_title'] : old('meta_title') }}"/>
     </div>
 
     <div class="form-group">
         <label>Meta description</label>
         <input type="text" name="meta_description" class="form-control"
-               value="{{ $page['meta_description'] or old('meta_description') }}"/>
+               value="{{ isset($page) ? $page['meta_description'] : old('meta_description') }}"/>
     </div>
 
     <div class="form-group">
         <label>Image</label>
         @if(isset($page) && $page['image'])
             <input type="hidden" name="old_image" id="old-image" data-id="{{ $page['id'] }}"
-                   value="{{ $page['image'] or '' }}">
+                   value="{{ $page['image'] }}">
         @endif
         <input id="image" name="image" type="file" data-show-upload="false">
     </div>

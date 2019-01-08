@@ -11689,6 +11689,8 @@ __webpack_require__(/*! ./pages/theme */ "./resources/js/pages/theme.js");
 
 __webpack_require__(/*! ./pages/article/create_edit_article */ "./resources/js/pages/article/create_edit_article.js");
 
+__webpack_require__(/*! ./pages/article/create_edit_page */ "./resources/js/pages/article/create_edit_page.js");
+
 __webpack_require__(/*! ./pages/article/index_article */ "./resources/js/pages/article/index_article.js");
 
 __webpack_require__(/*! ./pages/category/create_edit_category */ "./resources/js/pages/category/create_edit_category.js");
@@ -11851,6 +11853,75 @@ if ($(ui.pageId).length) {
     /**
      * Set input image preview.
      */
+
+    function setInputImage() {
+      if ($(ui.inputImage).length) {
+        if ($(ui.inputOldImage).length) {
+          Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_1__["initInputImage"])(ui.inputOldImage, ui.inputImage, ui.urlDeleteImage);
+        } else {
+          Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_1__["newInputImage"])(ui.inputImage);
+        }
+      }
+
+      $(ui.inputImage).on('fileclear', function (event) {
+        $(ui.inputRemoveInitPreview).trigger("click");
+      });
+    }
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/pages/article/create_edit_page.js":
+/*!********************************************************!*\
+  !*** ./resources/js/pages/article/create_edit_page.js ***!
+  \********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/helpers */ "./resources/js/helpers/helpers.js");
+/* harmony import */ var _utilities_images_image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utilities/images/image */ "./resources/js/utilities/images/image.js");
+
+
+var ui = {
+  pageId: '#create-edit-page',
+  inputImage: '#image',
+  inputOldImage: '#old-image',
+  urlDeleteImage: '/api/post/delete-image',
+  inputRemoveInitPreview: '.kv-file-remove',
+  tablePages: '#datatable-page'
+};
+
+if ($(ui.pageId).length) {
+  new Vue({
+    el: ui.pageId,
+    data: {
+      postName: viewData.oldName,
+      postSlug: viewData.oldSlug
+    },
+    watch: {
+      postName: function postName(newValue, oldValue) {
+        this.postSlug = Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["slugify"])(newValue);
+      }
+    }
+  });
+  $(function () {
+    setInputImage();
+
+    if ($(ui.tablePages).length) {
+      $(ui.tablePages).dataTable({
+        ordering: false,
+        order: [[0, 'desc']],
+        bLengthChange: true,
+        bFilter: true
+      });
+    }
+    /**
+     * Set input image preview.
+     */
+
 
     function setInputImage() {
       if ($(ui.inputImage).length) {
