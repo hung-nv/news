@@ -27,7 +27,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = $this->postServices->getIndexPages([$this->pageType, $this->landingType]);
+        $pages = $this->postServices->getIndexPages([$this->pageType]);
 
         return view('backend.page.index', [
             'pages' => $pages
@@ -103,7 +103,7 @@ class PageController extends Controller
      */
     public function storeLanding(LandingStore $request)
     {
-        $response = $this->postServices->createLandingPage($request, $this->landingType);
+        $response = $this->postServices->createLandingPage($request, '');
 
         return redirect()->route('page.index')->with([
             'success' => $response
@@ -207,7 +207,7 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        $response = $this->postServices->deletePage($id, $this->landingType);
+        $response = $this->postServices->deletePage($id, '');
 
         return redirect()->route('page.index')->with([
             'success' => $response

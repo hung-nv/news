@@ -18,9 +18,9 @@ class Controller extends BaseController
      * Define type.
      * @var
      */
-    protected $articleType,
-        $categoryType,
-        $pageType;
+    protected $articleType = 'category',
+        $categoryType = 'article',
+        $pageType = 'page';
 
     /**
      * Define option setting.
@@ -41,10 +41,6 @@ class Controller extends BaseController
 
     public function setType()
     {
-        $this->categoryType = 'category';
-        $this->articleType = 'article';
-        $this->pageType = 'page';
-
         View::share('pageType', $this->pageType);
 
         View::share('categoryType', $this->categoryType);
@@ -81,15 +77,27 @@ class Controller extends BaseController
     {
         $return = [];
         foreach ($data as $item) {
+            // set url.
+            $item['url'] = $this->setUrlForMenu($item);
+
             $child = [];
+
             foreach ($data as $n => $i) {
                 $grand = [];
 
                 if ($i['parent_id'] == $item['id']) {
+                    // set url.
+                    $i['url'] = $this->setUrlForMenu($i);
+                    // unset from all data.
                     unset($data[$n]);
+
                     foreach ($data as $m => $j) {
                         if ($j['parent_id'] == $i['id']) {
+                            // set url.
+                            $j['url'] = $this->setUrlForMenu($j);
+
                             $grand[] = $j;
+                            // unset from all data.
                             unset($data[$m]);
                         }
                     }
@@ -111,5 +119,25 @@ class Controller extends BaseController
 
         }
         return $return;
+    }
+
+    /**
+     * Set url for menu.
+     * @param array $option
+     * @return string
+     */
+    private function setUrlForMenu($option)
+    {
+        if ($option['direct']) {
+            $url = $option['direct'];
+        } else {
+            if ($option['type']) {
+                $prefix = '/' . config('const.prefix.' . $option['type']);
+            }
+
+            $url = $prefix . '/' . $option['slug'];
+        }
+
+        return $url;
     }
 }

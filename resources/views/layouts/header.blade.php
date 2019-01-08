@@ -4,11 +4,11 @@
             <div class="menu-inner">
                 <ul>
                     <li class="home @if(empty($slug)) active @endif"><a href="/">Trang chủ</a></li>
-                    @if(!empty($topMenu))
-                        @foreach($topMenu as $i_topMenu)
-                            <li @if(isset($slug) && $slug == $i_topMenu->slug)class="active"@endif>
-                                <a href="{{ $i_topMenu->url }}">
-                                    {{ $i_topMenu->name }}
+                    @if(!empty($mainMenu))
+                        @foreach($mainMenu as $itemMainMenu)
+                            <li @if(isset($slug) && $slug == $itemMainMenu['slug'])class="active"@endif>
+                                <a href="{{ $itemMainMenu['url'] }}">
+                                    {{ $itemMainMenu['name'] }}
                                 </a>
                             </li>
                         @endforeach
@@ -33,7 +33,6 @@
 </div>
 
 <div id="logo">
-    <h1 class="header-title hidden">Tin tức về giới trẻ, teen 24h qua</h1>
     <div class="logo-left col-md-3">
         <a href="/">
             @if(!empty($option['company_logo']))

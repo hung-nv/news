@@ -8,11 +8,20 @@ Route::group(['namespace' => 'Frontend'], function () {
     // route homepage.
     Route::get('/', ['as' => 'homepage', 'uses' => 'HomepageController@index']);
     // route post details.
-    Route::get('post/{slug}', ['as' => 'article.details', 'uses' => 'ArticleController@details']);
+    Route::get(config('const.prefix.article') . '/{slug}', [
+        'as' => 'article.details',
+        'uses' => 'ArticleController@details'
+    ]);
     // route list articles.
-    Route::get('category/{slug}', ['as' => 'article.list', 'uses' => 'ArticleController@index']);
+    Route::get(config('const.prefix.category') . '/{slug}', [
+        'as' => 'article.list',
+        'uses' => 'ArticleController@index'
+    ]);
     // route page details.
-    Route::get('page/{slug}', ['as' => 'article.page', 'uses' => 'ArticleController@page']);
+    Route::get(config('const.prefix.page') . '/{slug}', [
+        'as' => 'article.page',
+        'uses' => 'ArticleController@page'
+    ]);
     // route search articles.
     Route::get('search', ['as' => 'article.search', 'uses' => 'ArticleController@search']);
 });
