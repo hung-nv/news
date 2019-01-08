@@ -133,7 +133,8 @@ class Article extends \Eloquent
                 'articles.slug',
                 'articles.image',
                 'articles.description',
-                'articles.created_at'
+                'articles.created_at',
+                'type'
             ])
             ->join('article_category', function ($join) {
                 $join->on('articles.id', '=', 'article_category.article_id');

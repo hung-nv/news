@@ -70,15 +70,21 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth', 'namespace' =
     });
 });
 
-/**
- * Resize image.
- */
-Route::get('img/{w}/{h}/{src}', function ($w, $h, $src) {
-    $imagePath = public_path() . '/' . $src;
-
-    $img = Image::cache(function ($image) use ($w, $h, $imagePath) {
-        return $image->make($imagePath)->resize($w, $h);
-    });
-
+Route::get('img/{size}/{src}', function ($size, $src) {
+    $imgPath = public_path() . '/' . $src;
+    $sizes = explode('_', $size);
+    if(count($sizes) > 1) {
+        $w = $sizes[0];
+        $h = $sizes[1];
+        $img = Image::cache(function ($image) use ($w, $h, $imgPath) {
+            return $image->make($imgPath)->fit($w, $h);
+        });
+    } else {
+        $img = Image::cache(function ($image) use ($size, $imgPath) {
+            return $image->make($imgPath)->resize($size, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+        });
+    }
     return Response::make($img, 200, ['Content-Type' => 'image/jpeg']);
-})->where('src', '[A-Za-z0-9\/\.\-\_]+');
+})->where(['src' => '[A-Za-z0-9\/\.\-\_]+', 'size' => '[0-9\_]+']);

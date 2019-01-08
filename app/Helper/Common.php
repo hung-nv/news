@@ -1,16 +1,4 @@
 <?php
-
-function joinGroup($data)
-{
-    $result = [];
-    if (isset($data) && $data) {
-        foreach ($data as $i) {
-            $result[] = $i->id;
-        }
-    }
-    return $result;
-}
-
 function getAllParentsCategory($data, $category_id, &$result)
 {
     foreach ($data as $k => $v) {

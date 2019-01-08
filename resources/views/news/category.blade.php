@@ -24,15 +24,15 @@
                 @foreach ($articles as $i)
                     <div class="@if($loop->index % 2 == 0)cate-left clear @else cate-right @endif">
                         <div class="cate-slide-content">
-                            <a href="/" class="image-link">
-                                <img src="/img/330{{ $i->image }}">
+                            <a href="{{ route('article.details', ['slug' => $i->slug]) }}" class="image-link">
+                                <img src="/img/330_210{{ $i->image }}">
                             </a>
 
                             <div class="meta">
                                 <span>{{ $i->created_at }}</span>
                             </div>
 
-                            <h2><a href="/">{{ $i->name }}</a></h2>
+                            <h2><a href="{{ route('article.details', ['slug' => $i->slug]) }}">{{ $i->name }}</a></h2>
 
                             <div class="excerpt">
                                 <p>{{ $i->description }}</p>
