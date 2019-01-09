@@ -209,11 +209,14 @@ h1, h2, h3, h4 {
   line-height: 24px !important;
 }
 .entry-content .entry-post > *, .entry-content .entry-post * {
-  font-family: Arial, Helvetica, sans-serif !important;
   padding: 0 !important;
-  font-size: 15px;
-  line-height: 24px !important;
-  max-width: 100%;
+}
+.entry-content .entry-post ul {
+  margin-left: 25px;
+}
+.entry-content .entry-post h2 {
+  color: #333;
+  font-size: 18px;
 }
 .entry-content .entry-post img {
   max-width: 100% !important;

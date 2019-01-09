@@ -264,10 +264,12 @@ a {
   border-bottom: 1px solid #dfdfdf;
   font-size: 13px;
 }
-.entry-content .entry-post > *, .entry-content .entry-post * {
-  line-height: 20px !important;
-  padding: 0 !important;
-  font-size: 13px;
+.entry-content .entry-post ul {
+  margin-left: 25px;
+}
+.entry-content .entry-post h2 {
+  color: #333;
+  font-size: 18px;
 }
 .entry-content .entry-post img, .entry-content .entry-post > img {
   max-width: 500px !important;
