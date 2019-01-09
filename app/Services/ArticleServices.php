@@ -584,6 +584,22 @@ class ArticleServices
         }
     }
 
+    /**
+     * @param $idsCategory
+     * @param $idExcept
+     * @return Article[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function getRelatedArticle($idsCategory, $idExcept)
+    {
+        return Article::getArticlesByIdsCategory($idsCategory, 10, [$idExcept]);
+    }
+
+    /**
+     * Get articles by groupId
+     * @param $groupId
+     * @param $limit
+     * @return Article[]|\Illuminate\Database\Eloquent\Collection
+     */
     public function getArticlesByGroupId($groupId, $limit)
     {
         return Article::getArticlesByGroupId($groupId, $limit);

@@ -48,13 +48,19 @@ class ArticleController extends Controller
 
         $this->articleServices->updateViewArticle($article->id);
 
+        $relatedArticles = $this->articleServices->getRelatedArticle(
+            $article->category->pluck('id')->all(),
+            $article->id
+        );
+
         $layout = 'news.view';
         if ($this->agent->isMobile()) {
             $layout = 'mobile.news.view';
         }
 
         return view($layout, [
-            'article' => $article
+            'article' => $article,
+            'relatedArticles' => $relatedArticles
         ]);
     }
 

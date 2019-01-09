@@ -143,8 +143,9 @@ class Article extends \Eloquent
     }
 
     /**
-     * @param $idsCategory
-     * @param $limit
+     * @param array $idsCategory
+     * @param int $limit
+     * @param array $idsExcept
      * @return Article[]|\Illuminate\Database\Eloquent\Collection
      */
     public static function getArticlesByIdsCategory($idsCategory, $limit, $idsExcept = [])

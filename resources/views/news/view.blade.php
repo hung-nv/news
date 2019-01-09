@@ -44,23 +44,23 @@
                     {!! $article->content !!}
                 </div>
 
-                @if (isset($newArticles) && $newArticles)
+                @if (count($relatedArticles) > 0)
                     <div class="other">
                         <h2>Tin mới nhất</h2>
                         <div class="other-tren">
                             <div class="other-tren-left">
                                 @for($i = 0; $i < 2; $i++)
-                                    @if (isset( $newArticles[ $i ] ) && $newArticles[ $i ])
+                                    @if (isset($relatedArticles[$i] ) && $relatedArticles[$i])
                                         <div class="other-row">
-                                            <a href="{{ $newArticles[$i]->url }}" class="other-row-img">
-                                                <img src="/img/154_102{{ $newArticles[$i]->image }}">
+                                            <a href="{{ $relatedArticles[$i]->url }}" class="other-row-img">
+                                                <img src="/img/154_102{{ $relatedArticles[$i]->image }}">
                                             </a>
                                             <h4>
-                                                <a href="{{ $newArticles[$i]->url }}">
-                                                    {{ $newArticles[$i]->name }}
+                                                <a href="{{ $relatedArticles[$i]->url }}">
+                                                    {{ $relatedArticles[$i]->name }}
                                                 </a>
                                             </h4>
-                                            <p>{{ $newArticles[$i]->description }}</p>
+                                            <p>{{ $relatedArticles[$i]->description }}</p>
                                             <div class="clear"></div>
                                         </div>
                                     @endif
@@ -72,15 +72,15 @@
                             <div class="clear"></div>
                         </div>
 
-                        @if (count( $newArticles ) > 2)
+                        @if (count( $relatedArticles ) > 2)
                             <ul>
                                 @for ($i = 2; $i < 11; $i ++)
-                                    @if (isset( $newArticles[ $i ] ) && $newArticles[ $i ])
+                                    @if (isset( $relatedArticles[ $i ] ) && $relatedArticles[ $i ])
                                         <li>
-                                            <a href="{{ $newArticles[$i]->url }}">
-                                                {{ $newArticles[$i]->name }}
+                                            <a href="{{ $relatedArticles[$i]->url }}">
+                                                {{ $relatedArticles[$i]->name }}
                                             </a>
-                                            <span>&nbsp;({{ $newArticles[$i]->created_at }})</span>
+                                            <span>&nbsp;({{ $relatedArticles[$i]->created_at }})</span>
                                         </li>
                                     @endif
                                 @endfor
