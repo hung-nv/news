@@ -2,7 +2,7 @@
 return [
     // Set prefix in route for all type.
     'prefix' => [
-        'article' => 'post',
+        'article' => '',
         'page' => 'page',
         'category' => 'category',
         'catalog' => 'catalog',

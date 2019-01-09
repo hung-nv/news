@@ -176,8 +176,8 @@ h1, h2, h3, h4 {
 }
 .entry-content .description {
   color: #454545;
-  font-size: 15px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 23px;
   margin-bottom: 15px;
   text-align: justify;
   font-weight: bold;
@@ -202,7 +202,7 @@ h1, h2, h3, h4 {
   width: 100%;
   margin-bottom: 10px;
   text-align: justify;
-  font-size: 15px;
+  font-size: 16px;
   vertical-align: baseline;
   font-family: Arial, Helvetica, sans-serif !important;
   padding: 0 !important;
@@ -216,7 +216,10 @@ h1, h2, h3, h4 {
 }
 .entry-content .entry-post h2 {
   color: #333;
-  font-size: 18px;
+  font-size: 17px;
+  line-height: 23px;
+  margin: 10px 0;
+  font-weight: bold;
 }
 .entry-content .entry-post img {
   max-width: 100% !important;

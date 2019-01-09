@@ -6,7 +6,7 @@
   src: local("Roboto Condensed Regular"), local("RobotoCondensed-Regular"), url("/font/RobotoCondensed-Regular.ttf") format("truetype");
 }
 body {
-  color: #6b6b6b;
+  color: #333;
   font-size: 14px;
   line-height: 1.7;
   word-wrap: break-word;
@@ -237,7 +237,7 @@ a {
 .entry-content .description {
   color: #454545;
   font-size: 13px;
-  line-height: 18px;
+  line-height: 21px;
   margin-bottom: 15px;
   text-align: justify;
   font-weight: bold;
@@ -258,7 +258,7 @@ a {
 }
 .entry-content .entry-post {
   margin-bottom: 10px;
-  line-height: 20px !important;
+  line-height: 23px !important;
   font-family: Arial !important;
   padding: 0 0 10px !important;
   border-bottom: 1px solid #dfdfdf;
@@ -269,7 +269,10 @@ a {
 }
 .entry-content .entry-post h2 {
   color: #333;
-  font-size: 18px;
+  font-size: 17px;
+  line-height: 23px;
+  margin: 10px 0;
+  font-weight: bold;
 }
 .entry-content .entry-post img, .entry-content .entry-post > img {
   max-width: 500px !important;
