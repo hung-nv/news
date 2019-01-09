@@ -1,7 +1,7 @@
 <div class="clear"></div>
 
 <div id="footer">
-    @if(!empty($setting['company_name']))
-        {{ $setting['company_name'] }}
+    @if(!empty($option['company_name']))
+        {{ $option['company_name'] }}
     @endif
 </div>

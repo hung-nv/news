@@ -23,7 +23,7 @@ class HomepageController extends Controller
     {
         $widgetCategory = [];
         if (!empty($this->option['mainCategory'])) {
-            $widgetCategory = $this->postServices->getWidgetCategoryWithArticles($this->option['mainCategory'], 12);
+            $widgetCategory = $this->postServices->getWidgetCategoryWithArticles($this->option['mainCategory'], 6);
         }
 
         $hotArticles = $this->postServices->getArticlesByGroupId(1, 5);
