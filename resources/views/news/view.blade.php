@@ -94,5 +94,5 @@
         </div>
     </div>
 
-    @include('news._topArticles')
+    @include('partials._horizontalArticles')
 @endsection

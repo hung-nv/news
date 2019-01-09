@@ -41,6 +41,7 @@
                             </div>
                         @endforeach
                     @endif
+                    <div class="clear"></div>
                 @endforeach
             @endif
         </div>
