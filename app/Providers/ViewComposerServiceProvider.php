@@ -15,8 +15,6 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->composeSidebarBackend();
-        $this->composeFooter();
-        $this->composeSidebarFrontend();
     }
 
     /**
@@ -34,15 +32,5 @@ class ViewComposerServiceProvider extends ServiceProvider
         View::composer(
             'backend.layouts.sidebar', 'App\Http\ViewComposers\SidebarComposer'
         );
-    }
-
-    private function composeFooter() {
-        View::composer(
-            'layouts.footer', 'App\Http\ViewComposers\InformationComposer'
-        );
-    }
-
-    private function composeSidebarFrontend() {
-        View::composer('partials._sidebar', 'App\Http\ViewComposers\GeneralPostsComposer');
     }
 }

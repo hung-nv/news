@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\Category;
 use App\Models\Menu;
 use App\Models\Option;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -18,9 +20,11 @@ class Controller extends BaseController
      * Define type.
      * @var
      */
-    protected $articleType = 'article',
-        $categoryType = 'category',
-        $pageType = 'page';
+    protected $articleType = Article::POST_TYPE;
+    protected $categoryType = Category::CATEGORY_TYPE;
+    protected $pageType = Article::PAGE_TYPE;
+
+    protected $idsExcept = [];
 
     /**
      * Define option setting.
@@ -32,18 +36,51 @@ class Controller extends BaseController
 
     public function __construct()
     {
+        $this->setIdsExcept([]);
+
         $this->setType();
 
         $this->getSettingSite();
 
         $this->getMenu();
+
+        $this->getGeneralArticle();
+    }
+
+    /**
+     * Set id except.
+     * @param $idExcept
+     */
+    public function setIdsExcept($idExcept)
+    {
+        if ($idExcept) {
+            if (is_array($idExcept)) {
+                $this->idsExcept = array_merge($this->idsExcept, $idExcept);
+            } else {
+                array_push($this->idsExcept, $idExcept);
+            }
+        }
     }
 
     public function setType()
     {
         View::share('pageType', $this->pageType);
+    }
 
-        View::share('categoryType', $this->categoryType);
+    /**
+     * Get general article.
+     */
+    public function getGeneralArticle()
+    {
+        View::composer('partials._sidebar', function ($view) {
+            $topInWeek = Article::getTopArticlesInWeek(5, $this->idsExcept);
+
+            $newArticles = Article::getNewArticle(5, $this->idsExcept);
+
+            $view->with('topInWeek', $topInWeek);
+
+            $view->with('newArticles', $newArticles);
+        });
     }
 
     /**

@@ -2,16 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends \Eloquent
 {
+    CONST POST_TYPE = 'article';
+    CONST PAGE_TYPE = 'page';
+    CONST LANDING_TYPE = 'landing';
+
     protected $table = 'articles';
 
     protected $dates = [
         'created_at',
         'updated_at'
     ];
+
+    protected $append = ['url'];
 
     protected $fillable = [
         'name',
@@ -58,9 +65,26 @@ class Article extends \Eloquent
         return $this->belongsToMany('App\Models\Tag', 'article_tag', 'article_id', 'tag_id');
     }
 
+    /**
+     * Format created_at
+     * @param $value
+     * @return false|string
+     */
     public function getCreatedAtAttribute($value)
     {
         return date('d/m/Y H.i', strtotime($value));
+    }
+
+    /**
+     * Set url for category.
+     * @param $value
+     * @return string
+     */
+    public function getUrlAttribute($value)
+    {
+        $prefix = config('const.prefix.' . self::POST_TYPE);
+
+        return $prefix ? '/' . $prefix . '/' . $this->slug : '/' . $this->slug;
     }
 
     /**
@@ -183,6 +207,11 @@ class Article extends \Eloquent
         return $model;
     }
 
+    /**
+     * Get article by slug.
+     * @param $slug
+     * @return Article|Model|object|null
+     */
     public static function getArticleBySlug($slug)
     {
         return self::where('slug', $slug)
@@ -190,20 +219,57 @@ class Article extends \Eloquent
             ->first();
     }
 
-    public static function getNewArticle($limit)
+    /**
+     * Get new articles.
+     * @param $limit
+     * @param array $idsExcept
+     * @return Article[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public static function getNewArticle($limit, $idsExcept = [])
     {
         return self::where('status', 1)
-            ->where('type', 'article')
+            ->where('type', self::POST_TYPE)
             ->orderByDesc('created_at')
+            ->whereNotIn('id', $idsExcept)
             ->limit($limit)
             ->get();
     }
 
-    public static function getTopArticlesInWeek($limit)
+    /**
+     * Get top article in 7 days ago.
+     * @param $limit
+     * @param array $idsExcept
+     * @return Collection
+     */
+    public static function getTopArticlesInWeek($limit, $idsExcept = [])
     {
         return self::where('status', 1)
             ->inWeek()
-            ->where('type', 'article')
+            ->where('type', self::POST_TYPE)
+            ->whereNotIn('id', $idsExcept)
+            ->limit($limit)
+            ->get();
+    }
+
+    /**
+     * Get articles by groupId
+     * @param $groupId
+     * @param $limit
+     * @return Article[]|Collection
+     */
+    public static function getArticlesByGroupId($groupId, $limit)
+    {
+        return self::from('articles as a')
+            ->select([
+                'a.*'
+            ])
+            ->join('article_group as b', function ($join) {
+                $join->on('b.article_id', '=', 'a.id');
+            })
+            ->where('b.group_id', $groupId)
+            ->where('a.status', 1)
+            ->where('a.type', self::POST_TYPE)
+            ->orderByDesc('a.created_at')
             ->limit($limit)
             ->get();
     }

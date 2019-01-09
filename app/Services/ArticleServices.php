@@ -584,6 +584,11 @@ class ArticleServices
         }
     }
 
+    public function getArticlesByGroupId($groupId, $limit)
+    {
+        return Article::getArticlesByGroupId($groupId, $limit);
+    }
+
     /**
      * Get top articles in week
      * @param $limit

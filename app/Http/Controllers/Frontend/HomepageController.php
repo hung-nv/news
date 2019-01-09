@@ -26,13 +26,16 @@ class HomepageController extends Controller
             $widgetCategory = $this->postServices->getWidgetCategoryWithArticles($this->option['mainCategory'], 12);
         }
 
+        $hotArticles = $this->postServices->getArticlesByGroupId(1, 5);
+
         $layouts = 'homepage.index';
         if ($this->agent->isMobile()) {
             $layouts = 'mobile.homepage.index';
         }
 
         return view($layouts, [
-            'widgetCategory' => $widgetCategory
+            'widgetCategory' => $widgetCategory,
+            'mostArticles' => $hotArticles
         ]);
     }
 }

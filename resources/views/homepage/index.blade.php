@@ -9,5 +9,9 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('homepage._topArticles')
+    <div class="row">
+        @include('homepage._topArticles')
+
+        @include('partials._horizontalArticles')
+    </div>
 @endsection

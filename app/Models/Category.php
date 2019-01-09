@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends \Eloquent
 {
+    CONST CATEGORY_TYPE = 'category';
+    CONST CATALOG_TYPE = 'catalog';
+
     protected $table = 'category';
 
     protected $fillable = ['name', 'slug', 'parent_id', 'image', 'icon', 'meta_title', 'meta_description', 'type'];
@@ -60,7 +63,7 @@ class Category extends \Eloquent
      */
     public function getUrlAttribute($value)
     {
-        $prefix = config('const.prefix.category');
+        $prefix = config('const.prefix.' . self::CATEGORY_TYPE);
 
         return $prefix ? '/' . $prefix . '/' . $this->slug : '/' . $this->slug;
     }

@@ -43,6 +43,8 @@ class ArticleController extends Controller
     {
         $article = $this->articleServices->getArticleBySlug($slug);
 
+        $this->setIdsExcept($article->id);
+
         $this->articleServices->updateViewArticle($article->id);
 
         $layout = 'news.view';

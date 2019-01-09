@@ -1,9 +1,9 @@
 @section('title')
-    {{ isset($category->meta_title) ? $category->meta_title : '' }}
+    {{ isset($category->meta_title) ? $category->meta_title : $category->name }}
 @endsection
 
 @section('description')
-    {{ isset($category->meta_description) ? $category->meta_description : '' }}
+    {{ isset($category->meta_description) ? $category->meta_description : $category->description }}
 @endsection
 
 @extends('layouts.app')
@@ -50,9 +50,9 @@
             </div>
         </div>
         <div class="column2">
-{{--            @include('homepage._mainRight')--}}
+            @include('partials._sidebar')
         </div>
     </div>
 
-    @include('news._topArticles')
+    @include('partials._horizontalArticles')
 @endsection
