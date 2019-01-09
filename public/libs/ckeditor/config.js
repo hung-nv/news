@@ -48,7 +48,7 @@ CKEDITOR.editorConfig = function( config ) {
     config.removeDialogTabs = 'image:advanced;link:advanced';
 
     var domain;
-    domain = window.location.protocol + '//' + window.location.hostname + '/admin/assets/global/plugins/';
+    domain = window.location.protocol + '//' + window.location.hostname + '/libs/';
 
     config.filebrowserBrowseUrl = domain + 'ckfinder/ckfinder.html';
     config.filebrowserImageBrowseUrl = domain + 'ckfinder/ckfinder.html?type=Images';
