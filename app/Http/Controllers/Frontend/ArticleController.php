@@ -24,19 +24,20 @@ class ArticleController extends Controller
 
     public function page($slug)
     {
-//        $page = Article::where('slug', $slug)->first();
-//        Article::where('slug', $slug)->update(['view' => DB::raw('view + 1')]);
-//        $newArticles = Article::ofType($this->news_details_type)->select('name', 'slug', 'introduction', 'image', 'created_at')->active()->orderByDesc('created_at')->limit(10)->get();
-//
-//        $layout = 'news.page';
-//        if ($this->agent->isMobile()) {
-//            $layout = 'mobile.news.page';
-//        }
-//
-//        return view($layout, [
-//            'page' => $page,
-//            'newArticles' => $newArticles
-//        ]);
+        $article = $this->articleServices->getArticleBySlug($slug);
+
+        $this->setIdsExcept($article->id);
+
+        $this->articleServices->updateViewArticle($article->id);
+
+        $layout = 'news.page';
+        if ($this->agent->isMobile()) {
+            $layout = 'mobile.news.page';
+        }
+
+        return view($layout, [
+            'page' => $article
+        ]);
     }
 
     public function details($slug)
@@ -82,7 +83,7 @@ class ArticleController extends Controller
     public function search(Request $request)
     {
 //        $search = $request->txtSearch;
-//        $articles = $this->postServices->searchPostsByName($search, $this->news_details_type);
+//        $articles = $this->articleServices->searchPostsByName($search, $this->news_details_type);
 //        $articles = $articles->paginate(10);
 //
 //        return view('news.search', [

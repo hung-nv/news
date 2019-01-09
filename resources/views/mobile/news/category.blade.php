@@ -1,9 +1,9 @@
 @section('title')
-    {{ $category->meta_title or $category->name }}
+    {{ isset($category->meta_title) ? $category->meta_title : $category->name }}
 @endsection
 
 @section('description')
-    {{ $category->meta_description or $category->description }}
+    {{ isset($category->meta_description) ? $category->meta_description : $category->description }}
 @endsection
 
 @section('activeText')
@@ -19,12 +19,12 @@
         <ul class="cate-right">
             @foreach ($articles as $i)
                 <li>
-                    <a class="cate-right-img" href="{{ route('news.view', ['slug' => $i->slug]) }}">
+                    <a class="cate-right-img" href="{{ route('article.details', ['slug' => $i->slug]) }}">
                         <img src="/img/80{{ $i->image }}" alt="">
                     </a>
                     <div class="cate-right-more">
                         <span class="datetime">{{ $i->created_at }}</span>
-                        <a href="{{ route('news.view', ['slug' => $i->slug]) }}">
+                        <a href="{{ route('article.details', ['slug' => $i->slug]) }}">
                             {{ $i->name }}
                         </a>
                     </div>

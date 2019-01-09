@@ -72,7 +72,7 @@ class Controller extends BaseController
      */
     public function getGeneralArticle()
     {
-        View::composer('partials._sidebar', function ($view) {
+        View::composer(['partials._sidebar', 'mobile.news._hotArticles'], function ($view) {
             $topInWeek = Article::getTopArticlesInWeek(5, $this->idsExcept);
 
             $newArticles = Article::getNewArticle(5, $this->idsExcept);

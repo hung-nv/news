@@ -1,9 +1,9 @@
 @section('title')
-    {{ $page->meta_title or $page->name }}
+    {{ isset($page) ? $page->meta_title : $page->name }}
 @endsection
 
 @section('description')
-    {{ $page->meta_description or $page->description }}
+    {{ isset($page) ? $page->meta_description : $page->description }}
 @endsection
 
 @extends('layouts.app')
@@ -68,9 +68,9 @@
             </div>
         </div>
         <div class="column2">
-            @include('homepage._mainRight')
+            @include('partials._sidebar')
         </div>
     </div>
 
-    @include('news._topArticles')
+    @include('partials._horizontalArticles')
 @endsection

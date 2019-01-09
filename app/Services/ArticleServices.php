@@ -654,9 +654,10 @@ class ArticleServices
      * Get catalog with products.
      * @param $idsCategory
      * @param int $limit
+     * @param array $idsExcept
      * @return array|null
      */
-    public function getWidgetCategoryWithArticles($idsCategory, $limit = 5)
+    public function getWidgetCategoryWithArticles($idsCategory, $limit, $idsExcept)
     {
         $return = [];
 
@@ -674,7 +675,7 @@ class ArticleServices
 
                 array_push($idsResult, $idCategory);
 
-                $articles = Article::getArticlesByIdsCategory($idsResult, $limit);
+                $articles = Article::getArticlesByIdsCategory($idsResult, $limit, $idsExcept);
 
                 $category = $dataCategory->where('id', $idCategory)->first();
 

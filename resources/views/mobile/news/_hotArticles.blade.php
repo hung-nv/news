@@ -1,10 +1,10 @@
 <div class="box-private">
     <div class="cate-head">
-        <h2>Tin nổi bật</h2>
+        <h2>Tin nổi bật trong tuần</h2>
     </div>
 
-    @if(!empty($hotArticles))
-        @foreach ($hotArticles as $itemHotArticle)
+    @if(!empty($topInWeek))
+        @foreach ($topInWeek as $itemHotArticle)
             <div class="cate-left">
                 <div class="cate-slide-content">
                     <a href="{{ $itemHotArticle->url }}" class="image-link">

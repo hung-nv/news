@@ -1,9 +1,9 @@
 @section('title')
-    {{ $page->meta_title or $page->name }}
+    {{ isset($page->meta_title) ? $page->meta_title : $page->name }}
 @endsection
 
 @section('description')
-    {{ $page->meta_description or $page->description }}
+    {{ isset($page->meta_description) ? $page->meta_description : $page->description }}
 @endsection
 
 @section('activeText')

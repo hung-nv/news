@@ -14,11 +14,11 @@ class PageController extends Controller
 {
     private $postServices;
 
-    public function __construct(ArticleServices $postServices)
+    public function __construct(ArticleServices $articleServices)
     {
         parent::__construct();
 
-        $this->postServices = $postServices;
+        $this->postServices = $articleServices;
     }
 
     /**

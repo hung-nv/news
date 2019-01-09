@@ -406,14 +406,13 @@ a {
   line-height: 1.6em;
   word-wrap: break-word;
   font-size: 13px;
-  line-height: 1.6em;
   padding: 1em 0 0;
   color: #555;
 }
 
 .box1 {
   width: 100%;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 .box1 h2 {
   padding: 6px 0 5px;
@@ -502,7 +501,7 @@ a {
   float: left;
   margin-left: 5px;
   position: relative;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   overflow: hidden;
 }
 .main_top .main_top_right .main_top_right_news img {

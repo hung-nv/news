@@ -14,7 +14,8 @@
             <ol class="breadcrumb">
                 <li><a href="/">Trang chủ</a></li>
                 @if (count($article->category) == 1)
-                    <li><a href="{{ $article->category->first()->url }}">{{ $article->category->first()->name }}</a></li>
+                    <li><a href="{{ $article->category->first()->url }}">{{ $article->category->first()->name }}</a>
+                    </li>
                 @endif
                 <li class="active">{{ $article->name }}</li>
             </ol>

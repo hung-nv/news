@@ -8,25 +8,36 @@ use Jenssegers\Agent\Agent;
 
 class HomepageController extends Controller
 {
-    protected $postServices;
+    protected $articleServices;
     protected $agent;
 
-    public function __construct(ArticleServices $postServices, Agent $agent)
+    public function __construct(ArticleServices $articleServices, Agent $agent)
     {
         parent::__construct();
 
-        $this->postServices = $postServices;
+        $this->articleServices = $articleServices;
         $this->agent = $agent;
     }
 
     public function index()
     {
         $widgetCategory = [];
+
+        $newArticles = $this->articleServices->getNewArticles(5);
+
+        $idsExcept = $newArticles->pluck('id')->all();
+
+        $this->setIdsExcept($idsExcept);
+
         if (!empty($this->option['mainCategory'])) {
-            $widgetCategory = $this->postServices->getWidgetCategoryWithArticles($this->option['mainCategory'], 6);
+            $widgetCategory = $this->articleServices->getWidgetCategoryWithArticles(
+                $this->option['mainCategory'],
+                6,
+                $idsExcept
+            );
         }
 
-        $hotArticles = $this->postServices->getArticlesByGroupId(1, 5);
+        $hotArticles = $this->articleServices->getArticlesByGroupId(1, 5);
 
         $layouts = 'homepage.index';
         if ($this->agent->isMobile()) {
@@ -35,7 +46,8 @@ class HomepageController extends Controller
 
         return view($layouts, [
             'widgetCategory' => $widgetCategory,
-            'mostArticles' => $hotArticles
+            'mostArticles' => $hotArticles,
+            'newArticles' => $newArticles
         ]);
     }
 }

@@ -147,7 +147,7 @@ class Article extends \Eloquent
      * @param $limit
      * @return Article[]|\Illuminate\Database\Eloquent\Collection
      */
-    public static function getArticlesByIdsCategory($idsCategory, $limit = null)
+    public static function getArticlesByIdsCategory($idsCategory, $limit, $idsExcept = [])
     {
         return self::from('articles')
             ->select([
@@ -168,6 +168,7 @@ class Article extends \Eloquent
             })
             ->orderByDesc('articles.updated_at')
             ->where('articles.status', 1)
+            ->whereNotIn('articles.id', $idsExcept)
             ->groupBy('articles.id')
             ->limit($limit)
             ->get();

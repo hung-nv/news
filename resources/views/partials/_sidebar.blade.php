@@ -1,4 +1,4 @@
-@if(isset($newArticles) && $newArticles)
+@if(count($newArticles) > 0)
     <div class="box-doc-1">
         <h2>Bài viết mới nhất</h2>
         <ul>
@@ -15,7 +15,7 @@
     </div>
 @endif
 
-@if(!empty($topInWeek))
+@if(count($topInWeek) > 0)
     <div class="sao">
         <h2>Bài viết nổi bật trong tuần</h2>
         <div class="sao_tren">
