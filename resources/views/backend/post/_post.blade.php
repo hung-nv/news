@@ -2,7 +2,7 @@
     <thead>
     <tr>
         <th> ID</th>
-        <th> Information</th>
+        <th style="width: 50%"> Information</th>
         <th> Created At</th>
         <th> Groups</th>
         <th> Status</th>
