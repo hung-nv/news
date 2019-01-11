@@ -2,7 +2,7 @@
     <div class="main_top">
         <div class="main_top_left">
             <div class="main_top_left_news">
-                <a href="#">
+                <a href="{{ $newArticles[0]->url }}">
                     <img src="img/500_430{{ $newArticles[0]->image }}"/>
                 </a>
                 <h3>

@@ -6,6 +6,8 @@
     {{ !empty($option['meta_description']) ? $option['meta_description'] : '' }}
 @endsection
 
+@section('pageId', 'homepage')
+
 @extends('mobile.layouts.appMobile')
 
 @section('content')

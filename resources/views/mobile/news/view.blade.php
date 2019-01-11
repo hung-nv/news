@@ -31,9 +31,9 @@
             </ul>
         @endif
 
-        @if (!empty($ads300))
-            <div style="margin: 10px auto; left: 0; right: 0;">
-                <!-- -->
+        @if (!empty($advertising[config('const.advertising.auto_link')]))
+            <div class="advertising">
+                {!! $advertising[config('const.advertising.auto_link')] !!}
             </div>
         @endif
 
@@ -41,9 +41,9 @@
             {!! $article->content !!}
         </div>
 
-        @if (!empty($ads300))
-            <div style="margin: 10px auto; left: 0; right: 0;">
-                <!-- -->
+        @if (!empty($advertising[config('const.advertising.300_250')]))
+            <div class="advertising">
+                {!! $advertising[config('const.advertising.300_250')] !!}
             </div>
         @endif
 
@@ -62,6 +62,12 @@
                 </ul>
 
                 <div class="clear"></div>
+            </div>
+        @endif
+
+        @if (!empty($advertising[config('const.advertising.300_250')]))
+            <div class="advertising">
+                {!! $advertising[config('const.advertising.300_250')] !!}
             </div>
         @endif
 

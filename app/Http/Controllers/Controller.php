@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advertising;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Menu;
@@ -45,6 +46,15 @@ class Controller extends BaseController
         $this->getMenu();
 
         $this->getGeneralArticle();
+
+        $this->getAdvertising();
+    }
+
+    public function getAdvertising()
+    {
+        $advertising = Advertising::all()->pluck('content', 'id');
+
+        View::share('advertising', $advertising);
     }
 
     /**

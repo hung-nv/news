@@ -51,6 +51,8 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth', 'namespace' =
         // route resource category.
         Route::resource('category', 'CategoryController');
 
+        Route::resource('advertising', 'AdvertisingController');
+
         // route resource page.
         Route::resource('page', 'PageController', ['except' => ['show']]);
     });

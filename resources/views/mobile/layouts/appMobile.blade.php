@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('/css/app-mobile.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/responsivemobilemenu.css') }}">
 </head>
-<body>
+<body id="@yield('pageId')">
 @include('mobile.layouts.header')
 
 @include('mobile.layouts.breadcrumbs')
