@@ -9,6 +9,33 @@
 @extends('mobile.layouts.appMobile')
 
 @section('content')
+    @if(isset($newArticles) && $newArticles->count())
+        <div class="box-private">
+            <div class="cate-head">
+                <h2>Tin mới nhất</h2>
+            </div>
+
+            @foreach ($newArticles as $itemNewArticle)
+                <div class="cate-left">
+                    <div class="cate-slide-content">
+                        <a href="{{ $itemNewArticle->url }}" class="image-link">
+                            <img src="{{ $itemNewArticle->image }}">
+                        </a>
+
+                        <div class="meta">
+                            <span>{{ $itemNewArticle->created_at }}</span>
+                        </div>
+
+                        <h2><a href="{{ $itemNewArticle->url }}">{{ $itemNewArticle->name }}</a></h2>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            @endforeach
+
+            <div class="clear"></div>
+        </div>
+    @endif
+
     @if(!empty($widgetCategory))
         @foreach($widgetCategory as $itemWidget)
             <div class="home-rows clear">
