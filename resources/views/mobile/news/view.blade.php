@@ -19,14 +19,19 @@
             <img src="/img/10/images/icons8-time-50.png"/>
             <span class="sptime">{{ $article->created_at }}</span>
         </p>
+        @if (!empty($advertising[config('const.advertising.300_250')]))
+            <div class="advertising">
+                {!! $advertising[config('const.advertising.300_250')] !!}
+            </div>
+        @endif
         <div class="description">
             {{ $article->description }}
         </div>
 
-        @if (count($article->relatedPostsByTag()) > 0)
+        @if (isset($newArticles) && $newArticles->count())
             <ul class="related">
-                @foreach ($article->relatedPostsByTag() as $i)
-                    <li><a href="{{ $i->url }}">{{ $i->name }}</a></li>
+                @foreach ($newArticles as $itemNewArticle)
+                    <li><a href="{{ $itemNewArticle->url }}">{{ $itemNewArticle->name }}</a></li>
                 @endforeach
             </ul>
         @endif
