@@ -47,7 +47,7 @@
             </div>
         @endif
 
-        @if (isset($relatedArticles) && $relatedArticles->count)
+        @if (isset($relatedArticles) && $relatedArticles->count())
             <div class="box-private">
                 <div class="cate-head" style="margin-bottom: 0;">
                     <h2>Bài viết liên quan</h2>
