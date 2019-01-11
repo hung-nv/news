@@ -12,6 +12,14 @@
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <!-- Customizable CSS -->
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-9491879653600025",
+            enable_page_level_ads: true
+        });
+    </script>
 </head>
 <body>
     @include('layouts.header')
