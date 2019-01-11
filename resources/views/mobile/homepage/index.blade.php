@@ -11,10 +11,6 @@
 @section('content')
     @if(isset($newArticles) && $newArticles->count())
         <div class="box-private">
-            <div class="cate-head">
-                <h2>Tin mới nhất</h2>
-            </div>
-
             @foreach ($newArticles as $itemNewArticle)
                 <div class="cate-left">
                     <div class="cate-slide-content">

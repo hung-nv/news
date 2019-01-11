@@ -47,14 +47,14 @@
             </div>
         @endif
 
-        @if (!empty($newArticles))
+        @if (isset($relatedArticles) && $relatedArticles->count)
             <div class="box-private">
                 <div class="cate-head" style="margin-bottom: 0;">
-                    <h2>Tin tức mới</h2>
+                    <h2>Bài viết liên quan</h2>
                 </div>
 
                 <ul class="box-moi">
-                    @foreach ($newArticles as $i)
+                    @foreach ($relatedArticles as $i)
                         <li>
                             <a href="{{ $i->url }}">{{ $i->name }}</a>
                         </li>
