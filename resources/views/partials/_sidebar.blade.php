@@ -15,6 +15,10 @@
     </div>
 @endif
 
+@if(!empty($advertising[config('const.advertising.auto')]))
+    {!! $advertising[config('const.advertising.auto')] !!}
+@endif
+
 @if(count($topInWeek) > 0)
     <div class="sao">
         <h2>Bài viết nổi bật trong tuần</h2>

@@ -30,10 +30,10 @@
                     </div>
                 </li>
 
-                @if ($loop->index == 2 && !empty($ads300))
+                @if ($loop->index == 2 && isset($newArticles) && $newArticles->count())
                     <div class="ads"
                          style="margin-left: -25px !important; margin-right: -25px !important; margin-top: 10px; text-align: center;">
-                        <!-- ADS -->
+                        {!! $advertising[config('const.advertising.300_250')] !!}
                     </div>
                 @endif
             @endforeach
