@@ -117,32 +117,51 @@ a {
 #footer {
   width: 100%;
 }
-#footer ul.bottom {
-  width: 1000px;
-  margin: 0 auto;
+#footer .menu-bottom {
+  background: #f4f4f4;
+  border-top: 1px solid #ccc;
+  padding: 20px 30px 0 30px;
+  width: 100%;
+}
+#footer .menu-bottom ul {
+  width: 15%;
+  float: left;
+  margin: 0;
+}
+#footer .menu-bottom ul li {
   list-style: none;
 }
-#footer ul.bottom li {
-  padding: 5px 10px;
-  line-height: 1.5;
+#footer .menu-bottom ul li h6 {
+  height: 20px;
+  margin: 0 0 10px;
+  font-weight: bold;
+}
+#footer .menu-bottom ul li h6 a {
+  color: #666;
+}
+#footer .menu-bottom .company {
+  width: 25%;
   float: left;
+  margin-right: 50px;
 }
-#footer ul.bottom li:hover, #footer ul.bottom li:focus {
-  background: #2fa4e7;
+#footer .menu-bottom .company h6 {
+  font-size: 12px;
+  color: #666;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
-#footer ul.bottom li a {
-  color: #004175;
-  text-transform: uppercase;
+#footer .menu-bottom .company p {
+  font-size: 12px;
+  margin: 5px 0;
 }
-#footer ul.bottom li:hover a, #footer ul.bottom li:focus a {
-  color: #fff;
-}
-#footer .infor {
-  color: #555;
+#footer .copyright {
+  border-top: 1px solid #ccc;
   font-size: 13px;
-  padding: 10px 0;
-  width: 1000px;
-  margin: 0 auto;
+  padding: 5px 0;
+}
+#footer .copyright .sp-copyright {
+  font-size: 12px;
+  color: #000;
 }
 
 .column1 {

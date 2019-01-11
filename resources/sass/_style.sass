@@ -99,29 +99,43 @@ a
 
 #footer
   width: 100%
-  ul.bottom
-    width: 1000px
-    margin: 0 auto
-    list-style: none
-    li
-      padding: 5px 10px
-      line-height: 1.5
+  .menu-bottom
+    background: #f4f4f4
+    border-top: 1px solid #ccc
+    padding: 20px 30px 0 30px
+    width: 100%
+    ul
+      width: 15%
       float: left
-      &:hover, &:focus
-        background: #2fa4e7
-      a
-        color: #004175
-        text-transform: uppercase
+      margin: 0
+      li
+        list-style: none
+        h6
+          height: 20px
+          margin: 0 0 10px
+          font-weight: bold
+          a
+            color: #666
+    .company
+      width: 25%
+      float: left
+      margin-right: 50px
+      h6
+        font-size: 12px
+        color: #666
+        font-weight: bold
+        margin-bottom: 10px
+      p
+        font-size: 12px
+        margin: 5px 0
 
-      &:hover a, &:focus a
-        color: #fff
-
-  .infor
-    color: #555
+  .copyright
+    border-top: 1px solid #ccc
     font-size: 13px
-    padding: 10px 0
-    width: 1000px
-    margin: 0 auto
+    padding: 5px 0
+    .sp-copyright
+      font-size: 12px
+      color: #000
 
 .column1
   width: 680px
