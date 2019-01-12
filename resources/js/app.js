@@ -8,6 +8,8 @@ require('./pages/category/index_category');
 require('./pages/setting/menu');
 require('./pages/setting/setting_site');
 require('./pages/user/index_user');
+require('./pages/advertising/index_advertising');
+require('./pages/advertising/create_update_advertising');
 
 /**
  * The following block of code may be used to automatically register your

@@ -1,20 +1,19 @@
 @extends('backend.layouts.app', ['viewData' => [
-    'oldName' => '',
-    'oldSlug' => ''
+    'type' => $data['type']
 ]])
 
-@section('title', 'Insert Category')
+@section('title', 'Update Advertising #'.$data['id'])
 
-@section('pageId', 'create-edit-category')
+@section('pageId', 'create-update-advertising')
 
 @section('breadcrumbs')
-    <a href="{{ route('category.index') }}">Category</a>
+    <a href="{{ route('advertising.index') }}">Advertising</a>
     <i class="fa fa-circle"></i>
 @endsection
 
 @section('content')
-    <h3 class="page-title"> Category
-        <small>Insert</small>
+    <h3 class="page-title"> Manager Advertising
+        <small>Update</small>
     </h3>
 
     <div class="row">
@@ -29,17 +28,18 @@
 
                     @include('backend.blocks.message')
 
-                    <form action="{{ route('category.store') }}" class="form-horizontal form-row-seperated" role="form"
+                    <form action="{{ route('advertising.update', ['advertising' => $data['id']]) }}" role="form"
+                          class="form-horizontal form-row-seperated"
                           method="post" enctype="multipart/form-data">
 
                         {{ csrf_field() }}
+                        {{ method_field('PUT') }}
 
                         @include('backend.blocks.errors')
 
-                        @include('backend.category._form')
+                        @include('backend.advertising.partial._form')
 
                         @include('backend.common.actionForm')
-
                     </form>
                 </div>
             </div>

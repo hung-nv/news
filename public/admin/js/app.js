@@ -11702,6 +11702,10 @@ __webpack_require__(/*! ./pages/setting/menu */ "./resources/js/pages/setting/me
 __webpack_require__(/*! ./pages/setting/setting_site */ "./resources/js/pages/setting/setting_site.js");
 
 __webpack_require__(/*! ./pages/user/index_user */ "./resources/js/pages/user/index_user.js");
+
+__webpack_require__(/*! ./pages/advertising/index_advertising */ "./resources/js/pages/advertising/index_advertising.js");
+
+__webpack_require__(/*! ./pages/advertising/create_update_advertising */ "./resources/js/pages/advertising/create_update_advertising.js");
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -11811,6 +11815,96 @@ function doException(xhr) {
     });
   }
 }
+
+/***/ }),
+
+/***/ "./resources/js/pages/advertising/create_update_advertising.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/pages/advertising/create_update_advertising.js ***!
+  \*********************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _utilities_images_image__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utilities/images/image */ "./resources/js/utilities/images/image.js");
+
+var ui = {
+  pageId: '#create-update-advertising',
+  inputImage: '#image',
+  inputOldImage: '#old-image',
+  urlDeleteImage: '/api/advertising/delete-image',
+  inputRemoveInitPreview: '.kv-file-remove'
+};
+
+if ($(ui.pageId).length) {
+  new Vue({
+    el: ui.pageId,
+    data: {
+      adType: viewData.type !== null ? viewData.type : null
+    },
+    methods: {}
+  });
+  $(function () {
+    setInputImage();
+    /**
+     * Set input image preview.
+     */
+
+    function setInputImage() {
+      if ($(ui.inputImage).length) {
+        if ($(ui.inputOldImage).length) {
+          Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldImage, ui.inputImage, ui.urlDeleteImage);
+        } else {
+          Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputImage);
+        }
+      }
+
+      $(ui.inputImage).on('fileclear', function (event) {
+        $(ui.inputRemoveInitPreview).trigger("click");
+      });
+    }
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/pages/advertising/index_advertising.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/pages/advertising/index_advertising.js ***!
+  \*************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/helpers */ "./resources/js/helpers/helpers.js");
+
+var ui = {
+  pageId: '#index-advertising',
+  tableAdvertising: '#datatable-advertising'
+};
+$(function () {
+  if ($(ui.pageId).length) {
+    new Vue({
+      el: ui.pageId,
+      methods: {
+        confirmBeforeDelete: function confirmBeforeDelete(event) {
+          Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["confirmBeforeDelete"])(event.target, 'Do you want to delete this?');
+        }
+      }
+    });
+
+    if ($(ui.tableAdvertising).length) {
+      $(ui.tableAdvertising).dataTable({
+        ordering: false,
+        order: [[0, 'desc']],
+        bLengthChange: true,
+        bFilter: true
+      });
+    }
+  }
+});
 
 /***/ }),
 

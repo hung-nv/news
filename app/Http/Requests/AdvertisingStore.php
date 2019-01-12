@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AttributeRequest extends FormRequest
+class AdvertisingStore extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,15 +23,17 @@ class AttributeRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'attr_value' => 'required|combine_unique:attribute_values,attr_value,attribute_id'
+        $rules = [
+            'name' => 'required|unique:advertising,name|max:255',
+            'type' => 'required'
         ];
-    }
 
-    public function messages()
-    {
-        return [
-            'attr_value.combine_unique' => 'Attribute already exist'
-        ];
+        if ($this->type == 1) {
+            $rules['script'] = 'required';
+        } elseif ($this->type == 2) {
+            $rules['image'] = 'required|image|max:1024';
+        }
+
+        return $rules;
     }
 }
