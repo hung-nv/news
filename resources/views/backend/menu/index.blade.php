@@ -155,4 +155,6 @@
 @push('script')
     <script src="{{ asset('/libs/jquery-nestable/jquery.nestable.js') }}"
             type="text/javascript"></script>
+    <script src="{{ asset('/libs/ui-nestable.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/libs/jquery-validation/js/jquery.validate.js') }}" type="text/javascript"></script>
 @endpush

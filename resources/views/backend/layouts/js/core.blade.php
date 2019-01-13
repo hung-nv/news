@@ -13,4 +13,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.all.min.js"
         type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
-<script src="{{ asset('/admin/assets/scripts/theme.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/libs/themes/theme.js') }}" type="text/javascript"></script>

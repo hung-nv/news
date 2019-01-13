@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <?php $main_menu_id = isset($option['main_menu_id']) ? $option['main_menu_id'] : old('main_menu_id') ?>
+    <?php $mainMenuId = isset($option['main_menu_id']) ? $option['main_menu_id'] : old('main_menu_id') ?>
     <div class="form-group">
         <label class="col-md-2 control-label">Main Menu</label>
         <div class="col-md-5">
@@ -31,7 +31,21 @@
                 <option value="">Select Menu...</option>
                 @foreach($menus as $mainMenu)
                     <option value="{{ $mainMenu->id }}"
-                            @if($mainMenu->id == $main_menu_id) selected @endif>{{ $mainMenu->name }}</option>
+                            @if($mainMenu->id == $mainMenuId) selected @endif>{{ $mainMenu->name }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+
+    <?php $bottomMenuId = isset($option['footer_menu_id']) ? $option['footer_menu_id'] : old('footer_menu_id') ?>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Footer Menu</label>
+        <div class="col-md-5">
+            <select class="form-control" name="footer_menu_id">
+                <option value="">Select Menu...</option>
+                @foreach($menus as $subMenu)
+                    <option value="{{ $subMenu->id }}"
+                            @if($subMenu->id == $bottomMenuId) selected @endif>{{ $subMenu->name }}</option>
                 @endforeach
             </select>
         </div>

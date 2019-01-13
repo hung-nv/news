@@ -10,7 +10,6 @@ const ui = {
     urlAddCustom: '/api/add-custom',
     urlGetMenuNestable: '/api/get-menu/',
     urlDeleteMenu: '/api/delete-menu',
-    urlUpdateSort: '/api/update-sort',
     elementNestable: '.dd-list',
     divNestable: '#nestable_list_2'
 };

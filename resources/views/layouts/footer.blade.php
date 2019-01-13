@@ -9,37 +9,18 @@
                     <p>GP: 354/GP-TTĐT do Sở TT&TT Hà Nội cấp 25/01/2017</p>
                 </div>
 
-                <ul>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                </ul>
-
-                <ul>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                </ul>
-
-                <ul>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                </ul>
-
-                <ul>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                    <li><h6><a href="#">Tin tức</a></h6></li>
-                </ul>
+                @if(!empty($footerMenu))
+                    @foreach($footerMenu as $itemFooterMenu)
+                        <ul>
+                            <li><h6><a href="{{ $itemFooterMenu['url'] }}">{{ $itemFooterMenu['name'] }}</a></h6></li>
+                            @if(!empty($itemFooterMenu['child']))
+                                @foreach($itemFooterMenu['child'] as $itemChild)
+                                    <li><h6><a href="{{ $itemChild['url'] }}">{{ $itemChild['name'] }}</a></h6></li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    @endforeach
+                @endif
                 <div class="clear"></div>
             </div>
             <div class="copyright">

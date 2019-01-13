@@ -117,7 +117,9 @@ class ArticleServices
     {
         $post = Article::create($data);
 
-        $post->category()->attach($data['parent']);
+        if (!empty($data['parent'])) {
+            $post->category()->attach($data['parent']);
+        }
 
         $message = 'Create "' . $post->name . '" successful';
 

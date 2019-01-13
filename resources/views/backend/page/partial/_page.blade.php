@@ -21,11 +21,7 @@
                 </td>
                 <td>{{ $i->created_at }}</td>
                 <td>
-                    @if($i->system_link_type_id === $pageType)
-                        <span class="badge badge-info badge-roundless"> Page </span>
-                    @else
-                        <span class="badge badge-warning badge-roundless"> Landing Page </span>
-                    @endif
+                    <span class="badge badge-info badge-roundless"> Page </span>
                 </td>
                 <td>
                     @if($i->status === 1)
@@ -38,13 +34,8 @@
                     <form action="{{ route('page.destroy', $i->id) }}" method="POST">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
-                        @if($i->system_link_type_id === $pageType)
-                            <a href="{{ route('page.edit', ['page' => $i->id]) }}"
-                               class="btn red btn-sm">Update</a>
-                        @else
-                            <a href="{{ route('page.editLanding', ['id' => $i->id]) }}"
-                               class="btn red btn-sm">Update Landing</a>
-                        @endif
+                        <a href="{{ route('page.edit', ['page' => $i->id]) }}"
+                           class="btn red btn-sm">Update</a>
                         <button type="button" class="btn red btn-sm btn-delete" v-on:click="confirmBeforeDelete">
                             Delete
                         </button>

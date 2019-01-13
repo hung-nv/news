@@ -117,6 +117,12 @@ class Controller extends BaseController
 
             View::share('mainMenu', $mainMenu);
         }
+
+        if (!empty($this->option['footer_menu_id'])) {
+            $footerMenu = $this->setMultiMenu(Menu::getMenuByGroup($this->option['footer_menu_id'])->toArray());
+
+            View::share('footerMenu', $footerMenu);
+        }
     }
 
     /**

@@ -161,7 +161,7 @@
 <script src="{{ asset('/libs/app.min.js') }}" type="text/javascript"></script>
 <!-- END THEME GLOBAL SCRIPTS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="{{ asset('/admin/assets/scripts/login-5.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/libs/themes/login-5.min.js') }}" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
 <!-- END THEME LAYOUT SCRIPTS -->

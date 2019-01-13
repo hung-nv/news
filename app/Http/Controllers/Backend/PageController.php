@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\LandingStore;
 use App\Http\Requests\LandingUpdate;
+use App\Http\Requests\PageStore;
+use App\Http\Requests\PageUpdate;
 use App\Http\Requests\PostStore;
 use App\Http\Requests\PostUpdate;
 use App\Services\ArticleServices;
@@ -63,47 +65,9 @@ class PageController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function store(PostStore $request)
+    public function store(PageStore $request)
     {
         $response = $this->postServices->createPost($request, $this->pageType);
-
-        return redirect()->route('page.index')->with([
-            'success' => $response
-        ]);
-    }
-
-    /**
-     * Create landing page.
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Throwable
-     */
-    public function landing(Request $request)
-    {
-        $templateCategory = $this->postServices->getCheckboxCategory(
-            $this->categoryType,
-            $request->old('parent')
-        );
-
-        $name = $request->old('name') ? $request->old('name') : '';
-        $slug = $request->old('slug') ? $request->old('slug') : '';
-
-        return view('backend.page.landing', [
-            'templateCategory' => $templateCategory,
-            'name' => $name,
-            'slug' => $slug
-        ]);
-    }
-
-    /**
-     * Store landing page.
-     * @param LandingStore $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
-    public function storeLanding(LandingStore $request)
-    {
-        $response = $this->postServices->createLandingPage($request, '');
 
         return redirect()->route('page.index')->with([
             'success' => $response
@@ -129,7 +93,7 @@ class PageController extends Controller
 
             return view('backend.page.update', [
                 'templateCategory' => $templateCategory,
-                'post' => $dataPost['post'],
+                'page' => $dataPost['post'],
                 'name' => $dataPost['name'],
                 'slug' => $dataPost['slug']
             ]);
@@ -140,59 +104,14 @@ class PageController extends Controller
 
     /**
      * Update page.
-     * @param PostUpdate $request
+     * @param PageUpdate $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function update(PostUpdate $request, $id)
+    public function update(PageUpdate $request, $id)
     {
         $response = $this->postServices->updatePost($request, $id, true);
-
-        return redirect()->route('page.index')->with([
-            'success' => $response
-        ]);
-    }
-
-    /**
-     * Edit landing.
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Throwable
-     */
-    public function editLanding(Request $request, $id)
-    {
-        try {
-            $dataPage = $this->postServices->getLandingInformationById($request, $id);
-
-            $templateCategory = $this->postServices->getCheckboxCategory(
-                $this->categoryType,
-                $dataPage['post_category']
-            );
-
-            return view('backend.page.updateLanding', [
-                'templateCategory' => $templateCategory,
-                'page' => $dataPage['page'],
-                'name' => $dataPage['name'],
-                'slug' => $dataPage['slug'],
-                'field' => $dataPage['dataLanding']
-            ]);
-        } catch (\Exception $exception) {
-            return abort(404);
-        }
-    }
-
-    /**
-     * Update landing page.
-     * @param LandingUpdate $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
-    public function updateLanding(LandingUpdate $request, $id)
-    {
-        $response = $this->postServices->updateLanding($request, $id);
 
         return redirect()->route('page.index')->with([
             'success' => $response
