@@ -4,9 +4,12 @@
             <div class="menu-bottom">
                 <div class="company">
                     <h6>Về chúng tôi</h6>
-                    <p>Những điều quen thuộc với người này có thể là một BÍ MẬT to lớn đối với người khác</p>
-                    <p>Liên hệ chúng tôi: contact@gocteen.com</p>
-                    <p>GP: 354/GP-TTĐT do Sở TT&TT Hà Nội cấp 25/01/2017</p>
+                    @if(!empty($option['company_description']))
+                        <p>{{ $option['company_description'] }}</p>
+                    @endif
+                    @if(!empty($option['email']))
+                        <p>Liên hệ chúng tôi: {{ $option['email'] }}</p>
+                    @endif
                 </div>
 
                 @if(!empty($footerMenu))
