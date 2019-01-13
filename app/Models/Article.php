@@ -210,6 +210,23 @@ class Article extends \Eloquent
     }
 
     /**
+     * Get articles by names and pagination.
+     * @param $name
+     * @param $pageSize
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public static function paginateArticlesByName($name, $pageSize)
+    {
+        $model = self::where('name', 'LIKE', '%' . $name . '%')
+            ->where('status', 1)
+            ->where('type', self::POST_TYPE)
+            ->orderByDesc('updated_at')
+            ->paginate($pageSize);
+
+        return $model;
+    }
+
+    /**
      * Get article by slug.
      * @param $slug
      * @return Article|Model|object|null

@@ -3,7 +3,7 @@
 @endsection
 
 @section('description')
-    {{ $setting['meta_description'] or '' }}
+    {{ !empty($option['meta_description']) ? $option['meta_description'] : '' }}
 @endsection
 
 @extends('layouts.app')
@@ -17,7 +17,7 @@
                 @foreach ($articles as $i)
                     <div class="@if($loop->index % 2 == 0)cate-left clear @else cate-right @endif">
                         <div class="cate-slide-content">
-                            <a href="{{ route('news.view', ['slug' => $i->slug]) }}" class="image-link">
+                            <a href="{{ route('article.details', ['slug' => $i->slug]) }}" class="image-link">
                                 <img src="/img/330{{ $i->image }}">
                             </a>
 
@@ -25,7 +25,7 @@
                                 <span>{{ $i->created_at }}</span>
                             </div>
 
-                            <h2><a href="{{ route('news.view', ['slug' => $i->slug]) }}">{{ $i->name }}</a></h2>
+                            <h2><a href="{{ route('article.details', ['slug' => $i->slug]) }}">{{ $i->name }}</a></h2>
 
                             <div class="excerpt">
                                 <p>{{ $i->description }}</p>
@@ -43,13 +43,9 @@
             </div>
         </div>
         <div class="column2">
-            @include('homepage._mainRight')
+            @include('partials._sidebar')
         </div>
     </div>
 
-    @if(!empty($mostArticles))
-        <div class="docnhieunhat">
-
-        </div>
-    @endif
+    @include('partials._horizontalArticles')
 @endsection

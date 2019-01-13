@@ -1,9 +1,9 @@
 @section('title')
-    {{ isset($page) ? $page->meta_title : $page->name }}
+    {{ !empty($page->meta_title) ? $page->meta_title : $page->name }}
 @endsection
 
 @section('description')
-    {{ isset($page) ? $page->meta_description : $page->description }}
+    {{ !empty($pagee->meta_description) ? $page->meta_description : $page->description }}
 @endsection
 
 @extends('layouts.app')

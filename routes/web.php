@@ -5,6 +5,8 @@ Route::get('/administrator', function () {
 });
 
 Route::group(['namespace' => 'Frontend'], function () {
+    // route search articles.
+    Route::get('search', ['as' => 'article.search', 'uses' => 'ArticleController@search']);
     // route homepage.
     Route::get('/', ['as' => 'homepage', 'uses' => 'HomepageController@index']);
     // route post details.
@@ -22,8 +24,6 @@ Route::group(['namespace' => 'Frontend'], function () {
         'as' => 'article.page',
         'uses' => 'ArticleController@page'
     ]);
-    // route search articles.
-    Route::get('search', ['as' => 'article.search', 'uses' => 'ArticleController@search']);
 });
 
 Route::group(['prefix' => 'administrator', 'namespace' => 'Backend'], function () {

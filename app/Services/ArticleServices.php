@@ -663,7 +663,19 @@ class ArticleServices
 
         $this->getIdsCategoryByParent($allCategory, $idsCategory, $categoryId);
 
-        $articles = Article::paginateArticlesByIdsCategory($idsCategory, $articleType);
+        $articles = Article::paginateArticlesByIdsCategory($idsCategory, $articleType, 10);
+
+        return $articles;
+    }
+
+    /**
+     * Get all articles by name.
+     * @param $name
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getAllArticlesByName($name)
+    {
+        $articles = Article::paginateArticlesByName($name, 10);
 
         return $articles;
     }

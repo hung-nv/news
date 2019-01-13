@@ -88,13 +88,12 @@ class ArticleController extends Controller
 
     public function search(Request $request)
     {
-//        $search = $request->txtSearch;
-//        $articles = $this->articleServices->searchPostsByName($search, $this->news_details_type);
-//        $articles = $articles->paginate(10);
-//
-//        return view('news.search', [
-//            'search' => $search,
-//            'articles' => $articles
-//        ]);
+        $search = $request->txtSearch;
+        $articles = $this->articleServices->getAllArticlesByName($search);
+
+        return view('news.search', [
+            'search' => $search,
+            'articles' => $articles
+        ]);
     }
 }
