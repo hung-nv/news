@@ -6,6 +6,10 @@
     {{ isset($article->meta_description) ? $article->meta_description : $article->description }}
 @endsection
 
+@section('og_title', isset($article->meta_title) ? $article->meta_title : $article->name)
+@section('og_description', isset($article->meta_description) ? $article->meta_description : $article->description)
+@section('og_image', 'img/400'.$article->image)
+
 @extends('layouts.app')
 
 @section('content')

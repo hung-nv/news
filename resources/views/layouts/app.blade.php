@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,6 +13,10 @@
     <!-- Customizable CSS -->
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 
+    <meta property="og:title" content="@yield('og_title')" />
+    <meta property="og:description" content="@yield('og_description')" />
+    <meta property="og:image" content="@yield('og_image')" />
+    
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({
