@@ -16,6 +16,10 @@
     <meta property="og:title" content="@yield('og_title')" />
     <meta property="og:description" content="@yield('og_description')" />
     <meta property="og:image" content="@yield('og_image')" />
+
+    @if(!empty($option['private_script']))
+        {!! $option['private_script'] !!}
+    @endif
 </head>
 <body>
     @include('layouts.header')

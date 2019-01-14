@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/app-mobile.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/responsivemobilemenu.css') }}">
+
+    @if(!empty($option['private_script']))
+        {!! $option['private_script'] !!}
+    @endif
 </head>
 <body id="@yield('pageId')">
 @include('mobile.layouts.header')

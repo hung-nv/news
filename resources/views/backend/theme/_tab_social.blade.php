@@ -22,4 +22,12 @@
                    value="{{ isset($option['google_analytics_id']) ? $option['google_analytics_id'] : old('google_analytics_id') }}"/>
         </div>
     </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Private Script</label>
+        <div class="col-md-5">
+            <textarea name="private_script"
+                      class="form-control">{{ isset($option['private_script']) ? $option['private_script'] : old('private_script') }}</textarea>
+        </div>
+    </div>
 </div>
