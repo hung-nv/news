@@ -9,44 +9,114 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        @include('homepage._topArticles')
+    <!-- Main Container -->
+    <div class="main-wrapper">
 
-        @include('partials._horizontalArticles')
+        <!-- Container -->
+        <div class="container">
+            <div class="white-space space-big"></div>
 
-        <div class="column1">
-            @if (!empty($widgetCategory))
-                @foreach($widgetCategory as $itemWidget)
-                    <h1 class="cate-title"><a href="/">{{ $itemWidget['category']->name }}</a></h1>
-                    <div class="clear"></div>
-                    @if(isset($itemWidget['articles']) && $itemWidget['articles'])
-                        @foreach ($itemWidget['articles'] as $i)
-                            <div class="@if($loop->index % 2 == 0)cate-left clear @else cate-right @endif">
-                                <div class="cate-slide-content">
-                                    <a href="{{ route('article.details', ['slug' => $i->slug]) }}" class="image-link">
-                                        <img src="/img/330_210{{ $i->image }}">
-                                    </a>
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="iconbox vertical animation fadeInLeft">
+                        <div class="iconbox-wrapper center-block color-default circle border iconbox-3x">
+                            <span class="livicon" data-n="pencil" data-s="64" data-color="#F7505A" data-hovercolor="#F7505A" data-op="1" data-onparent="true"></span>
+                        </div>
+                        <div class="iconbox-content">
+                            <h4>Giải pháp tối ưu</h4>
+                            <p>Quisque sagittis lacus eu lorem sodales, id <a href="#">vulputate velit</a> adipiscing. Aenean adipiscing, sem sit amet mollis aliquet.</p>
+                        </div>
+                    </div>
+                    <div class="white-space space-small"></div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="iconbox vertical animation fadeInLeft delay1">
+                        <div class="iconbox-wrapper center-block color-default circle border iconbox-3x">
+                            <span class="livicon" data-n="rocket" data-s="64" data-color="#F7505A" data-hovercolor="#F7505A" data-op="1" data-onparent="true"></span>
+                        </div>
+                        <div class="iconbox-content">
+                            <h4>Tư vấn chuyên nghiệp</h4>
+                            <p>Quisque sagittis lacus eu lorem sodales, id <a href="#">vulputate velit</a> adipiscing. Aenean adipiscing, sem sit amet mollis aliquet.</p>
+                        </div>
+                    </div>
+                    <div class="white-space space-small"></div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="iconbox vertical animation fadeInRight">
+                        <div class="iconbox-wrapper center-block color-default circle border iconbox-3x">
+                            <span class="livicon" data-n="responsive" data-s="64" data-color="#F7505A" data-hovercolor="#F7505A" data-op="1" data-onparent="true"></span>
+                        </div>
+                        <div class="iconbox-content">
+                            <h4>Thấu hiểu khách hàng</h4>
+                            <p>Quisque sagittis lacus eu lorem sodales, id <a href="#">vulputate velit</a> adipiscing. Aenean adipiscing, sem sit amet mollis aliquet.</p>
+                        </div>
+                    </div>
+                    <div class="white-space space-small"></div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="iconbox vertical animation fadeInRight delay1">
+                        <div class="iconbox-wrapper center-block color-default circle border iconbox-3x">
+                            <span class="livicon" data-n="settings" data-s="64" data-color="#F7505A" data-hovercolor="#F7505A" data-op="1" data-onparent="true"></span>
+                        </div>
+                        <div class="iconbox-content">
+                            <h4>Chi phí hợp lý</h4>
+                            <p>Quisque sagittis lacus eu lorem sodales, id <a href="#">vulputate velit</a> adipiscing. Aenean adipiscing, sem sit amet mollis aliquet.</p>
+                        </div>
+                    </div>
+                    <div class="white-space space-small"></div>
+                </div>
+            </div>
 
-                                    <div class="meta">
-                                        <span>{{ $i->created_at }}</span>
-                                    </div>
+            <div class="white-space space-medium"></div>
+        </div>
+        <!-- /Container -->
 
-                                    <h2><a href="{{ route('article.details', ['slug' => $i->slug]) }}">{{ $i->name }}</a></h2>
+        @include('homepage._special')
 
-                                    <div class="excerpt">
-                                        <p>{{ $i->description }}</p>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
+        @include('homepage._why_us')
+
+        @include('homepage._services')
+
+        <!-- Container -->
+        <div class="container">
+            <div class="white-space space-big"></div>
+
+            <div class="row">
+                <div class="col-md-12 columns">
+                    <!-- Carousel -->
+                    <div class="carousel-box" >
+                        <div class="carousel carousel-simple" data-carousel-autoplay="6000" data-carousel-items="5" data-carousel-nav="false" data-carousel-pagination="false"  data-carousel-speed="1000">
+                            <div class="carousel-item">
+                                <img src="img/demo/logos/1.png" class="img-transparency" alt="Brand 1">
                             </div>
-                        @endforeach
-                    @endif
-                    <div class="clear"></div>
-                @endforeach
-            @endif
+                            <div class="carousel-item">
+                                <img src="img/demo/logos/2.png" class="img-transparency" alt="Brand 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/demo/logos/3.png" class="img-transparency" alt="Brand 3">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/demo/logos/4.png" class="img-transparency" alt="Brand 4">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/demo/logos/5.png" class="img-transparency" alt="Brand 5">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/demo/logos/6.png" class="img-transparency" alt="Brand 6">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/demo/logos/1.png" class="img-transparency" alt="Brand 7">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Carousel -->
+                </div>
+            </div>
+
+            <div class="white-space space-big"></div>
         </div>
-        <div class="column2">
-            @include('partials._sidebar')
-        </div>
+        <!-- /Container -->
+
     </div>
+    <!-- /Main Container -->
 @endsection

@@ -16,7 +16,3 @@ mix.js('resources/js/app.js', 'public/admin/js')
     .options({
         processCssUrls: false
     });
-mix.sass('resources/sass/app-mobile.sass', 'public/css')
-    .options({
-        processCssUrls: false
-    });
