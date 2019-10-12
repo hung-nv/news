@@ -44,7 +44,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="iconbox vertical animation fadeInRight">
                         <div class="iconbox-wrapper center-block color-default circle border iconbox-3x">
-                            <span class="livicon" data-n="responsive" data-s="64" data-color="#F7505A" data-hovercolor="#F7505A" data-op="1" data-onparent="true"></span>
+                            <span class="livicon" data-n="users" data-s="64" data-color="#F7505A" data-hovercolor="#F7505A" data-op="1" data-onparent="true"></span>
                         </div>
                         <div class="iconbox-content">
                             <h4>Thấu hiểu khách hàng</h4>
@@ -56,7 +56,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="iconbox vertical animation fadeInRight delay1">
                         <div class="iconbox-wrapper center-block color-default circle border iconbox-3x">
-                            <span class="livicon" data-n="settings" data-s="64" data-color="#F7505A" data-hovercolor="#F7505A" data-op="1" data-onparent="true"></span>
+                            <span class="livicon" data-n="money" data-s="64" data-color="#F7505A" data-hovercolor="#F7505A" data-op="1" data-onparent="true"></span>
                         </div>
                         <div class="iconbox-content">
                             <h4>Chi phí hợp lý</h4>
@@ -79,7 +79,7 @@
 
         <!-- Container -->
         <div class="container">
-            <div class="white-space space-big"></div>
+            <div class="white-space space-small"></div>
 
             <div class="row">
                 <div class="col-md-12 columns">
@@ -113,7 +113,7 @@
                 </div>
             </div>
 
-            <div class="white-space space-big"></div>
+            <div class="white-space space-small"></div>
         </div>
         <!-- /Container -->
 

@@ -80,6 +80,8 @@
     @include('layouts.slider')
 
     @yield('content')
+
+    @include('layouts.footer')
 </div>
 
 

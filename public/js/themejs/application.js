@@ -23,10 +23,8 @@
 	[12]	Lightbox
 	[13]	Tooltips
 	[14]	Animation on Scroll
-	[15]	Google Maps
 	[16]	Counters
 	[17]	Pie Chart
-	[18]	Twitter
 	[19]	Back to top
 	[20]	Under Construction Counter
 	[21]	Animate Demo - remove on production websites
@@ -174,7 +172,7 @@ gfx(document).ready(function(){
 						dottedOverlay:"threexthree",
 						delay:16000,
 						startwidth:1170,
-						startheight:700,
+						startheight:600,
 						hideThumbs:200,
 						
 						thumbWidth:100,
@@ -216,7 +214,7 @@ gfx(document).ready(function(){
 								
 						shadow:0,
 						fullWidth:"off",
-						fullScreen:"on",
+						fullScreen:"off",
 
 						spinner:"spinner4",
 						
@@ -532,87 +530,6 @@ gfx('.animation').waypoint(function(direction) {
 triggerOnce: true });
 
 /* ---------------------------------------------------
-	Google Maps
--------------------------------------------------- */
-gfx(document).ready(function () {
-
-if (gfx('#google-map-footer').length>0) {
-	var e=new google.maps.LatLng(37.331789, -122.029620),
-		o={zoom:17,center:new google.maps.LatLng(37.331789, -122.029620),
-		mapTypeId:google.maps.MapTypeId.ROADMAP,
-		mapTypeControl:false,
-		scrollwheel:false,
-		zoomControl: true,
-		zoomControlOptions: {style: google.maps.ZoomControlStyle.SMALL},
-		draggable:!0,
-		navigationControl:!1,
-		styles: [	{featureType:"administrative",elementType:"all",stylers:[{visibility:"on"},{saturation:-100},{lightness:20}]},	{featureType:"road",elementType:"all",stylers:[{visibility:"on"},{saturation:-100},{lightness:40}]},	{featureType:"water",elementType:"all",stylers:[{visibility:"on"},{saturation:-10},{lightness:30}]},	{featureType:"landscape.man_made",elementType:"all",stylers:[{visibility:"simplified"},{saturation:-60},{lightness:10}]},	{featureType:"landscape.natural",elementType:"all",stylers:[{visibility:"simplified"},{saturation:-60},{lightness:60}]},	{featureType:"poi",elementType:"all",stylers:[{visibility:"off"},{saturation:-100},{lightness:60}]},	{featureType:"transit",elementType:"all",stylers:[{visibility:"off"},{saturation:-100},{lightness:60}]}]	
-	},
-		n=new google.maps.Map(document.getElementById("google-map-footer"),o);
-		google.maps.event.addDomListener(window,"resize",function(){var e=n.getCenter();
-		google.maps.event.trigger(n,"resize"),n.setCenter(e)});
-		
-		var g='<div class="map-marker"><h4 class="color-dark xbold">AVENDOR</h4><p>United States of America</p><p>New York. 123 Fifth Avenue</p></div>',a=new google.maps.InfoWindow({content:g})
-		,t=new google.maps.MarkerImage("img/theme/google-marker.png",new google.maps.Size(157,70),
-		new google.maps.Point(0,0),new google.maps.Point(75,50)),
-		i=new google.maps.LatLng(37.331789, -122.029620),
-		p=new google.maps.Marker({position:i,map:n,icon:t,zIndex:3});
-		google.maps.event.addListener(p,"click",function(){a.open(n,p)}),
-		gfx(".gmap-button").click(function(){gfx("#google-map-footer").slideToggle(300,function(){google.maps.event.trigger(n,"resize"),n.setCenter(e)}),
-		gfx(this).toggleClass("show-map")});
-
-		var z='<div class="map-marker"><h4 class="color-dark xbold">AVENDOR</h4><p>United States of America</p><p>New York. 123 Fifth Avenue</p></div>',a=new google.maps.InfoWindow({content:z})
-		,t=new google.maps.MarkerImage("img/theme/google-marker.png",new google.maps.Size(157,70),
-		new google.maps.Point(0,0),new google.maps.Point(75,50)),
-		l=new google.maps.LatLng(37.3312, -122.0296),
-		q=new google.maps.Marker({position:l,map:n,icon:t,zIndex:3});
-		google.maps.event.addListener(q,"click",function(){a.open(n,q)}),
-		gfx(".gmap-button").click(function(){gfx("#google-map").slideToggle(300,function(){google.maps.event.trigger(n,"resize"),n.setCenter(e)}),
-		gfx(this).toggleClass("show-map")});
-		
-}
-
-if (gfx('#google-map').length>0) {
-
-	var e=new google.maps.LatLng(37.331789, -122.029620),
-		o={zoom:17,center:new google.maps.LatLng(37.331789, -122.029620),
-		mapTypeId:google.maps.MapTypeId.ROADMAP,
-		mapTypeControl:false,
-		scrollwheel:false,
-		zoomControl: true,
-		zoomControlOptions: {style: google.maps.ZoomControlStyle.SMALL},
-		draggable:!0,
-		navigationControl:!1,
-		styles: [	{featureType:"administrative",elementType:"all",stylers:[{visibility:"on"},{saturation:-100},{lightness:20}]},	{featureType:"road",elementType:"all",stylers:[{visibility:"on"},{saturation:-100},{lightness:40}]},	{featureType:"water",elementType:"all",stylers:[{visibility:"on"},{saturation:-10},{lightness:30}]},	{featureType:"landscape.man_made",elementType:"all",stylers:[{visibility:"simplified"},{saturation:-60},{lightness:10}]},	{featureType:"landscape.natural",elementType:"all",stylers:[{visibility:"simplified"},{saturation:-60},{lightness:60}]},	{featureType:"poi",elementType:"all",stylers:[{visibility:"off"},{saturation:-100},{lightness:60}]},	{featureType:"transit",elementType:"all",stylers:[{visibility:"off"},{saturation:-100},{lightness:60}]}]	
-	},
-		n=new google.maps.Map(document.getElementById("google-map"),o);
-		google.maps.event.addDomListener(window,"resize",function(){var e=n.getCenter();
-		google.maps.event.trigger(n,"resize"),n.setCenter(e)});
-		
-		var g='<div class="map-marker"><h4 class="color-dark xbold">AVENDOR</h4><p>United States of America</p><p>New York. 123 Fifth Avenue</p></div>',a=new google.maps.InfoWindow({content:g})
-		,t=new google.maps.MarkerImage("img/theme/google-marker.png",new google.maps.Size(157,70),
-		new google.maps.Point(0,0),new google.maps.Point(75,50)),
-		i=new google.maps.LatLng(37.331789, -122.029620),
-		p=new google.maps.Marker({position:i,map:n,icon:t,zIndex:3});
-		google.maps.event.addListener(p,"click",function(){a.open(n,p)}),
-		gfx(".gmap-button").click(function(){gfx("#google-map").slideToggle(300,function(){google.maps.event.trigger(n,"resize"),n.setCenter(e)}),
-		gfx(this).toggleClass("show-map")});
-
-		var z='<div class="map-marker"><h4 class="color-dark xbold">AVENDOR</h4><p>United States of America</p><p>New York. 123 Fifth Avenue</p></div>',a=new google.maps.InfoWindow({content:z})
-		,t=new google.maps.MarkerImage("img/theme/google-marker.png",new google.maps.Size(157,70),
-		new google.maps.Point(0,0),new google.maps.Point(75,50)),
-		l=new google.maps.LatLng(37.3312, -122.0296),
-		q=new google.maps.Marker({position:l,map:n,icon:t,zIndex:3});
-		google.maps.event.addListener(q,"click",function(){a.open(n,q)}),
-		gfx(".gmap-button").click(function(){gfx("#google-map").slideToggle(300,function(){google.maps.event.trigger(n,"resize"),n.setCenter(e)}),
-		gfx(this).toggleClass("show-map")});
-
-
-}
-
-});
-
-/* ---------------------------------------------------
 	Team Members
 -------------------------------------------------- */
 gfx(".team-wrapper").on("click", function() {
@@ -658,62 +575,6 @@ gfx(document).ready(function()
   });	
 	}, { offset: '100%',
 triggerOnce: true }); });
-
-
-
-
-/* ---------------------------------------------------
-	Twitter
--------------------------------------------------- */
-
-      gfx(function($){
-        gfx(".twitterfeed").tweet({
-			modpath: "http://fourgrafx.com/avendor/avendor-multipage/twitter/",
-          	username: "4grafx",
-          	count: 3,
-			template: "{join}{text}{time}{avatar}",
-          	loading_text: "loading tweets..."
-			});
-		});
-
-      gfx(function($){
-        gfx(".twitter").tweet({
-			modpath: "http://fourgrafx.com/avendor/avendor-multipage/twitter/",
-          	username: "4grafx",
-			avatar_size: 48,
-          	count: 3,
-			template: "{avatar}{join}{text}{time}",
-          	loading_text: "loading tweets..."
-			});
-		});
-
-      gfx(function($){
-        gfx(".twitter-footer").tweet({
-			modpath: "http://fourgrafx.com/avendor/avendor-multipage/twitter/",
-          	username: "4grafx",
-          	count: 2,
-			template: "{join}{text}{time}",
-          	loading_text: "loading tweets..."
-			});
-		});
-
-		/* -- Twitter Carousel -- */
-		gfx(document).ready(function() {
-     
-    		gfx(".twitterfeed .tweet_list").owlCarousel({
-     
-    			autoPlay: false,     
-				items : 1,
-				singleItem : true,
-				navigation: true,
-				pagination:true,
-				slideSpeed : 1200,
-				paginationSpeed : 1200,
-				navigationText : ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
-	  			autoHeight : true,
-				});
-     
-		});
 
 
 
