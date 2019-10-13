@@ -52,21 +52,6 @@
     </div>
 
     <div class="form-group">
-        <label class="col-md-2 control-label">Catalog on Index</label>
-        <div class="col-md-5">
-            <div class="form-control height-auto">
-                <div class="scroller" style="height:275px;"
-                     data-always-visible="1">
-                    <div class="mt-checkbox-list"
-                         data-error-container="#form_2_services_error">
-                        {!! $templateCategory !!}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
         <label class="col-md-2 control-label">Favico</label>
         <div class="col-md-5">
             @if(isset($option['favico']) && $option['favico'])

@@ -35,7 +35,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="portlet-body">
+                    <div class="portlet-body form">
                         <div class="tabbable-bordered">
                             <ul class="nav nav-tabs">
                                 <li class="active">
@@ -50,6 +50,21 @@
                                 <li>
                                     <a href="#tab_social" data-toggle="tab"> Social & Google Tool </a>
                                 </li>
+                                <li>
+                                    <a href="#tab_banner" data-toggle="tab"> Banner </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_features" data-toggle="tab"> Features </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_special" data-toggle="tab"> Special </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_whyus" data-toggle="tab"> Why choose us </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_services" data-toggle="tab"> Services </a>
+                                </li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_general">
@@ -63,6 +78,21 @@
                                 </div>
                                 <div class="tab-pane" id="tab_social">
                                     @include("backend.theme._tab_social", ['option' => $option])
+                                </div>
+                                <div class="tab-pane" id="tab_banner">
+                                    @include("backend.theme._tab_widget_banner", ['option' => $option])
+                                </div>
+                                <div class="tab-pane" id="tab_features">
+                                    @include("backend.theme._tab_features", ['option' => $option])
+                                </div>
+                                <div class="tab-pane" id="tab_special">
+                                    @include("backend.theme._tab_special", ['option' => $option])
+                                </div>
+                                <div class="tab-pane" id="tab_whyus">
+                                    @include("backend.theme._tab_whyus", ['option' => $option])
+                                </div>
+                                <div class="tab-pane" id="tab_services">
+                                    @include("backend.theme._tab_services", ['option' => $option])
                                 </div>
                             </div>
                         </div>

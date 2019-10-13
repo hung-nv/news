@@ -12461,6 +12461,12 @@ __webpack_require__.r(__webpack_exports__);
 var ui = {
   inputFavico: '#favico',
   inputOldFavico: '#old_favico',
+  inputBanner1: '#banner_image_1',
+  inputOldBanner1: '#old_banner_image_1',
+  inputBanner2: '#banner_image_2',
+  inputOldBanner2: '#old_banner_image_2',
+  inputBanner3: '#banner_image_3',
+  inputOldBanner3: '#old_banner_image_3',
   inputLogo: '#company_logo',
   inputOldLogo: '#old_company_logo',
   urlDeleteFileSetting: '/api/delete-file-setting',
@@ -12486,6 +12492,39 @@ $(function () {
       });
     } else {
       Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputLogo);
+    }
+  } // init banner 1.
+
+
+  if ($(ui.inputBanner1).length) {
+    if ($(ui.inputOldBanner1).length) {
+      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldBanner1, ui.inputBanner1, ui.urlDeleteFileSetting, {
+        extractName: 'banner_image_1'
+      });
+    } else {
+      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputBanner1);
+    }
+  } // init banner 1.
+
+
+  if ($(ui.inputBanner2).length) {
+    if ($(ui.inputOldBanner2).length) {
+      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldBanner2, ui.inputBanner2, ui.urlDeleteFileSetting, {
+        extractName: 'banner_image_2'
+      });
+    } else {
+      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputBanner2);
+    }
+  } // init banner 1.
+
+
+  if ($(ui.inputBanner3).length) {
+    if ($(ui.inputOldBanner3).length) {
+      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldBanner3, ui.inputBanner3, ui.urlDeleteFileSetting, {
+        extractName: 'banner_image_3'
+      });
+    } else {
+      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputBanner3);
     }
   }
 
@@ -12739,17 +12778,6 @@ function initInputMultiImage(oldImage, newInputImage, urlDelete) {
 
 /***/ }),
 
-/***/ "./resources/sass/app-mobile.sass":
-/*!****************************************!*\
-  !*** ./resources/sass/app-mobile.sass ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./resources/sass/app.sass":
 /*!*********************************!*\
   !*** ./resources/sass/app.sass ***!
@@ -12762,15 +12790,14 @@ function initInputMultiImage(oldImage, newInputImage, urlDelete) {
 /***/ }),
 
 /***/ 0:
-/*!**********************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.sass ./resources/sass/app-mobile.sass ***!
-  \**********************************************************************************************/
+/*!*************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.sass ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\www\news\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! D:\www\news\resources\sass\app.sass */"./resources/sass/app.sass");
-module.exports = __webpack_require__(/*! D:\www\news\resources\sass\app-mobile.sass */"./resources/sass/app-mobile.sass");
+__webpack_require__(/*! /Users/hungnv/Documents/www/news/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/hungnv/Documents/www/news/resources/sass/app.sass */"./resources/sass/app.sass");
 
 
 /***/ })

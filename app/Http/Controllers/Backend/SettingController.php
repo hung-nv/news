@@ -67,20 +67,10 @@ class SettingController extends Controller
     {
         $dataSetting = $this->optionServices->getDataSetting($this->pageType);
 
-        $checkedCategory = isset($dataSetting['options']['mainCategory']) ?
-            explode(',', $dataSetting['options']['mainCategory']) : $request->old('mainCategory');
-
-        $templateCategory = $this->postServices->getCheckboxCategory(
-            $this->categoryType,
-            $checkedCategory,
-            'mainCategory'
-        );
-
         return view('backend.theme.setting', [
             'option' => $dataSetting['options'],
             'pages' => $dataSetting['pages'],
-            'menus' => $dataSetting['menus'],
-            'templateCategory' => $templateCategory
+            'menus' => $dataSetting['menus']
         ]);
     }
 
@@ -95,5 +85,10 @@ class SettingController extends Controller
         $this->optionServices->saveSetting($request);
 
         return redirect()->route('setting.index')->with(['success' => 'Update successful']);
+    }
+
+    public function settingHomepage(Request $request)
+    {
+
     }
 }
