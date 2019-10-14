@@ -55,8 +55,8 @@
     <label class="control-label col-md-3">Status</label>
     <div class="col-md-9">
         <select class="form-control" name="status">
-            <option value="0" @if($status === 0) selected @endif>No</option>
-            <option value="1" @if($status === 1) selected @endif>Approved</option>
+            <option value="0" @if($status == 0) selected @endif>No</option>
+            <option value="1" @if($status == 1) selected @endif>Approved</option>
         </select>
     </div>
 </div>

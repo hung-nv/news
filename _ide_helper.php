@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.19 on 2019-01-11 23:05:26.
+ * Generated for Laravel 5.7.19 on 2019-10-14 03:17:34.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3440,103 +3440,6 @@ namespace Illuminate\Support\Facades {
         public static function hasMacro($name)
         {
             return \Illuminate\Cookie\CookieJar::hasMacro($name);
-        }
-         
-    }
-
-    /**
-     * 
-     *
-     * @see \Illuminate\Encryption\Encrypter
-     */ 
-    class Crypt {
-        
-        /**
-         * Determine if the given key and cipher combination is valid.
-         *
-         * @param string $key
-         * @param string $cipher
-         * @return bool 
-         * @static 
-         */ 
-        public static function supported($key, $cipher)
-        {
-            return \Illuminate\Encryption\Encrypter::supported($key, $cipher);
-        }
-        
-        /**
-         * Create a new encryption key for the given cipher.
-         *
-         * @param string $cipher
-         * @return string 
-         * @static 
-         */ 
-        public static function generateKey($cipher)
-        {
-            return \Illuminate\Encryption\Encrypter::generateKey($cipher);
-        }
-        
-        /**
-         * Encrypt the given value.
-         *
-         * @param mixed $value
-         * @param bool $serialize
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\EncryptException
-         * @static 
-         */ 
-        public static function encrypt($value, $serialize = true)
-        {
-            return \Illuminate\Encryption\Encrypter::encrypt($value, $serialize);
-        }
-        
-        /**
-         * Encrypt a string without serialization.
-         *
-         * @param string $value
-         * @return string 
-         * @static 
-         */ 
-        public static function encryptString($value)
-        {
-            return \Illuminate\Encryption\Encrypter::encryptString($value);
-        }
-        
-        /**
-         * Decrypt the given value.
-         *
-         * @param mixed $payload
-         * @param bool $unserialize
-         * @return mixed 
-         * @throws \Illuminate\Contracts\Encryption\DecryptException
-         * @static 
-         */ 
-        public static function decrypt($payload, $unserialize = true)
-        {
-            return \Illuminate\Encryption\Encrypter::decrypt($payload, $unserialize);
-        }
-        
-        /**
-         * Decrypt the given string without unserialization.
-         *
-         * @param string $payload
-         * @return string 
-         * @static 
-         */ 
-        public static function decryptString($payload)
-        {
-            return \Illuminate\Encryption\Encrypter::decryptString($payload);
-        }
-        
-        /**
-         * Get the encryption key.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getKey()
-        {
-            return \Illuminate\Encryption\Encrypter::getKey();
         }
          
     }
@@ -13490,7 +13393,7 @@ namespace Jenssegers\Agent\Facades {
         /**
          * Get the browser name.
          *
-         * @param string|null $userAgent
+         * @param null $userAgent
          * @return string 
          * @static 
          */ 
@@ -13502,7 +13405,7 @@ namespace Jenssegers\Agent\Facades {
         /**
          * Get the platform name.
          *
-         * @param string|null $userAgent
+         * @param string $userAgent
          * @return string 
          * @static 
          */ 
@@ -13514,7 +13417,7 @@ namespace Jenssegers\Agent\Facades {
         /**
          * Get the device name.
          *
-         * @param string|null $userAgent
+         * @param string $userAgent
          * @return string 
          * @static 
          */ 
@@ -13526,7 +13429,7 @@ namespace Jenssegers\Agent\Facades {
         /**
          * Check if the device is a desktop computer.
          *
-         * @param string|null $userAgent deprecated
+         * @param string $userAgent deprecated
          * @param array $httpHeaders deprecated
          * @return bool 
          * @static 
@@ -13539,7 +13442,7 @@ namespace Jenssegers\Agent\Facades {
         /**
          * Check if the device is a mobile phone.
          *
-         * @param string|null $userAgent deprecated
+         * @param string $userAgent deprecated
          * @param array $httpHeaders deprecated
          * @return bool 
          * @static 
@@ -13552,7 +13455,7 @@ namespace Jenssegers\Agent\Facades {
         /**
          * Get the robot name.
          *
-         * @param string|null $userAgent
+         * @param string $userAgent
          * @return string|bool 
          * @static 
          */ 
@@ -13564,7 +13467,7 @@ namespace Jenssegers\Agent\Facades {
         /**
          * Check if device is a robot.
          *
-         * @param string|null $userAgent
+         * @param string $userAgent
          * @return bool 
          * @static 
          */ 
@@ -14152,8 +14055,6 @@ namespace  {
     class Config extends \Illuminate\Support\Facades\Config {}
 
     class Cookie extends \Illuminate\Support\Facades\Cookie {}
-
-    class Crypt extends \Illuminate\Support\Facades\Crypt {}
 
     class DB extends \Illuminate\Support\Facades\DB {}
 

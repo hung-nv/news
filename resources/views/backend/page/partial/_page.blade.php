@@ -24,7 +24,7 @@
                     <span class="badge badge-info badge-roundless"> Page </span>
                 </td>
                 <td>
-                    @if($i->status === 1)
+                    @if($i->status == 1)
                         <span class="badge badge-info badge-roundless"> Approved </span>
                     @else
                         <span class="badge badge-warning badge-roundless"> No </span>

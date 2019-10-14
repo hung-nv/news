@@ -11,6 +11,8 @@ const ui = {
     inputOldBanner3: '#old_banner_image_3',
     inputLogo: '#company_logo',
     inputOldLogo: '#old_company_logo',
+    inputWhyUs: '#why_us_image',
+    inputOldWhyUs: '#old_why_us_image',
     urlDeleteFileSetting: '/api/delete-file-setting',
     inputRemoveInitPreview: '.kv-file-remove'
 };
@@ -72,7 +74,7 @@ $(function () {
         }
     }
 
-    // init banner 1.
+    // init banner 3.
     if ($(ui.inputBanner3).length) {
         if ($(ui.inputOldBanner3).length) {
             initInputImage(
@@ -83,6 +85,20 @@ $(function () {
             );
         } else {
             newInputImage(ui.inputBanner3);
+        }
+    }
+
+    // init banner 3.
+    if ($(ui.inputWhyUs).length) {
+        if ($(ui.inputOldWhyUs).length) {
+            initInputImage(
+                ui.inputOldWhyUs,
+                ui.inputWhyUs,
+                ui.urlDeleteFileSetting,
+                {extractName: 'why_us_image'}
+            );
+        } else {
+            newInputImage(ui.inputWhyUs);
         }
     }
 

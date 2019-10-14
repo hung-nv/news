@@ -7,7 +7,7 @@
                     <div class="col-md-9">
                         @if(isset($option['banner_image_1']) && $option['banner_image_1'])
                             <input type="hidden" name="old_banner_image_1" id="old_banner_image_1" data-id=""
-                                   value="{{ $option['banner_image_1'] or '' }}">
+                                   value="{{ !empty($option['banner_image_1']) ? $option['banner_image_1'] : '' }}">
                         @endif
                         <input id="banner_image_1" name="banner_image_1" type="file" data-show-upload="false">
                     </div>
@@ -38,7 +38,7 @@
                     <div class="col-md-9">
                         @if(isset($option['banner_image_2']) && $option['banner_image_2'])
                             <input type="hidden" name="old_banner_image_2" id="old_banner_image_2" data-id=""
-                                   value="{{ $option['banner_image_2'] or '' }}">
+                                   value="{{ !empty($option['banner_image_2']) ? $option['banner_image_2'] : '' }}">
                         @endif
                         <input id="banner_image_2" name="banner_image_2" type="file" data-show-upload="false">
                     </div>
@@ -69,7 +69,7 @@
                     <div class="col-md-9">
                         @if(isset($option['banner_image_3']) && $option['banner_image_3'])
                             <input type="hidden" name="old_banner_image_3" id="old_banner_image_3" data-id=""
-                                   value="{{ $option['banner_image_3'] or '' }}">
+                                   value="{{ !empty($option['banner_image_3']) ? $option['banner_image_3'] : '' }}">
                         @endif
                         <input id="banner_image_3" name="banner_image_3" type="file" data-show-upload="false">
                     </div>
