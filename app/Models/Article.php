@@ -182,6 +182,10 @@ class Article extends \Eloquent
      */
     public static function paginateArticlesByIdsCategory($idsCategory, $articleType, $pageSize = null)
     {
+        if (!$idsCategory) {
+            return null;
+        }
+
         $model = self::from('articles')
             ->select([
                 'articles.id',

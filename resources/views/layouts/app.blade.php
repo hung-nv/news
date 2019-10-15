@@ -138,13 +138,6 @@
 <!-- Animation Viewport -->
 <script src="{{ asset('js/themejs/jquery.waypoints.min.js') }}" type="text/javascript"></script>
 
-<!-- Pie Chart -->
-<script src="{{ asset('js/themejs/jquery.easypiechart.min.js') }}" type="text/javascript"></script>
-
-<!-- Google Maps -->
-<script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&sensor=false"></script>
-
 <!-- Load Scripts -->
 <script src="{{ asset('js/themejs/application.js') }}"></script>
 </body>

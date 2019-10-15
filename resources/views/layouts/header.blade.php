@@ -10,7 +10,7 @@
             <div class="row">
 
                 <!-- Left -->
-                <div class="col-md-6 col-sm-6 columns">
+                <div class="col-md-12 col-sm-12 columns">
                     <div class="header-top-left">
                         <ul class="social-top">
                             @if(!empty($option['hotline']))
@@ -27,21 +27,6 @@
                     </div>
                 </div>
                 <!-- /Left -->
-
-                <!-- Right -->
-                <div class="col-md-3 col-sm-6 col-md-offset-3 columns">
-                    <div class="header-top-right">
-                        <!-- Right Menu -->
-                        <form action="search" method="post" style="margin-top: 2px;">
-                            <div class="form-group" style="margin-bottom: 0;">
-                                <input type="text" class="form-control" id="searchfield" placeholder="Tìm kiếm"
-                                       name="keyword">
-                            </div>
-                        </form>
-                        <!-- /Right Menu -->
-                    </div>
-                </div>
-                <!-- /right -->
 
             </div>
 

@@ -663,6 +663,8 @@ class ArticleServices
 
         $this->getIdsCategoryByParent($allCategory, $idsCategory, $categoryId);
 
+        array_push($idsCategory, $categoryId);
+
         $articles = Article::paginateArticlesByIdsCategory($idsCategory, $articleType, 10);
 
         return $articles;

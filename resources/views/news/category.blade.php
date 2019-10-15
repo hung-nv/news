@@ -9,7 +9,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('partials._breadcrumbs', ['name' => $category->name])
+    @include('partials._breadcrumbs', ['name' => $category->name, 'heading' => $option['meta_title']])
 
     <!-- Main Container -->
     <div class="main-wrapper wrap-category">
@@ -20,15 +20,14 @@
             <div class="row">
 
                 <div class="col-sm-8 col-md-8 columns">
-                    <div class="white-space space-big"></div>
+                    <div class="white-space space-medium"></div>
 
                     <!-- /Blog Content -->
                     <div class="row">
                         <div class="col-sm-12">
 
-                        @if(isset($articles) && $articles)
-                            @foreach ($articles as $i)
-                                <!-- blog post -->
+                            @if(isset($articles) && $articles)
+                                @foreach ($articles as $i)
                                     <div class="blog-post post-format-image">
 
                                         <div class="blog-post-content">
@@ -49,32 +48,30 @@
                                             <div class="post-content">
                                                 <p>{{ nl2br(e($i->description)) }}</p>
                                             </div>
-                                            <a class="btn btn-primary btn-sm" href="{{ route('article.details', ['slug' => $i->slug]) }}">
-                                                Xem thêm...
-                                                <i class="fa iconright fa-arrow-circle-right"></i>
-                                            </a>
                                         </div>
 
                                     </div>
                                     <!-- /blog post -->
-                            @endforeach
-                        @endif
+                                @endforeach
+                            @else
+                                <p>Chúng tôi đang cập nhật dữ liệu</p>
+                            @endif
 
                         </div>
                     </div>
                     <!-- /Blog Content -->
 
-                    <!-- Pagination -->
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="text-center">
-                                {{ $articles->links() }}
+                    @if(isset($articles) && $articles)
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="text-center">
+                                    {{ $articles->links() }}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- /Pagination -->
+                    @endif
 
-                    <div class="white-space space-big"></div>
+                    <div class="white-space space-medium"></div>
                 </div>
 
 

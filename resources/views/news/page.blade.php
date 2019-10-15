@@ -1,76 +1,68 @@
 @section('title')
-    {{ !empty($page->meta_title) ? $page->meta_title : $page->name }}
+    {{ isset($article->meta_title) ? $article->meta_title : $article->name }}
 @endsection
 
 @section('description')
-    {{ !empty($pagee->meta_description) ? $page->meta_description : $page->description }}
+    {{ isset($article->meta_description) ? $article->meta_description : $article->description }}
 @endsection
+
+@section('og_title', isset($article->meta_title) ? $article->meta_title : $article->name)
+@section('og_description', isset($article->meta_description) ? $article->meta_description : $article->description)
+@section('og_image', 'img/400'.$article->image)
 
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="column1">
-            <div class="entry-content">
-                <h1>{{ $page->name }}</h1>
-                <p class="datetime">
-                    <img src="/img/10/images/icons8-time-50.png" />
-                    <span class="sptime">{{ $page->created_at }}</span>
-                </p>
-                <div class="entry-post">
-                    {!! $page->content !!}
+    @include('partials._breadcrumbs', ['name' => $article->name, 'heading' => $option['meta_title']])
+
+    <!-- Main Container -->
+    <div class="main-wrapper wrap-category">
+
+        <!-- Container -->
+        <div class="container content-with-sidebar">
+
+            <div class="row">
+
+                <div class="col-sm-8 col-md-9 columns">
+                    <div class="white-space space-medium"></div>
+
+                    <!-- /Blog Content -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!-- blog post -->
+                            <div class="blog-post post-format-image">
+                                <div class="blog-post-content">
+                                    <div class="post-info">
+                                        <h3 class="post-title">
+                                            <a href="{{ $article->url }}"> {{ $article->name }} </a>
+                                        </h3>
+                                        <ul class="list-inline post-meta-info">
+                                            <li class="meta-date">{{ $article->created_at }}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="post-summary"><b>{{ nl2br(e($article->description)) }}</b></div>
+
+                                    <div class="post-content">
+                                        <p>{!! $article->content !!}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /blog post -->
+
+                        </div>
+                    </div>
+
+                    <div class="white-space space-medium"></div>
                 </div>
 
-                @if (isset($newArticles) && $newArticles)
-                    <div class="other">
-                        <h2>Tin mới nhất</h2>
-                        <div class="other-tren">
-                            <div class="other-tren-left">
-                                @for($i = 0; $i < 2; $i++)
-                                    @if (isset( $newArticles[ $i ] ) && $newArticles[ $i ])
-                                        <div class="other-row">
-                                            <a href="{{ $newArticles[$i]->url }}" class="other-row-img">
-                                                <img src="/img/154_102{{ $newArticles[$i]->image }}">
-                                            </a>
-                                            <h4>
-                                                <a href="{{ $newArticles[$i]->url }}">
-                                                    {{ $newArticles[$i]->name }}
-                                                </a>
-                                            </h4>
-                                            <p>{{ $newArticles[$i]->description }}</p>
-                                            <div class="clear"></div>
-                                        </div>
-                                    @endif
-                                @endfor
-                            </div>
-                            <div class="other-tren-right">
-                                <img src="{{ asset('images/banner_5.jpg') }}" />
-                            </div>
-                            <div class="clear"></div>
-                        </div>
 
-                        @if (count( $newArticles ) > 2)
-                            <ul>
-                                @for ($i = 2; $i < 11; $i ++)
-                                    @if (isset( $newArticles[ $i ] ) && $newArticles[ $i ])
-                                        <li>
-                                            <a href="{{ $newArticles[$i]->url }}">
-                                                {{ $newArticles[$i]->name }}
-                                            </a>
-                                            <span>&nbsp;({{ $newArticles[$i]->created_at }})</span>
-                                        </li>
-                                    @endif
-                                @endfor
-                            </ul>
-                        @endif
-                    </div>
-                @endif
+                @include('partials._sidebar')
+
             </div>
         </div>
-        <div class="column2">
-            @include('partials._sidebar')
-        </div>
-    </div>
+        <!-- /Container -->
 
-    @include('partials._horizontalArticles')
+    </div>
+    <!-- /Main Container -->
 @endsection
