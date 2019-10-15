@@ -123,6 +123,12 @@ class Controller extends BaseController
 
             View::share('footerMenu', $footerMenu);
         }
+
+        if (!empty($this->option['sidebar_menu_id'])) {
+            $sidebarMenu = $this->setMultiMenu(Menu::getMenuByGroup($this->option['sidebar_menu_id'])->toArray());
+
+            View::share('sidebarMenu', $sidebarMenu);
+        }
     }
 
     /**

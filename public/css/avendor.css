@@ -295,13 +295,19 @@ section{ }
 .footer-middle .footer-widget .tweet_list li .tweet_time { display:block; text-align:right; color:#778899;}
 
 /*Footer Bottom*/
-.footer-bottom{ color:#778899; background: #25242c; padding:40px 0;}
+.footer-bottom{ color:#778899; background: #25242c; padding:25px 0;}
+.footer-bottom p {
+	font-size: 13px;
+	line-height: 21px;
+	letter-spacing: 0.05px;
+	margin-bottom: 5px;
+}
 .footer-bottom a{color: inherit;}
 .footer-bottom a:hover {}
 
 .footer-bottom .menu-footer {padding:20px 0 10px;}
 .footer-bottom .menu-footer ul{margin:0 auto; text-align:center;}
-.footer-bottom .menu-footer ul li{ text-transform:uppercase; font-size:16px;}
+.footer-bottom .menu-footer ul li{ font-size:16px;}
 .footer-bottom .copyright { padding:10px 0; text-align:center;}
 .footer-bottom .copyright p{ margin-bottom:0; line-height:1.9;}
 .footer-bottom .social-footer { padding:10px 0 20px;}
@@ -1702,9 +1708,10 @@ iframe{ border:none;}
 .blog-post .blog-post-side .blog-post-date { text-align:center; color: #fff; padding:5px 0; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}
 .blog-post .blog-post-side .blog-post-date .date-day { margin-bottom:0; font-size:2.25em; font-weight:700; line-height:1;}
 .blog-post .blog-post-side .blog-post-date .date-month { margin-bottom:0; text-transform: uppercase; font-size:18px;}
-.blog-post .blog-post-content{padding:20px; margin-right:15px; border:1px solid #ececec; margin-left:85px; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}
-.post-media { margin-bottom:20px;}
+.blog-post .blog-post-content{padding:20px; margin-right:15px; border:1px solid #ececec; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}
+.post-media { margin-bottom:20px; margin-right: 20px; float: left; width: 40%; }
 .post-media img{ width:100%; height:auto;}
+.wrap-category h3 { font-size: 25px; }
 
 .post-format { width:70px; height:70px; text-align:center; line-height:2.4; font-size:28px; -webkit-border-radius:4px; -moz-border-radius:4px; -o-border-radius:4px;border-radius:4px; border:1px solid #ececec; margin-top:10px;}
 .post-format-standard .post-format:before{content: "\f040";font-family: 'FontAwesome';}
@@ -1803,7 +1810,7 @@ ul.gallery li {width: 50% !important; /* this value + 2% should = 50% */}
 
 }
 @media (max-width: 767px) {
-	
+.wrap-category .post-media { width: 100%; float: none; margin-right: 0; }
 .header-top-left{padding:0px;}
 .social-top{ text-align:center; float:none;}
 .top-menu{ float:none; text-align:center;}

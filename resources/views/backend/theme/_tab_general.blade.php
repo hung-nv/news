@@ -51,6 +51,20 @@
         </div>
     </div>
 
+    <?php $sidebarMenuId = isset($option['sidebar_menu_id']) ? $option['sidebar_menu_id'] : old('sidebar_menu_id') ?>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Sidebar Menu</label>
+        <div class="col-md-5">
+            <select class="form-control" name="sidebar_menu_id">
+                <option value="">Select Menu...</option>
+                @foreach($menus as $subMenu)
+                    <option value="{{ $subMenu->id }}"
+                            @if($subMenu->id == $sidebarMenuId) selected @endif>{{ $subMenu->name }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+
     <div class="form-group">
         <label class="col-md-2 control-label">Favico</label>
         <div class="col-md-5">

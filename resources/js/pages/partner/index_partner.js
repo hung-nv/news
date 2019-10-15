@@ -1,8 +1,8 @@
 import {confirmBeforeDelete} from "../../helpers/helpers";
 
 let ui = {
-    pageId: '#index-advertising',
-    tablePartners: '#datatable-advertising',
+    pageId: '#index-partner',
+    tablePartners: '#datatable-partner',
 };
 
 $(function () {
@@ -16,8 +16,8 @@ $(function () {
             }
         });
 
-        if ($(ui.tableAdvertising).length) {
-            $(ui.tableAdvertising).dataTable({
+        if ($(ui.tablePartners).length) {
+            $(ui.tablePartners).dataTable({
                 ordering: false,
                 order: [[0, 'desc']],
                 bLengthChange: true,

@@ -84,11 +84,11 @@
                                 <div class="panel-body wrap-menu-custom">
                                     <form id="frmCustom">
                                         <div class="form-group">
-                                            <label>Direct Url</label>
-                                            <input class="form-control custom-label" type="url" required>
+                                            <label>Label</label>
+                                            <input class="form-control custom-label" type="text" required>
                                         </div>
                                         <div class="form-group">
-                                            <label>Label</label>
+                                            <label>Direct Url</label>
                                             <input class="form-control custom-url" type="text" required>
                                         </div>
                                         <button class="btn btn-sm blue" type="button" id="add-custom">

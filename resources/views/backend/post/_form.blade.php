@@ -9,7 +9,7 @@
         <input type="text" name="slug" class="form-control" :value="postSlug"/>
     </div>
 
-    <div class="form-group">
+    <div class="form-group hidden">
         <label>Url Video Youtube</label>
         <input type="text" name="url_video" class="form-control"
                value="{{ isset($post) ? $post['url_video'] : old('url_video') }}"/>

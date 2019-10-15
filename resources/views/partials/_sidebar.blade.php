@@ -1,44 +1,24 @@
-@if(count($newArticles) > 0)
-    <div class="box-doc-1">
-        <h2>Bài viết mới nhất</h2>
-        <ul>
-            @foreach($newArticles as $itemNewArticle)
-                <li>
-                    <a href="{{ $itemNewArticle->url }}">
-                        {{ $itemNewArticle->name }}
-                        <span class="time">({{ $itemNewArticle->created_at }})</span>
-                    </a>
-                    <div class="clear"></div>
-                </li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+<!-- Sidebar -->
+<div class="col-sm-4 col-md-4 columns sidebar sidebar-right">
+    <div class="white-space space-big"></div>
 
-@if(!empty($advertising[config('const.advertising.auto')]))
-    {!! $advertising[config('const.advertising.auto')] !!}
-@endif
+    <div class="sidebar-content">
 
-@if(count($topInWeek) > 0)
-    <div class="sao">
-        <h2>Bài viết nổi bật trong tuần</h2>
-        <div class="sao_tren">
-            <a href="{{ $topInWeek[0]['url'] }}">
-                <img src="/img/300{{ $topInWeek[0]['image'] }}"/>
-            </a>
-            <p><a href="{{ $topInWeek[0]['url'] }}">{{ $topInWeek[0]['name'] }}</a></p>
+        <div class="sidebar-widget">
+            <h4 class="title-widget fancy-title"><span>Chuyên mục</span></h4>
+            @if(!empty($sidebarMenu))
+                <ul class="fa-ul widget-list">
+                    @foreach($sidebarMenu as $itemSidebarMenu)
+                        <li><a href="{{ $itemSidebarMenu['url'] }}">
+                                <span class="fa-li fa  fa-angle-right"></span>{{ $itemSidebarMenu['name'] }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
         </div>
-        <ul>
-            @foreach($topInWeek as $itemTop)
-                @if($loop->index > 0)
-                    <li @if($loop->index % 2 == 0) class="sao_right" @else class="sao_left clear" @endif>
-                        <a class="imgsao-duoi" href="{{ $itemTop->url }}">
-                            <img src="/img/143_110{{ $itemTop->image }}"/>
-                        </a>
-                        <p><a href="{{ $itemTop->url }}">{{ $itemTop->name }}</a></p>
-                    </li>
-                @endif
-            @endforeach
-        </ul>
+
     </div>
-@endif
+
+    <div class="white-space space-big"></div>
+</div>
+<!-- /Sidebar -->

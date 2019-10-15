@@ -53,6 +53,8 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth', 'namespace' =
 
         Route::resource('advertising', 'AdvertisingController');
 
+        Route::resource('partner', 'PartnerController');
+
         // route resource page.
         Route::resource('page', 'PageController', ['except' => ['show']]);
     });
