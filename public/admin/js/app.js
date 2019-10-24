@@ -12058,7 +12058,55 @@ var ui = {
   if ($(ui.pageId).length) {
     var vmIndexArticle = new Vue({
       el: ui.pageId,
+      data: function data() {
+        return {
+          name: Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["getParameterByName"])('name') ? Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["getParameterByName"])('name') : '',
+          pageSize: this.getDefaultPageSize(),
+          idCategory: Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["getParameterByName"])('id_category') ? Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["getParameterByName"])('id_category') : '-1'
+        };
+      },
+      watch: {
+        pageSize: function pageSize(newValue, oldValue) {
+          // check if change value.
+          if (newValue !== oldValue) {
+            this.searchArticle();
+          }
+        }
+      },
       methods: {
+        searchArticle: function searchArticle() {
+          var params = {};
+          var page = 1;
+
+          if (Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["getParameterByName"])('page')) {
+            page = Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["getParameterByName"])('page');
+          } // set param page.
+
+
+          params['page'] = page;
+
+          if (this.name !== '') {
+            params['name'] = this.name;
+          }
+
+          if (this.idCategory !== '-1') {
+            params['id_category'] = this.idCategory;
+          }
+
+          params['pageSize'] = this.pageSize;
+          var currentURL = location.protocol + '//' + location.host + location.pathname;
+          window.location = currentURL + '?' + $.param(params);
+        },
+        getDefaultPageSize: function getDefaultPageSize() {
+          var pageSize = 20;
+          var defaultPageSize = Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["getParameterByName"])('pageSize');
+
+          if (defaultPageSize && !isNaN(pageSize)) {
+            pageSize = defaultPageSize;
+          }
+
+          return pageSize;
+        },
         addGroup: function addGroup(element) {
           var _this = this;
 
@@ -12889,14 +12937,26 @@ function initInputMultiImage(oldImage, newInputImage, urlDelete) {
 
 /***/ }),
 
+/***/ "./resources/sass/backend/admin.sass":
+/*!*******************************************!*\
+  !*** ./resources/sass/backend/admin.sass ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.sass ***!
-  \*************************************************************/
+/*!*************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/backend/admin.sass ./resources/sass/app.sass ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Users/hungnv/Documents/www/news/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/hungnv/Documents/www/news/resources/sass/backend/admin.sass */"./resources/sass/backend/admin.sass");
 module.exports = __webpack_require__(/*! /Users/hungnv/Documents/www/news/resources/sass/app.sass */"./resources/sass/app.sass");
 
 

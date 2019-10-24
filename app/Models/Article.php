@@ -114,22 +114,35 @@ class Article extends \Eloquent
 
     /**
      * Get all posts by name.
-     * @param string $name
+     * @param string|null $name
+     * @param int|null $idCategory
      * @param int $pageSize
      * @param string $postType
      * @return $this|\Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public static function getPostsByName(string $name, int $pageSize, string $postType)
+    public static function searchArticles($name, $idCategory, int $pageSize, string $postType)
     {
-        $posts = self::where('type', $postType)->orderByDesc('created_at');
+        $articles = self::query();
 
-        if ($name !== '-1') {
-            $posts = $posts->where('name', $name);
+        $articles = $articles->with(['groups', 'category']);
+
+        $articles = $articles->where('type', $postType)
+            ->orderByDesc('created_at');
+
+        if ($name !== null) {
+            $articles = $articles->where('name', 'LIKE', "%{$name}%");
         }
 
-        $posts = $posts->paginate($pageSize);
+        if ($idCategory !== null) {
+            $articles = $articles->join('article_category', function ($join) use ($idCategory) {
+                $join->on('articles.id', '=', 'article_category.article_id');
+                $join->where('article_category.category_id', '=', $idCategory);
+            });
+        }
 
-        return $posts;
+        $articles = $articles->paginate($pageSize);
+
+        return $articles;
     }
 
     /**

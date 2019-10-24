@@ -13,9 +13,5 @@ return [
     |
     */
 
-    'previous' => '&laquo; Previous',
-    'next' => 'Next &raquo;',
-    'view' => 'Show',
-    'records' => 'item / page'
-
+    'title' => 'Title',
 ];

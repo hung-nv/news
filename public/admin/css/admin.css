@@ -1,31 +1,63 @@
-.page-sidebar .page-sidebar-menu > li.active.open > a,
-.page-sidebar .page-sidebar-menu > li.active > a {
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #cef;
+  border-color: #cef transparent #cef transparent;
+  -webkit-animation: lds-dual-ring 1.2s linear infinite;
+          animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@-webkit-keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.page-header.navbar .page-logo .logo-default {
+  margin: 10px 0 0;
+}
+
+.page-sidebar .page-sidebar-menu > li.active.open > a, .page-sidebar .page-sidebar-menu > li.active > a {
   background: #3598dc;
 }
 
-.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a,
-.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a {
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a {
   background: #3598dc;
 }
 
-.page-sidebar .page-sidebar-menu > li.active.open > a:hover,
-.page-sidebar .page-sidebar-menu > li.active > a:hover {
+.page-sidebar .page-sidebar-menu > li.active.open > a:hover, .page-sidebar .page-sidebar-menu > li.active > a:hover {
   background: #217ebd;
 }
 
-.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a:hover,
-.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a:hover {
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a:hover, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a:hover {
   background: #217ebd;
 }
 
 .mt-checkbox-list .mt-level-1 {
   margin-left: 20px !important;
 }
-
 .mt-checkbox-list .mt-level-2 {
   margin-left: 40px !important;
 }
-
 .mt-checkbox-list .mt-level-3 {
   margin-left: 60px !important;
 }
@@ -42,7 +74,6 @@
 .btn-backend {
   padding: 10px 30px;
 }
-
 .btn-backend:first-of-type {
   margin-right: 15px;
 }
@@ -50,7 +81,6 @@
 .modal-backend .modal-header {
   padding: 10px 15px;
 }
-
 .modal-backend .modal-body .form-group:first-child {
   margin-top: 15px;
   margin-bottom: 30px;
@@ -67,7 +97,6 @@
   margin-right: 15px;
   overflow: hidden;
 }
-
 #data-products .backend-img img {
   position: absolute;
   max-width: 90px;
@@ -77,11 +106,9 @@
   bottom: 0;
   margin: auto;
 }
-
 #data-products .product-info {
   font-size: 13px;
 }
-
 #data-products .backend-attribute {
   margin-bottom: 5px;
   font-size: 13px;
@@ -101,15 +128,12 @@
   font-size: 18px;
   margin-top: 30px;
 }
-
 .form-body .caption:first-of-type {
   margin-top: 0;
 }
-
 .form-body .caption i {
   font-size: 14px;
 }
-
 .form-body .caption .c-line-left {
   margin-bottom: 30px;
   height: 3px;
@@ -137,7 +161,6 @@
 .swal2-icon {
   border-radius: 50% !important;
 }
-
 .swal2-icon.swal2-success .swal2-success-ring {
   border-radius: 50% !important;
 }
@@ -147,7 +170,6 @@
   margin-top: 10px;
   display: none;
 }
-
 .product-image-thumb .img-thumb {
   float: left;
   width: 50px;
@@ -159,12 +181,9 @@
   margin-right: 10px;
   cursor: pointer;
 }
-
 .product-image-thumb .img-thumb:hover {
-  -webkit-box-shadow: 1px 1px 2px 0 #333;
-          box-shadow: 1px 1px 2px 0 #333;
+  box-shadow: 1px 1px 2px 0 #333;
 }
-
 .product-image-thumb .img-thumb img {
   position: absolute;
   top: 0;
@@ -180,8 +199,12 @@
   font-size: 16px;
 }
 
-.page-container-bg-solid .page-bar .page-breadcrumb,
-.page-content-white .page-bar .page-breadcrumb {
+.page-container-bg-solid .page-bar .page-breadcrumb, .page-content-white .page-bar .page-breadcrumb {
   padding: 8px 0;
 }
 
+.article-information {
+  font-size: 13px;
+  padding-top: 5px;
+  line-height: 20px;
+}

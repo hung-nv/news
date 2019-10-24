@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'previous' => '&laquo; Previous',
-    'next' => 'Next &raquo;',
-    'view' => 'Show',
-    'records' => 'item / page'
-
+    'search' => 'Tìm kiếm',
+    'all' => 'Tất cả',
+    'submit' => 'Lưu',
+    'back' => 'Quay lại',
+    'continue' => 'Tiếp theo'
 ];

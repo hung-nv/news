@@ -1,25 +1,24 @@
-<table class="table table-striped table-bordered table-hover table-checkable order-column">
+<table class="table table-hover table-advance">
     <thead>
     <tr>
-        <th> ID</th>
+        <th class="data-middle"> Image</th>
         <th style="width: 50%"> Information</th>
-        <th> Created At</th>
-        <th> Groups</th>
-        <th> Status</th>
-        <th> Actions</th>
+        <th class="data-middle"> Created At</th>
+        <th class="data-middle"> Groups</th>
+        <th class="data-middle"> Status</th>
+        <th class="data-middle"> Actions</th>
     </tr>
     </thead>
     <tbody>
-    @foreach($posts as $i)
+    @foreach($articles as $i)
         <tr class="odd gradeX">
-            <td> {{ $i->id }}</td>
+            <td class="data-middle"> <img src="/img/120_75{{ $i->image }}" /> </td>
             <td>
-                <p class="font-red-mint">{{ $i->name }}</p>
-                @if($i->description)
-                    <blockquote>
-                        <small>{{ $i->description }}</small>
-                    </blockquote>
-                @endif
+                <p class="article-information">
+                    <span class="font-blue-steel">{{ $i->name }}</span> <br />
+                    <strong>{{ implode(', ', array_pluck($i->category, 'name')) }}</strong> <br />
+                    <span>View: {{ $i->view }}</span>
+                </p>
             </td>
             <td class="data-middle">{{ $i->created_at }}</td>
             <td class="data-middle">

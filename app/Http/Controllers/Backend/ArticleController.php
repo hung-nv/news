@@ -5,17 +5,21 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Requests\PostStore;
 use App\Http\Requests\PostUpdate;
 use App\Services\ArticleServices;
+use App\Services\CategoryServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
-    private $postServices;
+    private $articleServices;
 
-    public function __construct(ArticleServices $articleServices)
+    private $categoryServices;
+
+    public function __construct(ArticleServices $articleServices, CategoryServices $categoryServices)
     {
         parent::__construct();
-        $this->postServices = $articleServices;
+        $this->articleServices = $articleServices;
+        $this->categoryServices = $categoryServices;
     }
 
     /**
@@ -25,12 +29,17 @@ class ArticleController extends Controller
      */
     public function index(Request $request)
     {
-        $dataPosts = $this->postServices->getIndexPosts($request->all(), $this->articleType);
+        $dataArticles = $this->articleServices->getIndexArticles($request->all(), $this->articleType);
+
+        $templateCategory = $this->categoryServices->getSelectCategory($request->old('parent_id'));
 
         return view('backend.post.index', [
-            'posts' => $dataPosts['posts'],
-            'name' => $dataPosts['name'],
-            'groups' => $dataPosts['groups']
+            'articles' => $dataArticles['articles'],
+            'name' => $dataArticles['name'],
+            'pageSize' => $dataArticles['pageSize'],
+            'idCategory' => $dataArticles['idCategory'],
+            'groups' => $dataArticles['groups'],
+            'templateCategory' => $templateCategory
         ]);
     }
 
@@ -42,7 +51,7 @@ class ArticleController extends Controller
      */
     public function create(Request $request)
     {
-        $templateCategory = $this->postServices->getCheckboxCategory(
+        $templateCategory = $this->articleServices->getCheckboxCategory(
             $this->categoryType,
             $request->old('parent')
         );
@@ -65,7 +74,7 @@ class ArticleController extends Controller
      */
     public function store(PostStore $request)
     {
-        $response = $this->postServices->createPost($request, $this->articleType);
+        $response = $this->articleServices->createPost($request, $this->articleType);
 
         return redirect()->route('post.index')->with([
             'success' => $response
@@ -82,9 +91,9 @@ class ArticleController extends Controller
     public function edit(Request $request, $id)
     {
         try {
-            $dataPost = $this->postServices->getPostInformationById($request, $id);
+            $dataPost = $this->articleServices->getPostInformationById($request, $id);
 
-            $templateCategory = $this->postServices->getCheckboxCategory(
+            $templateCategory = $this->articleServices->getCheckboxCategory(
                 $this->categoryType,
                 $dataPost['post_category']
             );
@@ -109,7 +118,7 @@ class ArticleController extends Controller
      */
     public function update(PostUpdate $request, $id)
     {
-        $response = $this->postServices->updatePost($request, $id);
+        $response = $this->articleServices->updatePost($request, $id);
 
         return redirect()->route('post.index')->with([
             'success' => $response
@@ -124,7 +133,7 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        $response = $this->postServices->deletePost($id);
+        $response = $this->articleServices->deletePost($id);
 
         return redirect()->route('post.index')->with([
             'success' => $response

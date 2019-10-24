@@ -1,4 +1,4 @@
-import {confirmBeforeDelete, doException} from "../../helpers/helpers";
+import {confirmBeforeDelete, doException, getParameterByName} from "../../helpers/helpers";
 
 let ui = {
     pageId: '#post'
@@ -8,7 +8,54 @@ let ui = {
     if ($(ui.pageId).length) {
         const vmIndexArticle = new Vue({
             el: ui.pageId,
+            data: function () {
+                return {
+                    name: getParameterByName('name') ? getParameterByName('name') : '',
+                    pageSize: this.getDefaultPageSize(),
+                    idCategory: getParameterByName('id_category') ? getParameterByName('id_category') : '-1',
+                };
+            },
+            watch: {
+                pageSize: function (newValue, oldValue) {
+                    // check if change value.
+                    if (newValue !== oldValue) {
+                        this.searchArticle();
+                    }
+                }
+            },
             methods: {
+                searchArticle: function() {
+                    let params = {};
+                    let page = 1;
+
+                    if (getParameterByName('page')) {
+                        page = getParameterByName('page');
+                    }
+
+                    // set param page.
+                    params['page'] = page;
+                    if (this.name !== '') {
+                        params['name'] = this.name;
+                    }
+                    if (this.idCategory !== '-1') {
+                        params['id_category'] = this.idCategory;
+                    }
+                    params['pageSize'] = this.pageSize;
+
+                    let currentURL = location.protocol + '//' + location.host + location.pathname;
+
+                    window.location = currentURL + '?' + $.param(params);
+                },
+                getDefaultPageSize: function () {
+                    let pageSize = 20;
+                    let defaultPageSize = getParameterByName('pageSize');
+
+                    if (defaultPageSize && !isNaN(pageSize)) {
+                        pageSize = defaultPageSize;
+                    }
+
+                    return pageSize;
+                },
                 addGroup: function (element) {
                     let groupId, groupName, postId;
 

@@ -30,15 +30,25 @@ class ArticleServices
      * @param $postType
      * @return array
      */
-    public function getIndexPosts($request, $postType)
+    public function getIndexArticles($request, $postType)
     {
-        $name = empty($request['name']) ? '-1' : $request['name'];
+        $name = empty($request['name']) ? null : $request['name'];
 
-        $posts = Article::getPostsByName($name, 20, $postType);
+        $pageSize = empty($request['pageSize']) ? 20 : $request['pageSize'];
+
+        $idCategory = empty($request['id_category']) ? null : $request['id_category'];
+
+        $articles = Article::searchArticles($name, $idCategory, $pageSize, $postType);
 
         $groups = Group::all();
 
-        return ['name' => $name, 'posts' => $posts, 'groups' => $groups];
+        return [
+            'name' => $name,
+            'pageSize' => $pageSize,
+            'idCategory' => $idCategory,
+            'articles' => $articles,
+            'groups' => $groups
+        ];
     }
 
     /**

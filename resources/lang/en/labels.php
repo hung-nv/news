@@ -13,9 +13,10 @@ return [
     |
     */
 
-    'previous' => '&laquo; Previous',
-    'next' => 'Next &raquo;',
-    'view' => 'Show',
-    'records' => 'item / page'
-
+    'search' => 'Search',
+    'all' => 'All',
+    'submit' => 'Save',
+    'back' => 'Back',
+    'continue' => 'Continue',
+    'all_category' => 'All Category'
 ];
