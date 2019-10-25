@@ -3,17 +3,17 @@
     'oldSlug' => $slug
 ]])
 
-@section('title', 'Article')
+@section('title', 'Create Article')
 
 @section('pageId', 'create-edit-post')
 
 @section('breadcrumbs')
-    <a href="{{ route('post.index') }}">Post</a>
+    <a href="{{ route('post.index') }}">Articles</a>
     <i class="fa fa-circle"></i>
 @endsection
 
 @section('content')
-    <h3 class="page-title"> Post
+    <h3 class="page-title"> Article
         <small>Insert</small>
     </h3>
 
@@ -29,16 +29,16 @@
 
                     @include('backend.blocks.message')
 
-                    <form action="{{ route('post.update', ['post' => $post['id']]) }}" class="horizontal-form"
-                          role="form" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('post.store') }}" class="horizontal-form" role="form"
+                          method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        {{ method_field('PUT') }}
 
                         <div class="form-body">
                             <div class="row">
+
                                 @include('backend.blocks.errors')
 
-                                @include('backend.post._form')
+                                @include('backend.article._form')
                             </div>
                         </div>
                     </form>
@@ -49,12 +49,9 @@
 @endsection
 
 @section('style')
-    <link href="{{ asset('/libs/select2/css/select2.min.css') }}" rel="stylesheet"
-          type="text/css" xmlns="http://www.w3.org/1999/html"/>
-    <link href="{{ asset('/libs/select2/css/select2-bootstrap.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{ asset('/admin/css/fileinput.min.css') }}"
-          rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('/libs/select2/css/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('/admin/css/fileinput.min.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 @push('script')

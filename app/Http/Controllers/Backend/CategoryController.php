@@ -6,7 +6,6 @@ use App\Http\Requests\CategoryStore;
 use App\Http\Requests\CategoryUpdate;
 use App\Services\CategoryServices;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {

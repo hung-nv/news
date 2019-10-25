@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Requests\AdvertisingStore;
 use App\Http\Requests\AdvertisingUpdate;
 use App\Services\AdvertisingServices;
-use App\Http\Controllers\Controller;
 
 class AdvertisingController extends Controller
 {

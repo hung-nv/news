@@ -10,17 +10,16 @@ use App\Http\Requests\PostStore;
 use App\Http\Requests\PostUpdate;
 use App\Services\ArticleServices;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
-    private $postServices;
+    private $articleServices;
 
     public function __construct(ArticleServices $articleServices)
     {
         parent::__construct();
 
-        $this->postServices = $articleServices;
+        $this->articleServices = $articleServices;
     }
 
     /**
@@ -29,7 +28,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = $this->postServices->getIndexPages([$this->pageType]);
+        $pages = $this->articleServices->getIndexPages([$this->pageType]);
 
         return view('backend.page.index', [
             'pages' => $pages
@@ -44,7 +43,7 @@ class PageController extends Controller
      */
     public function create(Request $request)
     {
-        $templateCategory = $this->postServices->getCheckboxCategory(
+        $templateCategory = $this->articleServices->getCheckboxCategory(
             $this->categoryType,
             $request->old('parent')
         );
@@ -67,7 +66,7 @@ class PageController extends Controller
      */
     public function store(PageStore $request)
     {
-        $response = $this->postServices->createPost($request, $this->pageType);
+        $response = $this->articleServices->createPost($request, $this->pageType);
 
         return redirect()->route('page.index')->with([
             'success' => $response
@@ -84,9 +83,9 @@ class PageController extends Controller
     public function edit(Request $request, $id)
     {
         try {
-            $dataPost = $this->postServices->getPostInformationById($request, $id);
+            $dataPost = $this->articleServices->getPostInformationById($request, $id);
 
-            $templateCategory = $this->postServices->getCheckboxCategory(
+            $templateCategory = $this->articleServices->getCheckboxCategory(
                 $this->categoryType,
                 $dataPost['post_category']
             );
@@ -111,7 +110,7 @@ class PageController extends Controller
      */
     public function update(PageUpdate $request, $id)
     {
-        $response = $this->postServices->updatePost($request, $id, true);
+        $response = $this->articleServices->updatePost($request, $id, true);
 
         return redirect()->route('page.index')->with([
             'success' => $response
@@ -126,7 +125,7 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        $response = $this->postServices->deletePage($id, '');
+        $response = $this->articleServices->deletePage($id, '');
 
         return redirect()->route('page.index')->with([
             'success' => $response

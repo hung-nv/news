@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Requests\CreatePartnerRequest;
 use App\Services\PartnerServices;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class PartnerController extends Controller
 {

@@ -6,7 +6,6 @@ use App\Http\Requests\UpdateAccountRequest;
 use App\Http\Requests\UserStore;
 use App\Http\Requests\UserUpdate;
 use App\Services\UserServices;
-use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {

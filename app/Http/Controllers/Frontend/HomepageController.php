@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Partner;
 use App\Services\ArticleServices;
-use App\Http\Controllers\Controller;
 use Jenssegers\Agent\Agent;
 
 class HomepageController extends Controller

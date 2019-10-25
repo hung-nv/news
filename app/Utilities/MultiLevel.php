@@ -24,7 +24,7 @@ trait MultiLevel
 
                 if ($item->parent_id == $parentId) {
 
-                    $template[] = view('backend.post.partial._checkboxCategory', [
+                    $template[] = view('backend.article.partial._checkboxCategory', [
                         'item' => $item,
                         'selectedId' => $selectedId,
                         'level' => $level,

@@ -8,7 +8,6 @@ use App\Services\MenuServices;
 use App\Services\OptionServices;
 use App\Services\ArticleServices;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class SettingController extends Controller
 {

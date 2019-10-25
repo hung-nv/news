@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend;
 use App\Services\ArticleServices;
 use App\Services\CategoryServices;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Jenssegers\Agent\Agent;
 
 class ArticleController extends Controller

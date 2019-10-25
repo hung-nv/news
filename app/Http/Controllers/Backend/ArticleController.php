@@ -7,7 +7,6 @@ use App\Http\Requests\PostUpdate;
 use App\Services\ArticleServices;
 use App\Services\CategoryServices;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
@@ -33,7 +32,7 @@ class ArticleController extends Controller
 
         $templateCategory = $this->categoryServices->getSelectCategory($request->old('parent_id'));
 
-        return view('backend.post.index', [
+        return view('backend.article.index', [
             'articles' => $dataArticles['articles'],
             'name' => $dataArticles['name'],
             'pageSize' => $dataArticles['pageSize'],
@@ -59,7 +58,7 @@ class ArticleController extends Controller
         $name = $request->old('name') ? $request->old('name') : '';
         $slug = $request->old('slug') ? $request->old('slug') : '';
 
-        return view('backend.post.create', [
+        return view('backend.article.create', [
             'templateCategory' => $templateCategory,
             'name' => $name,
             'slug' => $slug
@@ -98,7 +97,7 @@ class ArticleController extends Controller
                 $dataPost['post_category']
             );
 
-            return view('backend.post.update', [
+            return view('backend.article.update', [
                 'templateCategory' => $templateCategory,
                 'post' => $dataPost['post'],
                 'name' => $dataPost['name'],

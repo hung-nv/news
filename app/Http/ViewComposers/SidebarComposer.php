@@ -24,9 +24,15 @@ class SidebarComposer
 
         $route = Route::current()->getAction();
 
+        $activeMenuSystem = MenuSystem::where('route', $route['as'])->first();
+
+        $routeGroup = $activeMenuSystem ? $activeMenuSystem->group : null;
+
         $view->with('sidebar', $sidebar);
 
         $view->with('routeName', $route['as']);
+
+        $view->with('routeGroup', $routeGroup);
     }
 
     private function setMultiMenu($data)

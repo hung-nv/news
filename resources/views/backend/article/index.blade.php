@@ -71,7 +71,7 @@
                             </div>
                         </div>
 
-                        @include('backend.post._post')
+                        @include('backend.article._post')
 
                         {{ $articles->appends(['name' => $name, 'id_category' => $idCategory, 'pageSize' => $pageSize])->links() }}
                     </div>
