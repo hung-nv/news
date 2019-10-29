@@ -18,7 +18,7 @@
 
         <div class="col-md-12">
 
-            <div class="portlet box blue">
+            <div class="portlet box red">
 
                 @include('backend.common.pageHeading')
 

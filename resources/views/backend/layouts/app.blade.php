@@ -23,7 +23,7 @@
     </script>
 </head>
 
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-container-bg-solid">
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-container-bg-solid page-sidebar-fixed">
 
 @include('backend.layouts.header')
 

@@ -24,8 +24,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="btn-group">
-                                    <a class="btn sbold green" href="{{ route('post.create') }}">
-                                        Create
+                                    <a class="dt-button buttons-print btn btn-sm red btn-outline" href="{{ route('post.create') }}">
+                                        Add Article
                                         <i class="fa fa-plus"></i>
                                     </a>
                                 </div>

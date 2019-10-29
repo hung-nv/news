@@ -19,19 +19,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="portlet light bordered">
-                <div class="portlet-title">
-                    <div class="caption font-dark">
-                        <i class="icon-settings font-dark"></i>
-                        <span class="caption-subject bold uppercase"> Data</span>
-                    </div>
-                </div>
                 <div class="portlet-body">
                     <div class="table-toolbar">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="btn-group">
-                                    <a class="btn sbold green" href="{{ route('page.create') }}">
-                                        Insert
+                                    <a class="dt-button buttons-print btn btn-sm red btn-outline" href="{{ route('page.create') }}">
+                                        Add page
                                         <i class="fa fa-plus"></i>
                                     </a>
                                 </div>

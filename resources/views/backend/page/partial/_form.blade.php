@@ -37,7 +37,7 @@
             </div>
 
             <div class="col-md-6">
-                <button type="submit" class="btn blue"
+                <button type="submit" class="btn btn-warning"
                         style="margin-top: 23px;">Submit
                 </button>
             </div>

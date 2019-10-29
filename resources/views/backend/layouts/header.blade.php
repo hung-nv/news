@@ -1,8 +1,8 @@
 <div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner ">
         <div class="page-logo">
-            <a href="{{ route('admin.dashboard') }}" style="line-height: 50px;font-size: 18px;color: #333;">
-                Administrator
+            <a href="{{ route('admin.dashboard') }}">
+                <img src="{{ asset('admin/assets/img/logo.png') }}" alt="logo" class="logo-default">
             </a>
             <div class="menu-toggler sidebar-toggler">
                 <span></span>
@@ -32,6 +32,11 @@
                                 <i class="icon-key"></i> Log Out </a>
                         </li>
                     </ul>
+                </li>
+                <li class="dropdown dropdown-quick-sidebar-toggler">
+                    <a href="{{ route('logout') }}" class="dropdown-toggle">
+                        <i class="icon-logout"></i>
+                    </a>
                 </li>
             </ul>
         </div>
