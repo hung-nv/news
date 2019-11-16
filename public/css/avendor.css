@@ -39,7 +39,7 @@ Description: A Beautiful, Professional and Multipurpose Theme Made by FourGrafx
 	margin:-60px 0 0 -50px;}
 #preloader {position:fixed;top:0;left:0; right:0;bottom:0; background-color:#fff; /* change if the mask should have another color then white */ z-index:9999; /* makes sure it stays on top */}
 
-body {background-color: #fff; color: #778899; text-rendering: optimizelegibility; letter-spacing: 0.05px; word-wrap: break-word; }
+body {background-color: #fff; color: #333; text-rendering: optimizelegibility; letter-spacing: 0.05px; word-wrap: break-word; }
 
 a { -webkit-transition: all 0.3s ease-in-out;  -moz-transition: all 0.3s ease-in-out;  -o-transition: all 0.3s ease-in-out;	-ms-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out;}
 a:hover, a:focus { text-decoration:none;}
@@ -1248,6 +1248,7 @@ ul.gallery.columns-3 li {width: 33.3%;}
 .iconbox .iconbox-wrapper{ float:left; margin-right:20px; font-size:20px; line-height:1; text-align:center; }
 .iconbox-wrapper.pull-right{ margin-left:20px; margin-right:0;}
 .iconbox .iconbox-content{overflow:hidden;}
+.iconbox .iconbox-content p { text-align: justify; }
 .iconbox-list{ margin-bottom:0px; }
 .iconbox-list li{ margin-top:20px; }
 .iconbox-list li:first-child{ margin-top:0px; }
