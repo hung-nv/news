@@ -59,7 +59,7 @@
                                 <div class="logo">
                                     <a href="/">
                                         @if(!empty($option['company_logo']))
-                                            <img src="{{ $option['company_logo'] }}" alt="Logo">
+                                            <img src="/img/85{{ $option['company_logo'] }}" alt="Logo">
                                         @else
                                             <img src="img/theme/logo.png" alt="Logo">
                                         @endif
