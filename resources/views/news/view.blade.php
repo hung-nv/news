@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="post-summary"><b>{{ nl2br(e($article->description)) }}</b></div>
 
-                                    <div class="post-content">
+                                    <div class="post-content text-justify">
                                         <p>{!! $article->content !!}</p>
                                     </div>
                                 </div>

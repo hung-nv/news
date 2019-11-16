@@ -1560,7 +1560,7 @@ hr.hr-double { padding: 4px; border: none; border-top: 1px solid #ececec;border-
 .accordion .panel-title { font-weight:500; font-size:inherit;}
 .accordion .panel-title a{display:block; padding:15px;}
 .accordion .panel-title a .fa{margin-right:10px;}
-.accordion .panel-body {border:none !important;}
+.accordion .panel-body {border:none !important; text-align: justify;}
 .accordion .accordion-toggle.collapsed-icon:after{    content: "\f147"; font-family: FontAwesome; font-style: normal; font-weight: normal; text-decoration: inherit; float:right;}
 .accordion .accordion-toggle.collapsed.collapsed-icon:after{    content: "\f196"; font-family: FontAwesome; font-style: normal; font-weight: normal; text-decoration: inherit;	float:right;}
 .accordion .accordion-toggle.collapsed-icon-left.collapsed-icon:after{float:left; margin-right:10px;}

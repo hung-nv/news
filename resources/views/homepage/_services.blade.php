@@ -19,7 +19,7 @@
                     <div class="col-sm-4">
                         <h5 class="fancy-title color-white animation fadeInLeft">
                             <span>{{ $option['services_title_1'] }}</span></h5>
-                        <p class="color-white">{{ $option['services_description_1'] }}</p>
+                        <p class="text-justify color-white">{{ $option['services_description_1'] }}</p>
                         <div class="white-space space-small"></div>
                     </div>
                 @endif
@@ -27,7 +27,7 @@
                     <div class="col-sm-4">
                         <h5 class="fancy-title color-white animation fadeInUp">
                             <span>{{ $option['services_title_2'] }}</span></h5>
-                        <p class="color-white">{{ $option['services_description_2'] }}</p>
+                        <p class="text-justify color-white">{{ $option['services_description_2'] }}</p>
                         <div class="white-space space-small"></div>
                     </div>
                 @endif
@@ -35,7 +35,7 @@
                     <div class="col-sm-4">
                         <h5 class="fancy-title color-white animation fadeInRight">
                             <span>{{ $option['services_title_3'] }}</span></h5>
-                        <p class="color-white">{{ $option['services_description_3'] }}</p>
+                        <p class="color-white text-justify">{{ $option['services_description_3'] }}</p>
                         <div class="white-space space-small"></div>
                     </div>
                 @endif
@@ -46,7 +46,7 @@
                     <div class="col-sm-4">
                         <h5 class="fancy-title color-white animation fadeInLeft">
                             <span>{{ $option['services_title_4'] }}</span></h5>
-                        <p class="color-white">{{ $option['services_description_4'] }}</p>
+                        <p class="color-white text-justify">{{ $option['services_description_4'] }}</p>
                         <div class="white-space space-small"></div>
                     </div>
                 @endif
@@ -54,7 +54,7 @@
                     <div class="col-sm-4">
                         <h5 class="fancy-title color-white animation fadeInUp">
                             <span>{{ $option['services_title_5'] }}</span></h5>
-                        <p class="color-white">{{ $option['services_description_5'] }}</p>
+                        <p class="color-white text-justify">{{ $option['services_description_5'] }}</p>
                         <div class="white-space space-small"></div>
                     </div>
                 @endif
@@ -62,7 +62,7 @@
                     <div class="col-sm-4">
                         <h5 class="fancy-title color-white animation fadeInRight">
                             <span>{{ $option['services_title_6'] }}</span></h5>
-                        <p class="color-white">{{ $option['services_description_6'] }}</p>
+                        <p class="color-white text-justify">{{ $option['services_description_6'] }}</p>
                         <div class="white-space space-small"></div>
                     </div>
                 @endif
