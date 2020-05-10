@@ -15,13 +15,13 @@
                value="{{ isset($post) ? $post['url_video'] : old('url_video') }}"/>
     </div>
 
-    <div class="form-group">
+    <div class="form-group last">
         <label>Description</label>
         <textarea name="description" class="form-control"
                   rows="4">{{ isset($post) ? $post['description'] : old('description') }}</textarea>
     </div>
 
-    <div class="form-group last">
+    <div class="form-group last hidden">
         <label>Content</label>
         <textarea class="ckeditor form-control" name="content" rows="6"
                   data-error-container="#editor2_error">{{ isset($post) ? $post['content'] : old('content') }}</textarea>
@@ -58,19 +58,19 @@
         <div id="form_2_services_error"></div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group hidden">
         <label>Keywords</label>
         <input type="text" name="meta_keywords" class="form-control"
                value="{{ isset($post) ? $post['meta_keywords'] : old('meta_keywords') }}"/>
     </div>
 
-    <div class="form-group">
+    <div class="form-group hidden">
         <label>Meta title</label>
         <input type="text" name="meta_title" class="form-control"
                value="{{ isset($post) ? $post['meta_title'] : old('meta_title') }}"/>
     </div>
 
-    <div class="form-group">
+    <div class="form-group hidden">
         <label>Meta description</label>
         <input type="text" name="meta_description" class="form-control"
                value="{{ isset($post) ? $post['meta_description'] : old('meta_description') }}"/>

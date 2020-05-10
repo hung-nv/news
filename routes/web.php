@@ -51,12 +51,12 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth', 'namespace' =
         // route resource category.
         Route::resource('category', 'CategoryController');
 
-        Route::resource('advertising', 'AdvertisingController');
+//        Route::resource('advertising', 'AdvertisingController');
 
-        Route::resource('partner', 'PartnerController');
+//        Route::resource('partner', 'PartnerController');
 
         // route resource page.
-        Route::resource('page', 'PageController', ['except' => ['show']]);
+//        Route::resource('page', 'PageController', ['except' => ['show']]);
     });
 
     Route::group(['middleware' => 'checkrole:1'], function () {

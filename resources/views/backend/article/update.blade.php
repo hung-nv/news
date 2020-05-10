@@ -59,7 +59,6 @@
 
 @push('script')
     <script src="{{ asset('/libs/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/libs/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/libs/fileinput.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/libs/piexif.min.js') }}" type="text/javascript"></script>
 @endpush
