@@ -58,8 +58,11 @@ class ArticleController extends Controller
         $name = $request->old('name') ? $request->old('name') : '';
         $slug = $request->old('slug') ? $request->old('slug') : '';
 
+        $postDownload[] = ['label' => '', 'url' => ''];
+
         return view('backend.article.create', [
             'templateCategory' => $templateCategory,
+            'postDownload' => $postDownload,
             'name' => $name,
             'slug' => $slug
         ]);
@@ -73,11 +76,17 @@ class ArticleController extends Controller
      */
     public function store(PostStore $request)
     {
-        $response = $this->articleServices->createPost($request, $this->articleType);
+        try {
+            $response = $this->articleServices->createPost($request, $this->articleType);
 
-        return redirect()->route('post.index')->with([
-            'success' => $response
-        ]);
+            return redirect()->route('post.index')->with([
+              'success' => $response
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->route('post.create')->with([
+              'error' => $e->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -99,6 +108,7 @@ class ArticleController extends Controller
 
             return view('backend.article.update', [
                 'templateCategory' => $templateCategory,
+                'postDownload' => $dataPost['post_download'],
                 'post' => $dataPost['post'],
                 'name' => $dataPost['name'],
                 'slug' => $dataPost['slug']

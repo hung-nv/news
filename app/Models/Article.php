@@ -7,41 +7,44 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends \Eloquent
 {
+
     CONST POST_TYPE = 'article';
+
     CONST PAGE_TYPE = 'page';
+
     CONST LANDING_TYPE = 'landing';
 
     protected $table = 'articles';
 
     protected $dates = [
-        'created_at',
-        'updated_at'
+      'created_at',
+      'updated_at',
     ];
 
     protected $append = ['url'];
 
     protected $fillable = [
-        'name',
-        'slug',
-        'image',
-        'url_video',
-        'description',
-        'content',
-        'user_id',
-        'status',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
-        'type'
+      'name',
+      'slug',
+      'image',
+      'url_video',
+      'description',
+      'content',
+      'user_id',
+      'status',
+      'meta_title',
+      'meta_description',
+      'meta_keywords',
+      'type',
     ];
 
     public function category()
     {
         return $this->belongsToMany(
-            'App\Models\Category',
-            'article_category',
-            'article_id',
-            'category_id'
+          'App\Models\Category',
+          'article_category',
+          'article_id',
+          'category_id'
         );
     }
 
@@ -50,24 +53,32 @@ class Article extends \Eloquent
         return $this->hasMany('App\Models\MetaField', 'article_id');
     }
 
+    public function articleDownloads()
+    {
+        return $this->hasMany('App\Models\ArticleDownload', 'article_id');
+    }
+
     public function groups()
     {
         return $this->belongsToMany(
-            'App\Models\Group',
-            'article_group',
-            'article_id',
-            'group_id'
+          'App\Models\Group',
+          'article_group',
+          'article_id',
+          'group_id'
         );
     }
 
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag', 'article_tag', 'article_id', 'tag_id');
+        return $this->belongsToMany('App\Models\Tag', 'article_tag',
+          'article_id', 'tag_id');
     }
 
     /**
      * Format created_at
+     *
      * @param $value
+     *
      * @return false|string
      */
     public function getCreatedAtAttribute($value)
@@ -77,24 +88,29 @@ class Article extends \Eloquent
 
     /**
      * Set url for category.
+     *
      * @param $value
+     *
      * @return string
      */
     public function getUrlAttribute($value)
     {
-        $prefix = config('const.prefix.' . self::POST_TYPE);
+        $prefix = config('const.prefix.'.self::POST_TYPE);
 
-        return $prefix ? '/' . $prefix . '/' . $this->slug : '/' . $this->slug;
+        return $prefix ? '/'.$prefix.'/'.$this->slug : '/'.$this->slug;
     }
 
     /**
      * Get all article in 7 days ago.
+     *
      * @param $query
+     *
      * @return mixed
      */
     public function scopeInWeek($query)
     {
-        return $query->havingRaw('(UNIX_TIMESTAMP(now()) - UNIX_TIMESTAMP(created_at)) < ?', [604800]);
+        return $query->havingRaw('(UNIX_TIMESTAMP(now()) - UNIX_TIMESTAMP(created_at)) < ?',
+          [604800]);
     }
 
     /**
@@ -107,37 +123,45 @@ class Article extends \Eloquent
             $tagIds = $this->tags()->pluck('tags.id')->all();
             $query->whereIn('tags.id', $tagIds);
         })
-            ->where('id', '<>', $this->id)
-            ->limit(5)
-            ->get();
+          ->where('id', '<>', $this->id)
+          ->limit(5)
+          ->get();
     }
 
     /**
      * Get all posts by name.
-     * @param string|null $name
-     * @param int|null $idCategory
-     * @param int $pageSize
-     * @param string $postType
+     *
+     * @param  string|null  $name
+     * @param  int|null  $idCategory
+     * @param  int  $pageSize
+     * @param  string  $postType
+     *
      * @return $this|\Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public static function searchArticles($name, $idCategory, int $pageSize, string $postType)
-    {
+    public static function searchArticles(
+      $name,
+      $idCategory,
+      int $pageSize,
+      string $postType
+    ) {
         $articles = self::query();
 
         $articles = $articles->with(['groups', 'category']);
 
         $articles = $articles->where('type', $postType)
-            ->orderByDesc('created_at');
+          ->orderByDesc('created_at');
 
         if ($name !== null) {
             $articles = $articles->where('name', 'LIKE', "%{$name}%");
         }
 
         if ($idCategory !== null) {
-            $articles = $articles->join('article_category', function ($join) use ($idCategory) {
-                $join->on('articles.id', '=', 'article_category.article_id');
-                $join->where('article_category.category_id', '=', $idCategory);
-            });
+            $articles = $articles->join('article_category',
+              function ($join) use ($idCategory) {
+                  $join->on('articles.id', '=', 'article_category.article_id');
+                  $join->where('article_category.category_id', '=',
+                    $idCategory);
+              });
         }
 
         $articles = $articles->paginate($pageSize);
@@ -147,7 +171,9 @@ class Article extends \Eloquent
 
     /**
      * Get all pages.
-     * @param array $type
+     *
+     * @param  array  $type
+     *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public static function getAllPages(array $type)
@@ -156,157 +182,175 @@ class Article extends \Eloquent
     }
 
     /**
-     * @param array $idsCategory
-     * @param int $limit
-     * @param array $idsExcept
+     * @param  array  $idsCategory
+     * @param  int  $limit
+     * @param  array  $idsExcept
+     *
      * @return Article[]|\Illuminate\Database\Eloquent\Collection
      */
-    public static function getArticlesByIdsCategory($idsCategory, $limit, $idsExcept = [])
-    {
+    public static function getArticlesByIdsCategory(
+      $idsCategory,
+      $limit,
+      $idsExcept = []
+    ) {
         return self::from('articles')
-            ->select([
-                'articles.id',
-                'articles.name',
-                'articles.slug',
-                'articles.image',
-                'articles.description',
-                'articles.created_at'
-            ])
-            ->join('article_category', function ($join) {
-                $join->on('articles.id', '=', 'article_category.article_id');
-            })
-            ->where(function ($query) use ($idsCategory) {
-                foreach ($idsCategory as $id) {
-                    $query->orWhere('article_category.category_id', '=', $id);
-                }
-            })
-            ->orderByDesc('articles.updated_at')
-            ->where('articles.status', 1)
-            ->whereNotIn('articles.id', $idsExcept)
-            ->groupBy('articles.id')
-            ->limit($limit)
-            ->get();
+          ->select([
+            'articles.id',
+            'articles.name',
+            'articles.slug',
+            'articles.image',
+            'articles.description',
+            'articles.created_at',
+          ])
+          ->join('article_category', function ($join) {
+              $join->on('articles.id', '=', 'article_category.article_id');
+          })
+          ->where(function ($query) use ($idsCategory) {
+              foreach ($idsCategory as $id) {
+                  $query->orWhere('article_category.category_id', '=', $id);
+              }
+          })
+          ->orderByDesc('articles.updated_at')
+          ->where('articles.status', 1)
+          ->whereNotIn('articles.id', $idsExcept)
+          ->groupBy('articles.id')
+          ->limit($limit)
+          ->get();
     }
 
     /**
      * @param $idsCategory
-     * @param null $pageSize
+     * @param  null  $pageSize
+     *
      * @return Article
      */
-    public static function paginateArticlesByIdsCategory($idsCategory, $articleType, $pageSize = null)
-    {
+    public static function paginateArticlesByIdsCategory(
+      $idsCategory,
+      $articleType,
+      $pageSize = null
+    ) {
         if (!$idsCategory) {
             return null;
         }
 
         $model = self::from('articles')
-            ->select([
-                'articles.id',
-                'articles.name',
-                'articles.slug',
-                'articles.image',
-                'articles.description',
-                'articles.created_at',
-                'type'
-            ])
-            ->join('article_category', function ($join) {
-                $join->on('articles.id', '=', 'article_category.article_id');
-            })
-            ->where(function ($query) use ($idsCategory) {
-                foreach ($idsCategory as $id) {
-                    $query->orWhere('article_category.category_id', '=', $id);
-                }
-            })
-            ->where('articles.status', 1)
-            ->where('articles.type', $articleType)
-            ->orderByDesc('articles.updated_at')
-            ->groupBy('articles.id')
-            ->paginate($pageSize);
+          ->select([
+            'articles.id',
+            'articles.name',
+            'articles.slug',
+            'articles.image',
+            'articles.description',
+            'articles.created_at',
+            'type',
+          ])
+          ->join('article_category', function ($join) {
+              $join->on('articles.id', '=', 'article_category.article_id');
+          })
+          ->where(function ($query) use ($idsCategory) {
+              foreach ($idsCategory as $id) {
+                  $query->orWhere('article_category.category_id', '=', $id);
+              }
+          })
+          ->where('articles.status', 1)
+          ->where('articles.type', $articleType)
+          ->orderByDesc('articles.updated_at')
+          ->groupBy('articles.id')
+          ->paginate($pageSize);
 
         return $model;
     }
 
     /**
      * Get articles by names and pagination.
+     *
      * @param $name
      * @param $pageSize
+     *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public static function paginateArticlesByName($name, $pageSize)
     {
-        $model = self::where('name', 'LIKE', '%' . $name . '%')
-            ->where('status', 1)
-            ->where('type', self::POST_TYPE)
-            ->orderByDesc('updated_at')
-            ->paginate($pageSize);
+        $model = self::where('name', 'LIKE', '%'.$name.'%')
+          ->where('status', 1)
+          ->where('type', self::POST_TYPE)
+          ->orderByDesc('updated_at')
+          ->paginate($pageSize);
 
         return $model;
     }
 
     /**
      * Get article by slug.
+     *
      * @param $slug
+     *
      * @return Article|Model|object|null
      */
     public static function getArticleBySlug($slug)
     {
         return self::where('slug', $slug)
-            ->where('status', 1)
-            ->first();
+          ->where('status', 1)
+          ->first();
     }
 
     /**
      * Get new articles.
+     *
      * @param $limit
-     * @param array $idsExcept
+     * @param  array  $idsExcept
+     *
      * @return Article[]|\Illuminate\Database\Eloquent\Collection
      */
     public static function getNewArticle($limit, $idsExcept = [])
     {
         return self::where('status', 1)
-            ->where('type', self::POST_TYPE)
-            ->orderByDesc('created_at')
-            ->whereNotIn('id', $idsExcept)
-            ->limit($limit)
-            ->get();
+          ->where('type', self::POST_TYPE)
+          ->orderByDesc('created_at')
+          ->whereNotIn('id', $idsExcept)
+          ->limit($limit)
+          ->get();
     }
 
     /**
      * Get top article in 7 days ago.
+     *
      * @param $limit
-     * @param array $idsExcept
+     * @param  array  $idsExcept
+     *
      * @return Collection
      */
     public static function getTopArticlesInWeek($limit, $idsExcept = [])
     {
         return self::where('status', 1)
-            ->inWeek()
-            ->where('type', self::POST_TYPE)
-            ->whereNotIn('id', $idsExcept)
-            ->limit($limit)
-            ->get();
+          ->inWeek()
+          ->where('type', self::POST_TYPE)
+          ->whereNotIn('id', $idsExcept)
+          ->limit($limit)
+          ->get();
     }
 
     /**
      * Get articles by groupId
+     *
      * @param $groupId
      * @param $limit
+     *
      * @return Article[]|Collection
      */
     public static function getArticlesByGroupId($groupId, $limit)
     {
         return self::from('articles as a')
-            ->select([
-                'a.*'
-            ])
-            ->join('article_group as b', function ($join) {
-                $join->on('b.article_id', '=', 'a.id');
-            })
-            ->where('b.group_id', $groupId)
-            ->where('a.status', 1)
-            ->where('a.type', self::POST_TYPE)
-            ->orderByDesc('a.created_at')
-            ->limit($limit)
-            ->get();
+          ->select([
+            'a.*',
+          ])
+          ->join('article_group as b', function ($join) {
+              $join->on('b.article_id', '=', 'a.id');
+          })
+          ->where('b.group_id', $groupId)
+          ->where('a.status', 1)
+          ->where('a.type', self::POST_TYPE)
+          ->orderByDesc('a.created_at')
+          ->limit($limit)
+          ->get();
     }
 }

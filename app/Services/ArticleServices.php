@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\ArticleDownload;
 use App\Models\Category;
 use App\Models\Group;
 use App\Models\MetaField;
@@ -114,6 +115,8 @@ class ArticleServices
         } catch (\Exception $exception) {
             DB::rollBack();
 
+            !empty($fileName) && $this->imageServices->deleteImage($fileName);
+
             throw $exception;
         }
     }
@@ -129,6 +132,19 @@ class ArticleServices
 
         if (!empty($data['parent'])) {
             $post->category()->attach($data['parent']);
+        }
+
+        if (count($data['label']) > 0) {
+            $articleDownloads = [];
+            for($i = 0; $i < count($data['label']); $i++) {
+                if (!empty($data['label'][$i]) && !empty($data['url'][$i])) {
+                    $articleDownloads = [
+                        new ArticleDownload(['label' => $data['label'][$i], 'url' => $data['url'][$i]])
+                    ];
+                }
+            }
+
+            $post->articleDownloads()->saveMany($articleDownloads);
         }
 
         $message = 'Create "' . $post->name . '" successful';
@@ -151,12 +167,18 @@ class ArticleServices
             $post_category[] = $i->id;
         }
 
+        $post_download = [];
+        foreach ($post->articleDownloads as $j) {
+            $post_download[] = ['label' => $j->label, 'url' => $j->url];
+        }
+
         $name = $post->name ? $post->name : $request->old('name');
         $slug = $post->slug ? $post->slug : $request->old('slug');
 
         $return = [
             'post' => $post,
             'post_category' => $post_category,
+            'post_download' => $post_download,
             'name' => $name,
             'slug' => $slug
         ];
@@ -257,6 +279,21 @@ class ArticleServices
 
         if ($post->update($data)) {
             $post->category()->sync($request->parent);
+
+            $post->articleDownloads()->delete();
+
+            if (count($data['label']) > 0) {
+                $articleDownloads = [];
+                for($i = 0; $i < count($data['label']); $i++) {
+                    if (!empty($data['label'][$i]) && !empty($data['url'][$i])) {
+                        $articleDownloads = [
+                          new ArticleDownload(['label' => $data['label'][$i], 'url' => $data['url'][$i]])
+                        ];
+                    }
+                }
+
+                $post->articleDownloads()->saveMany($articleDownloads);
+            }
         }
 
         $message = '"' . $post->name . '" has been updated!';

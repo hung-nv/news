@@ -35,6 +35,7 @@
 
                         <div class="form-body">
                             <div class="row">
+                                <div class="inner-error"></div>
 
                                 @include('backend.blocks.errors')
 

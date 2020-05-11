@@ -12829,10 +12829,29 @@ if ($(ui.pageId).length) {
       postName: function postName(newValue, oldValue) {
         this.postSlug = Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["slugify"])(newValue);
       }
+    },
+    methods: {
+      addItem: function addItem() {
+        var content = "<div class=\"row content-download-inner\">\n                                    <div class=\"col-md-2\">\n                                        <div class=\"form-group\">\n                                            <label>Label</label>\n                                            <input type=\"text\" name=\"label[]\" class=\"form-control\" value=\"\"/>\n                                        </div>\n                                    </div>\n\n                                    <div class=\"col-md-5\">\n                                        <div class=\"form-group\">\n                                            <label>Url Download</label>\n                                            <div class=\"input-group\">\n                                                <input type=\"text\" name=\"url[]\" class=\"form-control\" value=\"\"/>\n                                                <span class=\"input-group-btn\">\n                                                    <button class=\"btn btn-danger\" style=\"margin-left: 10px;\" id=\"remove-item\">Remove</button>\n                                                </span>\n                                            </div>\n                                        </div>\n                                    </div>\n                                </div>";
+        $('#content-download').append(content);
+      }
     }
   });
   $(function () {
     setInputImage();
+    $(".horizontal-form").on('submit', function (e) {
+      e.preventDefault();
+      var parentChecked = $('input:checkbox:checked').length;
+
+      if (parentChecked > 0) {
+        $(this).unbind('submit').submit();
+      } else {
+        $('.inner-error').append('<div class="alert alert-danger"> <ul><li>Please select category. </li></ul></div>');
+        setTimeout(function () {
+          $('.inner-error').html('');
+        }, 5000);
+      }
+    });
     /**
      * Set input image preview.
      */
@@ -12850,6 +12869,10 @@ if ($(ui.pageId).length) {
         $(ui.inputRemoveInitPreview).trigger("click");
       });
     }
+
+    $(ui.pageId).on('click', '#remove-item', function () {
+      $(this).parents('.content-download-inner').remove();
+    });
   });
 }
 

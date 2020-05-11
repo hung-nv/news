@@ -9,23 +9,38 @@
         <input type="text" name="slug" class="form-control" :value="postSlug"/>
     </div>
 
-    <div class="form-group hidden">
-        <label>Url Video Youtube</label>
-        <input type="text" name="url_video" class="form-control"
-               value="{{ isset($post) ? $post['url_video'] : old('url_video') }}"/>
-    </div>
-
-    <div class="form-group last">
+    <div class="form-group">
         <label>Description</label>
         <textarea name="description" class="form-control"
                   rows="4">{{ isset($post) ? $post['description'] : old('description') }}</textarea>
     </div>
 
-    <div class="form-group last hidden">
-        <label>Content</label>
-        <textarea class="ckeditor form-control" name="content" rows="6"
-                  data-error-container="#editor2_error">{{ isset($post) ? $post['content'] : old('content') }}</textarea>
-        <div id="editor2_error"></div>
+    <h3 class="form-section margin-top-40">Downloads</h3>
+    <button type="button" class="btn btn-warning" v-on:click="addItem">Add item</button>
+
+    <div id="content-download" class="margin-top-20">
+        @foreach($postDownload as $download)
+            <div class="row content-download-inner">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Label</label>
+                        <input type="text" name="label[{{ $loop->index }}]" class="form-control" value="{{ $download['label'] }}"/>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>Url Download</label>
+                        <div class="input-group">
+                            <input type="url" name="url[{{ $loop->index }}]" class="form-control" value="{{ $download['url'] }}"/>
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger" style="margin-left: 10px;" id="remove-item">Remove</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 </div>
 
@@ -82,6 +97,6 @@
             <input type="hidden" name="old_image" id="old-image" data-id="{{ $post['id'] }}"
                    value="{{ isset($post) ? $post['image'] : '' }}">
         @endif
-        <input id="image" name="image" type="file" data-show-upload="false">
+        <input id="image" name="image" type="file" data-show-upload="false" required style="left: 0;">
     </div>
 </div>

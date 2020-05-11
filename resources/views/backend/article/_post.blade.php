@@ -4,7 +4,7 @@
         <th class="data-middle"> Image</th>
         <th style="width: 50%"> Information</th>
         <th class="data-middle"> Created At</th>
-        <th class="data-middle"> Groups</th>
+        <th class="data-middle hidden"> Groups</th>
         <th class="data-middle"> Status</th>
         <th class="data-middle"> Actions</th>
     </tr>
@@ -21,7 +21,7 @@
                 </p>
             </td>
             <td class="data-middle">{{ $i->created_at }}</td>
-            <td class="data-middle">
+            <td class="data-middle hidden">
                 @foreach($groups as $j)
                     <p class="margin-bottom-10">
                         @if(in_array($j->id, array_pluck($i->groups, 'id')))
