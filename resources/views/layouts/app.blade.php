@@ -1,144 +1,138 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
-    <meta name="robots" content="all">
     <title>@yield('title')</title>
 
-    <!-- Styles -->
+    <link rel="icon" sizes="192x192" href="/favicon.192.png"/>
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon.192.png"/>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-
-    <!-- Bootstrap RTL
-      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.2.0-rc2/css/bootstrap-rtl.css"> -->
-
-    <!-- Font Awesome 4.1.0 -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <!-- Avendor Icons Font -->
-    <link href="{{ asset('css/avendor-font-styles.css') }}" rel="stylesheet">
-
-    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/revolutionslider/settings.css') }}" media="screen"/>
-
-    <!-- Animate CSS -->
-    <link href="{{ asset('css/themecss/animate.css') }}" rel="stylesheet">
-
-    <!-- Lightbox CSS -->
-    <link href="{{ asset('css/themecss/lightbox.css') }}" rel="stylesheet">
-
-    <!-- OWL Carousel -->
-    <link href="{{ asset('css/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/owl-carousel/owl.transitions.css') }}" rel="stylesheet">
-
-    <!-- Theme CSS -->
-    <link href="{{ asset('css/avendor.css') }}" rel="stylesheet">
-
-    <!-- Color CSS -->
-    <link href="{{ asset('css/colors/color-default.css') }}" rel="stylesheet" title="style1">
-
-    <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,100,500,600,700,800,900' rel='stylesheet'
-          type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144"
-          href="{{ asset('ico/apple-touch-icon-144-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114"
-          href="{{ asset('ico/apple-touch-icon-114-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72"
-          href="{{ asset('ico/apple-touch-icon-72-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('ico/apple-touch-icon-57-precomposed.png') }}">
-    <link rel="shortcut icon" href="{{ 'ico/favicon.png' }}">
-
-
-    <!-- Customizable CSS -->
-    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-
-    <meta property="og:title" content="@yield('og_title')"/>
-    <meta property="og:description" content="@yield('og_description')"/>
-    <meta property="og:image" content="@yield('og_image')"/>
-
-    @if(!empty($option['private_script']))
-        {!! $option['private_script'] !!}
-    @endif
+    <link href="{{ asset('/css/vndoc.min.css') }}" rel="stylesheet"/>
 </head>
-<body class="bg-pattern1" data-spy="scroll" data-target=".navbar">
-<div id="preloader"></div>
+<body class="theme quiz viewquiz">
+<header class="header clearfix">
+    <div class="container">
+        <div class="header-logo">
+            <div class="logo">
+                <a href="/" title="Trang chủ">vndoc.com</a>
+            </div>
+            <div class="topnav"></div>
+            <a class="toggle menu"></a>
+            <a class="toggle search"></a>
+        </div>
+    </div>
+</header>
+<nav class="mainNav">
+    <div class="container">
+        <ul class="navbar clearfix">
+            <li class="item all"><a href="/"> <img src="https://s.vietnamdoc.net/data/image/icon/menu.png"/> <span>Tất cả danh mục</span>
+                </a>
+                <div class="box-tabs">
+                    <ul class="navigation">
+                        <li class="item hoc-tap">
+                            <a href="https://vndoc.com/hoc-tap"><span>Học tập</span> </a>
+                        </li>
+                        <li class="item test">
+                            <a href="/test"><span>Trắc nghiệm</span> </a>
+                        </li>
+                        <li class="item giai-bai-tap">
+                            <a href="https://vndoc.com/giai-bai-tap"><span>Giải b&#224;i tập</span> </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-<!-- Page Main Wrapper -->
-<div class="page-wrapper" id="page-top">
+<div class="section posturls box-sidebar" data-itemid="136610" data-itemtype="post">
+    <div class="container clearfix">
+        <div class="maincontent">
+            <h1 class="post-title">
+                <a href="/ngu-van-8-bai-viet-so-7-van-nghi-luan-hay-noi-khong-voi-cac-te-nan/download">
+                    Ngữ văn 8 bài viết số 7 - Văn nghị luận - Hãy nói "Không" với các tệ nạn
+                </a>
+            </h1>
 
-    @include('layouts.header')
 
-    @yield('content')
+            <div class="message down-url">
+                <div class="down-tip">Bấm vào liên kết dưới đây để tải về:</div>
+                <a class="btn btn-link btn-track file-pdf" title="Tải xuống Ngữ văn 8 bài viết số 7 - Văn nghị luận - Hãy nói &quot;Không&quot; với các tệ nạn" data-downurl="http://s1.vndoc.com/data/pdf/2020/05/11/ngu-van-8-bai-viet-so-7-van-nghi-luan-hay-noi-khong-voi-cac-te-nan.pdf" href="/url?postid=136610">
+                    <span class="link-title">Ngữ văn 8 bài viết số 7 - Văn nghị luận - Hãy nói "Không" với các tệ nạn</span>
+                    <span class="link-size">426,2 KB</span>
+                    <span class="link-date">13/11/2017 4:54:00 CH</span>
+                </a>
+            </div>
 
-    @include('layouts.footer')
+
+            <div class="message down-title">Bạn có thể tải về tập tin thích hợp cho bạn tại các liên kết dưới dây.</div>
+            <ul class="post-links">
+                <li>
+                    <a class="btn btn-link clearfix btn-track file-doc" title="Tải file định dạng .DOC" href="/url?postid=136610&amp;urlid=124741" data-downurl="http://s1.vndoc.com/data/file/2020/05/11/ngu-van-8-bai-viet-so-7-van-nghi-luan-hay-noi-khong-voi-cac-te-nan.doc">
+                        <span class="link-title">Tải file định dạng .DOC</span>
+                        <span class="link-size">213,5 KB</span>
+                        <span class="link-date">11/05/2020 5:10:45 CH</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="overview textview">
+                Hãy nói không với các tệ nạn xã hội - Ngữ văn 8 bài viết số 7 - Văn nghị luận - Hãy nói "Không" với các tệ nạn được VnDoc sưu tầm, giúp bạn viết bài tập làm văn số 7 lớp 8 đề 3: Hãy nói không với các tệ nạn xã hội mẫu 1 hay hơn                    <div class="viewmore">
+                    Xem thêm các thông tin về
+                    <a href="/ngu-van-8-bai-viet-so-7-van-nghi-luan-hay-noi-khong-voi-cac-te-nan/download">Ngữ văn 8 bài viết số 7 - Văn nghị luận - Hãy nói "Không" với các tệ nạn</a>
+                </div>
+            </div>
+
+
+            <div class="relatedposts clearfix">
+                <div class="title">Tham khảo thêm</div>
+                <ul class="list-items">
+                    <li>
+                        <a title="Phát biểu cảm nghĩ về bài thơ Cảnh khuya" href="/phat-bieu-cam-nghi-ve-bai-tho-canh-khuya/download">
+                    <span class="icon">
+
+                        <img class="lazy loaded" data-src="https://s.vietnamdoc.net/data/image/Icon/doc.png" src="https://s.vietnamdoc.net/data/image/Icon/doc.png" alt="Phát biểu cảm nghĩ về bài thơ Cảnh khuya" data-was-processed="true">
+                    </span>
+                            <span class="name">
+                        Phát biểu cảm nghĩ về bài thơ Cảnh khuya
+                    </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="Lập dàn ý Cảm nghĩ về tình bạn" href="/lap-dan-y-cam-nghi-ve-tinh-ban/download">
+                    <span class="icon">
+
+                        <img class="lazy loaded" data-src="https://s.vietnamdoc.net/Data/image/Icon/doc.png" src="https://s.vietnamdoc.net/Data/image/Icon/doc.png" alt="Lập dàn ý Cảm nghĩ về tình bạn" data-was-processed="true">
+                    </span>
+                            <span class="name">
+                        Lập dàn ý Cảm nghĩ về tình bạn
+                    </span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+        <div class="sidebar" style="height: 935px;">
+            <-- qc -->
+        </div>
+    </div>
 </div>
 
+<footer class="footer">
+    <div class="copyright"><span>Chịu trách nhiệm nội dung: Lê Ngọc Lam.</span> <span>©2020 Công ty Cổ phần Mạng trực tuyến <a
+                    href="http://meta.vn" rel="nofollow" target="_blank">META</a></span> <span>Địa chỉ: 56 Duy Tân, Dịch Vọng Hậu, Cầu Giấy, Hà Nội.</span>
+        <span>Điện thoại: <a href="tel:+842422426188">024 2242 6188</a>. Email: info@meta.vn.</span> <span>Giấy phép số 366/GP-BTTTT do Bộ TTTT cấp.</span>
+    </div>
+</footer>
 
-<!-- Back To Top -->
-<a href="#page-top" class="scrollup smooth-scroll"><span class="fa fa-angle-up"></span></a>
-<!-- /Back To Top -->
 
+<script src='{{ asset('/js/vndoc.min.js') }}'></script>
 
-<!-- Javascripts
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
-<script type="text/javascript" src="{{ asset('js/themejs/jquery.countdown.js') }}"></script>
-
-<!-- Preloader -->
-<script src="{{ asset('js/themejs/jquery.queryloader2.min.js') }}" type="text/javascript"></script>
-
-<!-- Smooth Scroll -->
-<script src="{{ asset('js/themejs/SmoothScroll.js') }}" type="text/javascript"></script>
-
-<!-- Stick On Scroll -->
-<script src="{{ asset('js/themejs/jquery.stickOnScroll.js') }}" type="text/javascript"></script>
-
-<!-- Scrolling Smooth to section - requires jQuery Easing plugin -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-<script src="{{ asset('js/revolutionslider/jquery.themepunch.plugins.min.js') }}"></script>
-<script src="{{ asset('js/revolutionslider/jquery.themepunch.revolution.min.js') }}"></script>
-
-<!-- LivIcons -->
-<script src="{{ asset('js/livicons/livicons-1.3.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/livicons/raphael-min.js') }}" type="text/javascript"></script>
-
-<!-- Portfolio -->
-<script src="{{ asset('js/themejs/jquery.isotope.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/themejs/jquery.colio.min.js') }}" type="text/javascript"></script>
-
-<!-- Parallax -->
-<script src="{{ asset('js/themejs/jquery.stellar.min.js') }}" type="text/javascript"></script>
-
-<!-- Carousel -->
-<script src="{{ asset('js/owl-carousel/owl.carousel.js') }}" type="text/javascript"></script>
-
-<!-- Counters -->
-<script src="{{ asset('js/themejs/jquery.countTo.js') }}" type="text/javascript"></script>
-
-<!-- Lightbox -->
-<script src="{{ asset('js/themejs/jquery.magnific-popup.min.js') }}" type="text/javascript"></script>
-
-<!-- Tooltips -->
-<script src="{{ asset('js/themejs/jQuery.Opie.Tooltip.min.js') }}" type="text/javascript"></script>
-
-<!-- Animation Viewport -->
-<script src="{{ asset('js/themejs/jquery.waypoints.min.js') }}" type="text/javascript"></script>
-
-<!-- Load Scripts -->
-<script src="{{ asset('js/themejs/application.js') }}"></script>
 </body>
 </html>
