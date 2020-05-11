@@ -1,32 +1,8 @@
 <div class="form-body">
-    <div class="form-group">
-        <label class="col-md-2 control-label">Site Heading</label>
-        <div class="col-md-5">
-            <input name="site_heading" class="form-control"
-                   value="{{ isset($option['site_heading']) ? $option['site_heading'] : old('site_heading') }}"/>
-        </div>
-    </div>
-
-    <?php $homepage_post_id = isset($option['homepage_post_id']) ? $option['homepage_post_id'] : old('homepage_post_id') ?>
-    <div class="form-group">
-        <label class="col-md-2 control-label">Set Homepage</label>
-        <div class="col-md-5">
-            <select class="form-control" name="homepage_post_id">
-                <option value="">Select Landing Page...</option>
-                @if(isset($pages) && $pages)
-                    @foreach($pages as $page)
-                        <option value="{{ $page['id'] }}"
-                                @if($homepage_post_id == $page['id']) selected @endif>{{ $page['name'] }}</option>
-                    @endforeach
-                @endif
-            </select>
-        </div>
-    </div>
-
-    <?php $mainMenuId = isset($option['main_menu_id']) ? $option['main_menu_id'] : old('main_menu_id') ?>
+    <?php $mainMenuId = !empty($option['main_menu_id']) ? $option['main_menu_id'] : old('main_menu_id') ?>
     <div class="form-group">
         <label class="col-md-2 control-label">Main Menu</label>
-        <div class="col-md-5">
+        <div class="col-md-3">
             <select class="form-control" name="main_menu_id">
                 <option value="">Select Menu...</option>
                 @foreach($menus as $mainMenu)
@@ -37,10 +13,10 @@
         </div>
     </div>
 
-    <?php $bottomMenuId = isset($option['footer_menu_id']) ? $option['footer_menu_id'] : old('footer_menu_id') ?>
+    <?php $bottomMenuId = !empty($option['footer_menu_id']) ? $option['footer_menu_id'] : old('footer_menu_id') ?>
     <div class="form-group">
         <label class="col-md-2 control-label">Footer Menu</label>
-        <div class="col-md-5">
+        <div class="col-md-3">
             <select class="form-control" name="footer_menu_id">
                 <option value="">Select Menu...</option>
                 @foreach($menus as $subMenu)
@@ -51,17 +27,14 @@
         </div>
     </div>
 
-    <?php $sidebarMenuId = isset($option['sidebar_menu_id']) ? $option['sidebar_menu_id'] : old('sidebar_menu_id') ?>
     <div class="form-group">
-        <label class="col-md-2 control-label">Sidebar Menu</label>
+        <label class="col-md-2 control-label">Company Logo</label>
         <div class="col-md-5">
-            <select class="form-control" name="sidebar_menu_id">
-                <option value="">Select Menu...</option>
-                @foreach($menus as $subMenu)
-                    <option value="{{ $subMenu->id }}"
-                            @if($subMenu->id == $sidebarMenuId) selected @endif>{{ $subMenu->name }}</option>
-                @endforeach
-            </select>
+            @if(isset($option['company_logo']) && $option['company_logo'])
+                <input type="hidden" name="old_company_logo" id="old_company_logo" data-id=""
+                       value="{{ $option['company_logo'] }}">
+            @endif
+            <input id="company_logo" name="company_logo" type="file" data-show-upload="false">
         </div>
     </div>
 
@@ -73,6 +46,21 @@
                        value="{{ isset($option) ? $option['favico'] : '' }}">
             @endif
             <input id="favico" name="favico" type="file" data-show-upload="false">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Footer text</label>
+        <div class="col-md-10">
+            <textarea name="footer_text" class="ckeditor form-control" rows="2"
+                      data-error-container="#editor2_error">{{ !empty($option['footer_text']) ? $option['footer_text'] : old('footer_text') }}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Private Script</label>
+        <div class="col-md-10">
+            <textarea name="private_script" class="form-control" rows="8">{{ !empty($option['private_script']) ? $option['private_script'] : old('private_script') }}</textarea>
         </div>
     </div>
 </div>
