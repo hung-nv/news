@@ -13354,6 +13354,7 @@ $(function () {
         }).done(function (respon) {
           // reload menu after change.
           $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
+          toastr.info(respon.message);
         }).fail(function (xhr) {
           Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
         });
@@ -13386,6 +13387,7 @@ $(function () {
           success: function success(result) {
             // reload menu after change.
             $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
+            toastr.info(result.message);
           },
           error: function error() {
             Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);
@@ -13422,6 +13424,9 @@ $(function () {
           success: function success(result) {
             // reload menu after change.
             $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
+            toastr.info(result.message);
+            label.val('');
+            direct.val('');
           },
           error: function error() {
             Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["doException"])(xhr);

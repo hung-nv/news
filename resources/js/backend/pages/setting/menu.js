@@ -79,6 +79,8 @@ $(function () {
                 }).done(respon => {
                     // reload menu after change.
                     $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
+
+                    toastr.info(respon.message);
                 }).fail(xhr => {
                     doException(xhr);
                 });
@@ -106,6 +108,8 @@ $(function () {
                     success: function (result) {
                         // reload menu after change.
                         $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
+
+                        toastr.info(result.message);
                     },
                     error: function () {
                         doException(xhr);
@@ -142,6 +146,11 @@ $(function () {
                     success: function (result) {
                         // reload menu after change.
                         $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
+                        
+                        toastr.info(result.message);
+
+                        label.val('');
+                        direct.val('');
                     },
                     error: function () {
                         doException(xhr);
