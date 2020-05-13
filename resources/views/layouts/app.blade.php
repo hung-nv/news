@@ -18,7 +18,9 @@
     <div class="container">
         <div class="header-logo">
             <div class="logo">
-                <a href="/" title="Trang chủ">vndoc.com</a>
+                <a href="/" title="Trang chủ">
+                    <img src="{{ asset('/images/logo.png') }}" height="100%" />
+                </a>
             </div>
             <div class="topnav"></div>
             <a class="toggle menu"></a>
