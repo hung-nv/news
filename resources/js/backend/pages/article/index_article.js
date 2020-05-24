@@ -1,10 +1,15 @@
 import {confirmBeforeDelete, doException, getParameterByName} from "../../helpers/helpers";
+import VueClipboard from 'vue-clipboard2';
+
+VueClipboard.config.autoSetContainer = true;
 
 let ui = {
     pageId: '#post'
 };
 
 (function ($, Vue) {
+    Vue.use(VueClipboard);
+
     if ($(ui.pageId).length) {
         const vmIndexArticle = new Vue({
             el: ui.pageId,
@@ -24,6 +29,16 @@ let ui = {
                 }
             },
             methods: {
+                doCopy: function(event) {
+                    let url = $(event.target).data('url-download');
+
+                    this.$copyText(url).then(function (e) {
+                        toastr.info('Copied');
+                    }, function (e) {
+                        alert('Can not copy');
+                        console.log(e);
+                    });
+                },
                 searchArticle: function() {
                     let params = {};
                     let page = 1;

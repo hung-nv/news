@@ -5,25 +5,14 @@ Route::get('/administrator', function () {
 });
 
 Route::group(['namespace' => 'Frontend'], function () {
-    // route search articles.
-    Route::get('search', ['as' => 'article.search', 'uses' => 'ArticleController@search']);
     // route homepage.
     Route::get('/', ['as' => 'homepage', 'uses' => 'HomepageController@index']);
     // route post details.
-    Route::get(config('const.prefix.article') . '/{slug}', [
-        'as' => 'article.details',
-        'uses' => 'ArticleController@details'
+    Route::get(config('const.prefix.download') . '/{slug}', [
+        'as' => 'article.download',
+        'uses' => 'ArticleController@download'
     ]);
-    // route list articles.
-    Route::get(config('const.prefix.category') . '/{slug}', [
-        'as' => 'article.list',
-        'uses' => 'ArticleController@category'
-    ]);
-    // route page details.
-    Route::get(config('const.prefix.page') . '/{slug}', [
-        'as' => 'article.page',
-        'uses' => 'ArticleController@page'
-    ]);
+
 });
 
 Route::group(['prefix' => 'administrator', 'namespace' => 'Backend'], function () {

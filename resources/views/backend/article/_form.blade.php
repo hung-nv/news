@@ -24,7 +24,7 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Label</label>
-                        <input type="text" name="label[{{ $loop->index }}]" class="form-control" value="{{ $download['label'] }}"/>
+                        <input type="text" name="label[]" class="form-control" value="{{ $download['label'] }}"/>
                     </div>
                 </div>
 
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label>Url Download</label>
                         <div class="input-group">
-                            <input type="url" name="url[{{ $loop->index }}]" class="form-control" value="{{ $download['url'] }}"/>
+                            <input type="url" name="url[]" class="form-control" value="{{ $download['url'] }}"/>
                             <span class="input-group-btn">
                                 <button class="btn btn-danger" style="margin-left: 10px;" id="remove-item">Remove</button>
                             </span>
@@ -97,6 +97,6 @@
             <input type="hidden" name="old_image" id="old-image" data-id="{{ $post['id'] }}"
                    value="{{ isset($post) ? $post['image'] : '' }}">
         @endif
-        <input id="image" name="image" type="file" data-show-upload="false" required style="left: 0;">
+        <input id="image" name="image" type="file" data-show-upload="false" @if(empty($post['image'])) required @endif style="left: 0;">
     </div>
 </div>

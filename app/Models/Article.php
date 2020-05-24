@@ -21,7 +21,7 @@ class Article extends \Eloquent
       'updated_at',
     ];
 
-    protected $append = ['url'];
+    protected $append = ['url', 'download'];
 
     protected $fillable = [
       'name',
@@ -98,6 +98,20 @@ class Article extends \Eloquent
         $prefix = config('const.prefix.'.self::POST_TYPE);
 
         return $prefix ? '/'.$prefix.'/'.$this->slug : '/'.$this->slug;
+    }
+
+    /**
+     * Set url download.
+     *
+     * @param $value
+     *
+     * @return string
+     */
+    public function getDownloadAttribute($value)
+    {
+        $prefix = config('const.prefix.download');
+
+        return '/'.$prefix.'/'.$this->slug;
     }
 
     /**

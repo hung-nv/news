@@ -12,11 +12,11 @@
     <tbody>
     @foreach($articles as $i)
         <tr class="odd gradeX">
-            <td class="data-middle"> <img src="/img/120_75{{ $i->image }}" /> </td>
+            <td class="data-middle"><img src="/img/120_75{{ $i->image }}"/></td>
             <td>
                 <p class="article-information">
-                    <span class="font-blue-steel">{{ $i->name }}</span> <br />
-                    <strong>{{ implode(', ', array_pluck($i->category, 'name')) }}</strong> <br />
+                    <span class="font-blue-steel">{{ $i->name }}</span> <br/>
+                    <strong>{{ implode(', ', array_pluck($i->category, 'name')) }}</strong> <br/>
                     <span>View: {{ $i->view }}</span>
                 </p>
             </td>
@@ -54,13 +54,19 @@
                 @endif
             </td>
             <td class="data-middle">
-                <form action="{{ route('post.destroy', $i->id) }}" method="POST">
-                    {{ method_field('DELETE') }}
-                    {{ csrf_field() }}
-                    <a href="{{ route('post.edit', ['post' => $i->id]) }}"
-                       class="btn red btn-sm">Update</a>
-                    <button type="button" class="btn red btn-sm" v-on:click="confirmBeforeDelete">Delete</button>
-                </form>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-warning btn-sm"
+                                data-url-download="{{ $i->download }}" v-on:click="doCopy"> Copy link </button>
+                    </span>
+                    <form action="{{ route('post.destroy', $i->id) }}" method="POST">
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                        <a href="{{ route('post.edit', ['post' => $i->id]) }}"
+                           class="btn red btn-sm">Update</a>
+                        <button type="button" class="btn red btn-sm" v-on:click="confirmBeforeDelete">Delete</button>
+                    </form>
+                </div>
             </td>
         </tr>
     @endforeach

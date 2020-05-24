@@ -21,20 +21,8 @@ class ArticleController extends Controller
         $this->agent = $agent;
     }
 
-    public function page($slug)
-    {
-        $article = $this->articleServices->getArticleBySlug($slug);
 
-        $this->setIdsExcept($article->id);
-
-        $this->articleServices->updateViewArticle($article->id);
-
-        return view('news.page', [
-            'article' => $article
-        ]);
-    }
-
-    public function details($slug)
+    public function download($slug)
     {
         $article = $this->articleServices->getArticleBySlug($slug);
 
@@ -43,41 +31,13 @@ class ArticleController extends Controller
         $this->articleServices->updateViewArticle($article->id);
 
         $relatedArticles = $this->articleServices->getRelatedArticle(
-            $article->category->pluck('id')->all(),
-            $article->id
+          $article->category->pluck('id')->all(),
+          $article->id
         );
 
-        return view('news.view', [
-            'article' => $article,
-            'relatedArticles' => $relatedArticles
-        ]);
-    }
-
-    /**
-     * Category details.
-     * @param $slug
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function category($slug)
-    {
-        $category = $this->categoryServices->getCategoryBySlug($slug);
-
-        $articles = $this->articleServices->getAllPostsByParentCategory($category->id, $this->articleType);
-
-        return view('news.category', [
-            'category' => $category,
-            'articles' => $articles
-        ]);
-    }
-
-    public function search(Request $request)
-    {
-        $search = $request->txtSearch;
-        $articles = $this->articleServices->getAllArticlesByName($search);
-
-        return view('news.search', [
-            'search' => $search,
-            'articles' => $articles
+        return view('news.download', [
+          'article' => $article,
+          'relatedArticles' => $relatedArticles
         ]);
     }
 }

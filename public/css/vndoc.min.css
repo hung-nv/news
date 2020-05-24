@@ -3104,7 +3104,7 @@ li .hover ul {
 .btn.btn-link .link-title:before {
     content: " ";
     left: 8px;
-    background: url(images/icon-down-24.png) no-repeat;
+    background: url('/images/icon-down-24.png') no-repeat;
     display: block;
     position: absolute;
     top: 2px;
@@ -3114,31 +3114,23 @@ li .hover ul {
 }
 
 .btn.btn-link.file-pdf .link-title:before {
-    background-image: url(images/pdf.png)
+    background-image: url('/images/pdf.png')
 }
 
 .btn.btn-link.file-xls .link-title:before,.btn.btn-link.file-xlsx .link-title:before {
-    background-image: url(images/excel-32.png)
+    background-image: url('/images/excel.png')
 }
 
 .btn.btn-link.file-doc .link-title:before,.btn.btn-link.file-docx .link-title:before {
-    background-image: url(images/word-32.png)
+    background-image: url('/images/word.png')
 }
 
 .btn.btn-link.file-zip .link-title:before {
-    background-image: url(images/zip-24.png)
+    background-image: url('/images/zip.png')
 }
 
 .btn.btn-link.file-rar .link-title:before {
-    background-image: url(images/rar-24.png)
-}
-
-.btn.btn-link.file-mp3 .link-title:before {
-    background-image: url(images/mp3-24.png)
-}
-
-.btn.btn-link.file-exe .link-title:before {
-    background-image: url(images/exe-24.png)
+    background-image: url('/images/rar.png')
 }
 
 .post-links .link-date {
