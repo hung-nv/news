@@ -138,9 +138,10 @@ class ArticleServices
             $articleDownloads = [];
             for($i = 0; $i < count($data['label']); $i++) {
                 if (!empty($data['label'][$i]) && !empty($data['url'][$i])) {
-                    $articleDownloads = [
-                        new ArticleDownload(['label' => $data['label'][$i], 'url' => $data['url'][$i]])
-                    ];
+                    $articleDownloads[] = new ArticleDownload([
+                      'label' => $data['label'][$i],
+                      'url' => $data['url'][$i]]
+                    );
                 }
             }
 
@@ -227,34 +228,7 @@ class ArticleServices
      */
     public function updatePost($request, $id, $updateMenu = false)
     {
-        try {
-            DB::beginTransaction();
-
-            $response = $this->updatePostPackage($request, $id, $updateMenu);
-
-            DB::commit();
-
-            return $response;
-        } catch (\Exception $exception) {
-            DB::rollBack();
-
-            throw $exception;
-        }
-    }
-
-    /**
-     * Update post.
-     * @param Request $request
-     * @param int $id
-     * @param bool $updateMenu
-     * @return string
-     * @throws \Exception
-     */
-    public function updatePostPackage($request, $id, $updateMenu)
-    {
-        $post = Article::findOrFail($id);
-
-        $data = $request->all();
+        $dataUpdate = $request->all();
 
         if ($request->hasFile('image')) {
             // delete old image if exist.
@@ -269,26 +243,53 @@ class ArticleServices
                 return 'Fail';
             }
 
-            $data['image'] = $fileName;
+            $dataUpdate['image'] = $fileName;
         }
+
+        try {
+            DB::beginTransaction();
+
+            $response = $this->updatePostPackage($dataUpdate, $id, $updateMenu);
+
+            DB::commit();
+
+            return $response;
+        } catch (\Exception $exception) {
+            DB::rollBack();
+
+            !empty($fileName) && $this->imageServices->deleteImage($fileName);
+
+            throw $exception;
+        }
+    }
+
+    /**
+     * Update post.
+     * @param array $dataUpdate
+     * @param int $id
+     * @param bool $updateMenu
+     * @return string
+     * @throws \Exception
+     */
+    public function updatePostPackage($dataUpdate, $id, $updateMenu)
+    {
+        $post = Article::findOrFail($id);
 
         // update menu if page.
         if ($updateMenu) {
-            $this->menuServices->updatePageToMenu($post->slug, $request->name, $request->slug);
+            $this->menuServices->updatePageToMenu($post->slug, $dataUpdate['name'], $dataUpdate['slug']);
         }
 
-        if ($post->update($data)) {
-            $post->category()->sync($request->parent);
+        if ($post->update($dataUpdate)) {
+            $post->category()->sync($dataUpdate['parent']);
 
             $post->articleDownloads()->delete();
 
-            if (count($data['label']) > 0) {
+            if (count($dataUpdate['label']) > 0) {
                 $articleDownloads = [];
-                for($i = 0; $i < count($data['label']); $i++) {
-                    if (!empty($data['label'][$i]) && !empty($data['url'][$i])) {
-                        $articleDownloads = [
-                          new ArticleDownload(['label' => $data['label'][$i], 'url' => $data['url'][$i]])
-                        ];
+                for($i = 0; $i < count($dataUpdate['label']); $i++) {
+                    if (!empty($dataUpdate['label'][$i]) && !empty($dataUpdate['url'][$i])) {
+                        $articleDownloads[] = new ArticleDownload(['label' => $dataUpdate['label'][$i], 'url' => $dataUpdate['url'][$i]]);
                     }
                 }
 

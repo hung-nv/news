@@ -24,13 +24,13 @@
 
             <div class="message down-title">Bạn có thể tải về tập tin thích hợp cho bạn tại các liên kết dưới dây.</div>
             <ul class="post-links">
-                <li>
-                    <a class="btn btn-link clearfix btn-track file-doc" title="Tải file định dạng .DOC" href="/url?postid=136610&amp;urlid=124741" data-downurl="http://s1.vndoc.com/data/file/2020/05/11/ngu-van-8-bai-viet-so-7-van-nghi-luan-hay-noi-khong-voi-cac-te-nan.doc">
-                        <span class="link-title">Tải file định dạng .DOC</span>
-                        <span class="link-size">213,5 KB</span>
-                        <span class="link-date">11/05/2020 5:10:45 CH</span>
-                    </a>
-                </li>
+                @foreach($article->articleDownloads as $download)
+                    <li>
+                        <a class="btn btn-link clearfix btn-track file-doc" title="{{ $download->label }}" href="{{ $download->url }}" data-download-url="{{ $download->url }}">
+                            <span class="link-title">{{ $download->label }}</span>
+                        </a>
+                    </li>
+                @endforeach
             </ul>
 
             <div class="overview textview">
@@ -44,9 +44,6 @@
                     @foreach($relatedArticles as $related)
                         <li>
                             <a title="{{ $related->name }}" href="{{ $related->download }}">
-                                <span class="icon">
-                                    <img class="lazy loaded" src="{{ asset('/images/doc.png') }}" alt="{{ $related->name }}" data-was-processed="true">
-                                </span>
                                 <span class="name">{{ $related->name }}</span>
                             </a>
                         </li>
@@ -61,5 +58,8 @@
         </div>
     </div>
 </div>
+@endsection
 
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('js/download.js') }}"></script>
 @endsection

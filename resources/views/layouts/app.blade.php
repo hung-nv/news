@@ -21,5 +21,6 @@
 
 <script src='{{ asset('/js/vndoc.min.js') }}'></script>
 
+@yield('scripts')
 </body>
 </html>

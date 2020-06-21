@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Partner;
+use App\Models\Article;
 use App\Services\ArticleServices;
 use Jenssegers\Agent\Agent;
 
@@ -21,8 +21,8 @@ class HomepageController extends Controller
 
     public function index()
     {
-        $partners = Partner::all();
+        $article = Article::inRandomOrder()->first();
 
-        return view('homepage.index', compact('partners'));
+        return redirect()->route('article.download', ['slug' => $article->slug]);
     }
 }

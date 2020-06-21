@@ -42,7 +42,7 @@ class Controller extends \App\Http\Controllers\Controller
 
         $this->getMenu();
 
-        $this->getGeneralArticle();
+//        $this->getGeneralArticle();
 
         $this->getAdvertising();
     }
