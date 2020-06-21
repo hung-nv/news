@@ -3,7 +3,7 @@
 @section('title', 'Account Information')
 
 @section('style')
-    <link href="{{ asset('/admin/assets/css/profile.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/admin/css/profile.min.css') }}" rel="stylesheet" type="text/css">
 @endsection
 
 @section('breadcrumbs')

@@ -23,32 +23,34 @@
     </script>
 </head>
 
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-container-bg-solid page-sidebar-fixed">
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
 
-@include('backend.layouts.header')
+<div class="page-wrapper">
+    @include('backend.layouts.header')
 
-<div class="clearfix"></div>
+    <div class="clearfix"></div>
 
-<div class="page-container mainComponent" id="@yield('pageId')">
+    <div class="page-container mainComponent" id="@yield('pageId')">
 
-    @include('backend.layouts.sidebar')
+        @include('backend.layouts.sidebar')
 
-    <div class="page-content-wrapper">
-        <div class="page-content">
+        <div class="page-content-wrapper">
+            <div class="page-content">
 
-            @include('backend.layouts.breadcrumbs')
+                @include('backend.layouts.breadcrumbs')
 
-            @yield('content')
+                @yield('content')
+            </div>
         </div>
+
     </div>
 
-</div>
-
-<div class="page-footer">
-    <div class="page-footer-inner"> 2014 &copy; Administrator by hungnv234@gmail.com
-    </div>
-    <div class="scroll-to-top">
-        <i class="icon-arrow-up"></i>
+    <div class="page-footer">
+        <div class="page-footer-inner"> 2014 &copy; Administrator by hungnv234@gmail.com
+        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
     </div>
 </div>
 

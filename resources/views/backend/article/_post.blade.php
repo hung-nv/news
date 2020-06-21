@@ -1,7 +1,7 @@
-<table class="table table-hover table-advance">
+<table class="table table-hover table-light">
     <thead>
     <tr>
-        <th class="data-middle"> Image</th>
+        <th> Image</th>
         <th style="width: 50%"> Information</th>
         <th class="data-middle"> Created At</th>
         <th class="data-middle"> Groups</th>
@@ -12,7 +12,7 @@
     <tbody>
     @foreach($articles as $i)
         <tr class="odd gradeX">
-            <td class="data-middle"> <img src="/img/120_75{{ $i->image }}" /> </td>
+            <td> <img src="/img/120_75{{ $i->image }}" /> </td>
             <td>
                 <p class="article-information">
                     <span class="font-blue-steel">{{ $i->name }}</span> <br />
