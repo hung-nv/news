@@ -45,19 +45,10 @@
                                     <a href="#tab_meta" data-toggle="tab"> Meta Tag </a>
                                 </li>
                                 <li>
-                                    <a href="#tab_infor" data-toggle="tab"> Information </a>
-                                </li>
-                                <li>
-                                    <a href="#tab_social" data-toggle="tab"> Social & Google Tool </a>
-                                </li>
-                                <li>
                                     <a href="#tab_banner" data-toggle="tab"> Banner </a>
                                 </li>
                                 <li>
-                                    <a href="#tab_features" data-toggle="tab"> Features </a>
-                                </li>
-                                <li>
-                                    <a href="#tab_special" data-toggle="tab"> Special </a>
+                                    <a href="#tab_about_us" data-toggle="tab"> About Us </a>
                                 </li>
                                 <li>
                                     <a href="#tab_whyus" data-toggle="tab"> Why choose us </a>
@@ -73,20 +64,11 @@
                                 <div class="tab-pane" id="tab_meta">
                                     @include("backend.theme._tab_meta", ['option' => $option])
                                 </div>
-                                <div class="tab-pane" id="tab_infor">
-                                    @include("backend.theme._tab_infor", ['option' => $option])
-                                </div>
-                                <div class="tab-pane" id="tab_social">
-                                    @include("backend.theme._tab_social", ['option' => $option])
-                                </div>
                                 <div class="tab-pane" id="tab_banner">
                                     @include("backend.theme._tab_widget_banner", ['option' => $option])
                                 </div>
-                                <div class="tab-pane" id="tab_features">
-                                    @include("backend.theme._tab_features", ['option' => $option])
-                                </div>
-                                <div class="tab-pane" id="tab_special">
-                                    @include("backend.theme._tab_special", ['option' => $option])
+                                <div class="tab-pane" id="tab_about_us">
+                                    @include("backend.theme._tab_about_us", ['option' => $option])
                                 </div>
                                 <div class="tab-pane" id="tab_whyus">
                                     @include("backend.theme._tab_whyus", ['option' => $option])
@@ -107,6 +89,7 @@
     <link href="{{ asset('/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('/libs/select2/css/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('/admin/css/fileinput.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('/libs/fontawesome-iconpicker/dist/css/fontawesome-iconpicker.min.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 @push('script')
@@ -114,4 +97,5 @@
     <script src="{{ asset('/libs/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/libs/fileinput.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/libs/piexif.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/libs/fontawesome-iconpicker/dist/js/fontawesome-iconpicker.min.js') }}" type="text/javascript"></script>
 @endpush

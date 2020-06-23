@@ -2111,7 +2111,10 @@ button.fancybox-arrow:hover {
 .topbar .info_head {
   float: right;
 }
-.topbar .info_head a {color: #fff;}
+.topbar .info_head i {
+  padding-left: 10px;
+}
+.topbar .info_head a {color: #fff; font-family: 'Muli', Arial, "Helvetica Neue", Helvetica, sans-serif;}
 .text-folow {
   background: #f15a22;
   padding: 4px 16px;
@@ -2579,7 +2582,7 @@ html #wpadminbar {
     transition: all ease 0.3s;
     content: "\f107";
     display: inline-block;
-    font-family: FontAwesome;
+    font-family: "Font Awesome 5 Pro";
     font-style: normal;
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
@@ -2595,7 +2598,7 @@ html #wpadminbar {
     transition: all ease 0.3s;
     content: "\f054";
     display: inline-block;
-    font-family: FontAwesome;
+  font-family: "Font Awesome 5 Pro";
     font-style: normal;
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
@@ -2723,7 +2726,7 @@ html #wpadminbar {
   transition: all ease 0.3s;
   content: "\f107";
   display: inline-block;
-  font-family: FontAwesome;
+  font-family: "Font Awesome 5 Pro";
   font-style: normal;
   font-weight: normal;
   line-height: 1;
@@ -3262,7 +3265,7 @@ html #wpadminbar {
   content: "\f1d1";
   font-weight: 400;
   display: inline-block;
-  font-family: FontAwesome;
+  font-family: "Font Awesome 5 Pro";
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -3627,26 +3630,6 @@ div#content {
 .khoahoc .img-khoahoc:hover {
      border: 6px solid #f15a22;
    }
-.baochi {
-    background-color: #fff;
-    padding: 40px 0;
-}
-.baochi ul li {
-    list-style-type: none;
-    padding: 10px 0;
-}
-.baochi ul li a {padding-left: 10px;}
-.baochi .nutbam {text-align: center;}
-.baochi .fancybox {
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 25px;
-    padding: 15px 35px;
-    color: #fff !important;
-    text-transform: uppercase;
-    background: #e72b00;
-    font-size: 18px;
-}
-.baochi .fancybox:hover {    background: #2a84b7;}
 
 .tin-tuc-moi {
     padding: 40px 0;
@@ -3679,6 +3662,7 @@ div#content {
 }
 .tin-tuc-moi .post-thumb {
   width: 25%;
+  margin-bottom: 20px;
 }
 .tin-tuc-moi .post-thumb .post-thumb1 {
   background: #fff;
@@ -3783,154 +3767,7 @@ div#content {
 .san-pham .img_gio_hang {
   position: relative;
 }
-.danh-gia {
-  padding: 20px;
-  background-color: #f4f4f4;
-}
-.danh-gia .home-slides,
-.danh-gia .home-slide1 {
-  min-height: 322px;
-  overflow: hidden;
-  position: relative;
-}
-.danh-gia .danh_gia_cua_khach {
-  text-align: center;
-  text-transform: uppercase;
-  margin-bottom: 50px;
-}
-.danh-gia .danh_gia_cua_khach span {
-  font-weight: normal;
-  font-size: 23px;
-  position: relative;
-}
-.danh-gia .danh_gia_cua_khach span:after {
-  content: " ";
-  position: absolute;
-  z-index: 12;
-  border-bottom: 3px solid #efab59;
-  width: 23%;
-  right: 40%;
-  bottom: -15px;
-}
-.danh-gia .item1 {
-  padding: 0 5px;
-  display: -webkit-inline-box;
-}
-.danh-gia .danhgiakh {
-  font-size: 15px;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  background: #fafafd;
-  border: 1px solid #ebebeb;
-  border-radius: 2px;
-  width: 100%;
-  padding: 10px;
-}
-.danh-gia .danhgiakh .start {
-    background: url(images/star.png) no-repeat;
-    width: 102px;
-    height: 17px;
-    display: block;
-    margin: 5px 0;
-}
-.danh-gia .danhgiakh .col-left, .danh-gia .danhgiakh .col-right {padding: 0;}
-.danh-gia .title_dg, .danh-gia .hrm_chu_vu { display: block; text-align: center; }
-.danh-gia .danhgiakh .col-right {padding-left: 10px;}
-.danh-gia .danhgiakh .hrm_dg {
-  font-size: 14px;
-  height: 230px;
-  overflow: auto;
-}
-/*
- *  STYLE 2
- */
 
-.danh-gia .danhgiakh .hrm_dg::-webkit-scrollbar-track
-{
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-  border-radius: 10px;
-  background-color: #F5F5F5;
-}
-
-.danh-gia .danhgiakh .hrm_dg::-webkit-scrollbar
-{
-  width: 8px;
-  background-color: #F5F5F5;
-}
-
-.danh-gia .danhgiakh .hrm_dg::-webkit-scrollbar-thumb
-{
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-  background-color: #f6f7f8;
-}
-
-.danh-gia .danhgia {
-  background: #fff;
-  padding: 12px;
-  height: 126px;
-  width: 330px;
-  margin-left: 14px;
-  position: relative;
-  border: 1px solid#dfdedf;
-  color: #9a9a9a;
-}
-.danh-gia .danhgia::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 15%;
-  border: 1px solid#dfdedf;
-  border-width: 15px;
-  border-style: solid;
-  border-color: white transparent transparent transparent ;
-  border-right-color: 1px solid#dfdedf;
-}
-.danh-gia .danhgia::before {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 15%;
-  border: 1px solid#dfdedf;
-  border-width: 15px;
-  border-style: solid;
-  border-color: #252121 transparent transparent transparent;
-}
-.danh-gia .img_kh {
-  margin-top: 31px;
-}
-.danh-gia .img {
-    border: 5px solid #e1e1e1;
-    border-radius: 100%;
-}
-.danh-gia .khach_hang {
-  padding-right: 34px;
-  position: relative;
-}
-.danh-gia .khach_hang:after {
-  content: " ";
-  position: absolute;
-  z-index: 12;
-  border-bottom: 2px solid #85c6d0;
-  width: 12%;
-  right: 41%;
-  bottom: -9px;
-}
-.danh-gia .lSAction {
-  display: none !important;
-}
-.danh-gia .tt_them {
-  text-align: center;
-  padding: 30px 0;
-}
-.danh-gia .tt_them a {
-  color: #fff;
-  padding: 9px 170px;
-  background: #f58221;
-  text-transform: uppercase;
-}
-.danh-gia .tt_them a:hover {
-  background: #bf661b;
-}
 .item-list:hover {
   border: 1px solid #f5b555 !important;
 }
@@ -3987,22 +3824,6 @@ span.cmt i {
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 600;
-}
-.hoatdong {
-  background: #fff;
-}
-.hoatdong .container {padding: 40px 0;}
-.gallery-sv li {
-  width: 50%; 
-  float: left;
-  list-style-type: none;
-  padding: 0 10px 10px 0;
-}
-.gallery-sv li img {
-    max-width: 100%;
-    width: 100%;
-    height: 245px;
-    border: 3px solid #337ab7;
 }
 .social{
     width: 100%;
@@ -5494,17 +5315,6 @@ ul.list-post-ct li .date-detail i {
     border-radius: 50%;
     padding-top: 13px;
   }
-  .danh-gia .danhgia {
-    width: 97%;
-  }
-  .danh-gia .khach_hang:after {
-    right: 36%;
-  }
-  .danh-gia .img {
-    border-radius: 50%;
-    width: 146px;
-    height: 119px;
-  }
   .khach_hang h2 {
     font-size: 15px;
   }
@@ -5647,21 +5457,6 @@ ul.list-post-ct li .date-detail i {
     width: 100%;
     height: auto;
   }
-  .danh-gia .img {
-    width: 113px;
-    height: 113px;
-    margin-bottom: 55px;
-    display: inline-block;
-  }
-  .danh-gia .khach_hang {
-    padding-right: 0;
-    position: relative;
-    display: inline-block;
-    width: 48%;
-  }
-  .danh-gia .khach_hang:after {
-    right: 87%;
-  }
   .block-video-youtube iframe {
     height: 277px;
   }
@@ -5672,12 +5467,6 @@ ul.list-post-ct li .date-detail i {
     width: 30px;
     height: 30px;
     padding-top: 9px;
-  }
-  .danh-gia .danhgia::after {
-    left: 8%;
-  }
-  .danh-gia .danhgia::before {
-    left: 8%;
   }
   .footer-sidebar {
     width: 33%;
@@ -5733,27 +5522,6 @@ ul.list-post-ct li .date-detail i {
   }
   .san-pham .post-thumb .post-thumb1 .title-thumb {
     font-size: 12px;
-  }
-  .danh-gia .danh_gia_cua_khach span {
-    font-size: 20px;
-  }
-  .danh-gia .danhgia {
-    font-size: 12px;
-    height: 98px;
-    margin-left: 7px;
-  }
-  .danh-gia .danhgia::after {
-    border-width: 12px;
-  }
-  .danh-gia .danhgia::before {
-    border-width: 12px;
-  }
-  .danh-gia .tt_them a {
-    padding: 8px 133px;
-  }
-  .danh-gia .khach_hang:after {
-    right: 85%;
-    width: 14%;
   }
   .tin-tuc-moi .post-thumb .post-thumb1 {
     height: 250px;
@@ -5820,12 +5588,6 @@ ul.list-post-ct li .date-detail i {
   }
 }
 @media (max-width: 800px) {
-  .danh-gia .img {
-    margin-bottom: 40px;
-  }
-  .danh-gia .danhgia {
-    height: 117px;
-  }
   .khach_hang span {
     font-size: 12px;
   }
@@ -6175,14 +5937,8 @@ ul.list-post-ct li .date-detail i {
   }
 }
 @media (max-width: 480px) {
-  .danh-gia .tt_them a {
-    padding: 8px 93px;
-  }
   .san-pham .post-thumb .post-thumb1:hover .gio_hang {
     height: 21%;
-  }
-  .danh-gia .danh_gia_cua_khach span {
-    font-size: 16px;
   }
   .cau_hoi .tieu_de_cau_hoi {
     font-size: 16px;
@@ -6259,8 +6015,6 @@ ul.list-post-ct li .date-detail i {
 .khoahoc .img-khoahoc {
     margin: auto;
 }
-.danh-gia .danhgiakh {text-align: center;}
-.danh-gia .danhgiakh .hrm_dg {text-align: justify;}
 .site-header .site-branding img {
     height: 60px;
     width: 70px;
@@ -6272,9 +6026,6 @@ ul.list-post-ct li .date-detail i {
 	.home-slides  {
     padding: 15px 0;
 }
-	.gallery-sv li img {
-    height: 150px;
-	}
 	.social {padding: 10px;}
 	.list_soial a {
     width: 50%!important;
@@ -6312,12 +6063,6 @@ ul.list-post-ct li .date-detail i {
     width: 23px;
     height: 23px;
     padding-top: 5px;
-  }
-  .danh-gia .danh_gia_cua_khach span {
-    font-size: 15px;
-  }
-  .danh-gia .tt_them a {
-    padding: 8px 63px;
   }
   .entry-content .col-contact-left {
     font-size: 16px;

@@ -1,14 +1,6 @@
 <div class="form-body">
-    <div class="form-group">
-        <label class="col-md-2 control-label">Site Heading</label>
-        <div class="col-md-5">
-            <input name="site_heading" class="form-control"
-                   value="{{ isset($option['site_heading']) ? $option['site_heading'] : old('site_heading') }}"/>
-        </div>
-    </div>
-
-    <?php $homepage_post_id = isset($option['homepage_post_id']) ? $option['homepage_post_id'] : old('homepage_post_id') ?>
-    <div class="form-group">
+    <?php $homepage_post_id = !empty($option['homepage_post_id']) ? $option['homepage_post_id'] : old('homepage_post_id') ?>
+    <div class="form-group hidden">
         <label class="col-md-2 control-label">Set Homepage</label>
         <div class="col-md-5">
             <select class="form-control" name="homepage_post_id">
@@ -37,31 +29,14 @@
         </div>
     </div>
 
-    <?php $bottomMenuId = isset($option['footer_menu_id']) ? $option['footer_menu_id'] : old('footer_menu_id') ?>
     <div class="form-group">
-        <label class="col-md-2 control-label">Footer Menu</label>
+        <label class="col-md-2 control-label">Company Logo</label>
         <div class="col-md-5">
-            <select class="form-control" name="footer_menu_id">
-                <option value="">Select Menu...</option>
-                @foreach($menus as $subMenu)
-                    <option value="{{ $subMenu->id }}"
-                            @if($subMenu->id == $bottomMenuId) selected @endif>{{ $subMenu->name }}</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-
-    <?php $sidebarMenuId = isset($option['sidebar_menu_id']) ? $option['sidebar_menu_id'] : old('sidebar_menu_id') ?>
-    <div class="form-group">
-        <label class="col-md-2 control-label">Sidebar Menu</label>
-        <div class="col-md-5">
-            <select class="form-control" name="sidebar_menu_id">
-                <option value="">Select Menu...</option>
-                @foreach($menus as $subMenu)
-                    <option value="{{ $subMenu->id }}"
-                            @if($subMenu->id == $sidebarMenuId) selected @endif>{{ $subMenu->name }}</option>
-                @endforeach
-            </select>
+            @if(isset($option['company_logo']) && $option['company_logo'])
+                <input type="hidden" name="old_company_logo" id="old_company_logo" data-id=""
+                       value="{{ $option['company_logo'] }}">
+            @endif
+            <input id="company_logo" name="company_logo" type="file" data-show-upload="false">
         </div>
     </div>
 
@@ -73,6 +48,46 @@
                        value="{{ isset($option) ? $option['favico'] : '' }}">
             @endif
             <input id="favico" name="favico" type="file" data-show-upload="false">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Hotline</label>
+        <div class="col-md-5">
+            <input name="hotline" class="form-control"
+                   value="{{ isset($option['hotline']) ? $option['hotline'] : old('hotline') }}"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Email</label>
+        <div class="col-md-5">
+            <input type="email" name="email" class="form-control"
+                   value="{{ isset($option['email']) ? $option['email'] : old('email') }}"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Fanpage Url</label>
+        <div class="col-md-5">
+            <input name="fanpage" class="form-control"
+                   value="{{ isset($option['fanpage']) ? $option['fanpage'] : old('fanpage') }}"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Google Analytic ID</label>
+        <div class="col-md-5">
+            <input name="google_analytics_id" class="form-control"
+                   value="{{ isset($option['google_analytics_id']) ? $option['google_analytics_id'] : old('google_analytics_id') }}"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Private Script</label>
+        <div class="col-md-5">
+            <textarea name="private_script"
+                      class="form-control">{{ isset($option['private_script']) ? $option['private_script'] : old('private_script') }}</textarea>
         </div>
     </div>
 </div>
