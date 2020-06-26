@@ -13484,6 +13484,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utilities_images_image__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utilities/images/image */ "./resources/js/backend/utilities/images/image.js");
 
 var ui = {
+  pageId: '#setting',
   inputFavico: '#favico',
   inputOldFavico: '#old_favico',
   inputService1: '#services_image_1',
@@ -13491,86 +13492,127 @@ var ui = {
   inputService2: '#services_image_2',
   inputOldService2: '#old_services_image_2',
   inputService3: '#services_image_3',
-  inputOldService3: '#old_services_image_2',
+  inputOldService3: '#old_services_image_3',
   inputLogo: '#company_logo',
   inputOldLogo: '#old_company_logo',
   inputWhyUs: '#why_us_image',
   inputOldWhyUs: '#old_why_us_image',
+  inputBanner1: '#banner_image_1',
+  inputOldBanner1: '#old_banner_image_1',
+  inputBanner2: '#banner_image_2',
+  inputOldBanner2: '#old_banner_image_2',
+  inputBanner3: '#banner_image_3',
+  inputOldBanner3: '#old_banner_image_3',
   urlDeleteFileSetting: '/api/delete-file-setting',
   inputRemoveInitPreview: '.kv-file-remove'
 };
 $(function () {
-  // init input select font awesome
-  $('.icon-picker').iconpicker(); // init favico.
+  if ($(ui.pageId).length) {
+    // init input select font awesome
+    $('.icon-picker').iconpicker(); // init favico.
 
-  if ($(ui.inputFavico).length) {
-    if ($(ui.inputOldFavico).length) {
-      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldFavico, ui.inputFavico, ui.urlDeleteFileSetting, {
-        extractName: 'favico'
-      });
-    } else {
-      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputFavico);
+    if ($(ui.inputFavico).length) {
+      if ($(ui.inputOldFavico).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldFavico, ui.inputFavico, ui.urlDeleteFileSetting, {
+          extractName: 'favico'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputFavico);
+      }
+    } // init logo.
+
+
+    if ($(ui.inputLogo).length) {
+      if ($(ui.inputOldLogo).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldLogo, ui.inputLogo, ui.urlDeleteFileSetting, {
+          extractName: 'company_logo'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputLogo);
+      }
+    } // init banner 1.
+
+
+    if ($(ui.inputService1).length) {
+      if ($(ui.inputOldService1).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldService1, ui.inputService1, ui.urlDeleteFileSetting, {
+          extractName: 'services_image_1'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputService1);
+      }
+    } // init banner 1.
+
+
+    if ($(ui.inputService2).length) {
+      if ($(ui.inputOldService2).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldService2, ui.inputService2, ui.urlDeleteFileSetting, {
+          extractName: 'services_image_2'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputService2);
+      }
+    } // init banner 3.
+
+
+    if ($(ui.inputService3).length) {
+      if ($(ui.inputOldService3).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldService3, ui.inputService3, ui.urlDeleteFileSetting, {
+          extractName: 'services_image_3'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputService3);
+      }
+    } // init banner 3.
+
+
+    if ($(ui.inputWhyUs).length) {
+      if ($(ui.inputOldWhyUs).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldWhyUs, ui.inputWhyUs, ui.urlDeleteFileSetting, {
+          extractName: 'why_us_image'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputWhyUs);
+      }
+    } // init banner 3.
+
+
+    if ($(ui.inputBanner1).length) {
+      if ($(ui.inputOldBanner1).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldBanner1, ui.inputBanner1, ui.urlDeleteFileSetting, {
+          extractName: 'banner_image_1'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputBanner1);
+      }
+    } // init banner 3.
+
+
+    if ($(ui.inputBanner2).length) {
+      if ($(ui.inputOldBanner2).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldBanner2, ui.inputBanner2, ui.urlDeleteFileSetting, {
+          extractName: 'banner_image_2'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputBanner2);
+      }
+    } // init banner 3.
+
+
+    if ($(ui.inputBanner3).length) {
+      if ($(ui.inputOldBanner3).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldBanner3, ui.inputBanner3, ui.urlDeleteFileSetting, {
+          extractName: 'banner_image_3'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputBanner3);
+      }
     }
-  } // init logo.
 
-
-  if ($(ui.inputLogo).length) {
-    if ($(ui.inputOldLogo).length) {
-      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldLogo, ui.inputLogo, ui.urlDeleteFileSetting, {
-        extractName: 'company_logo'
-      });
-    } else {
-      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputLogo);
-    }
-  } // init banner 1.
-
-
-  if ($(ui.inputService1).length) {
-    if ($(ui.inputOldService1).length) {
-      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldService1, ui.inputService1, ui.urlDeleteFileSetting, {
-        extractName: 'banner_image_1'
-      });
-    } else {
-      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputService1);
-    }
-  } // init banner 1.
-
-
-  if ($(ui.inputService2).length) {
-    if ($(ui.inputOldService2).length) {
-      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldService2, ui.inputService2, ui.urlDeleteFileSetting, {
-        extractName: 'banner_image_2'
-      });
-    } else {
-      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputService2);
-    }
-  } // init banner 3.
-
-
-  if ($(ui.inputService3).length) {
-    if ($(ui.inputOldService3).length) {
-      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldService3, ui.inputService3, ui.urlDeleteFileSetting, {
-        extractName: 'banner_image_3'
-      });
-    } else {
-      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputService3);
-    }
-  } // init banner 3.
-
-
-  if ($(ui.inputWhyUs).length) {
-    if ($(ui.inputOldWhyUs).length) {
-      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldWhyUs, ui.inputWhyUs, ui.urlDeleteFileSetting, {
-        extractName: 'why_us_image'
-      });
-    } else {
-      Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputWhyUs);
-    }
+    $(ui.inputFavico).on('fileclear', function (event) {
+      $(ui.inputRemoveInitPreview).trigger("click");
+    });
   }
-
-  $(ui.inputFavico).on('fileclear', function (event) {
-    $(ui.inputRemoveInitPreview).trigger("click");
-  });
 });
 
 /***/ }),

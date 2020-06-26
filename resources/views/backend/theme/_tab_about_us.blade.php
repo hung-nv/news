@@ -10,8 +10,9 @@
     <div class="form-group">
         <label class="col-md-2 control-label">Content</label>
         <div class="col-md-5">
-            <textarea name="why_us_content" class="form-control"
-                      rows="10">{{ isset($option['why_us_content']) ? $option['why_us_content'] : old('why_us_content') }}</textarea>
+            <textarea name="why_us_content" class="ckeditor form-control" data-error-container="#editor2_error"
+                      rows="5">{{ isset($option['why_us_content']) ? $option['why_us_content'] : old('why_us_content') }}</textarea>
+            <div id="editor2_error"></div>
         </div>
     </div>
 

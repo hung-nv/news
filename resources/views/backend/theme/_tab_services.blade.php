@@ -96,7 +96,7 @@
                 <label class="col-md-3 control-label">Image</label>
                 <div class="col-md-9">
                     @if(isset($option['services_image_3']) && $option['services_image_3'])
-                        <input type="hidden" name="old_services_image_2" id="old_services_image_3" data-id=""
+                        <input type="hidden" name="old_services_image_3" id="old_services_image_3" data-id=""
                                value="{{ $option['services_image_3'] }}">
                     @endif
                     <input id="services_image_3" name="services_image_3" type="file" data-show-upload="false">
