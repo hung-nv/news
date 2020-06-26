@@ -30,6 +30,7 @@
 
 
     <link rel='stylesheet' id='hrm-style-css' href='{{ asset('css/style.css') }}' type='text/css' media='all'/>
+    <link rel='stylesheet' id='hrm-style-css' href='{{ asset('css/app.css') }}' type='text/css' media='all'/>
     <link rel='stylesheet' href='{{ asset('css/animations.min.css?ver=2.8.2') }}' type='text/css' media='all'/>
 
     <link rel='stylesheet' id='google-fonts-1-css'

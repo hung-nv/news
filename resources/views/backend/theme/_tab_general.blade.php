@@ -68,6 +68,15 @@
     </div>
 
     <div class="form-group">
+        <label class="col-md-2 control-label">Footer Text</label>
+        <div class="col-md-5">
+        <textarea name="footer_text" class="ckeditor form-control" data-error-container="#editor2_error"
+                  rows="5">{{ isset($option['footer_text']) ? $option['footer_text'] : old('footer_text') }}</textarea>
+            <div id="editor2_error"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
         <label class="col-md-2 control-label">Fanpage Url</label>
         <div class="col-md-5">
             <input name="fanpage" class="form-control"

@@ -12,34 +12,16 @@
                                 <a href="#" title="">
                                     <img src="https://eduwork.edu.vn/wp-content/uploads/2019/03/Du-hoc-duc-1200x450-banner.jpg" alt="">
                                 </a>
-                                <div class="noidung">
-                                    <h2 class="tieuchinh"></h2>
-                                    <h3 class="tieudephu"></h3>
-                                    <div style="height: 12px;" class="botun"></div>
-                                    <a class="link_tieu_de1" href=""></a>
-                                </div>
                             </li>
                             <li class="item">
                                 <a href="#" title="">
                                     <img src="https://eduwork.edu.vn/wp-content/uploads/2019/03/banner-lien-ket-1200x450.jpg" alt="">
                                 </a>
-                                <div class="noidung">
-                                    <h2 class="tieuchinh"></h2>
-                                    <h3 class="tieudephu"></h3>
-                                    <div style="height: 12px;" class="botun"></div>
-                                    <a class="link_tieu_de1" href="https://docs.google.com/forms/d/1jGcBILDi0BTS8oK7oTWRWOX3JTzWQetjiWWduTf3cBg/">Đăng ký</a>
-                                </div>
                             </li>
                             <li class="item">
                                 <a href="#" title="">
                                     <img src="https://eduwork.edu.vn/wp-content/uploads/2019/03/han-quoc-1200x450-banner.jpg" alt="">
                                 </a>
-                                <div class="noidung">
-                                    <h2 class="tieuchinh"></h2>
-                                    <h3 class="tieudephu"></h3>
-                                    <div style="height: 12px;" class="botun"></div>
-                                    <a class="link_tieu_de1" href=""></a>
-                                </div>
                             </li>
                         </ul>
                     </div>
