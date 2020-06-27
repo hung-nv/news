@@ -21,6 +21,14 @@
             </div>
 
             <div class="form-group">
+                <label class="col-md-3 control-label">URL</label>
+                <div class="col-md-9">
+                    <input name="services_url_1" type="text" class="form-control"
+                           value="{{ isset($option['services_url_1']) ? $option['services_url_1'] : old('services_url_1') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label class="col-md-3 control-label">Description</label>
                 <div class="col-md-9">
                     <textarea name="services_description_1" class="form-control"
@@ -53,6 +61,14 @@
             </div>
 
             <div class="form-group">
+                <label class="col-md-3 control-label">URL</label>
+                <div class="col-md-9">
+                    <input name="services_url_2" type="text" class="form-control"
+                           value="{{ isset($option['services_url_2']) ? $option['services_url_2'] : old('services_url_2') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label class="col-md-3 control-label">Description</label>
                 <div class="col-md-9">
                     <textarea name="services_description_2" class="form-control"
@@ -81,6 +97,14 @@
                 <div class="col-md-9">
                     <input name="services_title_3" type="text" class="form-control"
                            value="{{ isset($option['services_title_3']) ? $option['services_title_3'] : old('services_title_3') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">URL</label>
+                <div class="col-md-9">
+                    <input name="services_url_3" type="text" class="form-control"
+                           value="{{ isset($option['services_url_3']) ? $option['services_url_3'] : old('services_url_3') }}">
                 </div>
             </div>
 

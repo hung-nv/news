@@ -1,4 +1,12 @@
 <div class="form-body">
+    <div class="form-group">
+        <label class="col-md-2 control-label">Site Heading</label>
+        <div class="col-md-5">
+            <input name="site_heading" class="form-control"
+                   value="{{ isset($option['site_heading']) ? $option['site_heading'] : old('site_heading') }}"/>
+        </div>
+    </div>
+
     <?php $homepage_post_id = !empty($option['homepage_post_id']) ? $option['homepage_post_id'] : old('homepage_post_id') ?>
     <div class="form-group hidden">
         <label class="col-md-2 control-label">Set Homepage</label>
@@ -24,6 +32,20 @@
                 @foreach($menus as $mainMenu)
                     <option value="{{ $mainMenu->id }}"
                             @if($mainMenu->id == $mainMenuId) selected @endif>{{ $mainMenu->name }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+
+    <?php $sidebarMenuId = isset($option['sidebar_menu_id']) ? $option['sidebar_menu_id'] : old('sidebar_menu_id') ?>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Sidebar Menu</label>
+        <div class="col-md-5">
+            <select class="form-control" name="sidebar_menu_id">
+                <option value="">Select Menu...</option>
+                @foreach($menus as $subMenu)
+                    <option value="{{ $subMenu->id }}"
+                            @if($subMenu->id == $sidebarMenuId) selected @endif>{{ $subMenu->name }}</option>
                 @endforeach
             </select>
         </div>

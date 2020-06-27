@@ -47,9 +47,12 @@ class ArticleController extends Controller
             $article->id
         );
 
+        $firstParent = $this->articleServices->getFirstParentCategory($article->id);
+
         return view('news.view', [
             'article' => $article,
-            'relatedArticles' => $relatedArticles
+            'relatedArticles' => $relatedArticles,
+            'category' => $firstParent
         ]);
     }
 

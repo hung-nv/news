@@ -4002,6 +4002,7 @@ h1.page-title {
   margin-right: 15px;
 }
 .item-list .entry {
+  max-width: 70%;
   display: inline-block;
 }
 .item-masory:nth-child(2n+1) {
@@ -4409,7 +4410,7 @@ ul.contact-sg {
   text-transform: uppercase;
 }
 .widget-area ul li:nth-child(even) {
-  background: #f5f5f5;
+  /*background: #f5f5f5;*/
 }
 .widget-area ul li:nth-child(odd) {
   background: #fff;
@@ -6014,6 +6015,13 @@ ul.list-post-ct li .date-detail i {
 .khoahoc .divkh {margin-bottom: 15px;}
 .khoahoc .img-khoahoc {
     margin: auto;
+}
+.khoahoc .khoahoc-item {
+  margin-bottom: 25px;
+}
+.khoahoc .title_kh {
+  min-height: initial;
+  margin-top: 6px;
 }
 .site-header .site-branding img {
     height: 60px;

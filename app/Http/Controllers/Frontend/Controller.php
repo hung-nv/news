@@ -80,9 +80,8 @@ class Controller extends \App\Http\Controllers\Controller
     public function getGeneralArticle()
     {
         View::composer([
-            'partials._sidebar',
-            'mobile.news._hotArticles',
-            'mobile.news.view'
+            'partials._aside',
+            'homepage.partials._new_article'
         ], function ($view) {
             $topInWeek = Article::getTopArticlesInWeek(5, $this->idsExcept);
 

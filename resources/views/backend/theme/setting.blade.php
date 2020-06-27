@@ -56,6 +56,9 @@
                                 <li>
                                     <a href="#tab_services" data-toggle="tab"> Services </a>
                                 </li>
+                                <li>
+                                    <a href="#tab_courses" data-toggle="tab"> Courses </a>
+                                </li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_general">
@@ -75,6 +78,9 @@
                                 </div>
                                 <div class="tab-pane" id="tab_services">
                                     @include("backend.theme._tab_services", ['option' => $option])
+                                </div>
+                                <div class="tab-pane" id="tab_courses">
+                                    @include("backend.theme._tab_courses", ['option' => $option])
                                 </div>
                             </div>
                         </div>

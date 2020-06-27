@@ -97,6 +97,14 @@ class Article extends \Eloquent
         return $query->havingRaw('(UNIX_TIMESTAMP(now()) - UNIX_TIMESTAMP(created_at)) < ?', [604800]);
     }
 
+    public static function getFirstParentCategory($idArticle) {
+        $article = Article::find($idArticle);
+
+        $firstCategory = $article->category()->first();
+
+        return $firstCategory;
+    }
+
     /**
      *
      * @return Article[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection

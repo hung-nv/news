@@ -201,24 +201,26 @@
     <i class="fa fa-angle-up"></i>
 </div>
 
-<div class="hotline">
-    <div class="phonering-alo-phone phonering-alo-green phonering-alo-show" id="phonering-alo-phoneIcon" >
-        <div class="phonering-alo-ph-circle"></div>
-        <div class="phonering-alo-ph-circle-fill"></div>
-        <div class="phonering-alo-ph-img-circle">
-            <a href="tel:097.669.7887" class="pps-btn-img " title="Liên hệ">
-                <img src="https://i.imgur.com/v8TniL3.png" alt="Liên hệ" width="50"
-                     onmouseover="this.src='https://i.imgur.com/v8TniL3.png';"
-                     onmouseout="this.src='https://i.imgur.com/v8TniL3.png';">
+@if(!empty($option['hotline']))
+    <div class="hotline">
+        <div class="phonering-alo-phone phonering-alo-green phonering-alo-show" id="phonering-alo-phoneIcon" >
+            <div class="phonering-alo-ph-circle"></div>
+            <div class="phonering-alo-ph-circle-fill"></div>
+            <div class="phonering-alo-ph-img-circle">
+                <a href="tel:{{ $option['hotline'] }}" class="pps-btn-img " title="Liên hệ">
+                    <img src="https://i.imgur.com/v8TniL3.png" alt="Liên hệ" width="50"
+                         onmouseover="this.src='https://i.imgur.com/v8TniL3.png';"
+                         onmouseout="this.src='https://i.imgur.com/v8TniL3.png';">
+                </a>
+            </div>
+        </div>
+        <div class="mobile-hotline" id="mobile-hotline">
+            <a href="tel:{{ $option['hotline'] }}" title="tel:{{ $option['hotline'] }}">
+                <span class="text-hotline">{{ $option['hotline'] }}</span>
             </a>
         </div>
     </div>
-    <div class="mobile-hotline" id="mobile-hotline">
-        <a href="tel:097.669.7887" title="tel:097.669.7887">
-            <span class="text-hotline">097.669.7887</span>
-        </a>
-    </div>
-</div>
+@endif
 
 <script type='text/javascript' src='{{ asset('js/navigation_skip-link-focus-fix.js') }}'></script>
 <script type='text/javascript' src='https://eduwork.edu.vn/wp-content/themes/PVC172/js/bootstrap.min.js?ver=4.0%20Alpha'></script>

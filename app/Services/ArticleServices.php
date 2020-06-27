@@ -600,6 +600,10 @@ class ArticleServices
         }
     }
 
+    public function getFirstParentCategory($idArticle) {
+        return Article::getFirstParentCategory($idArticle);
+    }
+
     /**
      * @param $idsCategory
      * @param $idExcept

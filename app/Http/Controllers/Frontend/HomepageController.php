@@ -21,8 +21,6 @@ class HomepageController extends Controller
 
     public function index()
     {
-        $partners = Partner::all();
-
-        return view('homepage.index', compact('partners'));
+        return view('homepage.index');
     }
 }

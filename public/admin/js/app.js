@@ -13495,14 +13495,20 @@ var ui = {
   inputOldService3: '#old_services_image_3',
   inputLogo: '#company_logo',
   inputOldLogo: '#old_company_logo',
-  inputWhyUs: '#why_us_image',
-  inputOldWhyUs: '#old_why_us_image',
+  inputAboutUs: '#about_us_image',
+  inputOldAboutUs: '#old_about_us_image',
   inputBanner1: '#banner_image_1',
   inputOldBanner1: '#old_banner_image_1',
   inputBanner2: '#banner_image_2',
   inputOldBanner2: '#old_banner_image_2',
   inputBanner3: '#banner_image_3',
   inputOldBanner3: '#old_banner_image_3',
+  inputCourse1: '#courses_image_1',
+  inputOldCourse1: '#old_courses_image_1',
+  inputCourse2: '#courses_image_2',
+  inputOldCourse2: '#old_courses_image_2',
+  inputCourse3: '#courses_image_3',
+  inputOldCourse3: '#old_courses_image_3',
   urlDeleteFileSetting: '/api/delete-file-setting',
   inputRemoveInitPreview: '.kv-file-remove'
 };
@@ -13566,13 +13572,13 @@ $(function () {
     } // init banner 3.
 
 
-    if ($(ui.inputWhyUs).length) {
-      if ($(ui.inputOldWhyUs).length) {
-        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldWhyUs, ui.inputWhyUs, ui.urlDeleteFileSetting, {
-          extractName: 'why_us_image'
+    if ($(ui.inputAboutUs).length) {
+      if ($(ui.inputOldAboutUs).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldAboutUs, ui.inputAboutUs, ui.urlDeleteFileSetting, {
+          extractName: 'about_us_image'
         });
       } else {
-        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputWhyUs);
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputAboutUs);
       }
     } // init banner 3.
 
@@ -13606,6 +13612,37 @@ $(function () {
         });
       } else {
         Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputBanner3);
+      }
+    } // FOR COURSES
+
+
+    if ($(ui.inputCourse1).length) {
+      if ($(ui.inputOldCourse1).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldCourse1, ui.inputCourse1, ui.urlDeleteFileSetting, {
+          extractName: 'courses_image_1'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputCourse1);
+      }
+    }
+
+    if ($(ui.inputCourse2).length) {
+      if ($(ui.inputOldCourse2).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldCourse2, ui.inputCourse2, ui.urlDeleteFileSetting, {
+          extractName: 'courses_image_2'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputCourse2);
+      }
+    }
+
+    if ($(ui.inputCourse3).length) {
+      if ($(ui.inputOldCourse3).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldCourse3, ui.inputCourse3, ui.urlDeleteFileSetting, {
+          extractName: 'courses_image_3'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputCourse3);
       }
     }
 
