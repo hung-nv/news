@@ -9,7 +9,7 @@
         <input type="text" name="slug" class="form-control" :value="postSlug"/>
     </div>
 
-    <div class="form-group">
+    <div class="form-group hidden">
         <label>Description</label>
         <textarea name="description" class="form-control"
                   rows="4">{{ isset($page) ? $page['description'] : old('description') }}</textarea>
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group hidden">
         <label>Select Category</label>
         <div class="mt-checkbox-list"
              data-error-container="#form_2_services_error">

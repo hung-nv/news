@@ -41,12 +41,16 @@
                 <div class="site-branding">
                     <a class="logo-link" href="/" rel="home" title="{{ !empty($option['site_heading']) ? $option['site_heading'] : '' }}">
                         <h1 class="entry-title ">
-                            <img class="img-responsive" src="https://eduwork.edu.vn/wp-content/uploads/2018/09/Logo-cho-web.png" alt="{{ !empty($option['site_heading']) ? $option['site_heading'] : '' }}">
+                            @if(!empty($option['company_logo']))
+                                <img class="img-responsive" style="max-height: 60px;" src="/img/80{{ $option['company_logo'] }}" alt="{{ !empty($option['site_heading']) ? $option['site_heading'] : '' }}">
+                            @else
+                                <img class="img-responsive" src="{{ asset('images/logo.png') }}" alt="{{ !empty($option['site_heading']) ? $option['site_heading'] : '' }}">
+                            @endif
                         </h1>
                     </a>
                 </div>
                 <div class="search-menu">
-                    <form role="search" method="get" class="search-form" action="https://eduwork.edu.vn/">
+                    <form role="search" method="get" class="search-form" action="{{ route('article.search') }}">
                         <label class="ip-form">
                             <span class="screen-reader-text">Search</span>
                             <input type="search" class="search-field"
@@ -112,7 +116,11 @@
             <div class="site-branding">
                 <a class="logo-link" href="/" rel="home" title="{{ !empty($option['site_heading']) ? $option['site_heading'] : '' }}">
                     <h1 class="entry-title ">
-                        <img class="img-responsive" src="https://eduwork.edu.vn/wp-content/uploads/2018/09/Logo-cho-web.png" alt="{{ !empty($option['site_heading']) ? $option['site_heading'] : '' }}">
+                        @if(!empty($option['company_logo']))
+                            <img class="img-responsive" style="max-height: 60px;" src="/img/100{{ $option['company_logo'] }}" alt="{{ !empty($option['site_heading']) ? $option['site_heading'] : '' }}">
+                        @else
+                            <img class="img-responsive" src="{{ asset('images/logo.png') }}" alt="{{ !empty($option['site_heading']) ? $option['site_heading'] : '' }}">
+                        @endif
                         <strong>{{ !empty($option['site_heading']) ? $option['site_heading'] : '' }}</strong>
                     </h1>
                 </a>
@@ -141,5 +149,5 @@
                 </div>
             </div>
         </div>
-    </nav><!-- #site-navigation -->
+    </nav>
 </header>

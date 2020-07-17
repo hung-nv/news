@@ -5473,10 +5473,6 @@ ul.list-post-ct li .date-detail i {
     width: 33%;
     display: inline-table;
   }
-  .post_block_wrap .post-content .title-medium a {
-    color: #fff;
-    font-size: 96%;
-  }
   .footer-sidebar .thongtin {
     font-size: 11px;
   }
@@ -6025,7 +6021,7 @@ ul.list-post-ct li .date-detail i {
 }
 .site-header .site-branding img {
     height: 60px;
-    width: 70px;
+    width: auto;
     padding: 10px 0;
 }
 	.main-navigation .container {
@@ -6080,9 +6076,6 @@ ul.list-post-ct li .date-detail i {
   }
   .footer-sidebar .widget-title {
     font-size: 15px;
-  }
-  .post_block_wrap .post-content .title-medium a {
-    font-size: 98%;
   }
  /* .post_block_wrap .post-thumb {
     max-width: 26%;

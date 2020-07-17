@@ -260,7 +260,7 @@ class ArticleServices
         }
 
         if ($post->update($dataUpdate)) {
-            $post->category()->sync($dataUpdate['parent']);
+            !empty($dataUpdate['parent']) && $post->category()->sync($dataUpdate['parent']);
         }
 
         $message = '"' . $post->name . '" has been updated!';

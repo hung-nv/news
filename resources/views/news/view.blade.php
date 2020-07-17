@@ -1,3 +1,13 @@
+@section('title')
+    {{ isset($article->meta_title) ? $article->meta_title : $article->name }}
+@endsection
+
+@section('description')
+    {{ isset($article->meta_description) ? $article->meta_description : $article->description }}
+@endsection
+
+@section('og_image', 'img/400'.$article->image)
+
 @extends('layouts.app')
 
 @section('content')
@@ -34,18 +44,6 @@
                                 @endforeach
                                 </span>
                             </footer>
-
-                            <nav class="navigation post-navigation" role="navigation" aria-label="Bài viết">
-                                <h2 class="screen-reader-text">Điều hướng bài viết</h2>
-                                <div class="nav-links">
-                                    <div class="nav-previous">
-                                        <a href="https://eduwork.edu.vn/nhung-loi-ich-cua-viec-hoc-van-bang-2-cao-dang-dieu-duong/" rel="prev">Những Lợi Ích Của Việc Học Văn Bằng 2 Cao Đẳng Điều Dưỡng</a>
-                                    </div>
-                                    <div class="nav-next">
-                                        <a href="https://eduwork.edu.vn/giai-dap-thac-mac-ve-thoi-gian-hoc-van-bang-2-la-bao-lau/" rel="next">Giải Đáp Thắc Mắc Về Thời Gian Học Văn Bằng 2 Là Bao Lâu</a>
-                                    </div>
-                                </div>
-                            </nav>
 
                             @if(!empty($relatedArticles))
                             <div class="related-post">

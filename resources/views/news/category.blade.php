@@ -1,3 +1,11 @@
+@section('title')
+    {{ isset($category->meta_title) ? $category->meta_title : $category->name }}
+@endsection
+
+@section('description')
+    {{ isset($category->meta_description) ? $category->meta_description : $category->description }}
+@endsection
+
 @extends('layouts.app')
 
 @section('content')
@@ -57,15 +65,6 @@
                             <div class="hrm-pagenavi">
                                 {{ $articles->links() }}
                             </div>
-{{--                            <div class="hrm-pagenavi">--}}
-{{--                                <ul class="page-numbers">--}}
-{{--                                    <li><span aria-current="page" class="page-numbers current">1</span></li>--}}
-{{--                                    <li><a class="page-numbers"--}}
-{{--                                           href="https://eduwork.edu.vn/tin-tuc-eduwork/page/2/">2</a></li>--}}
-{{--                                    <li><a class="next page-numbers"--}}
-{{--                                           href="https://eduwork.edu.vn/tin-tuc-eduwork/page/2/">→</a></li>--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
                         </main>
                     </div>
                     @include('partials._aside')

@@ -12606,6 +12606,8 @@ __webpack_require__(/*! ./pages/partner/index_partner */ "./resources/js/backend
 
 __webpack_require__(/*! ./pages/partner/create_update_partner */ "./resources/js/backend/pages/partner/create_update_partner.js");
 
+__webpack_require__(/*! ./pages/page/index_page */ "./resources/js/backend/pages/page/index_page.js");
+
 /***/ }),
 
 /***/ "./resources/js/backend/helpers/helpers.js":
@@ -13173,6 +13175,34 @@ $(function () {
     Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["confirmBeforeDelete"])(this, 'Do you want to delete this?');
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/backend/pages/page/index_page.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/backend/pages/page/index_page.js ***!
+  \*******************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/helpers */ "./resources/js/backend/helpers/helpers.js");
+
+var ui = {
+  pageId: '#page'
+};
+
+if ($(ui.pageId).length) {
+  new Vue({
+    el: ui.pageId,
+    methods: {
+      confirmBeforeDelete: function confirmBeforeDelete(event) {
+        Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["confirmBeforeDelete"])(event.target, 'Do you want to delete this?');
+      }
+    }
+  });
+}
 
 /***/ }),
 

@@ -12,3 +12,4 @@ require('./pages/advertising/index_advertising');
 require('./pages/advertising/create_update_advertising');
 require('./pages/partner/index_partner');
 require('./pages/partner/create_update_partner');
+require('./pages/page/index_page');
