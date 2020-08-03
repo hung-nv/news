@@ -36,10 +36,18 @@
     <link rel="shortcut icon" href="https://eduwork.edu.vn/wp-content/uploads/2018/09/Logo-cho-web.png"/>
 </head>
 <body class="home page-template page site_fullwidth">
-<div id="page" class="site">
+<div id="mainApp" class="site">
     @include('layouts.header')
 
     @yield('content')
+
+    @include('partials._popup_customer')
+
+    @include('partials._modal_confirm_crawl')
+
+    <template v-if="isLoading">
+        <div class="loading">Loading&#8230;</div>
+    </template>
 </div>
 
 @include('layouts.footer')
@@ -69,10 +77,12 @@
     </div>
 @endif
 
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script type='text/javascript' src='{{ asset('js/navigation_skip-link-focus-fix.js') }}'></script>
 <script type='text/javascript' src='https://eduwork.edu.vn/wp-content/themes/PVC172/js/bootstrap.min.js?ver=4.0%20Alpha'></script>
 <script type='text/javascript' src='{{ asset('js/lightslider.min.js?ver=2.1') }}'></script>
 <script type='text/javascript' src='{{ asset('libs/fancybox/dist/jquery.fancybox.min.js?ver=3.5.7') }}'></script>
 <script type='text/javascript' src='{{ asset('js/custom.js') }}'></script>
+<script src="{{ asset('/js/themes.js') }}"></script>
 </body>
 </html>

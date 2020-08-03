@@ -50,4 +50,6 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('update-sort', 'ApiMenuController@sort');
     // delete file setting.
     Route::post('delete-file-setting', 'ApiOptionController@deleteFile');
+    // crawl customer information.
+    Route::post('crawl-information', 'ApiCustomerController@saveCustomer');
 });
