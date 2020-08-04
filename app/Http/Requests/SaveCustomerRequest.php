@@ -26,14 +26,13 @@ class SaveCustomerRequest extends FormRequest
         return [
             'name' => 'required',
             'mobile' => 'required',
-            'email' => 'email|required|unique:customers,email'
+            'email' => 'email|required'
         ];
     }
 
     public function messages()
     {
         return [
-            'email.unique' => 'Email đã tồn tại',
             'email.email' => 'Vui lòng nhập đúng định dạng email'
         ];
     }

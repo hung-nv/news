@@ -32,6 +32,7 @@ class CustomerOrder extends Mailable
     public function build()
     {
         return $this->markdown('emails._receive_info')
+          ->subject('Thông tin người đăng ký tư vấn')
           ->with([
             'name' => $this->customer->name,
             'email' => $this->customer->email,
