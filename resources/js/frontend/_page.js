@@ -1,4 +1,4 @@
-import {_cookie, getParameterByName} from "../backend/helpers/helpers";
+import {_cookie} from "../backend/helpers/helpers";
 
 window._ = require('lodash');
 
@@ -15,27 +15,16 @@ window.vmCard = new Vue({
     el: '#mainApp',
     data: function () {
         return {
-            textSearch: getParameterByName('name') ? getParameterByName('name') : '',
             isLoading: false,
             name: '',
             telephone: '',
             address: '',
-            note: '',
             email: '',
             errorMessage: '',
             showError: true,
         };
     },
     methods: {
-        submitSearchForm: function (event) {
-            // if (this.textSearch !== '') {
-            //     if (!this.idCatalog) {
-            //         return false;
-            //     }
-            //
-            //     window.location = location.protocol + '//' + location.host + '/search?name=' + this.textSearch + '&catalog=' + this.idCatalog;
-            // }
-        },
         saveCustomer: function (event) {
             let valid = $(ui.formCrawl).valid();
 

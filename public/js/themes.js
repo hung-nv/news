@@ -29876,26 +29876,16 @@ window.vmCard = new Vue({
   el: '#mainApp',
   data: function data() {
     return {
-      textSearch: Object(_backend_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["getParameterByName"])('name') ? Object(_backend_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["getParameterByName"])('name') : '',
       isLoading: false,
       name: '',
       telephone: '',
       address: '',
-      note: '',
       email: '',
       errorMessage: '',
       showError: true
     };
   },
   methods: {
-    submitSearchForm: function submitSearchForm(event) {// if (this.textSearch !== '') {
-      //     if (!this.idCatalog) {
-      //         return false;
-      //     }
-      //
-      //     window.location = location.protocol + '//' + location.host + '/search?name=' + this.textSearch + '&catalog=' + this.idCatalog;
-      // }
-    },
     saveCustomer: function saveCustomer(event) {
       var _this = this;
 

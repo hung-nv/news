@@ -75,7 +75,7 @@ class ArticleController extends Controller
 
     public function search(Request $request)
     {
-        $search = $request->txtSearch;
+        $search = $request->name;
         $articles = $this->articleServices->getAllArticlesByName($search);
 
         return view('news.search', [

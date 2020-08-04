@@ -97,17 +97,17 @@
                 <span class="hrm-search-close"></span>
             </div>
             <div class="hrm-drop-down-search" aria-labelledby="hrm-header-search-button">
-                <form role="search" method="get" class="search-form" action="">
+                <form role="search" method="get" class="search-form" action="/search">
                     <label class="ip-form">
                         <span class="screen-reader-text">Search</span>
                         <input type="search" class="search-field"
                                placeholder="Bạn cần tìm gì?"
-                               value="" name="s"
-                               title="Search for:" />
+                               value="" name="name"
+                               title="Search for:" required />
                     </label>
                     <input type="submit" class="search-submit" value="Search" />
+                    <div id="hrm-aj-search-mob"></div>
                 </form>
-                <div id="hrm-aj-search-mob"></div>
             </div>
         </div>
     </div>
