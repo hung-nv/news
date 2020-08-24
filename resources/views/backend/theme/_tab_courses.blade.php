@@ -103,6 +103,102 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4">
+            <h3 class="form-section">
+                <span class="badge badge-info">4</span>
+            </h3>
+            <div class="form-group">
+                <label class="col-md-3 control-label">Title</label>
+                <div class="col-md-9">
+                    <input name="courses_title_4" type="text" class="form-control"
+                           value="{{ isset($option['courses_title_4']) ? $option['courses_title_4'] : old('courses_title_4') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">URL</label>
+                <div class="col-md-9">
+                    <input name="courses_url_4" type="text" class="form-control"
+                           value="{{ isset($option['courses_url_4']) ? $option['courses_url_4'] : old('courses_url_4') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Image</label>
+                <div class="col-md-9">
+                    @if(isset($option['courses_image_4']) && $option['courses_image_4'])
+                        <input type="hidden" name="old_courses_image_4" id="old_courses_image_4" data-id=""
+                               value="{{ $option['courses_image_4'] }}">
+                    @endif
+                    <input id="courses_image_4" name="courses_image_4" type="file" data-show-upload="false">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="form-section">
+                <span class="badge badge-info">5</span>
+            </h3>
+            <div class="form-group">
+                <label class="col-md-3 control-label">Title</label>
+                <div class="col-md-9">
+                    <input name="courses_title_5" type="text" class="form-control"
+                           value="{{ isset($option['courses_title_5']) ? $option['courses_title_5'] : old('courses_title_5') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">URL</label>
+                <div class="col-md-9">
+                    <input name="courses_url_5" type="text" class="form-control"
+                           value="{{ isset($option['courses_url_5']) ? $option['courses_url_5'] : old('courses_url_5') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Image</label>
+                <div class="col-md-9">
+                    @if(isset($option['courses_image_5']) && $option['courses_image_5'])
+                        <input type="hidden" name="old_courses_image_5" id="old_courses_image_5" data-id=""
+                               value="{{ $option['courses_image_5'] }}">
+                    @endif
+                    <input id="courses_image_5" name="courses_image_5" type="file" data-show-upload="false">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="form-section">
+                <span class="badge badge-info">6</span>
+            </h3>
+            <div class="form-group">
+                <label class="col-md-3 control-label">Title</label>
+                <div class="col-md-9">
+                    <input name="courses_title_6" type="text" class="form-control"
+                           value="{{ isset($option['courses_title_6']) ? $option['courses_title_6'] : old('courses_title_6') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">URL</label>
+                <div class="col-md-9">
+                    <input name="courses_url_6" type="text" class="form-control"
+                           value="{{ isset($option['courses_url_6']) ? $option['courses_url_6'] : old('courses_url_6') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Image</label>
+                <div class="col-md-9">
+                    @if(isset($option['courses_image_6']) && $option['courses_image_6'])
+                        <input type="hidden" name="old_courses_image_6" id="old_courses_image_6" data-id=""
+                               value="{{ $option['courses_image_6'] }}">
+                    @endif
+                    <input id="courses_image_6" name="courses_image_6" type="file" data-show-upload="false">
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

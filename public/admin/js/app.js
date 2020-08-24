@@ -13572,6 +13572,12 @@ var ui = {
   inputOldCourse2: '#old_courses_image_2',
   inputCourse3: '#courses_image_3',
   inputOldCourse3: '#old_courses_image_3',
+  inputCourse4: '#courses_image_4',
+  inputOldCourse4: '#old_courses_image_4',
+  inputCourse5: '#courses_image_5',
+  inputOldCourse5: '#old_courses_image_5',
+  inputCourse6: '#courses_image_6',
+  inputOldCourse6: '#old_courses_image_6',
   urlDeleteFileSetting: '/api/delete-file-setting',
   inputRemoveInitPreview: '.kv-file-remove'
 };
@@ -13706,6 +13712,36 @@ $(function () {
         });
       } else {
         Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputCourse3);
+      }
+    }
+
+    if ($(ui.inputCourse4).length) {
+      if ($(ui.inputOldCourse4).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldCourse4, ui.inputCourse4, ui.urlDeleteFileSetting, {
+          extractName: 'courses_image_4'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputCourse4);
+      }
+    }
+
+    if ($(ui.inputCourse5).length) {
+      if ($(ui.inputOldCourse5).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldCourse5, ui.inputCourse5, ui.urlDeleteFileSetting, {
+          extractName: 'courses_image_5'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputCourse5);
+      }
+    }
+
+    if ($(ui.inputCourse6).length) {
+      if ($(ui.inputOldCourse6).length) {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["initInputImage"])(ui.inputOldCourse6, ui.inputCourse6, ui.urlDeleteFileSetting, {
+          extractName: 'courses_image_6'
+        });
+      } else {
+        Object(_utilities_images_image__WEBPACK_IMPORTED_MODULE_0__["newInputImage"])(ui.inputCourse6);
       }
     }
 
