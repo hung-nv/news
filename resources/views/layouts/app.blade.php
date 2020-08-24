@@ -34,7 +34,9 @@
     <link rel="stylesheet" href="{{ asset('libs/owlcarousel/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('libs/owlcarousel/assets/owl.theme.default.min.css') }}">
 
-    <link rel="shortcut icon" href="https://eduwork.edu.vn/wp-content/uploads/2018/09/Logo-cho-web.png"/>
+    @if(!empty($option['favico']))
+        <link rel="shortcut icon" href="/img/20{{ $option['favico'] }}"/>
+    @endif
 </head>
 <body class="home page-template page site_fullwidth">
 <div id="mainApp" class="site">
