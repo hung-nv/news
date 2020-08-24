@@ -45,11 +45,11 @@
 
                     @include('homepage.partials._about_us')
 
-                    @include('homepage.partials._why_us')
+                    @include('homepage.partials._courses')
 
                     @include('homepage.partials._new_article')
 
-                    @include('homepage.partials._courses')
+                    @include('homepage.partials._why_us')
 
                     @include('homepage.partials._services')
 
