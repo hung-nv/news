@@ -29973,14 +29973,38 @@ $(function () {
         required: "Vui lòng nhập số điện thoại"
       }
     }
-  });
-  setTimeout(function () {
-    if (!Object(_backend_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["_cookie"])('dialog')) {
-      Object(_backend_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__["_cookie"])('dialog', 'dialog1', 1);
+  }); // setTimeout(function () {
+  //     if (!_cookie('dialog')) {
+  //
+  //         _cookie('dialog', 'dialog1', 1);
+  //
+  //         $(ui.modalCrawl).modal('show');
+  //     }
+  //
+  // }, 3000); // milliseconds
 
-      $(ui.modalCrawl).modal('show');
+  var owl = $(".divkh");
+  owl.owlCarousel({
+    items: 4,
+    //10 items above 1000px browser width
+    itemsMobile: false,
+    // itemsMobile disabled - inherit from itemsTablet option
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      480: {
+        items: 2
+      },
+      769: {
+        item: 4
+      }
     }
-  }, 3000); // milliseconds
+  }); // Custom Navigation Events
 
   $.validator.addMethod('validatePhone', function (value) {
     return /^0([0-9]{9})$/.test(value);

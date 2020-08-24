@@ -2459,7 +2459,7 @@ html #wpadminbar {
   position: relative;
 }
 .main-navigation .container {
-  padding: 5px 0; 
+  padding: 5px 0;
 }
 .main-navigation .container .row {margin: 0;}
 .main-navigation ul {
@@ -3582,7 +3582,7 @@ div#content {
 .sub-title  {
     color: #000;
     font-size: 18px;
-} 
+}
 .dich_vu .title_conent {
     font-weight: 600;
     line-height: 40px;
@@ -3613,10 +3613,16 @@ div#content {
   height: 198px;
   border: 6px solid #bbbdbf;
   border-radius: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 .khoahoc .title_kh {
-    min-height: 48px;
-    text-transform: uppercase;
+  min-height: 48px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 10px;
+  padding: 0 30px;
 }
 .khoahoc .lg_readmore {
     -moz-border-radius: 5px;

@@ -47,11 +47,11 @@
 
                     @include('homepage.partials._why_us')
 
-                    @include('homepage.partials._services')
+                    @include('homepage.partials._new_article')
 
                     @include('homepage.partials._courses')
 
-                    @include('homepage.partials._new_article')
+                    @include('homepage.partials._services')
 
                 </main>
             </div>

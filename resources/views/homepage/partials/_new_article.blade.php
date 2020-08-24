@@ -12,7 +12,7 @@
                         <div class="title_posts">
                             <h2>
                                 <a href="{{ $itemNewArticle->url }}" title="{{ $itemNewArticle->name }}">
-                                    {{ str_limit($itemNewArticle->name, $limit = 60, $end = '...') }}
+                                    {{ str_limit($itemNewArticle->name, $limit = 50, $end = '...') }}
                                 </a>
                             </h2>
                         </div>

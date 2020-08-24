@@ -1,3 +1,6 @@
+.modal-crawl-information {
+  top: 80px;
+}
 .modal-crawl-information .modal-dialog {
   max-width: 450px;
 }

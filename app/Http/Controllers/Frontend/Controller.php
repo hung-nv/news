@@ -85,7 +85,7 @@ class Controller extends \App\Http\Controllers\Controller
         ], function ($view) {
             $topInWeek = Article::getTopArticlesInWeek(5, $this->idsExcept);
 
-            $newArticles = Article::getNewArticle(5, $this->idsExcept);
+            $newArticles = Article::getNewArticle(8, $this->idsExcept);
 
             $view->with('topInWeek', $topInWeek);
 

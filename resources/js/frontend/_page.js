@@ -118,15 +118,38 @@ $(function () {
     });
 
 
-    setTimeout(function () {
-        if (!_cookie('dialog')) {
+    // setTimeout(function () {
+    //     if (!_cookie('dialog')) {
+    //
+    //         _cookie('dialog', 'dialog1', 1);
+    //
+    //         $(ui.modalCrawl).modal('show');
+    //     }
+    //
+    // }, 3000); // milliseconds
 
-            _cookie('dialog', 'dialog1', 1);
-
-            $(ui.modalCrawl).modal('show');
+    var owl = $(".divkh");
+    owl.owlCarousel({
+        items : 4, //10 items above 1000px browser width
+        itemsMobile : false, // itemsMobile disabled - inherit from itemsTablet option
+        loop:true,
+        autoplay:true,
+        autoplayTimeout:3000,
+        autoplayHoverPause:true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            480: {
+                items: 2
+            },
+            769: {
+                item: 4
+            }
         }
+    });
+    // Custom Navigation Events
 
-    }, 3000); // milliseconds
 
 
     $.validator.addMethod('validatePhone', function (value) {

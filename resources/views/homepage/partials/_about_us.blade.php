@@ -11,7 +11,7 @@
                 {!! $option['about_us_content'] !!}
             @endif
             <div class="nutbam">
-                <a class="fancybox" href="#boxzilla-457">Click để liên hệ ngay</a>
+                <a class="fancybox" href="#" data-toggle="modal" data-target="#modal-contact">Click để liên hệ ngay</a>
             </div>
         </div>
         <div class="block-video-youtube col-md-5 col-xs-6 col-sm-6">

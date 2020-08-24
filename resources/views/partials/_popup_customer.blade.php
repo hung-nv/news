@@ -1,4 +1,4 @@
-<div class="modal fade modal-crawl-information" tabindex="-1" role="dialog">
+<div class="modal fade modal-crawl-information" id="modal-contact" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
