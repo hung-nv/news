@@ -118,15 +118,15 @@ $(function () {
     });
 
 
-    // setTimeout(function () {
-    //     if (!_cookie('dialog')) {
-    //
-    //         _cookie('dialog', 'dialog1', 1);
-    //
-    //         $(ui.modalCrawl).modal('show');
-    //     }
-    //
-    // }, 3000); // milliseconds
+    setTimeout(function () {
+        if (!_cookie('dialog')) {
+
+            _cookie('dialog', 'dialog1', 1);
+
+            $(ui.modalCrawl).modal('show');
+        }
+
+    }, 3000); // milliseconds
 
     var owl = $(".divkh");
     owl.owlCarousel({
