@@ -37,6 +37,10 @@
     @if(!empty($option['favico']))
         <link rel="shortcut icon" href="/img/20{{ $option['favico'] }}"/>
     @endif
+
+    @if(!empty($option['private_script']))
+        {!! $option['private_script'] !!}
+    @endif
 </head>
 <body class="home page-template page site_fullwidth">
 <div id="mainApp" class="site">
