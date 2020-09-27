@@ -34,6 +34,8 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('landing/delete-image', 'ApiPostController@deleteImageLanding');
     // create menu.
     Route::post('create-menu', 'ApiMenuController@createMenuGroup');
+    // delete menu group.
+    Route::post('delete-menu-group', 'ApiMenuController@deleteMenuGroup');
     // add category to menu.
     Route::post('add-category', 'ApiMenuController@addCategory');
     // add page to menu.

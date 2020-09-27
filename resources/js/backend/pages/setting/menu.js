@@ -4,6 +4,7 @@ import {doException} from "../../helpers/helpers";
 
 const ui = {
     urlCreateMenu: '/api/create-menu',
+    urlDeleteMenuGroup: '/api/delete-menu-group',
     urlGetAllMenu: '/api/get-list-menu',
     urlAddCategory: '/api/add-category',
     urlAddPage: '/api/add-page',
@@ -32,6 +33,37 @@ $(function () {
         menuGroup = $('#list-menu-item').val();
         if (menuGroup !== null && menuGroup !== '') {
             location.href = domain + '/administrator/menu?menu_group=' + menuGroup;
+        }
+    });
+
+    $('#delete-menu').on('click', function () {
+        menuGroup = $('#list-menu-item').val();
+        if (menuGroup !== null && menuGroup !== '') {
+            swal({
+                title: 'Are you sure?',
+                type: 'warning',
+                showCancelButton: true,
+                customClass: 'nvh-dialog',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then(function () {
+                $.ajax({
+                    url: ui.urlDeleteMenuGroup,
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        menu_group_id: menuGroup
+                    }
+                }).then(respon => {
+                    toastr.info(respon.message);
+
+                    // reload page.
+                    location.href = domain + '/administrator/menu'
+                }).catch(err => {
+                    toastr.error('Fail delete this menu');
+                })
+            });
         }
     });
 
@@ -146,7 +178,7 @@ $(function () {
                     success: function (result) {
                         // reload menu after change.
                         $(ui.divNestable).load(ui.urlGetMenuNestable + menuGroup);
-                        
+
                         toastr.info(result.message);
 
                         label.val('');

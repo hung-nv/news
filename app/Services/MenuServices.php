@@ -179,6 +179,17 @@ class MenuServices
     }
 
     /**
+     * Delete menu group.
+     * @param $data
+     * @return bool|null
+     * @throws \Exception
+     */
+    public function deleteMenuGroup($data)
+    {
+        return MenuGroup::findOrFail($data['menu_group_id'])->delete();
+    }
+
+    /**
      * Get data menu.
      * @param $pageType
      * @param $idMenuGroup

@@ -29,6 +29,9 @@
                             <button class="btn btn-sm yellow" type="button" data-toggle="modal" href="#modalAddMenu">
                                 Add Menu
                             </button>
+                            <button class="btn btn-sm red" type="button" id="delete-menu">
+                                Delete Menu
+                            </button>
                         </div>
                     </div>
                 </div>

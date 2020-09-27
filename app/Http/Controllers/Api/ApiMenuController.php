@@ -34,6 +34,17 @@ class ApiMenuController extends Controller
         }
     }
 
+    public function deleteMenuGroup(Request $request)
+    {
+        try {
+            $this->menuServices->deleteMenuGroup($request->only('menu_group_id'));
+
+            return response()->json(['message' => 'Your menu has been delete!'], 200);
+        } catch (\Exception $e) {
+            return response()->json('Internal Server Error', 500);
+        }
+    }
+
     /**
      * Get all menu group to reload after create menu group.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
