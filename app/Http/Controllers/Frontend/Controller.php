@@ -115,10 +115,10 @@ class Controller extends \App\Http\Controllers\Controller
             View::share('mainMenu', $mainMenu);
         }
 
-        if (!empty($this->option['footer_menu_id'])) {
-            $footerMenu = $this->setMultiMenu(Menu::getMenuByGroup($this->option['footer_menu_id'])->toArray());
+        if (!empty($this->option['mobile_menu_id'])) {
+            $mobileMenu = $this->setMultiMenu(Menu::getMenuByGroup($this->option['mobile_menu_id'])->toArray());
 
-            View::share('footerMenu', $footerMenu);
+            View::share('mobileMenu', $mobileMenu);
         }
 
         if (!empty($this->option['sidebar_menu_id'])) {

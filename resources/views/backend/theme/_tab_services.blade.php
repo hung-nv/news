@@ -29,6 +29,14 @@
             </div>
 
             <div class="form-group">
+                <label class="col-md-3 control-label">Icon</label>
+                <div class="col-md-9">
+                    <input name="services_icon_1" type="text" class="form-control"
+                           value="{{ isset($option['services_icon_1']) ? $option['services_icon_1'] : old('services_icon_1') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label class="col-md-3 control-label">Description</label>
                 <div class="col-md-9">
                     <textarea name="services_description_1" class="form-control"
@@ -50,6 +58,14 @@
             </div>
 
             <div class="form-group">
+                <label class="col-md-3 control-label">Icon</label>
+                <div class="col-md-9">
+                    <input name="services_icon_2" type="text" class="form-control"
+                           value="{{ isset($option['services_icon_2']) ? $option['services_icon_2'] : old('services_icon_2') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label class="col-md-3 control-label">Description</label>
                 <div class="col-md-9">
                     <textarea name="services_description_2" class="form-control"
@@ -67,6 +83,14 @@
                 <div class="col-md-9">
                     <input name="services_title_3" type="text" class="form-control"
                            value="{{ isset($option['services_title_3']) ? $option['services_title_3'] : old('services_title_3') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Icon</label>
+                <div class="col-md-9">
+                    <input name="services_icon_3" type="text" class="form-control"
+                           value="{{ isset($option['services_icon_3']) ? $option['services_icon_3'] : old('services_icon_3') }}">
                 </div>
             </div>
 
@@ -93,6 +117,14 @@
             </div>
 
             <div class="form-group">
+                <label class="col-md-3 control-label">Icon</label>
+                <div class="col-md-9">
+                    <input name="services_icon_4" type="text" class="form-control"
+                           value="{{ isset($option['services_icon_4']) ? $option['services_icon_4'] : old('services_icon_4') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label class="col-md-3 control-label">Description</label>
                 <div class="col-md-9">
                     <textarea name="services_description_4" class="form-control"
@@ -114,6 +146,14 @@
             </div>
 
             <div class="form-group">
+                <label class="col-md-3 control-label">Icon</label>
+                <div class="col-md-9">
+                    <input name="services_icon_5" type="text" class="form-control"
+                           value="{{ isset($option['services_icon_5']) ? $option['services_icon_5'] : old('services_icon_5') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label class="col-md-3 control-label">Description</label>
                 <div class="col-md-9">
                     <textarea name="services_description_5" class="form-control"
@@ -131,6 +171,14 @@
                 <div class="col-md-9">
                     <input name="services_title_6" type="text" class="form-control"
                            value="{{ isset($option['services_title_6']) ? $option['services_title_6'] : old('services_title_6') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Icon</label>
+                <div class="col-md-9">
+                    <input name="services_icon_6" type="text" class="form-control"
+                           value="{{ isset($option['services_icon_6']) ? $option['services_icon_6'] : old('services_icon_6') }}">
                 </div>
             </div>
 

@@ -10,19 +10,21 @@
 
 @section('content')
     @include('homepage.slider')
-    <!-- Main Container -->
-    <div class="main-wrapper">
 
-        @include('homepage._features')
+    <div class="theme-page">
+        <div class="clearfix">
+            @include('homepage._services')
 
-        @include('homepage._special')
+            @include('homepage._why_us')
 
-        @include('homepage._why_us')
+            @include('homepage._about_us')
 
-        @include('homepage._services')
+            @include('homepage._recent_article')
 
-        @include('homepage._partners')
+            @include('homepage._mission')
 
+            @include('homepage._projects')
+        </div>
     </div>
     <!-- /Main Container -->
 @endsection

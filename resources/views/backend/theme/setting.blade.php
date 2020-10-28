@@ -45,19 +45,16 @@
                                     <a href="#tab_meta" data-toggle="tab"> Meta Tag </a>
                                 </li>
                                 <li>
-                                    <a href="#tab_infor" data-toggle="tab"> Information </a>
-                                </li>
-                                <li>
                                     <a href="#tab_social" data-toggle="tab"> Social & Google Tool </a>
                                 </li>
                                 <li>
                                     <a href="#tab_banner" data-toggle="tab"> Banner </a>
                                 </li>
                                 <li>
-                                    <a href="#tab_features" data-toggle="tab"> Features </a>
+                                    <a href="#tab_features" data-toggle="tab"> Missions </a>
                                 </li>
                                 <li>
-                                    <a href="#tab_special" data-toggle="tab"> Special </a>
+                                    <a href="#tab_special" data-toggle="tab"> About us </a>
                                 </li>
                                 <li>
                                     <a href="#tab_whyus" data-toggle="tab"> Why choose us </a>
@@ -72,9 +69,6 @@
                                 </div>
                                 <div class="tab-pane" id="tab_meta">
                                     @include("backend.theme._tab_meta", ['option' => $option])
-                                </div>
-                                <div class="tab-pane" id="tab_infor">
-                                    @include("backend.theme._tab_infor", ['option' => $option])
                                 </div>
                                 <div class="tab-pane" id="tab_social">
                                     @include("backend.theme._tab_social", ['option' => $option])

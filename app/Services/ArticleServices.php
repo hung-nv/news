@@ -259,7 +259,9 @@ class ArticleServices
             $this->menuServices->updatePageToMenu($post->slug, $dataUpdate['name'], $dataUpdate['slug']);
         }
 
-        if ($post->update($dataUpdate)) {
+        $post->update($dataUpdate);
+
+        if (!empty($dataUpdate['parent'])) {
             $post->category()->sync($dataUpdate['parent']);
         }
 

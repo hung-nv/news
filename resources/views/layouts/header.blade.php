@@ -1,109 +1,130 @@
-<!-- Header Container -->
-<div class="header-wrapper">
-
-    <!-- Header Top Container -->
-    <div class="header-top">
-
-        <!-- Container -->
-        <div class="container">
-
-            <div class="row">
-
-                <!-- Left -->
-                <div class="col-md-12 col-sm-12 columns">
-                    <div class="header-top-left">
-                        <ul class="social-top">
-                            @if(!empty($option['hotline']))
-                                <li>
-                                    <i class="fa fa-phone"></i> Phone: {{ $option['hotline'] }}
-                                </li>
-                            @endif
-                            @if(!empty($option['email']))
-                                <li>
-                                    <i class="fa fa-envelope"></i> Mail: {{ $option['email'] }}
-                                </li>
-                            @endif
-                        </ul>
-                    </div>
-                </div>
-                <!-- /Left -->
-
-            </div>
-
-        </div>
-        <!-- /Container -->
-
-    </div>
-    <!-- /Header Top Container -->
-
-    <!-- Header Main Container -->
-    <div class="header-main">
-
-        <!-- Container -->
-        <div class="container">
-
-            <!-- Main Navigation & Logo -->
-            <div class="main-navigation">
-
-                <div class="row">
-
-                    <!-- Main Navigation -->
-                    <div class="col-md-12 columns">
-
-                        <nav class="navbar navbar-default gfx-mega nav-left" role="navigation">
-
-
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header">
-                                <a class="navbar-toggle" data-toggle="collapse" data-target="#gfx-collapse"></a>
-                                <div class="logo">
-                                    <a href="/">
-                                        @if(!empty($option['company_logo']))
-                                            <img src="{{ $option['company_logo'] }}" alt="Logo">
-                                        @else
-                                            <img src="img/theme/logo.png" alt="Logo">
-                                        @endif
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse" id="gfx-collapse">
-                                <ul class="nav navbar-nav gfx-nav">
-                                    <li class="active">
-                                        <a href="/">Trang chủ</a>
-                                    </li>
-                                    @if(!empty($mainMenu))
-                                        @foreach($mainMenu as $itemMainMenu)
-                                            @if(!empty($itemMainMenu['child']))
-                                                <li class="dropdown">
-                                                    <a href="{{ $itemMainMenu['url'] }}" class="dropdown-toggle" data-toggle="dropdown">
-                                                        {{ $itemMainMenu['name'] }}
-                                                        <b class="caret"></b>
-                                                    </a>
-                                                    <ul class="dropdown-menu">
-                                                        @foreach($itemMainMenu['child'] as $itemMainMenuChild)
-                                                            <li>
-                                                                <a href="{{ $itemMainMenuChild['url'] }}">{{ $itemMainMenuChild['name'] }}</a>
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </li>
-                                            @else
-                                                <li>
-                                                    <a href="{{ $itemMainMenu['url'] }}">{{ $itemMainMenu['name'] }}</a>
-                                                </li>
-                                            @endif
+<div class="header-container sticky">
+    <!--<div class="header-container sticky">-->
+    <div class="header clearfix">
+        <div class="menu-container first-menu clearfix">
+            <nav>
+                @if(!empty($mainMenu))
+                    <ul class="sf-menu">
+                        <li><a href="/" title="Trang chủ">TRANG CHỦ</a></li>
+                        @foreach($mainMenu as $itemMainMenu)
+                            <li>
+                                <a href="{{ $itemMainMenu['url'] }}" title="{{ $itemMainMenu['name'] }}">
+                                    {{ mb_strtoupper($itemMainMenu['name']) }}
+                                </a>
+                                @if(!empty($itemMainMenu['child']))
+                                    <ul>
+                                        @foreach($itemMainMenu['child'] as $itemChild)
+                                            <li>
+                                                <a href="{{ $itemChild['url'] }}" title="{{ $itemChild['name'] }}">
+                                                    {{ $itemChild['name'] }}
+                                                </a>
+                                            </li>
                                         @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+            </nav>
+            <div class="mobile-menu-container">
+                <nav>
+                    @if(!empty($mobileMenu))
+                        <ul class="mobile-menu collapsible-mobile-submenus">
+                            <li><a class="template-arrow-vertical-3" href="#">&nbsp;</a></li>
+                            <li><a href="/" title="Trang chủ">TRANG CHỦ</a></li>
+                            @foreach($mobileMenu as $itemMobileMenu)
+                                <li>
+                                    <a href="{{ $itemMobileMenu['url'] }}" title="{{ $itemMobileMenu['name'] }}">
+                                        {{ mb_strtoupper($itemMobileMenu['name']) }}
+                                    </a>
+                                    @if(!empty($itemMobileMenu['child']))
+                                        <a href="#" class="template-arrow-menu"></a>
+                                        <ul>
+                                            @foreach($itemMobileMenu['child'] as $itemMobileChild)
+                                                <li>
+                                                    <a href="{{ $itemMobileChild['url'] }}"
+                                                       title="{{ $itemMobileChild['name'] }}">
+                                                        {{ $itemMobileChild['name'] }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     @endif
-                                </ul>
-                            </div><!-- /.navbar-collapse -->
-                        </nav>
-                    </div>
-                </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </nav>
             </div>
         </div>
+        <div class="logo">
+            <h1>
+                <a href="?page=home" title="CleanMate">
+                    <img src="{{ asset('images/logo.png') }}" srcset="images/logo_retina.png 2x" class="primary-logo"
+                         alt="logo">
+                    <img src="{{ asset('images/logo_transparent.png') }}" srcset="images/logo_transparent_retina.png 2x"
+                         class="secondary-logo" alt="logo">
+                    <span class="logo-text">CLEANMATE</span>
+                </a>
+            </h1>
+            <div class="logo-clone">
+                <h1>
+                    <a href="?page=home" title="CleanMate">
+                        <img src="{{ asset('images/logo.png') }}" srcset="images/logo_retina.png 2x"
+                             class="primary-logo"
+                             alt="logo">
+                        <img src="{{ asset('images/logo_transparent.png') }}"
+                             srcset="images/logo_transparent_retina.png 2x"
+                             class="secondary-logo" alt="logo">
+                        <span class="logo-text">CLEANMATE</span>
+                    </a>
+                </h1>
+            </div>
+        </div>
+        <a href="#" class="mobile-menu-switch">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </a>
+        <div class="menu-container clearfix second-menu">
+            <nav>
+                @if(!empty($sidebarMenu))
+                    <ul class="sf-menu">
+                        @foreach($sidebarMenu as $itemRightMenu)
+                            <li>
+                                <a href="{{ $itemRightMenu['url'] }}" title="{{ $itemRightMenu['name'] }}">
+                                    {{ mb_strtoupper($itemRightMenu['name']) }}
+                                </a>
+                                @if(!empty($itemRightMenu['child']))
+                                    <ul>
+                                        @foreach($itemRightMenu['child'] as $itemRightChild)
+                                            <li>
+                                                <a href="{{ $itemRightChild['url'] }}"
+                                                   title="{{ $itemRightChild['name'] }}">
+                                                    {{ $itemRightChild['name'] }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+            </nav>
+        </div>
+        <div class="header-icons-container hide-on-mobiles">
+            <a class="template-search" href="#" title="Search"></a>
+            <form class="search">
+                <input type="text" name="s" placeholder="Tìm kiếm..." class="search-input hint">
+                <fieldset class="search-submit-container">
+                    <span class="template-search"></span>
+                    <input type="submit" class="search-submit" value="">
+                </fieldset>
+                <input type="hidden" name="page" value="search">
+            </form>
+        </div>
     </div>
-
-</div>
-<!-- /Header Container -->
+</div><!-- Slider Revolution -->

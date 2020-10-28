@@ -189,9 +189,6 @@ return [
 
         // detect mobile
         Jenssegers\Agent\AgentServiceProvider::class,
-
-        // debug
-        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*

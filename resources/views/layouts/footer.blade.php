@@ -1,60 +1,62 @@
-<!-- Footer Container -->
-<div class="footer-wrapper">
-
-    <!-- Footer Bottom Container -->
-    <div class="footer-bottom">
-
-        <!-- Container -->
-        <div class="container">
-
-            <div class="row">
-                @if(!empty($footerMenu))
-                    <div class="col-md-12 col-sm-12 columns">
-                        <div class="menu-footer">
-                            <ul class="list-inline">
-                                <li><a href="/">Trang chủ</a></li>
-                                @foreach($footerMenu as $itemFooterMenu)
-                                    <li><a href="{{ $itemFooterMenu['url'] }}">{{ $itemFooterMenu['name'] }}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                @endif
-                <div class="col-md-12 col-sm-12 columns">
-                    @if(!empty($option['company_name']))
-                        <p class="company-name text-center">{{ $option['company_name'] }}</p>
-                    @endif
-                    @if(!empty($option['company_description']))
-                        <p class="company-description text-center">{{ $option['company_description'] }}</p>
-                    @endif
-                    @if(!empty($option['main_office']))
-                        <p class="text-center">
-                            @if(!empty($option['main_office']))
-                                <i class="fa fa-map-marker"></i> {{ $option['main_office'] }}<br/>
-                            @endif
-                            @if(!empty($option['hotline']))
-                                <i class="fa fa-phone"></i> {{ $option['hotline'] }} <br/>
-                            @endif
-                            @if(!empty($option['email']))
-                                <i class="fa fa-envelope"></i>
-                                <a href="mailto:{{ $option['email'] }}">{{ $option['email'] }}</a>
-                            @endif
-                        </p>
-                    @endif
-                </div>
-                <div class="col-md-12 col-sm-12 columns">
-                    <div class="copyright">
-                        <p>Copyright © 2019 - hungnv234@gmail.com</p>
-                    </div>
-                </div>
-                <!-- /Copyright -->
-            </div>
-
+<div class="row dark-gray footer-row full-width padding-top-61 padding-bottom-36">
+    <div class="row row-4-4">
+        <div class="column column-1-3">
+            @if(!empty($option['company_name']))
+                <h6>{{ $option['company_name'] }}</h6>
+            @endif
+            @if(!empty($option['company_description']))
+                <p class="margin-top-23">
+                    {!! nl2br(e($option['company_description'])) !!}
+                </p>
+            @endif
         </div>
-        <!-- /Container -->
-
+        <div class="column column-1-3">
+            <h6>OUR SERVICES</h6>
+            <ul class="list margin-top-31">
+                <li class="template-arrow-horizontal-2"><a href="?page=service_commercial_cleaning"
+                                                           title="Commercial Cleaning">Commercial Cleaning</a></li>
+                <li class="template-arrow-horizontal-2"><a href="?page=service_house_cleaning"
+                                                           title="House Cleaning">House Cleaning</a></li>
+                <li class="template-arrow-horizontal-2"><a href="?page=service_move_in_out"
+                                                           title="Move In Out Service">Move In Out Service</a></li>
+                <li class="template-arrow-horizontal-2"><a href="?page=service_post_renovation"
+                                                           title="Post Renovation">Post Renovation</a></li>
+                <li class="template-arrow-horizontal-2"><a href="?page=service_window_cleaning"
+                                                           title="Window Cleaning">Window Cleaning</a></li>
+                <li class="template-arrow-horizontal-2"><a href="?page=service_green_spaces_maintenance"
+                                                           title="Green Spaces Maintenance">Green Spaces
+                        Maintenance</a></li>
+                <li class="template-arrow-horizontal-2">Novum Elementum</li>
+                <li class="template-arrow-horizontal-2">Sicilium Polon</li>
+            </ul>
+        </div>
+        <div class="column column-1-3">
+            <h6>Thông tin liên hệ</h6>
+            <ul class="contact-data margin-top-20">
+                @if(!empty($option['main_office']))
+                    <li class="template-location">
+                        <div class="value">{{ $option['main_office'] }}</div>
+                    </li>
+                @endif
+                @if(!empty($option['hotline']))
+                    <li class="template-mobile">
+                        <div class="value"><a href="tel:{{ $option['hotline'] }}">{{ $option['hotline'] }}</a></div>
+                    </li>
+                @endif
+                @if(!empty($option['email']))
+                    <li class="template-email">
+                        <div class="value"><a href="mailto:{{ $option['email'] }}">{{ $option['email'] }}</a></div>
+                    </li>
+                @endif
+                <li class="template-clock">
+                    <div class="value">Tất cả các ngày trong tuần</div>
+                </li>
+            </ul>
+        </div>
     </div>
-    <!-- /Footer Bottom Container -->
-
+    <div class="row align-center padding-top-30">
+            <span class="copyright">© Copyright 2020 <a
+                    href="#"
+                    title="" target="_blank">Cleanmate</a></span>
+    </div>
 </div>
-<!-- /Footer Container -->
