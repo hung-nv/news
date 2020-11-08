@@ -20,6 +20,7 @@ class Controller extends \App\Http\Controllers\Controller
     protected $articleType = Article::POST_TYPE;
     protected $categoryType = Category::CATEGORY_TYPE;
     protected $pageType = Article::PAGE_TYPE;
+    protected $serviceType = Article::SERVICE_TYPE;
 
     public function __construct()
     {

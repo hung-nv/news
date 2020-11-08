@@ -21,7 +21,7 @@
                 </td>
                 <td>{{ $i->created_at }}</td>
                 <td>
-                    <span class="badge badge-info badge-roundless"> Page </span>
+                    <span class="badge badge-info badge-roundless"> {{ $i->type }} </span>
                 </td>
                 <td>
                     @if($i->status == 1)
@@ -36,7 +36,7 @@
                         {{ csrf_field() }}
                         <a href="{{ route('page.edit', ['page' => $i->id]) }}"
                            class="btn red btn-sm">Update</a>
-                        <button type="button" class="btn red btn-sm btn-delete" v-on:click="confirmBeforeDelete">
+                        <button type="button" class="btn red btn-sm" v-on:click="confirmBeforeDelete">
                             Delete
                         </button>
                     </form>

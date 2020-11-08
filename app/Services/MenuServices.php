@@ -191,14 +191,14 @@ class MenuServices
 
     /**
      * Get data menu.
-     * @param $pageType
+     * @param array $type
      * @param $idMenuGroup
      * @return array
      * @throws \Throwable
      */
-    public function getDataMenu($pageType, $idMenuGroup)
+    public function getDataMenu($type, $idMenuGroup)
     {
-        $pages = Article::getAllPages([$pageType]);
+        $pages = Article::getAllPages($type);
 
         if (empty($idMenuGroup)) {
             $templateMenu = '';

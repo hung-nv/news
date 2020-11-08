@@ -45,24 +45,49 @@
     </div>
 
     <div class="form-group">
-        <label>Select Category</label>
-        <div class="mt-checkbox-list"
-             data-error-container="#form_2_services_error">
-            {!! $templateCategory !!}
+        <div class="panel-group accordion" id="accordion1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion1" href="#collapse_1">
+                            Select Category
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse_1" class="panel-collapse in">
+                    <div class="panel-body">
+                        <div class="mt-checkbox-list">
+                            {!! $templateCategory !!}
+                        </div>
+                        <div id="form_2_services_error"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse_2">
+                            SEO
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse_2" class="panel-collapse collapse">
+                    <div class="panel-body" style="height:200px; overflow-y:auto;">
+                        <div class="form-group">
+                            <label>Meta title</label>
+                            <input type="text" name="meta_title" class="form-control"
+                                   value="{{ isset($page) ? $page['meta_title'] : old('meta_title') }}"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Meta description</label>
+                            <textarea type="text" name="meta_description"
+                                      class="form-control">{{ isset($page) ? $page['meta_description'] : old('meta_description') }}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="form_2_services_error"></div>
-    </div>
-
-    <div class="form-group">
-        <label>Meta title</label>
-        <input type="text" name="meta_title" class="form-control"
-               value="{{ isset($page) ? $page['meta_title'] : old('meta_title') }}"/>
-    </div>
-
-    <div class="form-group">
-        <label>Meta description</label>
-        <input type="text" name="meta_description" class="form-control"
-               value="{{ isset($page) ? $page['meta_description'] : old('meta_description') }}"/>
     </div>
 
     <div class="form-group">
@@ -74,3 +99,4 @@
         <input id="image" name="image" type="file" data-show-upload="false">
     </div>
 </div>
+

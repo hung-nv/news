@@ -22,7 +22,7 @@
 
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="caption-subject font-red-mint sbold">Update Page</span>
+                        <span class="caption-subject font-red-mint sbold">Update #<i>{{ $page['name'] }}</i> </span>
                     </div>
                 </div>
 

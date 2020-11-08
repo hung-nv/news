@@ -41,7 +41,7 @@ class SettingController extends Controller
     {
         $idGroup = $request->menu_group;
 
-        $data = $this->menuServices->getDataMenu($this->pageType, $idGroup);
+        $data = $this->menuServices->getDataMenu([$this->pageType, $this->serviceType], $idGroup);
 
         $templateCategory = $this->menuServices->getCheckboxAllCategory(
             $request->old('parent')

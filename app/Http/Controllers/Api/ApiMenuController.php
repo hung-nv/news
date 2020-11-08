@@ -111,13 +111,13 @@ class ApiMenuController extends Controller
             throw new NotFoundHttpException('Missing params');
         }
 
-//        try {
+        try {
             $this->menuServices->addCustomToMenu($request->all());
 
             return response()->json(['message' => 'Add custom page to menu successful'], 200);
-//        } catch (\Exception $exception) {
-//            return response()->json('Internal Server Error', 500);
-//        }
+        } catch (\Exception $exception) {
+            return response()->json('Internal Server Error', 500);
+        }
     }
 
     /**

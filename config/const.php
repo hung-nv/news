@@ -6,7 +6,8 @@ return [
         'page' => 'page',
         'category' => 'category',
         'catalog' => 'catalog',
-        'product' => 'product'
+        'product' => 'product',
+        'service' => 'service'
     ],
     'advertising' => [
         '300_250' => 1,

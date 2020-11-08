@@ -10,6 +10,7 @@ class Article extends \Eloquent
     CONST POST_TYPE = 'article';
     CONST PAGE_TYPE = 'page';
     CONST LANDING_TYPE = 'landing';
+    CONST SERVICE_TYPE = 'service';
 
     protected $table = 'articles';
 

@@ -60,24 +60,24 @@
         </div>
         <div class="logo">
             <h1>
-                <a href="?page=home" title="CleanMate">
+                <a href="?page=home" title="iClean">
                     <img src="{{ asset('images/logo.png') }}" srcset="images/logo_retina.png 2x" class="primary-logo"
                          alt="logo">
                     <img src="{{ asset('images/logo_transparent.png') }}" srcset="images/logo_transparent_retina.png 2x"
                          class="secondary-logo" alt="logo">
-                    <span class="logo-text">CLEANMATE</span>
+                    <span class="logo-text">iClean</span>
                 </a>
             </h1>
             <div class="logo-clone">
                 <h1>
-                    <a href="?page=home" title="CleanMate">
+                    <a href="?page=home" title="iClean">
                         <img src="{{ asset('images/logo.png') }}" srcset="images/logo_retina.png 2x"
                              class="primary-logo"
                              alt="logo">
                         <img src="{{ asset('images/logo_transparent.png') }}"
                              srcset="images/logo_transparent_retina.png 2x"
                              class="secondary-logo" alt="logo">
-                        <span class="logo-text">CLEANMATE</span>
+                        <span class="logo-text">iClean</span>
                     </a>
                 </h1>
             </div>

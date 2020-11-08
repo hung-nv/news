@@ -126,6 +126,18 @@ class Controller extends \App\Http\Controllers\Controller
 
             View::share('sidebarMenu', $sidebarMenu);
         }
+
+        $services = Article::where('type', Article::SERVICE_TYPE)
+            ->where('status', 1)
+            ->latest()
+            ->get([
+                'id',
+                'name',
+                'slug'
+            ]);
+        if ($services) {
+            View::share('services', $services);
+        }
     }
 
     /**

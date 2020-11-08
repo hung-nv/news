@@ -8,6 +8,7 @@ use App\Http\Requests\PageStore;
 use App\Http\Requests\PageUpdate;
 use App\Http\Requests\PostStore;
 use App\Http\Requests\PostUpdate;
+use App\Models\Article;
 use App\Services\ArticleServices;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = $this->articleServices->getIndexPages([$this->pageType]);
+        $pages = $this->articleServices->getIndexPages([$this->pageType, $this->serviceType]);
 
         return view('backend.page.index', [
             'pages' => $pages
@@ -51,10 +52,17 @@ class PageController extends Controller
         $name = $request->old('name') ? $request->old('name') : '';
         $slug = $request->old('slug') ? $request->old('slug') : '';
 
+        $type = Article::PAGE_TYPE;
+
+        if ($request->get('type') === Article::SERVICE_TYPE) {
+            $type = Article::SERVICE_TYPE;
+        }
+
         return view('backend.page.create', [
             'templateCategory' => $templateCategory,
             'name' => $name,
-            'slug' => $slug
+            'slug' => $slug,
+            'type' => $type
         ]);
     }
 
@@ -66,7 +74,7 @@ class PageController extends Controller
      */
     public function store(PageStore $request)
     {
-        $response = $this->articleServices->createPost($request, $this->pageType);
+        $response = $this->articleServices->createPost($request, $request->get('type'));
 
         return redirect()->route('page.index')->with([
             'success' => $response

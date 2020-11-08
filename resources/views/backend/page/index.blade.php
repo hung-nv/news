@@ -2,7 +2,7 @@
 
 @section('title', 'Manage Pages')
 
-@section('pageId', 'page')
+@section('pageId', 'post')
 
 @section('breadcrumbs')
     <a href="{{ route('page.index') }}">Pages</a>

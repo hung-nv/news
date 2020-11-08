@@ -34,6 +34,19 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function service($slug)
+    {
+        $article = $this->articleServices->getArticleBySlug($slug);
+
+        $this->setIdsExcept($article->id);
+
+        $this->articleServices->updateViewArticle($article->id);
+
+        return view('news.service', [
+            'article' => $article
+        ]);
+    }
+
     public function details($slug)
     {
         $article = $this->articleServices->getArticleBySlug($slug);

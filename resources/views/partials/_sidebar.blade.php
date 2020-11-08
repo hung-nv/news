@@ -1,62 +1,38 @@
-<!-- Sidebar -->
-<div class="col-sm-4 col-md-3 columns sidebar sidebar-right">
-    <div class="white-space space-medium"></div>
+<div class="column column-1-4">
+    @if(!empty($services))
+        <ul class="vertical-menu">
+            @foreach($services as $service)
+                <li
+                    @if(request()->route()->parameter('slug') && request()->route()->parameter('slug') === $service->slug)
+                    class="selected"
+                    @endif
+                >
+                    <a href="{{ route('article.service', ['slug' => $service->slug]) }}" title="{{ $service->name }}">
+                        {{ $service->name }}
+                        <span class="template-arrow-horizontal-3"></span>
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    @endif
 
-    <div class="sidebar-content">
-
-        <div class="sidebar-widget">
-            <!-- Search Form -->
-            <form class="form-inline" role="form">
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button"><span class="fa fa-search"></span></button>
-                        </span>
-                        <input class="form-control" type="search" placeholder="Tìm kiếm">
+        <div class="cm-smart-column-wrapper" style="position: static; bottom: auto; top: auto; width: auto;">
+            <h6 class="box-header page-margin-top">Tin được quan tâm</h6>
+            <ul class="blog small margin-top-30 clearfix">
+                <li>
+                    <a href="?page=post" title="How to: deep clean your kitchen" class="post-image">
+                        <img src="{{ asset('images/samples/90x90/image_01.jpg') }}" alt="" style="display: block;">
+                    </a>
+                    <div class="post-content">
+                        <a href="?page=post" title="How to: deep clean your kitchen">How to: deep clean your kitchen</a>
+                        <ul class="post-details">
+                            <li class="date">August 24, 2017</li>
+                        </ul>
                     </div>
-                </div>
-            </form>
-            <!-- Search Form -->
+                </li>
+            </ul>
+
+            <h6 class="box-header page-margin-top">TEXT WIDGET</h6>
+            <p class="margin-top-10">What makes Cleanmate trusted above other cleaning service providers? When you combine higher standards, smarter strategies and <a href="#">superior quality</a> all in one package, the result is top notch.</p>
         </div>
-
-        <div class="sidebar-widget">
-            <h4 class="title-widget fancy-title"><span>Chuyên mục</span></h4>
-            @if(!empty($sidebarMenu))
-                <ul class="fa-ul widget-list">
-                    @foreach($sidebarMenu as $itemSidebarMenu)
-                        <li><a href="{{ $itemSidebarMenu['url'] }}">
-                                <span class="fa-li fa  fa-angle-right"></span>{{ $itemSidebarMenu['name'] }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            @endif
-        </div>
-
-        <div class="sidebar-widget">
-            <h4 class="title-widget fancy-title"><span>Bài viết mới nhất</span></h4>
-            @if(!empty($newArticles))
-                <ul class="widget-list new-articles">
-                    @foreach($newArticles as $itemNewArticle)
-                        <li>
-                            <div class="new-article-thumbnail">
-                                <a href="{{ $itemNewArticle->url }}">
-                                    <img width="60" height="50" src="{{ $itemNewArticle->image }}" alt="blog">
-                                </a>
-                            </div>
-                            <div class="new-article-content">
-                                <time datetime="2015-04-04T15:06:28+00:00">{{ $itemNewArticle->created_at }}</time>
-                                <h4>
-                                    <a href="{{ $itemNewArticle->url }}">{{ $itemNewArticle->name }}</a>
-                                </h4>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
-            @endif
-        </div>
-
-    </div>
-
-    <div class="white-space space-medium"></div>
 </div>
-<!-- /Sidebar -->

@@ -24,6 +24,12 @@ Route::group(['namespace' => 'Frontend'], function () {
         'as' => 'article.page',
         'uses' => 'ArticleController@page'
     ]);
+
+    // route page details.
+    Route::get(config('const.prefix.service') . '/{slug}', [
+        'as' => 'article.service',
+        'uses' => 'ArticleController@service'
+    ]);
 });
 
 Route::group(['prefix' => 'administrator', 'namespace' => 'Backend'], function () {
@@ -57,11 +63,13 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth', 'namespace' =
 
         // route resource page.
         Route::resource('page', 'PageController', ['except' => ['show']]);
+
+        Route::get('page/create?type=service', ['as' => 'page.createService', 'uses' => 'PageController@create']);
     });
 
     Route::group(['middleware' => 'checkrole:1'], function () {
         // route resource menu system.
-        Route::resource('menuSystem', 'MenuSystemController', ['except' => ['show']]);
+//        Route::resource('menuSystem', 'MenuSystemController', ['except' => ['show']]);
 
         // route resource user.
         Route::resource('user', 'UserController');

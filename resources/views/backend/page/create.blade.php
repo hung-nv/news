@@ -39,6 +39,7 @@
                                 @include('backend.page.partial._form')
                             </div>
                         </div>
+                        <input type="hidden" name="type" value="{{ $type }}" />
                     </form>
                 </div>
             </div>

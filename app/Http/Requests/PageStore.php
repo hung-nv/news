@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Article;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PageStore extends FormRequest
@@ -26,7 +27,8 @@ class PageStore extends FormRequest
         return [
             'name' => 'required|unique:articles,name|max:255',
             'slug' => 'required|unique:articles,slug|max:255',
-            'content' => 'required'
+            'content' => 'required',
+            'type' => 'required|in:' . Article::PAGE_TYPE . ',' . Article::SERVICE_TYPE
         ];
     }
 }
