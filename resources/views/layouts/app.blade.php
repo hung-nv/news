@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xml:lang="vi">
 <head>
     <title>@yield('title')</title>
     <!--meta-->
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.2"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <meta name="keywords" content="@yield('keywords')"/>
     <meta name="description" content="@yield('description')"/>
 
@@ -20,14 +20,17 @@
           type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900&amp;subset=latin-ext' rel='stylesheet'
           type='text/css'>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/superfish.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/prettyPhoto.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.qtip.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/animations.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/odometer-theme-default.css') }}">
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/superfish.css') }}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/prettyPhoto.css') }}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.qtip.css') }}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/animations.css') }}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/odometer-theme-default.css') }}">--}}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+
     <!--fonts-->
     <link rel="stylesheet" type="text/css" href="{{ asset('fonts/features/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('fonts/template/style.css') }}">

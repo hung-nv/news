@@ -13847,17 +13847,6 @@ function initInputMultiImage(oldImage, newInputImage, urlDelete) {
 
 /***/ }),
 
-/***/ "./resources/sass/app.sass":
-/*!*********************************!*\
-  !*** ./resources/sass/app.sass ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./resources/sass/backend/admin.sass":
 /*!*******************************************!*\
   !*** ./resources/sass/backend/admin.sass ***!
@@ -13869,16 +13858,27 @@ function initInputMultiImage(oldImage, newInputImage, urlDelete) {
 
 /***/ }),
 
+/***/ "./resources/sass/frontend/app.sass":
+/*!******************************************!*\
+  !*** ./resources/sass/frontend/app.sass ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!*********************************************************************************************************!*\
-  !*** multi ./resources/js/backend/app.js ./resources/sass/backend/admin.sass ./resources/sass/app.sass ***!
-  \*********************************************************************************************************/
+/*!******************************************************************************************************************!*\
+  !*** multi ./resources/js/backend/app.js ./resources/sass/backend/admin.sass ./resources/sass/frontend/app.sass ***!
+  \******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Users/hungnv/Documents/www/news/resources/js/backend/app.js */"./resources/js/backend/app.js");
 __webpack_require__(/*! /Users/hungnv/Documents/www/news/resources/sass/backend/admin.sass */"./resources/sass/backend/admin.sass");
-module.exports = __webpack_require__(/*! /Users/hungnv/Documents/www/news/resources/sass/app.sass */"./resources/sass/app.sass");
+module.exports = __webpack_require__(/*! /Users/hungnv/Documents/www/news/resources/sass/frontend/app.sass */"./resources/sass/frontend/app.sass");
 
 
 /***/ })
