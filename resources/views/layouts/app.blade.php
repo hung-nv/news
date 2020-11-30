@@ -33,6 +33,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('fonts/template/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('fonts/social/style.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
+    <style>
+        /*.caroufredsel-wrapper {*/
+        /*    min-height: 500px;*/
+        /*}*/
+    </style>
 </head>
 <body>
 <div class="site-container">
@@ -40,7 +45,6 @@
 
     @yield('content')
 
-    <!--/-->
     @include('layouts.footer')
 </div>
 <a href="#top" class="scroll-top animated-element template-arrow-vertical-3" title="Scroll to top"></a>
@@ -49,6 +53,15 @@
 <script type="text/javascript" src="{{ asset('js/jquery-1.12.4.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery-migrate-1.4.1.min.js') }}"></script>
 <!--slider revolution-->
+<script>(function () {
+        window.lazySizesConfig = window.lazySizesConfig || {};
+        window.lazySizesConfig.loadHidden = true;
+        window.lazySizesConfig.loadMode = 1;
+        window.lazySizesConfig.expand = 10;
+        window.lazySizesConfig.expFactor = 1.5;
+    })();
+</script>
+<script src="{{ asset('libs/lazysizes.min.js') }}" async></script>
 <script type="text/javascript" src="{{ asset('rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.ba-bbq.min.js') }}"></script>

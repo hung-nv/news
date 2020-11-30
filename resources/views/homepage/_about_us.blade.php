@@ -15,20 +15,20 @@
         <div class="column column-1-4">
             <a href="{{ asset('images/samples/image_02.jpg') }}" class="prettyPhoto cm-preload"
                title="Gutter Cleaning">
-                <img src='{{ asset('images/samples/image_02.jpg') }}' alt='img'>
+                <img class="lazyload" data-src='{{ asset('images/samples/image_02.jpg') }}' alt='img'>
             </a>
         </div>
         <div class="column column-1-4">
             <div class="row">
                 <a href="{{ asset('images/samples/480x320/image_03.jpg') }}" class="prettyPhoto cm-preload"
                    title="House Cleaning">
-                    <img src='{{ asset('images/samples/480x320/image_03.jpg') }}' alt='img'>
+                    <img class="lazyload" data-src='{{ asset('images/samples/480x320/image_03.jpg') }}' alt='img'>
                 </a>
             </div>
             <div class="row margin-top-30">
                 <a href="{{ asset('images/samples/480x320/image_05.jpg') }}" class="prettyPhoto cm-preload"
                    title="After Renovation Cleaning">
-                    <img src='{{ asset('images/samples/480x320/image_05.jpg') }}' alt='img'>
+                    <img class="lazyload" data-src='{{ asset('images/samples/480x320/image_05.jpg') }}' alt='img'>
                 </a>
             </div>
         </div>

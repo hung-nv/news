@@ -52,8 +52,6 @@ CKEDITOR.editorConfig = function( config ) {
 
     config.filebrowserBrowseUrl = domain + 'ckfinder/ckfinder.html';
     config.filebrowserImageBrowseUrl = domain + 'ckfinder/ckfinder.html?type=Images';
-    config.filebrowserFlashBrowseUrl = domain + 'ckfinder/ckfinder.html?type=Flash';
     config.filebrowserUploadUrl = domain + 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
     config.filebrowserImageUploadUrl =  domain +'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
-    config.filebrowserFlashUploadUrl = domain + 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
 };

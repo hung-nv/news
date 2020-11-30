@@ -3,7 +3,7 @@
         <ul>
             @if(!empty($option['banner_image_1']))
                 <li data-transition="fade" data-masterspeed="500" data-slotamount="1" data-delay="6000">
-                    <img src="{{ asset($option['banner_image_1']) }}" alt="slidebg1" data-bgfit="cover">
+                    <img data-lazyload="{{ asset($option['banner_image_1']) }}" src="{{ asset($option['banner_image_1']) }}" alt="slidebg1" data-bgfit="cover">
                     @if(!empty($option['banner_1_line_1']))
                         <div class="tp-caption"
                              data-frames='[{"delay":500,"speed":1500,"from":"y:-40;o:0;","ease":"easeInOutExpo"},{"delay":"wait","speed":500,"to":"o:0;","ease":"easeInOutExpo"}]'
@@ -54,7 +54,7 @@
             @if(!empty($option['banner_image_2']))
                 <li data-transition="fade" data-masterspeed="500" data-slotamount="1" data-delay="6000">
                     <!-- MAIN IMAGE -->
-                    <img src="{{ asset($option['banner_image_2']) }}" alt="slidebg2" data-bgfit="cover">
+                    <img data-lazyload="{{ asset($option['banner_image_2']) }}" src="{{ asset($option['banner_image_2']) }}" alt="slidebg2" data-bgfit="cover">
                     <!-- LAYERS -->
                     <!-- LAYER 01 -->
                     <div class="tp-caption customin customout"
@@ -100,7 +100,7 @@
             @if(!empty($option['banner_image_3']))
                 <li data-transition="fade" data-masterspeed="500" data-slotamount="1" data-delay="6000">
                     <!-- MAIN IMAGE -->
-                    <img src="{{ asset($option['banner_image_3']) }}" alt="slidebg3" data-bgfit="cover">
+                    <img data-lazyload="{{ asset($option['banner_image_3']) }}" src="{{ asset($option['banner_image_3']) }}" alt="slidebg3" data-bgfit="cover">
                     <!-- LAYERS -->
                     <!-- LAYER 01 -->
                     <div class="tp-caption customin customout"

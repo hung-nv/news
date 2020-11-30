@@ -6,7 +6,7 @@
             <ul class="projects-list horizontal-carousel clearfix page-margin-top">
                 <li class="column column-1-3">
                     <a href="?page=project_apartment_cleaning" title="Apartment Cleaning">
-                        <img src="images/samples/480x320/image_01.jpg" alt="">
+                        <img src="{{ asset('images/samples/480x320/image_01.jpg') }}" alt="">
                     </a>
                     <div class="view align-center">
                         <div class="vertical-align-table">
@@ -19,7 +19,7 @@
                 </li>
                 <li class="column column-1-3">
                     <a href="?page=project_gutter_cleaning" title="Gutter Cleaning">
-                        <img src="images/samples/480x320/image_02.jpg" alt="">
+                        <img class="lazyload" data-src="images/samples/480x320/image_02.jpg" alt="">
                     </a>
                     <div class="view align-center">
                         <div class="vertical-align-table">
@@ -32,7 +32,7 @@
                 </li>
                 <li class="column column-1-3">
                     <a href="?page=project_move_in_out" title="Move In Out">
-                        <img src="images/samples/480x320/image_04.jpg" alt="">
+                        <img class="lazyload" data-src="{{ asset('images/samples/480x320/image_04.jpg') }}" alt="">
                     </a>
                     <div class="view align-center">
                         <div class="vertical-align-table">
@@ -45,7 +45,7 @@
                 </li>
                 <li class="column column-1-3">
                     <a href="?page=project_after_renovation_cleaning" title="After Renovation Cleaning">
-                        <img src="images/samples/480x320/image_08.jpg" alt="">
+                        <img class="lazyload" data-src="{{ asset('images/samples/480x320/image_08.jpg') }}" alt="">
                     </a>
                     <div class="view align-center">
                         <div class="vertical-align-table">
@@ -58,7 +58,7 @@
                 </li>
                 <li class="column column-1-3">
                     <a href="?page=project_house_cleaning" title="House Cleaning">
-                        <img src="images/samples/480x320/image_03.jpg" alt="">
+                        <img class="lazyload" data-src="{{ asset('images/samples/480x320/image_03.jpg') }}" alt="">
                     </a>
                     <div class="view align-center">
                         <div class="vertical-align-table">
@@ -71,7 +71,7 @@
                 </li>
                 <li class="column column-1-3">
                     <a href="?page=project_garden_maintenance" title="Garden Maintenance">
-                        <img src="images/samples/480x320/image_06.jpg" alt="">
+                        <img class="lazyload" data-src="{{ asset('images/samples/480x320/image_06.jpg') }}" alt="">
                     </a>
                     <div class="view align-center">
                         <div class="vertical-align-table">
@@ -84,7 +84,7 @@
                 </li>
                 <li class="column column-1-3">
                     <a href="?page=project_apartment_cleaning" title="Apartment Cleaning">
-                        <img src="images/samples/480x320/image_01.jpg" alt="">
+                        <img class="lazyload" data-src="{{ asset('images/samples/480x320/image_01.jpg') }}" alt="">
                     </a>
                     <div class="view align-center">
                         <div class="vertical-align-table">
@@ -97,7 +97,7 @@
                 </li>
                 <li class="column column-1-3">
                     <a href="?page=project_gutter_cleaning" title="Gutter Cleaning">
-                        <img src="images/samples/480x320/image_02.jpg" alt="">
+                        <img class="lazyload" data-src="{{ asset('images/samples/480x320/image_02.jpg') }}" alt="">
                     </a>
                     <div class="view align-center">
                         <div class="vertical-align-table">
@@ -110,7 +110,7 @@
                 </li>
                 <li class="column column-1-3">
                     <a href="?page=project_move_in_out" title="Move In Out">
-                        <img src="images/samples/480x320/image_04.jpg" alt="">
+                        <img class="lazyload" data-src="images/samples/480x320/image_04.jpg" alt="">
                     </a>
                     <div class="view align-center">
                         <div class="vertical-align-table">

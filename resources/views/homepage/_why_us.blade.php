@@ -3,9 +3,9 @@
         <div class="column column-1-2 background-1">
             <a class="flex-hide" href="?page=project_garden_maintenance" title="Garden Maintenance">
                 @if(!empty($option['why_us_image']))
-                    <img src="{{ asset($option['why_us_image']) }}"/>
+                    <img class="lazyload" alt="why us" data-src=="{{ asset($option['why_us_image']) }}"/>
                 @else
-                    <img src="{{ asset('images/samples/image_01.jpg') }}">
+                    <img class="lazyload" alt="why us" data-src=="{{ asset('images/samples/image_01.jpg') }}">
                 @endif
             </a>
         </div>

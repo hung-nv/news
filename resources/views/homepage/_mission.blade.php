@@ -22,7 +22,7 @@
         </div>
         <div class="column column-1-3 background-3">
             <a class="flex-hide" href="?page=project_gutter_cleaning" title="Gutter Cleaning">
-                <img src="{{ asset('images/samples/960x750/image_03.jpg') }}" alt="">
+                <img class="lazyload" data-src="{{ asset('images/samples/960x750/image_03.jpg') }}" alt="">
             </a>
         </div>
         <div class="column column-1-3 green">

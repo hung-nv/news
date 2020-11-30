@@ -19,7 +19,7 @@
 
             @include('homepage._about_us')
 
-            @include('homepage._recent_article')
+{{--            @include('homepage._recent_article')--}}
 
             @include('homepage._mission')
 
