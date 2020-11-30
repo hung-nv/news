@@ -9,7 +9,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('homepage.slider')
+{{--    @include('homepage.slider')--}}
 
     <div class="theme-page">
         <div class="clearfix">
