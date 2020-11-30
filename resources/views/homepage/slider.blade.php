@@ -95,51 +95,6 @@
                     <!-- / -->
                 </li>
             @endif
-
-        <!-- SLIDE 3 -->
-            @if(!empty($option['banner_image_3']))
-                <li data-transition="fade" data-masterspeed="500" data-slotamount="1" data-delay="6000">
-                    <!-- MAIN IMAGE -->
-                    <img data-lazyload="{{ asset($option['banner_image_3']) }}" src="{{ asset($option['banner_image_3']) }}" alt="slidebg3" data-bgfit="cover">
-                    <!-- LAYERS -->
-                    <!-- LAYER 01 -->
-                    <div class="tp-caption customin customout"
-                         data-frames='[{"delay":500,"speed":1500,"from":"y:-40;o:0;","ease":"easeInOutExpo"},{"delay":"wait","speed":500,"to":"o:0;","ease":"easeInOutExpo"}]'
-                         data-x="center"
-                         data-y="['211', '197', '120', '148']"
-                    >
-                        <h4>Our Focus is to Really Listen to Our Clients</h4>
-                    </div>
-                    <!-- LAYER 02 -->
-                    <div class="tp-caption customin customout"
-                         data-frames='[{"delay":900,"speed":2000,"from":"y:40;o:0;","ease":"easeInOutExpo"},{"delay":"wait","speed":500,"to":"o:0;","ease":"easeInOutExpo"}]'
-                         data-x="center"
-                         data-y="['273', '253', '160', '190']"
-                    >
-                        <h2><a href="?page=service_calculator" title="Estimate Total Costs">CONTINUOUS PURSUIT</a></h2>
-                    </div>
-                    <!-- LAYER 03 -->
-                    <div class="tp-caption customin customout"
-                         data-frames='[{"delay":1100,"speed":2000,"from":"y:40;o:0;","ease":"easeInOutExpo"},{"delay":"wait","speed":500,"to":"o:0;","ease":"easeInOutExpo"}]'
-                         data-x="center"
-                         data-y="['345', '308', '196', '220']"
-                    >
-                        <h2 class="slider-subtitle"><strong>FOR PERFECTION</strong></h2>
-                    </div>
-                    <!-- LAYER 04 -->
-                    <div class="tp-caption customin customout"
-                         data-frames='[{"delay":1500,"speed":1500,"from":"y:40;o:0;","ease":"easeInOutExpo"},{"delay":"wait","speed":500,"to":"o:0;","ease":"easeInOutExpo"}]'
-                         data-x="center"
-                         data-y="['476', '418', '264', '283']"
-                    >
-                        <div class="align-center">
-                            <a class="more" href="?page=service_calculator" title="Service calculator">Service
-                                calculator</a>
-                        </div>
-                    </div>
-                    <!-- / -->
-                </li>
-            @endif
         </ul>
     </div>
 </div>
