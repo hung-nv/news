@@ -12,29 +12,11 @@
     <meta property="og:description" content="@yield('og_description')"/>
     <meta property="og:image" content="@yield('og_image')"/>
 
-
-    <!--slider revolution-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('rs-plugin/css/settings.css') }}">
-    <!--style-->
-    <link href='//fonts.googleapis.com/css?family=Raleway:300,400,500&amp;subset=latin-ext' rel='stylesheet'
-          type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900&amp;subset=latin-ext' rel='stylesheet'
-          type='text/css'>
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/superfish.css') }}">--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/prettyPhoto.css') }}">--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.qtip.css') }}">--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/animations.css') }}">--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/odometer-theme-default.css') }}">--}}
-
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 
     <!--fonts-->
     <link rel="stylesheet" type="text/css" href="{{ asset('fonts/features/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('fonts/template/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/social/style.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
     <style>
         /*.caroufredsel-wrapper {*/
