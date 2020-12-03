@@ -5,31 +5,18 @@ Route::get('/administrator', function () {
 });
 
 Route::group(['namespace' => 'Frontend'], function () {
-    // route search articles.
-    Route::get('search', ['as' => 'article.search', 'uses' => 'ArticleController@search']);
     // route homepage.
-    Route::get('/', ['as' => 'homepage', 'uses' => 'HomepageController@index']);
+    Route::get('/', 'HomepageController@index')->name('homepage');
+    // route search articles.
+    Route::get('search', 'ArticleController@search')->name('article.search');
     // route post details.
-    Route::get(config('const.prefix.article') . '/{slug}', [
-        'as' => 'article.details',
-        'uses' => 'ArticleController@details'
-    ]);
+    Route::get('bai-viet/{slug}', 'ArticleController@details')->name('article.details');
+    // route page details.
+    Route::get('page/{slug}', 'ArticleController@page')->name('article.page');
+    // route page details.
+    Route::get('dich-vu/{slug}', 'ArticleController@service')->name('article.service');
     // route list articles.
-    Route::get(config('const.prefix.category') . '/{slug}', [
-        'as' => 'article.list',
-        'uses' => 'ArticleController@category'
-    ]);
-    // route page details.
-    Route::get(config('const.prefix.page') . '/{slug}', [
-        'as' => 'article.page',
-        'uses' => 'ArticleController@page'
-    ]);
-
-    // route page details.
-    Route::get(config('const.prefix.service') . '/{slug}', [
-        'as' => 'article.service',
-        'uses' => 'ArticleController@service'
-    ]);
+    Route::get('{slug}', 'ArticleController@category')->name('article.list');
 });
 
 Route::group(['prefix' => 'administrator', 'namespace' => 'Backend'], function () {

@@ -25,6 +25,10 @@ class ArticleController extends Controller
     {
         $article = $this->articleServices->getArticleBySlug($slug);
 
+        if (empty($article)) {
+            abort(404);
+        }
+
         $this->setIdsExcept($article->id);
 
         $this->articleServices->updateViewArticle($article->id);
@@ -38,6 +42,10 @@ class ArticleController extends Controller
     {
         $article = $this->articleServices->getArticleBySlug($slug);
 
+        if (empty($article)) {
+            abort(404);
+        }
+
         $this->setIdsExcept($article->id);
 
         $this->articleServices->updateViewArticle($article->id);
@@ -50,6 +58,10 @@ class ArticleController extends Controller
     public function details($slug)
     {
         $article = $this->articleServices->getArticleBySlug($slug);
+
+        if (empty($article)) {
+            abort(404);
+        }
 
         $this->setIdsExcept($article->id);
 
@@ -74,6 +86,10 @@ class ArticleController extends Controller
     public function category($slug)
     {
         $category = $this->categoryServices->getCategoryBySlug($slug);
+
+        if (empty($category)) {
+            abort(404);
+        }
 
         $articles = $this->articleServices->getAllPostsByParentCategory($category->id, $this->articleType);
 

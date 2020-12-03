@@ -8490,3 +8490,6 @@ body.lock-position
 .odometer.odometer-auto-theme .odometer-value, .odometer.odometer-theme-default .odometer-value {
   text-align: center;
 }
+.page-header .row {
+  padding: 32px 0;
+}

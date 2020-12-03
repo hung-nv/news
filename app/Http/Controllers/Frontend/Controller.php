@@ -195,21 +195,22 @@ class Controller extends \App\Http\Controllers\Controller
 
     /**
      * Set url for menu.
-     * @param array $option
+     * @param array $itemMenu
      * @return string
      */
-    private function setUrlForMenu($option)
+    private function setUrlForMenu(array $itemMenu)
     {
-        if ($option['direct']) {
-            $url = $option['direct'];
+        if ($itemMenu['direct']) {
+            return $itemMenu['direct'];
         } else {
-            if ($option['type']) {
-                $prefix = '/' . config('const.prefix.' . $option['type']);
+            switch ($itemMenu['type']) {
+                case 'category':
+                    return route('article.list', ['slug' => $itemMenu['slug']]);
+                case 'page':
+                    return route('article.page', ['slug' => $itemMenu['slug']]);
+                case 'service':
+                    return route('article.service', ['slug' => $itemMenu['slug']]);
             }
-
-            $url = $prefix . '/' . $option['slug'];
         }
-
-        return $url;
     }
 }

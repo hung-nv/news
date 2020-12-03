@@ -15,8 +15,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 
     <!--fonts-->
-    <link rel="preload" type="text/css" href="{{ asset('fonts/features/style.css') }}">
-    <link rel="preload" type="text/css" href="{{ asset('fonts/template/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/features/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/template/style.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
     <style>
         /*.caroufredsel-wrapper {*/

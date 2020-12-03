@@ -9,79 +9,103 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('partials._breadcrumbs', ['name' => $category->name, 'heading' => $option['meta_title']])
-
-    <!-- Main Container -->
-    <div class="main-wrapper wrap-category">
-
-        <!-- Container -->
-        <div class="container content-with-sidebar">
-
+    <div class="theme-page padding-bottom-100">
+        <div class="row gray full-width page-header vertical-align-table">
             <div class="row">
-
-                <div class="col-sm-8 col-md-8 columns">
-                    <div class="white-space space-medium"></div>
-
-                    <!-- /Blog Content -->
-                    <div class="row">
-                        <div class="col-sm-12">
-
-                            @if(isset($articles) && $articles)
-                                @foreach ($articles as $i)
-                                    <div class="blog-post post-format-image">
-
-                                        <div class="blog-post-content">
-                                            <div class="post-media">
-                                                <img src="{{ $i->image }}" width="100%" height="auto"
-                                                     alt="{{ $i->name }}">
-                                            </div>
-                                            <div class="post-info">
-                                                <h3 class="post-title">
-                                                    <a href="{{ route('article.details', ['slug' => $i->slug]) }}">
-                                                        {{ $i->name }}
-                                                    </a>
-                                                </h3>
-                                                <ul class="list-inline post-meta-info">
-                                                    <li class="meta-date">{{ $i->created_at }}</li>
-                                                </ul>
-                                            </div>
-                                            <div class="post-content">
-                                                <p>{{ nl2br(e($i->description)) }}</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <!-- /blog post -->
-                                @endforeach
-                            @else
-                                <p>Chúng tôi đang cập nhật dữ liệu</p>
-                            @endif
-
-                        </div>
+                <div class="page-header-left">
+                    <h1>BLOG SMALL IMAGE</h1>
+                </div>
+                <div class="page-header-right">
+                    <div class="bread-crumb-container">
+                        <ul class="bread-crumb">
+                            <li>
+                                <a title="Trang chủ" href="/">
+                                    Trang chủ
+                                </a>
+                            </li>
+                            <li class="separator">
+                                /
+                            </li>
+                            <li>
+                                Blog Small Image
+                            </li>
+                        </ul>
                     </div>
-                    <!-- /Blog Content -->
-
-                    @if(isset($articles) && $articles)
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="text-center">
-                                    {{ $articles->links() }}
+                </div>
+            </div>
+        </div>
+        <div class="clearfix">
+            <div class="row page-margin-top-section">
+                <div class="column column-3-4">
+                    <ul class="blog small clearfix">
+                        <li>
+                            <a href="?page=post" title="10 ways to save more &amp; waste less" class="post-image">
+                                <div class="post-date" style="display: block;">
+                                    <div class="month">AUG</div>
+                                    <h4>22</h4>
+                                </div>
+                                <img src="images/samples/480x320/image_04.jpg" alt="" style="display: block;">
+                            </a>
+                            <div class="post-content">
+                                <h3><a href="?page=post">10 ways to save more &amp; waste less</a></h3>
+                                <div class="post-content-details-container clearfix">
+                                    <ul class="post-content-details">
+                                        <li>August 22, 2017</li>
+                                        <li>in <a href="?page=category&amp;cat=commercial_cleaning" title="Commercial Cleaning">Commercial Cleaning</a></li>
+                                        <li>by <a href="?page=team_paige_morgan" title="Paige Morgan">Paige Morgan</a></li>
+                                    </ul>
+                                </div>
+                                <p>Donec lacus neque luctus ut tortor eu pharetra congue lectus. Vivamus lobortis diam sed dolor feugiat, ut finibus risus vehicula vitae lectus ac elit auctor consequat. Nullam semper turpis quis turpis ornare sed aliquam risus venenatis... <a href="?page=post" title="Read more">Read more</a></p>
+                                <div class="post-content-details-container clearfix">
+                                    <ul class="post-content-details">
+                                        <li class="template-display"><a href="?page=post">350</a></li>
+                                        <li class="template-comment"><a href="?page=post#comments-list" title="5 comments">5</a></li>
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                    @endif
-
-                    <div class="white-space space-medium"></div>
+                        </li>
+                    </ul>
+                    <ul class="pagination margin-top-70">
+                        <li class="left">
+                            <a href="#" title="" class="template-arrow-horizontal-3">&nbsp;</a>
+                        </li>
+                        <li class="selected">
+                            <a href="#" title="">
+                                1
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="">
+                                2
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="">
+                                3
+                            </a>
+                        </li>
+                        <li class="right">
+                            <a href="#" title="" class="template-arrow-horizontal-3">&nbsp;</a>
+                        </li>
+                    </ul>
                 </div>
+                <div class="column column-1-4 cm-smart-column" style="height: 2487px;">
+                    <div class="cm-smart-column-wrapper" style="position: static; bottom: auto; top: auto; width: auto;">
+                        <ul class="categories clearfix">
+                            <li><a href="?page=category&amp;cat=house_cleaning" title="House Cleaning">House Cleaning<span>5</span></a></li>
+                            <li><a href="?page=category&amp;cat=post_renovation" title="Post Renovation">Post Renovation<span>2</span></a></li>
+                            <li><a href="?page=category&amp;cat=green_spaces_maintenance" title="Green Spaces Maintenance">Green Spaces Maintenance<span>2</span></a></li>
+                            <li><a href="?page=category&amp;cat=move_in_out_service" title="Move In Out Service">Move In Out Service<span>4</span></a></li>
+                            <li><a href="?page=category&amp;cat=commercial_cleaning" title="Commercial Cleaning">Commercial Cleaning<span>1</span></a></li>
+                            <li><a href="?page=category&amp;cat=window_cleaning" title="Window Cleaning">Window Cleaning<span>12</span></a></li>
+                        </ul>
 
+                        @include('partials._popular_articles')
 
-                @include('partials._sidebar')
-
+                        @include('partials._most_tags')
+                    </div>
+                </div>
             </div>
-
         </div>
-        <!-- /Container -->
-
     </div>
-    <!-- /Main Container -->
 @endsection

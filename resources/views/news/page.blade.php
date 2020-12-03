@@ -13,56 +13,35 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('partials._breadcrumbs', ['name' => $article->name, 'heading' => $option['meta_title']])
-
-    <!-- Main Container -->
-    <div class="main-wrapper wrap-category">
-
-        <!-- Container -->
-        <div class="container content-with-sidebar">
-
+    <div class="theme-page">
+        <div class="row gray full-width page-header vertical-align-table">
             <div class="row">
-
-                <div class="col-sm-8 col-md-9 columns">
-                    <div class="white-space space-medium"></div>
-
-                    <!-- /Blog Content -->
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <!-- blog post -->
-                            <div class="blog-post post-format-image">
-                                <div class="blog-post-content">
-                                    <div class="post-info">
-                                        <h3 class="post-title">
-                                            <a href="{{ $article->url }}"> {{ $article->name }} </a>
-                                        </h3>
-                                        <ul class="list-inline post-meta-info">
-                                            <li class="meta-date">{{ $article->created_at }}</li>
-                                        </ul>
-                                    </div>
-                                    <div class="post-summary"><b>{{ nl2br(e($article->description)) }}</b></div>
-
-                                    <div class="post-content">
-                                        <p>{!! $article->content !!}</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- /blog post -->
-
-                        </div>
-                    </div>
-
-                    <div class="white-space space-medium"></div>
+                <div class="page-header-left">
+                    <h1>{{ $article->name }}</h1>
                 </div>
-
-
-                @include('partials._sidebar')
-
+                <div class="page-header-right">
+                    <div class="bread-crumb-container">
+                        <ul class="bread-crumb">
+                            <li>
+                                <a title="Trang chủ" href="/">
+                                    Trang chủ
+                                </a>
+                            </li>
+                            <li class="separator">
+                                /
+                            </li>
+                            <li>
+                                {{ $article->name }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- /Container -->
-
+        <div class="clearfix">
+            <div class="row page-margin-top padding-bottom-66">
+                {!! $article->content !!}
+            </div>
+        </div>
     </div>
-    <!-- /Main Container -->
 @endsection

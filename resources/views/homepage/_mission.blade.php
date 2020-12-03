@@ -1,5 +1,5 @@
 @if(!empty($option['mission_heading']) && !empty($option['mission_description']))
-    <div class="row full-width padding-top-59 padding-bottom-60 align-center">
+    <div class="row full-width padding-top-59 padding-bottom-60 align-center" id="mission-section">
         <h3><span class="button-label">{{ $option['mission_heading'] }}</span></h3>
     </div>
     <div class="row full-width gray flex-box">

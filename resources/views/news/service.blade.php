@@ -31,6 +31,9 @@
                             <li class="separator">
                                 /
                             </li>
+                            <li>
+                                Dịch vụ
+                            </li>
                             <li class="separator">
                                 /
                             </li>
@@ -44,8 +47,10 @@
         </div>
 
         <div class="clearfix">
-            <div class="row page-margin-top-section">
-                @include('partials._sidebar')
+            <div class="row page-margin-top">
+                <div class="column column-1-4">
+                    @include('partials._sidebar')
+                </div>
                 <div class="column column-3-4">
                     <div class="row">
                         {!! $article->content !!}
